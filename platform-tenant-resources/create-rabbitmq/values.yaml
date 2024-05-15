@@ -1,0 +1,83 @@
+nodeSelector:
+  cosmotech.com/tier: services
+persistence:
+  enabled: true
+  storageClass: "-"
+  size: 8Gi
+  existingClaim: ${RABBITMQ_PVC_NAME}
+tolerations:
+  - key: vendor
+    operator: Equal
+    value: cosmotech
+    effect: NoSchedule
+auth:
+  # existingPasswordSecret and existingSecretPasswordKey are not really used in our case
+  # The load_definition config is used to override the users definition and takes precedence during deployment
+  # But, weirdly, the chart still creates an (unused) password entry if no existingPasswordSecret is set
+  # Pointing them to our existing secret prevents the creation of this unused password entry that could confuse users
+  # exploring the k8s secrets
+  existingPasswordSecret: ${INSTANCE_NAME}-secret
+  existingSecretPasswordKey: admin-password
+extraPlugins: "rabbitmq_amqp1_0 rabbitmq_prometheus"
+extraSecrets:
+  ${INSTANCE_NAME}-load-definition:
+    load_definition.json: |
+      {
+        "users": [
+          {
+            "name": "admin",
+            "password": "${ADMIN_PASSWORD}",
+            "tags": "administrator"
+          },
+          {
+            "name": "${LISTENER_USERNAME}",
+            "password": "${LISTENER_PASSWORD}",
+            "tags": ""
+          },
+          {
+            "name": "${SENDER_USERNAME}",
+            "password": "${SENDER_PASSWORD}",
+            "tags": ""
+          }
+        ],
+        "vhosts": [
+          {
+            "name": "/"
+          }
+        ],
+        "permissions": [
+          {
+            "user": "admin",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+          },
+          {
+            "user": "${LISTENER_USERNAME}",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+          },
+          {
+            "user": "${SENDER_USERNAME}",
+            "vhost": "/",
+            "configure": ".*",
+            "write": ".*",
+            "read": ".*"
+          }
+        ]
+      }
+loadDefinition:
+  enabled: true
+  existingSecret: ${INSTANCE_NAME}-load-definition
+extraConfiguration: |
+  load_definitions = /app/load_definition.json
+metrics:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: ${MONITORING_NAMESPACE}
+    interval: 30s
+    scrapeTimeout: 10s

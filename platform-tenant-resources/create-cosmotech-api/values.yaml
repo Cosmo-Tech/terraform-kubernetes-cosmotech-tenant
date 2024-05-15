@@ -1,0 +1,139 @@
+replicaCount: ${API_REPLICAS}
+api:
+  version: ${API_VERSION_PATH}
+  multiTenant: ${MULTI_TENANT}
+  servletContextPath: /cosmotech-api
+
+image:
+  repository: ghcr.io/cosmo-tech/cosmotech-api
+  tag: ${API_VERSION}
+argo:
+  imageCredentials:
+    password: ${ACR_LOGIN_PASSWORD}
+    registry: ${ACR_LOGIN_SERVER}
+    username: ${ACR_LOGIN_USERNAME}
+config:
+  api:
+    serviceMonitor:
+      enabled: ${MONITORING_ENABLED}
+      namespace: ${MONITORING_NAMESPACE}
+  logging:
+    level:
+      com.cosmotech: DEBUG
+      web: WARN
+      org.springframework: WARN
+      com.redis: WARN
+  server:
+    error:
+      include-stacktrace: always
+  csm:
+    platform:
+      containerRegistry:
+          provider: "azure"
+          registryUrl: "https://${ACR_LOGIN_SERVER}"
+          registryUserName: ${ACR_LOGIN_USERNAME}
+          registryPassword: ${ACR_LOGIN_PASSWORD}
+      identityProvider:
+        code: azure
+        authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
+        tokenUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token"
+        defaultScopes:
+          "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/platform]": "${TENANT_RESOURCE_GROUP} scope"
+        containerScopes:
+          "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/.default]": "${TENANT_RESOURCE_GROUP} scope"
+      namespace: ${NAMESPACE}
+      loki:
+        baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
+      argo:
+        base-uri: "http://${ARGO_RELEASE_NAME}-argo-workflows-server.${NAMESPACE}.svc.cluster.local:2746"
+        workflows:
+          namespace: ${NAMESPACE}
+          service-account-name: ${ARGO_SERVICE_ACCOUNT}
+      authorization:
+        allowed-tenants: ${TENANT_ID}
+      azure:
+        appIdUri: ${APP_ID_URI}
+        containerRegistries:
+          solutions: ${ACR_LOGIN_SERVER}
+        cosmos:
+          key: ${COSMOS_KEY}
+          uri: ${COSMOS_URI}
+        credentials:
+          clientId: ${CLIENT_ID}
+          clientSecret: ${CLIENT_SECRET}
+          customer:
+            clientId: ${NETWORK_ADT_CLIENTID}
+            clientSecret: ${NETWORK_ADT_PASSWORD}
+            tenantId: ${TENANT_ID}
+          tenantId: ${TENANT_ID}
+        dataWarehouseCluster:
+          baseUri: ${ADX_URI}
+          options:
+            ingestionUri: ${ADX_INGESTION_URI}
+        eventBus:
+          baseUri: ${EVENTBUS_URI}
+        storage:
+          account-key: ${STORAGE_ACCOUNT_KEY}
+          account-name: ${STORAGE_ACCOUNT_NAME}
+      internalResultServices:
+        enabled: ${USE_INTERNAL_RESULT_SERVICES}
+        storage:
+          host: "${POSTGRESQL_RELEASE_NAME}-postgresql.${NAMESPACE}.svc.cluster.local"
+          port: 5432
+          reader:
+            username: ${POSTGRESQL_READER_USERNAME}
+            password: ${POSTGRESQL_READER_PASSWORD}
+          writer:
+            username: ${POSTGRESQL_WRITER_USERNAME}
+            password: ${POSTGRESQL_WRITER_PASSWORD}
+          admin:
+            username: ${POSTGRESQL_ADMIN_USERNAME}
+            password: ${POSTGRESQL_ADMIN_PASSWORD}
+        eventBus:
+          host: "${RABBITMQ_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local"
+          port: 5672
+          listener:
+            username: ${RABBITMQ_LISTENER_USERNAME}
+            password: ${RABBITMQ_LISTENER_PASSWORD}
+          sender:
+            username: ${RABBITMQ_SENDER_USERNAME}
+            password: ${RABBITMQ_SENDER_PASSWORD}
+      twincache:
+        host: "cosmotechredis-${NAMESPACE}-master.${NAMESPACE}.svc.cluster.local"
+        port: ${REDIS_PORT}
+        username: "default"
+        password: ${REDIS_PASSWORD}
+
+ingress:
+  enabled: ${COSMOTECH_API_INGRESS_ENABLED}
+  annotations:
+    cert-manager.io/cluster-issuer: ${TLS_SECRET_NAME}
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "30"
+    nginx.org/client-max-body-size: "0"
+  hosts:
+    - host: ${COSMOTECH_API_DNS_NAME}
+  tls:
+    - secretName: ${TLS_SECRET_NAME}
+      hosts: ["${COSMOTECH_API_DNS_NAME}"]
+
+resources:
+  # Recommended in production environments
+  limits:
+    #   cpu: 100m
+    memory: 2048Mi
+  requests:
+    #   cpu: 100m
+    memory: 1024Mi
+
+tolerations:
+- key: "vendor"
+  operator: "Equal"
+  value: "cosmotech"
+  effect: "NoSchedule"
+
+nodeSelector:
+  "cosmotech.com/tier": "services"
