@@ -1,22 +1,3 @@
-module "create-vault-entries" {
-  source = "./create-vault-entries"
-
-  count = var.create_vault_entries ? 1 : 0
-
-  tenant_id                   = var.tenant_id
-  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
-  platform_name               = var.platform_name
-  organization_name           = var.organization_name
-  vault_addr                  = var.vault_addr
-  vault_token                 = var.vault_token
-  storage_account_name        = var.tf_storage_account_name
-  storage_account_key         = var.tf_access_key
-  storage_container           = var.tf_container_name
-  tfstate_blob_name           = var.tf_blob_name_tenant
-
-  depends_on = [module.platform-tenant-resources]
-}
-
 module "platform-tenant-resources" {
   source = "./platform-tenant-resources"
 
