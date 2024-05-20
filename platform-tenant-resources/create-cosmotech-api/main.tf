@@ -61,8 +61,8 @@ resource "helm_release" "cosmotech-api" {
   version    = var.chart_package_version
   namespace  = var.namespace
 
-  reuse_values = true
-  timeout      = 600
+  reuse_values = false
+  timeout      = 300
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_cosmotech_api)

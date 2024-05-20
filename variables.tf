@@ -54,6 +54,7 @@ variable "client_secret" {
 
 variable "project_name" {
   description = "The project name"
+  default     = ""
 }
 
 variable "organization_name" {
@@ -536,15 +537,15 @@ variable "storage_kind" {
   default = "StorageV2"
 }
 
-# variable "tenant_client_id" {
-#   type    = string
-#   default = ""
-# }
+variable "tenant_client_id" {
+  type    = string
+  default = ""
+}
 
-# variable "tenant_client_secret" {
-#   type    = string
-#   default = ""
-# }
+variable "tenant_client_secret" {
+  type    = string
+  default = ""
+}
 
 variable "blob_privatedns_zonename" {
   type    = string

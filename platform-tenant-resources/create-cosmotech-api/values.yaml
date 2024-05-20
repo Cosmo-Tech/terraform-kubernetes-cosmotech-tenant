@@ -52,7 +52,7 @@ config:
       authorization:
         allowed-tenants: ${TENANT_ID}
       azure:
-        appIdUri: ${APP_ID_URI}
+        appIdUri: ${APP_ID_URI}/${TENANT_RESOURCE_GROUP}
         containerRegistries:
           solutions: ${ACR_LOGIN_SERVER}
         cosmos:
