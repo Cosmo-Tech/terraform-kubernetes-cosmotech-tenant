@@ -11,10 +11,6 @@ variable "deployment_type" {
   }
 }
 
-# variable "subscription_id" {
-#   description = "The subscription id"
-# }
-
 variable "tenant_id" {
   description = "The tenant id"
 }
@@ -28,29 +24,6 @@ variable "client_secret" {
   description = "The client secret"
   default     = ""
 }
-
-# variable "common_resource_group" {
-#   description = "Existing Resource group which contain common platform resources"
-#   type        = string
-# }
-
-# variable "public_ip_name" {
-#   description = "The public IP resource of the platform"
-#   type        = string
-# }
-
-# variable "publicip_resource_group" {
-#   type = string
-# }
-
-# variable "vnet_name" {
-#   description = "The virtual network of the platform common resources"
-#   type        = string
-# }
-
-# variable "vnet_resource_group" {
-#   type = string
-# }
 
 variable "project_name" {
   description = "The project name"
@@ -76,69 +49,10 @@ variable "kubernetes_azurefile_storage_class_sku" {
   type = string
 }
 
-variable "tenant_virtual_network_address_prefix" {
-  description = "The Virtual Network IP range. Minimum /26 NetMaskLength"
-  type        = string
-  default     = "10.40.0.0/16"
-}
-
-variable "tenant_virtual_subnet_network_address_prefix" {
-  type    = string
-  default = "10.40.0.0/24"
-}
-
 variable "redis_disk_name" {
   type    = string
   default = "cosmotech-database-disk"
 }
-
-# variable "auto_stop_kusto" {
-#   description = "Specifies if the cluster could be automatically stopped"
-#   type        = bool
-#   default     = true
-# }
-
-# variable "kusto_instance_type" {
-#   type    = string
-#   default = "Standard_D12_v2"
-# }
-
-# variable "kustonr_instances" {
-#   type    = number
-#   default = 2
-# }
-
-# variable "dns_record" {
-#   description = "The DNS zone name to create platform subdomain. Example: myplatform"
-#   type        = string
-# }
-
-# variable "dns_zone_name" {
-#   description = "The DNS zone name to create platform subdomain. Example: api.cosmotech.com"
-#   type        = string
-#   default     = "api.cosmotech.com"
-# }
-
-# variable "dns_zone_rg" {
-#   description = "The DNS zone resource group"
-#   type        = string
-#   default     = "phoenix"
-# }
-
-# variable "owner_list" {
-#   description = "List of mail addresses for App Registration owners"
-#   type        = list(string)
-# }
-
-# variable "platform_url" {
-#   description = "The platform url"
-#   default     = ""
-# }
-
-# variable "identifier_uri" {
-#   description = "The platform identifier uri"
-#   default     = ""
-# }
 
 variable "project_stage" {
   description = "The platform stage"
@@ -156,11 +70,6 @@ variable "project_stage" {
     error_message = "Stage must be either: OnBoarding, Dev, QA, IA, EA, Demo, Prod."
   }
 }
-
-# variable "cluster_name" {
-#   description = "Cluster name"
-#   type        = string
-# }
 
 variable "customer_name" {
   description = "The customer name"
@@ -184,35 +93,11 @@ variable "webapp_url" {
   default     = ""
 }
 
-# variable "create_restish" {
-#   description = "Create the Azure Active Directory Application for Restish"
-#   type        = bool
-#   default     = false
-# }
-
-# variable "create_powerbi" {
-#   description = "Create the Azure Active Directory Application for PowerBI"
-#   type        = bool
-#   default     = false
-# }
-
 variable "location" {
   description = "The Azure location"
   type        = string
   default     = "West Europe"
 }
-
-# variable "create_publicip" {
-#   description = "Create the public IP for the platform"
-#   type        = bool
-#   default     = false
-# }
-
-# variable "create_dnsrecord" {
-#   description = "Create the DNS record"
-#   type        = bool
-#   default     = false
-# }
 
 variable "api_version_path" {
   description = "The API version path"
@@ -238,12 +123,6 @@ variable "image_path" {
   type    = string
   default = "./cosmotech.png"
 }
-
-# variable "create_webapp" {
-#   description = "Create the Azure Active Directory Application for WebApp"
-#   type        = bool
-#   default     = false
-# }
 
 variable "create_secrets" {
   description = "Create secrets for newly created app registrations"
@@ -327,10 +206,6 @@ variable "chart_package_version" {
   type        = string
   default     = "3.1.2"
 }
-
-# variable "network_client_id" {
-#   type = string
-# }
 
 variable "tenant_sp_name" {
   description = "The name of the platform on which we deploy the tenant"
@@ -505,29 +380,6 @@ variable "platform_name" {
   default     = ""
 }
 
-# variable "tenant_group_id" {
-#   description = "The object id of the platform group"
-#   type        = string
-#   default     = ""
-# }
-
-# variable "network_client_secret" {
-#   type    = string
-#   default = ""
-# }
-
-# variable "tenant_sp_object_id" {
-#   description = "The object id of the platform service principal"
-#   type        = string
-#   default     = ""
-# }
-
-# variable "network_sp_object_id" {
-#   description = "The object id of the network service principal"
-#   type        = string
-#   default     = ""
-# }
-
 variable "kubernetes_azurefile_storage_tags" {
   type = string
 }
@@ -601,10 +453,6 @@ variable "tls_certificate_custom_key" {
   type    = string
   default = ""
 }
-
-# variable "common_platform_object_id" {
-#   type = string
-# }
 
 variable "storage_account_key" {
 

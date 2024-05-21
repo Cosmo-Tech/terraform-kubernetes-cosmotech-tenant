@@ -64,14 +64,6 @@ variable "argo_minio_requests_memory" {
   type = string
 }
 
-# variable "network_client_id" {
-#   type = string
-# }
-
-# variable "network_client_secret" {
-#   type = string
-# }
-
 variable "tenant_client_id" {
   type        = string
   description = "The client_id of the platform's service principal"
@@ -93,43 +85,6 @@ variable "storage_account_key" {
 variable "storage_account_name" {
   type = string
 }
-
-# variable "acr_login_password" {
-#   type = string
-# }
-
-# variable "acr_login_server" {
-#   type = string
-# }
-
-# variable "acr_login_username" {
-#   type = string
-# }
-
-# variable "adx_ingestion_uri" {
-#   type = string
-# }
-
-# variable "adx_uri" {
-#   type = string
-# }
-
-# variable "cosmos_uri" {
-#   type    = string
-#   default = ""
-# }
-
-# variable "cosmos_key" {
-#   type    = string
-#   default = ""
-# }
-
-# variable "eventbus_uri" {
-#   type = string
-# }
-
-# variable "kube_config" {
-# }
 
 variable "archive_ttl" {
   type = string

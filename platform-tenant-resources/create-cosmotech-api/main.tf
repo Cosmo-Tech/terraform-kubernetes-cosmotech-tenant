@@ -27,8 +27,6 @@ locals {
     "EVENTBUS_URI"                  = var.eventbus_uri
     "STORAGE_ACCOUNT_KEY"           = var.storage_account_key
     "STORAGE_ACCOUNT_NAME"          = var.storage_account_name
-    "NETWORK_ADT_PASSWORD"          = ""
-    "NETWORK_ADT_CLIENTID"          = ""
     "MULTI_TENANT"                  = var.is_multitenant
     "USE_INTERNAL_RESULT_SERVICES"  = var.use_internal_result_services
     "TENANT_RESOURCE_GROUP"         = var.tenant_resource_group
