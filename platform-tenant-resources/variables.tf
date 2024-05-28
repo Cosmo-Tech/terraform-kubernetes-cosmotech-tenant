@@ -2,10 +2,10 @@ variable "api_dns_name" {
   type = string
 }
 
-# variable "subscription_id" {
-#   description = "The subscription id"
-#   type        = string
-# }
+variable "subscription_id" {
+  description = "The subscription id"
+  type        = string
+}
 
 variable "tenant_id" {
   description = "The tenant id"
@@ -64,6 +64,14 @@ variable "argo_minio_requests_memory" {
   type = string
 }
 
+variable "network_client_id" {
+  type = string
+}
+
+variable "network_client_secret" {
+  type = string
+}
+
 variable "tenant_client_id" {
   type        = string
   description = "The client_id of the platform's service principal"
@@ -74,9 +82,9 @@ variable "tenant_client_secret" {
   description = "The client_secret of the platform's service principal"
 }
 
-# variable "managed_disk_id" {
-#   type = string
-# }
+variable "managed_disk_id" {
+  type = string
+}
 
 variable "storage_account_key" {
   type = string
@@ -84,6 +92,48 @@ variable "storage_account_key" {
 
 variable "storage_account_name" {
   type = string
+}
+
+variable "acr_login_password" {
+  type = string
+}
+
+variable "acr_login_server" {
+  type = string
+}
+
+variable "acr_login_username" {
+  type = string
+}
+
+variable "adx_ingestion_uri" {
+  type = string
+}
+
+variable "adx_uri" {
+  type = string
+}
+
+variable "cosmos_uri" {
+  type    = string
+  default = ""
+}
+
+variable "cosmos_key" {
+  type    = string
+  default = ""
+}
+
+variable "eventbus_uri" {
+  type = string
+}
+
+variable "create_rabbitmq" {
+  description = "Whether to create RabbitMQ resources"
+  type        = bool
+}
+
+variable "kube_config" {
 }
 
 variable "archive_ttl" {
@@ -128,8 +178,21 @@ variable "tls_certificate_custom_key" {
   default = ""
 }
 
-variable "create_rabbitmq" {
-  type    = bool
-  default = false
+variable "list_apikey_allowed" {
+  type = list(object({
+    name           = string
+    apiKey         = string
+    associatedRole = string
+    securedUris    = list(string)
+  }))
+  default = [{
+    name           = ""
+    apiKey         = ""
+    associatedRole = ""
+    securedUris    = []
+  }]
 }
 
+variable "identifier_uri" {
+  type = string
+}

@@ -1,10 +1,5 @@
 nodeSelector:
   cosmotech.com/tier: services
-persistence:
-  enabled: true
-  storageClass: "-"
-  size: 8Gi
-  existingClaim: ${RABBITMQ_PVC_NAME}
 tolerations:
   - key: vendor
     operator: Equal

@@ -41,12 +41,22 @@ module "create-cosmotech-api" {
   client_id                     = var.tenant_client_id
   client_secret                 = var.tenant_client_secret
   tenant_id                     = var.tenant_id
+  network_client_id             = var.network_client_id
+  network_client_secret         = var.network_client_secret
   namespace                     = var.kubernetes_tenant_namespace
   monitoring_enabled            = var.monitoring_enabled
   monitoring_namespace          = var.monitoring_namespace
   api_dns_name                  = var.api_dns_name
   api_replicas                  = var.api_replicas
   tls_secret_name               = local.tls_secret_name
+  acr_login_password            = var.acr_login_password
+  acr_login_server              = var.acr_login_server
+  acr_login_username            = var.acr_login_username
+  cosmos_key                    = var.cosmos_key
+  cosmos_uri                    = var.cosmos_uri
+  adx_uri                       = var.adx_uri
+  adx_ingestion_uri             = var.adx_ingestion_uri
+  eventbus_uri                  = var.eventbus_uri
   storage_account_key           = var.storage_account_key
   storage_account_name          = var.storage_account_name
   chart_package_version         = var.chart_package_version
@@ -69,6 +79,8 @@ module "create-cosmotech-api" {
   rabbitmq_listener_password    = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
   rabbitmq_sender_username      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
   rabbitmq_sender_password      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
+  list_apikey_allowed           = var.list_apikey_allowed
+  identifier_uri                = var.identifier_uri
 
   depends_on = [
     module.create-argo,
@@ -101,9 +113,10 @@ module "create-redis-stack" {
 
   redis_admin_password = random_password.redis_admin_password.result
   namespace            = var.kubernetes_tenant_namespace
-  # managed_disk_id      = var.managed_disk_id
-  redis_disk_name = var.redis_disk_name
-  depends_on      = [module.create-postgresql-db]
+  managed_disk_id      = var.managed_disk_id
+  redis_disk_name      = var.redis_disk_name
+  depends_on           = [module.create-postgresql-db]
+
 }
 
 module "create-rabbitmq" {

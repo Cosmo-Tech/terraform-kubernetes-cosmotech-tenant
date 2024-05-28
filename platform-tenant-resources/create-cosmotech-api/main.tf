@@ -7,7 +7,7 @@ locals {
     "NAMESPACE"                     = var.namespace
     "REDIS_PORT"                    = var.redis_port
     "REDIS_PASSWORD"                = var.redis_admin_password
-    "APP_ID_URI"                    = "https://${var.api_dns_name}"
+    "APP_ID_URI"                    = local.identifier_uri
     "ARGO_SERVICE_ACCOUNT"          = local.argo_service_account
     "ARGO_RELEASE_NAME"             = local.argo_instance_name
     "COSMOTECH_API_INGRESS_ENABLED" = var.cosmotech_api_ingress_enabled
@@ -27,6 +27,8 @@ locals {
     "EVENTBUS_URI"                  = var.eventbus_uri
     "STORAGE_ACCOUNT_KEY"           = var.storage_account_key
     "STORAGE_ACCOUNT_NAME"          = var.storage_account_name
+    "NETWORK_ADT_PASSWORD"          = var.network_client_secret
+    "NETWORK_ADT_CLIENTID"          = var.network_client_id
     "MULTI_TENANT"                  = var.is_multitenant
     "USE_INTERNAL_RESULT_SERVICES"  = var.use_internal_result_services
     "TENANT_RESOURCE_GROUP"         = var.tenant_resource_group
@@ -42,10 +44,12 @@ locals {
     "RABBITMQ_LISTENER_PASSWORD"    = var.rabbitmq_listener_password
     "RABBITMQ_SENDER_USERNAME"      = var.rabbitmq_sender_username
     "RABBITMQ_SENDER_PASSWORD"      = var.rabbitmq_sender_password
+    "ALLOWED_API_KEY_CONSUMERS"     = jsonencode(var.list_apikey_allowed)
   }
   instance_name        = "${var.helm_release_name}-${var.namespace}"
   argo_service_account = "argo-${var.namespace}-service-account"
   tls_secret_name      = "${var.tls_secret_name}-${var.namespace}"
+  identifier_uri       = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
 }
 
 locals {
@@ -59,8 +63,8 @@ resource "helm_release" "cosmotech-api" {
   version    = var.chart_package_version
   namespace  = var.namespace
 
-  reuse_values = false
-  timeout      = 300
+  reuse_values = true
+  timeout      = 600
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_cosmotech_api)

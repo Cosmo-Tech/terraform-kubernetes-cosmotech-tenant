@@ -15,13 +15,11 @@ variable "monitoring_namespace" {
 }
 
 variable "client_id" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "client_secret" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "tenant_id" {
@@ -41,63 +39,51 @@ variable "redis_admin_password" {
 }
 
 variable "acr_login_password" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "acr_login_server" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "acr_login_username" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "cosmos_key" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "cosmos_uri" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "adx_uri" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "adx_ingestion_uri" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "eventbus_uri" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "storage_account_key" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "storage_account_name" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "network_client_id" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "network_client_secret" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "cosmotech_api_ingress_enabled" {
@@ -204,5 +190,24 @@ variable "rabbitmq_sender_username" {
 }
 
 variable "rabbitmq_sender_password" {
+  type = string
+}
+
+variable "list_apikey_allowed" {
+  type = list(object({
+    name           = string
+    apiKey         = string
+    associatedRole = string
+    securedUris    = list(string)
+  }))
+  default = [{
+    name           = ""
+    apiKey         = ""
+    associatedRole = ""
+    securedUris    = []
+  }]
+}
+
+variable "identifier_uri" {
   type = string
 }
