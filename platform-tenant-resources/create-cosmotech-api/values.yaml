@@ -29,10 +29,10 @@ config:
   csm:
     platform:
       containerRegistry:
-          provider: "azure"
-          registryUrl: "https://${ACR_LOGIN_SERVER}"
-          registryUserName: ${ACR_LOGIN_USERNAME}
-          registryPassword: ${ACR_LOGIN_PASSWORD}
+          # provider: "azure"
+          # registryUrl: "https://${ACR_LOGIN_SERVER}"
+          # registryUserName: ${ACR_LOGIN_USERNAME}
+          # registryPassword: ${ACR_LOGIN_PASSWORD}
       identityProvider:
         code: azure
         authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
