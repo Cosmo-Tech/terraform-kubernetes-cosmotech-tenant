@@ -38,9 +38,9 @@ config:
         authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
         tokenUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token"
         defaultScopes:
-          "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/platform]": "${TENANT_RESOURCE_GROUP} scope"
+          "[${APP_ID_URI}/platform]": "${TENANT_RESOURCE_GROUP} scope"
         containerScopes:
-          "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/.default]": "${TENANT_RESOURCE_GROUP} scope"
+          "[${APP_ID_URI}/.default]": "${TENANT_RESOURCE_GROUP} scope"
       namespace: ${NAMESPACE}
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
