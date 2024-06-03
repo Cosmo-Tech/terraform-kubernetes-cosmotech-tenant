@@ -8,11 +8,6 @@ resource "kubernetes_namespace" "main_namespace" {
   }
 }
 
-resource "random_password" "prom_admin_password" {
-  length  = 30
-  special = false
-}
-
 resource "random_password" "redis_admin_password" {
   length  = 30
   special = false
