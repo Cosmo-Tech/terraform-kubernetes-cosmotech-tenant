@@ -1,48 +1,29 @@
 locals {
-  # host                   = local.kube_config.0.host
-  # client_certificate     = base64decode(local.kube_config.0.client_certificate)
-  # client_key             = base64decode(local.kube_config.0.client_key)
-  # cluster_ca_certificate = base64decode(local.kube_config.0.cluster_ca_certificate)
-  tags = {
-    vendor      = "cosmotech"
-    stage       = var.project_stage
-    customer    = var.customer_name
-    project     = var.project_name
-    cost_center = var.cost_center
+  tls_secret_name = var.tls_certificate_type != "none" ? var.tls_secret_name : ""
+}
+
+resource "kubernetes_namespace" "main_namespace" {
+  metadata {
+    name = var.kubernetes_tenant_namespace
   }
 }
 
-provider "kubernetes" {
-  # host                   = local.host
-  # client_certificate     = local.client_certificate
-  # client_key             = local.client_key
-  # cluster_ca_certificate = local.cluster_ca_certificate
-
-  config_path = "config"
+resource "random_password" "prom_admin_password" {
+  length  = 30
+  special = false
 }
 
-provider "helm" {
-  kubernetes {
-    # host                   = local.host
-    # client_certificate     = local.client_certificate
-    # client_key             = local.client_key
-    # cluster_ca_certificate = local.cluster_ca_certificate
-
-    config_path = "config"
-  }
+resource "random_password" "redis_admin_password" {
+  length  = 30
+  special = false
 }
 
-provider "kubectl" {
-  # host                   = local.host
-  # client_certificate     = local.client_certificate
-  # client_key             = local.client_key
-  # cluster_ca_certificate = local.cluster_ca_certificate
-
-  config_path      = "config"
-  load_config_file = true
+resource "random_password" "argo_minio_secret_key" {
+  length  = 30
+  special = false
 }
 
-locals {
-  # kube_config     = data.azurerm_kubernetes_cluster.current.kube_config
-  tls_secret_name = var.tls_certificate_type == "let_s_encrypt" ? "letsencrypt-prod" : "custom-tls-secret"
+resource "random_password" "argo_minio_access_key" {
+  length  = 30
+  special = false
 }

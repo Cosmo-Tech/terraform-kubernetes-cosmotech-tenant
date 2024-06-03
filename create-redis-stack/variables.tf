@@ -10,9 +10,9 @@ variable "redis_disk_name" {
   type = string
 }
 
-# variable "managed_disk_id" {
-#   type = string
-# }
+variable "managed_disk_id" {
+  type = string
+}
 
 variable "helm_repo_url" {
   type    = string

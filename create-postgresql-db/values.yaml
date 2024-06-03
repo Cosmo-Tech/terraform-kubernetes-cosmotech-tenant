@@ -7,10 +7,6 @@ auth:
   secretKeys:
     adminPasswordKey: postgres-password
 primary:
-  persistence:
-    enabled: true
-    existingClaim: ${POSTGRESQL_PVC_NAME}
-    storageClass: "-"
   podLabels:
     "networking/traffic-allowed": "yes"
   tolerations:
