@@ -38,9 +38,9 @@ config:
         authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
         tokenUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token"
         defaultScopes:
-          "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/platform]": "${TENANT_RESOURCE_GROUP} scope"
+          "[${APP_ID_URI}/platform]": "${TENANT_RESOURCE_GROUP} scope"
         containerScopes:
-          "[${APP_ID_URI}/${TENANT_RESOURCE_GROUP}/.default]": "${TENANT_RESOURCE_GROUP} scope"
+          "[${APP_ID_URI}/.default]": "${TENANT_RESOURCE_GROUP} scope"
       namespace: ${NAMESPACE}
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
@@ -50,9 +50,10 @@ config:
           namespace: ${NAMESPACE}
           service-account-name: ${ARGO_SERVICE_ACCOUNT}
       authorization:
+        allowedApiKeyConsumers: ${ALLOWED_API_KEY_CONSUMERS}
         allowed-tenants: ${TENANT_ID}
       azure:
-        appIdUri: ${APP_ID_URI}/${TENANT_RESOURCE_GROUP}
+        appIdUri: ${APP_ID_URI}
         containerRegistries:
           solutions: ${ACR_LOGIN_SERVER}
         cosmos:
@@ -61,6 +62,10 @@ config:
         credentials:
           clientId: ${CLIENT_ID}
           clientSecret: ${CLIENT_SECRET}
+          customer:
+            clientId: ${NETWORK_ADT_CLIENTID}
+            clientSecret: ${NETWORK_ADT_PASSWORD}
+            tenantId: ${TENANT_ID}
           tenantId: ${TENANT_ID}
         dataWarehouseCluster:
           baseUri: ${ADX_URI}

@@ -31,8 +31,6 @@ variable "tls_secret_name" {
 }
 
 variable "tls_certificate_type" {
-  type    = string
-  default = "let_s_encrypt"
 }
 
 variable "kubernetes_tenant_namespace" {
@@ -40,8 +38,7 @@ variable "kubernetes_tenant_namespace" {
 }
 
 variable "monitoring_namespace" {
-  type    = string
-  default = "cosmotech-monitoring"
+  type = string
 }
 
 variable "chart_package_version" {
@@ -53,21 +50,18 @@ variable "tenant_resource_group" {
 }
 
 variable "redis_disk_name" {
-  type    = string
-  default = "cosmotech-database-disk"
+  type = string
 }
 variable "redis_disk_sku" {
   type = string
 }
 
 variable "argo_minio_persistence_size" {
-  type    = string
-  default = "16Gi"
+  type = string
 }
 
 variable "argo_minio_requests_memory" {
-  type    = string
-  default = "2Gi"
+  type = string
 }
 
 variable "network_client_id" {
@@ -143,13 +137,11 @@ variable "kube_config" {
 }
 
 variable "archive_ttl" {
-  type    = string
-  default = "3d"
+  type = string
 }
 
 variable "cluster_issuer_name" {
-  type    = string
-  default = "letsencrypt-prod"
+  type = string
 }
 
 variable "cosmotech_api_version_path" {
@@ -161,23 +153,19 @@ variable "cosmotech_api_version" {
 }
 
 variable "cosmotech_api_ingress_enabled" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "redis_port" {
-  type    = number
-  default = 6379
+  type = number
 }
 
 variable "monitoring_enabled" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "api_replicas" {
-  type    = number
-  default = 2
+  type = number
 }
 
 variable "tls_certificate_custom_certificate" {

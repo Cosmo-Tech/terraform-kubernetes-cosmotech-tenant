@@ -20,7 +20,6 @@ sysctl:
 master:
   persistence:
     existingClaim: ${REDIS_MASTER_NAME_PVC}
-    storageClass: "-"
   podLabels:
     networking/traffic-allowed: "yes"
   tolerations:
@@ -33,17 +32,16 @@ master:
   resources:
     requests:
       cpu: 500m
-      memory: 2Gi
+      memory: 4Gi
     limits:
       cpu: 1000m
-      memory: 2Gi
+      memory: 4Gi
 replica:
   replicaCount: 1
   podLabels:
     networking/traffic-allowed: "yes"
   persistence:
-    storageClass: "-"
-    existingClaim: ${REDIS_REPLICA_NAME_PVC}
+    storageClass: "managed-csi"
     size: ${REDIS_DISK_SIZE}
   tolerations:
   - key: "vendor"
@@ -55,10 +53,10 @@ replica:
   resources:
     requests:
       cpu: 500m
-      memory: 2Gi
+      memory: 4Gi
     limits:
       cpu: 1000m
-      memory: 2Gi
+      memory: 4Gi
 commonConfiguration: |-
   loadmodule /opt/bitnami/redis/modules/redisgraph.so
   loadmodule /opt/bitnami/redis/modules/redistimeseries.so DUPLICATE_POLICY LAST

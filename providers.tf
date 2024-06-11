@@ -9,13 +9,10 @@ terraform {
       version = "2.9.0"
     }
     kubectl = {
-      source = "alekc/kubectl"
+      source  = "alekc/kubectl"
       version = "2.0.4"
     }
-    http = {
-      source  = "hashicorp/http"
-      version = "3.4.0"
-    }
   }
+
   required_version = ">= 1.3.9"
 }

@@ -2,9 +2,7 @@ fullnameOverride: ${MINIO_RELEASE_NAME}
 defaultBuckets: "${ARGO_BUCKET_NAME}"
 persistence:
   enabled: true
-  storageClass: "-"
   size: ${ARGO_MINIO_PERSISTENCE_SIZE}
-  existingClaim: ${MINIO_PVC_NAME}
 resources:
   requests:
     memory: ${ARGO_MINIO_REQUESTS_MEMORY}
