@@ -138,7 +138,6 @@ variable "is_multitenant" {
 
 variable "use_internal_result_services" {
   type    = bool
-  default = false
 }
 
 variable "tenant_resource_group" {
