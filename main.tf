@@ -1,5 +1,7 @@
 locals {
-  tls_secret_name = var.tls_certificate_type != "none" ? var.tls_secret_name : ""
+  tls_secret_name             = var.tls_certificate_type != "none" ? var.tls_secret_name : ""
+  minio_release_name          = "minio"
+  cosmotechapi_s3_bucket_name = "cosmotech-api"
 }
 
 resource "kubernetes_namespace" "main_namespace" {

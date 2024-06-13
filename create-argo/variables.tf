@@ -37,8 +37,7 @@ variable "argo_bucket_name" {
 }
 
 variable "minio_release_name" {
-  type    = string
-  default = "miniocsmv2"
+  type = string
 }
 
 variable "postgres_release_name" {

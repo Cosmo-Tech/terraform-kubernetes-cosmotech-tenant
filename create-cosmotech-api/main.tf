@@ -25,8 +25,6 @@ locals {
     "ADX_URI"                       = var.adx_uri
     "ADX_INGESTION_URI"             = var.adx_ingestion_uri
     "EVENTBUS_URI"                  = var.eventbus_uri
-    "STORAGE_ACCOUNT_KEY"           = var.storage_account_key
-    "STORAGE_ACCOUNT_NAME"          = var.storage_account_name
     "NETWORK_ADT_PASSWORD"          = var.network_client_secret
     "NETWORK_ADT_CLIENTID"          = var.network_client_id
     "MULTI_TENANT"                  = var.is_multitenant
@@ -44,6 +42,10 @@ locals {
     "RABBITMQ_LISTENER_PASSWORD"    = var.rabbitmq_listener_password
     "RABBITMQ_SENDER_USERNAME"      = var.rabbitmq_sender_username
     "RABBITMQ_SENDER_PASSWORD"      = var.rabbitmq_sender_password
+    "S3_ENDPOINT_URL"               = var.s3_endpoint_url
+    "S3_BUCKET_NAME"                = var.s3_bucket_name
+    "S3_ACCESS_KEY_ID"              = var.s3_access_key_id
+    "S3_SECRET_ACCESS_KEY"          = var.s3_secret_access_key
     "ALLOWED_API_KEY_CONSUMERS"     = jsonencode(var.list_apikey_allowed)
   }
   instance_name        = "${var.helm_release_name}-${var.namespace}"

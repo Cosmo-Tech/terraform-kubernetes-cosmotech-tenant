@@ -20,8 +20,7 @@ variable "helm_repo_url" {
 }
 
 variable "minio_release_name" {
-  type    = string
-  default = "miniocsmv2"
+  type = string
 }
 
 variable "helm_chart" {
@@ -49,3 +48,6 @@ variable "argo_minio_requests_memory" {
   default = "2Gi"
 }
 
+variable "cosmotechapi_bucket_name" {
+  type = string
+}

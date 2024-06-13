@@ -1,5 +1,5 @@
 fullnameOverride: ${MINIO_RELEASE_NAME}
-defaultBuckets: "${ARGO_BUCKET_NAME}"
+defaultBuckets: "${BUCKET_NAMES}"
 persistence:
   enabled: true
   size: ${ARGO_MINIO_PERSISTENCE_SIZE}

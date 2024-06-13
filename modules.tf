@@ -4,6 +4,7 @@ module "create-argo" {
   namespace             = var.kubernetes_tenant_namespace
   monitoring_namespace  = var.monitoring_namespace
   postgres_release_name = module.create-postgresql-db.out_postgres_release_name
+  minio_release_name    = local.minio_release_name
 
   depends_on = [
     module.create-postgresql-db
@@ -57,8 +58,6 @@ module "create-cosmotech-api" {
   adx_uri                       = var.adx_uri
   adx_ingestion_uri             = var.adx_ingestion_uri
   eventbus_uri                  = var.eventbus_uri
-  storage_account_key           = var.storage_account_key
-  storage_account_name          = var.storage_account_name
   chart_package_version         = var.chart_package_version
   cosmotech_api_version         = var.cosmotech_api_version
   cosmotech_api_version_path    = var.cosmotech_api_version_path
@@ -79,6 +78,10 @@ module "create-cosmotech-api" {
   rabbitmq_listener_password    = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
   rabbitmq_sender_username      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
   rabbitmq_sender_password      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
+  s3_endpoint_url               = "http://${local.minio_release_name}-${var.kubernetes_tenant_namespace}.${var.kubernetes_tenant_namespace}.svc.cluster.local:9000"
+  s3_bucket_name                = local.cosmotechapi_s3_bucket_name
+  s3_access_key_id              = random_password.argo_minio_access_key.result
+  s3_secret_access_key          = random_password.argo_minio_secret_key.result
   list_apikey_allowed           = var.list_apikey_allowed
   identifier_uri                = var.identifier_uri
 
@@ -94,10 +97,12 @@ module "create-minio" {
 
   namespace                   = var.kubernetes_tenant_namespace
   monitoring_namespace        = var.monitoring_namespace
+  minio_release_name          = local.minio_release_name
   argo_minio_access_key       = random_password.argo_minio_access_key.result
   argo_minio_secret_key       = random_password.argo_minio_secret_key.result
   argo_minio_persistence_size = var.argo_minio_persistence_size
   argo_minio_requests_memory  = var.argo_minio_requests_memory
+  cosmotechapi_bucket_name    = local.cosmotechapi_s3_bucket_name
 }
 
 module "create-postgresql-db" {

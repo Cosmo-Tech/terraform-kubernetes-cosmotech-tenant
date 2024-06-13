@@ -86,14 +86,6 @@ variable "managed_disk_id" {
   type = string
 }
 
-variable "storage_account_key" {
-  type = string
-}
-
-variable "storage_account_name" {
-  type = string
-}
-
 variable "acr_login_password" {
   type = string
 }

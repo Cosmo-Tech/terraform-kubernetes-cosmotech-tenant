@@ -70,14 +70,6 @@ variable "eventbus_uri" {
   type = string
 }
 
-variable "storage_account_key" {
-  type = string
-}
-
-variable "storage_account_name" {
-  type = string
-}
-
 variable "network_client_id" {
   type = string
 }
@@ -189,6 +181,22 @@ variable "rabbitmq_sender_username" {
 }
 
 variable "rabbitmq_sender_password" {
+  type = string
+}
+
+variable "s3_endpoint_url" {
+  type = string
+}
+
+variable "s3_bucket_name" {
+  type = string
+}
+
+variable "s3_access_key_id" {
+  type = string
+}
+
+variable "s3_secret_access_key" {
   type = string
 }
 
