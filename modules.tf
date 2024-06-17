@@ -98,6 +98,8 @@ module "create-minio" {
   argo_minio_secret_key       = random_password.argo_minio_secret_key.result
   argo_minio_persistence_size = var.argo_minio_persistence_size
   argo_minio_requests_memory  = var.argo_minio_requests_memory
+  provisioner                 = var.provisioner
+  is_bare_metal               = var.is_bare_metal
 }
 
 module "create-postgresql-db" {
@@ -105,7 +107,10 @@ module "create-postgresql-db" {
 
   namespace            = var.kubernetes_tenant_namespace
   monitoring_namespace = var.monitoring_namespace
-  depends_on           = [module.create-minio]
+  provisioner          = var.provisioner
+  is_bare_metal        = var.is_bare_metal
+
+  depends_on = [module.create-minio]
 }
 
 module "create-redis-stack" {

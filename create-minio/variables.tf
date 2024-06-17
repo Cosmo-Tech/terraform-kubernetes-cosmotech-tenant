@@ -49,3 +49,8 @@ variable "argo_minio_requests_memory" {
   default = "2Gi"
 }
 
+variable "is_bare_metal" {
+}
+
+variable "provisioner" {
+}

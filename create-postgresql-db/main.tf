@@ -5,6 +5,7 @@ locals {
     "POSTGRESQL_SECRET_NAME"   = var.postgresql_secret_name
     "POSTGRESQL_PASSWORD"      = random_password.postgres_postgresql_password.result
     "POSTGRESQL_PVC_NAME"      = local.pvc_name
+    "POSTGRESQL_STORAGE_CLASS" = var.provisioner == "local-path" ? "-" : var.provisioner
   }
   initdb_data = {
     "COSMOTECH_API_READER_USERNAME" = var.cosmotech_api_reader_username
@@ -23,6 +24,7 @@ locals {
 }
 
 resource "kubernetes_persistent_volume_v1" "postgres-pv" {
+  count = var.is_bare_metal && var.provisioner == "local-path" ? 1 : 0
   metadata {
     name = local.pv_name
     labels = {
@@ -62,6 +64,7 @@ resource "kubernetes_persistent_volume_v1" "postgres-pv" {
 }
 
 resource "kubernetes_persistent_volume_claim_v1" "postgres-pvc" {
+  count = var.is_bare_metal && var.provisioner == "local-path" ? 1 : 0
   metadata {
     name      = local.pvc_name
     namespace = var.namespace

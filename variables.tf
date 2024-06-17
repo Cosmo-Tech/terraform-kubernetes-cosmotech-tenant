@@ -208,3 +208,14 @@ variable "list_apikey_allowed" {
 variable "identifier_uri" {
   type = string
 }
+
+variable "is_bare_metal" {
+  type    = bool
+  default = false
+}
+
+variable "provisioner" {
+  type        = string
+  default     = ""
+  description = "Value for the provisioner key in the storage class. If in a bare metal environment and no provisioner available, set this to 'local-path'"
+}
