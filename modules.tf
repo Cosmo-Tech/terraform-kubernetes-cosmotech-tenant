@@ -58,6 +58,8 @@ module "create-cosmotech-api" {
   adx_uri                       = var.adx_uri
   adx_ingestion_uri             = var.adx_ingestion_uri
   eventbus_uri                  = var.eventbus_uri
+  storage_account_key           = var.storage_account_key
+  storage_account_name          = var.storage_account_name
   chart_package_version         = var.chart_package_version
   cosmotech_api_version         = var.cosmotech_api_version
   cosmotech_api_version_path    = var.cosmotech_api_version_path

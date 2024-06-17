@@ -25,6 +25,8 @@ locals {
     "ADX_URI"                       = var.adx_uri
     "ADX_INGESTION_URI"             = var.adx_ingestion_uri
     "EVENTBUS_URI"                  = var.eventbus_uri
+    "STORAGE_ACCOUNT_KEY"           = var.storage_account_key
+    "STORAGE_ACCOUNT_NAME"          = var.storage_account_name
     "NETWORK_ADT_PASSWORD"          = var.network_client_secret
     "NETWORK_ADT_CLIENTID"          = var.network_client_id
     "MULTI_TENANT"                  = var.is_multitenant

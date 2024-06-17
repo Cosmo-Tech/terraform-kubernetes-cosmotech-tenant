@@ -78,6 +78,9 @@ config:
             ingestionUri: ${ADX_INGESTION_URI}
         eventBus:
           baseUri: ${EVENTBUS_URI}
+        storage:
+          account-key: ${STORAGE_ACCOUNT_KEY}
+          account-name: ${STORAGE_ACCOUNT_NAME}
       internalResultServices:
         enabled: ${USE_INTERNAL_RESULT_SERVICES}
         storage:

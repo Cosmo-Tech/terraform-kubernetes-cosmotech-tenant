@@ -70,6 +70,14 @@ variable "eventbus_uri" {
   type = string
 }
 
+variable "storage_account_key" {
+  type = string
+}
+
+variable "storage_account_name" {
+  type = string
+}
+
 variable "network_client_id" {
   type = string
 }
