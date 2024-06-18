@@ -105,6 +105,7 @@ module "create-minio" {
   argo_minio_persistence_size = var.argo_minio_persistence_size
   argo_minio_requests_memory  = var.argo_minio_requests_memory
   cosmotechapi_bucket_name    = local.cosmotechapi_s3_bucket_name
+  is_bare_metal               = var.is_bare_metal
 }
 
 module "create-postgresql-db" {
@@ -113,6 +114,8 @@ module "create-postgresql-db" {
   namespace            = var.kubernetes_tenant_namespace
   monitoring_namespace = var.monitoring_namespace
   depends_on           = [module.create-minio]
+  persistence_size     = var.postgresql_persistence_size
+  is_bare_metal        = var.is_bare_metal
 }
 
 module "create-redis-stack" {
@@ -123,7 +126,8 @@ module "create-redis-stack" {
   managed_disk_id      = var.managed_disk_id
   redis_disk_name      = var.redis_disk_name
   depends_on           = [module.create-postgresql-db]
-
+  redis_pv_capacity    = var.redis_persistence_size
+  is_bare_metal        = var.is_bare_metal
 }
 
 module "create-rabbitmq" {
@@ -133,4 +137,6 @@ module "create-rabbitmq" {
 
   namespace            = var.kubernetes_tenant_namespace
   monitoring_namespace = var.monitoring_namespace
+  persistence_size     = var.rabbitmq_persistence_size
+  is_bare_metal        = var.is_bare_metal
 }

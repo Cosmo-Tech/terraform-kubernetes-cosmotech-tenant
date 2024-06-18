@@ -35,3 +35,11 @@ variable "rabbitmq_sender_username" {
   type    = string
   default = "cosmotech_run_sender"
 }
+
+variable "persistence_size" {
+  type = string
+}
+
+variable "is_bare_metal" {
+  type = bool
+}

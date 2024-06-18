@@ -69,6 +69,10 @@ loadDefinition:
   existingSecret: ${INSTANCE_NAME}-load-definition
 extraConfiguration: |
   load_definitions = /app/load_definition.json
+persistence:
+  enabled: true
+  size: ${PERSISTENCE_SIZE}
+  existingClaim: ${PVC_NAME}
 metrics:
   enabled: true
   serviceMonitor:

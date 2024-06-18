@@ -137,7 +137,7 @@ variable "is_multitenant" {
 }
 
 variable "use_internal_result_services" {
-  type    = bool
+  type = bool
 }
 
 variable "tenant_resource_group" {

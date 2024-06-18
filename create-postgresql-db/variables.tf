@@ -60,3 +60,11 @@ variable "helm_release_name" {
   type    = string
   default = "postgrescsmv2"
 }
+
+variable "persistence_size" {
+  type = string
+}
+
+variable "is_bare_metal" {
+  type = bool
+}

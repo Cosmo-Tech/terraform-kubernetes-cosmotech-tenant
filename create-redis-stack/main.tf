@@ -4,16 +4,16 @@ locals {
     "VERSION_REDIS_COSMOTECH" = var.version_redis_cosmotech
     "REDIS_MASTER_NAME_PVC"   = local.redis_pvc_name
     "REDIS_DISK_SIZE"         = var.redis_pv_capacity
-    "REDIS_REPLICA_NAME_PVC"  = local.redis_replica_name_pvc
+    "REDIS_REPLICA_NAME_PVC"  = var.is_bare_metal ? local.redis_replica_name_pvc : ""
   }
 }
 
 locals {
   instance_name          = "${var.helm_release_name}-${var.namespace}"
-  redis_pv_name          = "${var.redis_pv_name}-${var.namespace}"
-  redis_pvc_name         = "${var.redis_pvc_name}-${var.namespace}"
-  redis_replica_name_pv  = "${var.redis_pv_name}-replica-${var.namespace}"
-  redis_replica_name_pvc = "${var.redis_pvc_name}-replica-${var.namespace}"
+  redis_pv_name          = "${local.instance_name}-pv"
+  redis_pvc_name         = "${local.instance_name}-pvc"
+  redis_replica_name_pv  = "${local.instance_name}-replica-pv"
+  redis_replica_name_pvc = "${local.instance_name}-replica-pvc"
 }
 
 resource "kubernetes_persistent_volume_v1" "redis-pv" {
@@ -34,9 +34,20 @@ resource "kubernetes_persistent_volume_v1" "redis-pv" {
       storage = var.redis_pv_capacity
     }
     persistent_volume_source {
-
-      local {
-        path = "/mnt/redis-storage"
+      dynamic "local" {
+        for_each = var.is_bare_metal ? [true] : []
+        content {
+          path = "/mnt/redis-storage"
+        }
+      }
+      dynamic "azure_disk" {
+        for_each = var.is_bare_metal ? [] : [true]
+        content {
+          caching_mode  = "ReadWrite"
+          data_disk_uri = var.managed_disk_id
+          disk_name     = var.redis_disk_name
+          kind          = "Managed"
+        }
       }
     }
     persistent_volume_reclaim_policy = "Retain"
@@ -73,6 +84,7 @@ resource "kubernetes_persistent_volume_claim_v1" "redis-pvc" {
 }
 
 resource "kubernetes_persistent_volume_v1" "redis-pv-replica" {
+  count = var.is_bare_metal ? 1 : 0
   metadata {
     name = local.redis_replica_name_pv
     labels = {
@@ -112,6 +124,7 @@ resource "kubernetes_persistent_volume_v1" "redis-pv-replica" {
 }
 
 resource "kubernetes_persistent_volume_claim_v1" "redis-pvc-replica" {
+  count = var.is_bare_metal ? 1 : 0
   metadata {
     name      = local.redis_replica_name_pvc
     namespace = var.namespace
@@ -144,6 +157,9 @@ resource "helm_release" "cosmotechredis" {
   ]
 
   depends_on = [
-    kubernetes_persistent_volume_v1.redis-pv, kubernetes_persistent_volume_claim_v1.redis-pvc, kubernetes_persistent_volume_v1.redis-pv-replica, kubernetes_persistent_volume_claim_v1.redis-pvc-replica
+    kubernetes_persistent_volume_v1.redis-pv,
+    kubernetes_persistent_volume_claim_v1.redis-pvc,
+    kubernetes_persistent_volume_v1.redis-pv-replica,
+    kubernetes_persistent_volume_claim_v1.redis-pvc-replica
   ]
 }

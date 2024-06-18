@@ -19,6 +19,8 @@ sysctl:
     pullPolicy: IfNotPresent
 master:
   persistence:
+    enabled: true
+    size: ${REDIS_DISK_SIZE}
     existingClaim: ${REDIS_MASTER_NAME_PVC}
   podLabels:
     networking/traffic-allowed: "yes"
@@ -41,8 +43,9 @@ replica:
   podLabels:
     networking/traffic-allowed: "yes"
   persistence:
-    storageClass: "managed-csi"
+    enabled: true
     size: ${REDIS_DISK_SIZE}
+    existingClaim: ${REDIS_REPLICA_NAME_PVC}
   tolerations:
   - key: "vendor"
     operator: "Equal"

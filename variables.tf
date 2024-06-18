@@ -50,10 +50,18 @@ variable "tenant_resource_group" {
 }
 
 variable "redis_disk_name" {
-  type = string
+  type    = string
+  default = ""
 }
+
 variable "redis_disk_sku" {
-  type = string
+  type    = string
+  default = ""
+}
+
+variable "redis_persistence_size" {
+  type    = string
+  default = "64Gi"
 }
 
 variable "argo_minio_persistence_size" {
@@ -83,7 +91,8 @@ variable "tenant_client_secret" {
 }
 
 variable "managed_disk_id" {
-  type = string
+  type    = string
+  default = ""
 }
 
 variable "storage_account_key" {
@@ -131,6 +140,16 @@ variable "eventbus_uri" {
 variable "create_rabbitmq" {
   description = "Whether to create RabbitMQ resources"
   type        = bool
+}
+
+variable "rabbitmq_persistence_size" {
+  type    = string
+  default = "8Gi"
+}
+
+variable "postgresql_persistence_size" {
+  type    = string
+  default = "8Gi"
 }
 
 variable "kube_config" {
@@ -195,4 +214,9 @@ variable "list_apikey_allowed" {
 
 variable "identifier_uri" {
   type = string
+}
+
+variable "is_bare_metal" {
+  type    = bool
+  default = false
 }

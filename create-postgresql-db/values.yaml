@@ -16,6 +16,10 @@ primary:
     effect: "NoSchedule"
   nodeSelector:
     "cosmotech.com/tier": "db"
+  persistence:
+    enabled: true
+    size: ${PERSISTENCE_SIZE}
+    existingClaim: ${PVC_NAME}
   initdb:
     user: postgres
     password: ${POSTGRESQL_PASSWORD}

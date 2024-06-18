@@ -34,27 +34,15 @@ variable "redis_version" {
   default = "17.8.0"
 }
 
-variable "redis_pvc_name" {
-  type    = string
-  default = "cosmotech-database-master-pvc"
-}
-
-variable "redis_pv_name" {
-  type    = string
-  default = "cosmotech-database-master-pv"
-}
-
 variable "redis_pv_capacity" {
-  type    = string
-  default = "64Gi"
-}
-
-variable "redis_pv_driver" {
-  type    = string
-  default = "disk.csi.azure.com"
+  type = string
 }
 
 variable "version_redis_cosmotech" {
   type    = string
   default = "1.0.8"
+}
+
+variable "is_bare_metal" {
+  type = bool
 }

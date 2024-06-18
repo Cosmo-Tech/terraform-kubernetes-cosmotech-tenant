@@ -7,7 +7,7 @@ locals {
     "ARGO_MINIO_REQUESTS_MEMORY"  = var.argo_minio_requests_memory
     "ARGO_MINIO_ACCESS_KEY"       = var.argo_minio_access_key
     "ARGO_MINIO_SECRET_KEY"       = var.argo_minio_secret_key
-    "MINIO_PVC_NAME"              = local.pvc_name
+    "MINIO_PVC_NAME"              = var.is_bare_metal ? local.pvc_name : ""
   }
 }
 
@@ -18,6 +18,7 @@ locals {
 }
 
 resource "kubernetes_persistent_volume_v1" "minio-pv" {
+  count = var.is_bare_metal ? 1 : 0
   metadata {
     name = local.pv_name
     labels = {
@@ -57,6 +58,7 @@ resource "kubernetes_persistent_volume_v1" "minio-pv" {
 }
 
 resource "kubernetes_persistent_volume_claim_v1" "minio-pvc" {
+  count = var.is_bare_metal ? 1 : 0
   metadata {
     name      = local.pvc_name
     namespace = var.namespace
