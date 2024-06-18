@@ -44,7 +44,7 @@ resource "kubernetes_persistent_volume_v1" "postgresql-pv" {
     persistent_volume_source {
 
       local {
-        path = "/mnt/postgresql-storage"
+        path = "/mnt/postgres-storage"
       }
     }
     persistent_volume_reclaim_policy = "Retain"
@@ -55,7 +55,7 @@ resource "kubernetes_persistent_volume_v1" "postgresql-pv" {
           match_expressions {
             key      = "cosmotech.com/tier"
             operator = "In"
-            values   = ["services"]
+            values   = ["db"]
           }
         }
       }
