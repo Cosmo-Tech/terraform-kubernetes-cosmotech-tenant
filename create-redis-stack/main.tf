@@ -145,7 +145,7 @@ resource "helm_release" "cosmotechredis" {
   name       = local.instance_name
   repository = var.helm_repo_url
   chart      = var.helm_chart_name
-  version    = var.redis_version
+  version    = var.chart_redis_version
   namespace  = var.namespace
 
   reuse_values = true
