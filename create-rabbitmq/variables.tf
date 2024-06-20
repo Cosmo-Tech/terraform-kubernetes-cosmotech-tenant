@@ -39,7 +39,3 @@ variable "rabbitmq_sender_username" {
 variable "persistence_size" {
   type = string
 }
-
-variable "is_bare_metal" {
-  type = bool
-}

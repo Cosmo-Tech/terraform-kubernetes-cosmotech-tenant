@@ -19,7 +19,6 @@ primary:
   persistence:
     enabled: true
     size: ${PERSISTENCE_SIZE}
-    existingClaim: ${PVC_NAME}
   initdb:
     user: postgres
     password: ${POSTGRESQL_PASSWORD}

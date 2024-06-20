@@ -51,7 +51,3 @@ variable "argo_minio_requests_memory" {
 variable "cosmotechapi_bucket_name" {
   type = string
 }
-
-variable "is_bare_metal" {
-  type = bool
-}

@@ -23,7 +23,6 @@ master:
   persistence:
     enabled: true
     size: ${REDIS_DISK_SIZE}
-    existingClaim: ${REDIS_MASTER_NAME_PVC}
   podLabels:
     networking/traffic-allowed: "yes"
   tolerations:
@@ -47,7 +46,6 @@ replica:
   persistence:
     enabled: true
     size: ${REDIS_DISK_SIZE}
-    existingClaim: ${REDIS_REPLICA_NAME_PVC}
   tolerations:
   - key: "vendor"
     operator: "Equal"

@@ -6,14 +6,6 @@ variable "namespace" {
   type = string
 }
 
-variable "redis_disk_name" {
-  type = string
-}
-
-variable "managed_disk_id" {
-  type = string
-}
-
 variable "helm_repo_url" {
   type    = string
   default = "https://charts.bitnami.com/bitnami"
@@ -40,8 +32,4 @@ variable "redis_pv_capacity" {
 variable "version_redis_cosmotech" {
   type    = string
   default = "1.0.8"
-}
-
-variable "is_bare_metal" {
-  type = bool
 }
