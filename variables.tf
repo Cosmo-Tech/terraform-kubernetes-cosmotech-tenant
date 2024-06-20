@@ -64,6 +64,11 @@ variable "redis_persistence_size" {
   default = "64Gi"
 }
 
+variable "chart_redis_version" {
+  type    = string
+  default = "17.8.0"
+}
+
 variable "argo_minio_persistence_size" {
   type = string
 }

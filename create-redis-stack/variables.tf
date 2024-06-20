@@ -29,9 +29,8 @@ variable "helm_chart_name" {
   default = "redis"
 }
 
-variable "redis_version" {
+variable "chart_redis_version" {
   type    = string
-  default = "17.8.0"
 }
 
 variable "redis_pv_capacity" {

@@ -128,6 +128,7 @@ module "create-redis-stack" {
   depends_on           = [module.create-postgresql-db]
   redis_pv_capacity    = var.redis_persistence_size
   is_bare_metal        = var.is_bare_metal
+  chart_redis_version  = var.chart_redis_version
 }
 
 module "create-rabbitmq" {
