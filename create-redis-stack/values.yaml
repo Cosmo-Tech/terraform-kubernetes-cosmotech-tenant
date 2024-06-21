@@ -1,5 +1,7 @@
 auth:
   password: ${REDIS_PASSWORD}
+serviceBindings: 
+  enabled: true
 image:
   registry: ghcr.io
   repository: cosmo-tech/cosmotech-redis
