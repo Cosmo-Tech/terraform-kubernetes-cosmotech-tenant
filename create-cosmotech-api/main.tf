@@ -67,7 +67,7 @@ resource "helm_release" "cosmotech-api" {
   version    = var.chart_package_version
   namespace  = var.namespace
 
-  reuse_values = true
+  reset_values = true
   timeout      = 600
 
   values = [
