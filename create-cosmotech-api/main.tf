@@ -44,11 +44,9 @@ locals {
     "RABBITMQ_LISTENER_PASSWORD"    = var.rabbitmq_listener_password
     "RABBITMQ_SENDER_USERNAME"      = var.rabbitmq_sender_username
     "RABBITMQ_SENDER_PASSWORD"      = var.rabbitmq_sender_password
-    "S3_ENDPOINT_URL"               = var.s3_endpoint_url
-    "S3_BUCKET_NAME"                = var.s3_bucket_name
-    "S3_ACCESS_KEY_ID"              = var.s3_access_key_id
-    "S3_SECRET_ACCESS_KEY"          = var.s3_secret_access_key
     "ALLOWED_API_KEY_CONSUMERS"     = jsonencode(var.list_apikey_allowed)
+    "PERSISTENCE_SIZE"              = var.persistence_size
+    "PERSISTENCE_STORAGE_CLASS"     = var.persistence_storage_class
   }
   instance_name   = "${var.helm_release_name}-${var.namespace}"
   tls_secret_name = "${var.tls_secret_name}-${var.namespace}"

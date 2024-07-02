@@ -164,6 +164,16 @@ variable "cosmotech_api_ingress_enabled" {
   default = true
 }
 
+variable "cosmotech_api_persistence_size" {
+  type    = string
+  default = "8Gi"
+}
+
+variable "cosmotech_api_persistence_storage_class" {
+  type    = string
+  default = ""
+}
+
 variable "redis_port" {
   type    = number
   default = 6379
@@ -175,7 +185,8 @@ variable "monitoring_enabled" {
 }
 
 variable "api_replicas" {
-  type = number
+  type    = number
+  default = 1
 }
 
 variable "tls_certificate_custom_certificate" {

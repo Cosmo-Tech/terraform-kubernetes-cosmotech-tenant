@@ -82,12 +82,10 @@ module "create-cosmotech-api" {
   rabbitmq_listener_password    = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
   rabbitmq_sender_username      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
   rabbitmq_sender_password      = var.create_rabbitmq ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
-  s3_endpoint_url               = "http://${local.minio_release_name}-${var.kubernetes_tenant_namespace}.${var.kubernetes_tenant_namespace}.svc.cluster.local:9000"
-  s3_bucket_name                = local.cosmotechapi_s3_bucket_name
-  s3_access_key_id              = random_password.argo_minio_access_key.result
-  s3_secret_access_key          = random_password.argo_minio_secret_key.result
   list_apikey_allowed           = var.list_apikey_allowed
   identifier_uri                = var.identifier_uri
+  persistence_size              = var.cosmotech_api_persistence_size
+  persistence_storage_class     = var.cosmotech_api_persistence_storage_class
 
   depends_on = [
     module.create-argo,
@@ -106,7 +104,6 @@ module "create-minio" {
   argo_minio_secret_key       = random_password.argo_minio_secret_key.result
   argo_minio_persistence_size = var.argo_minio_persistence_size
   argo_minio_requests_memory  = var.argo_minio_requests_memory
-  cosmotechapi_bucket_name    = local.cosmotechapi_s3_bucket_name
 }
 
 module "create-postgresql-db" {
