@@ -13,6 +13,7 @@ locals {
     "ARGO_BUCKET_NAME"            = var.argo_bucket_name
     "MONITORING_NAMESPACE"        = var.monitoring_namespace
     "MINIO_RELEASE_NAME"          = local.minio_release_name
+    "USE_MINIO_STORAGE"           = var.use_minio_storage
     "NAMESPACE"                   = var.namespace
     "POSTGRES_RELEASE_NAME"       = var.postgres_release_name
     "ARGO_DATABASE"               = var.argo_database

@@ -35,6 +35,10 @@ variable "minio_release_name" {
   type = string
 }
 
+variable "use_minio_storage" {
+  type = bool
+}
+
 variable "postgres_release_name" {
   type = string
 }

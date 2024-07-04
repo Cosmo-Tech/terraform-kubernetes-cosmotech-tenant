@@ -5,6 +5,7 @@ module "create-argo" {
   monitoring_namespace  = var.monitoring_namespace
   postgres_release_name = module.create-postgresql-db.out_postgres_release_name
   minio_release_name    = local.minio_release_name
+  use_minio_storage     = local.use_minio_storage
 
   depends_on = [
     module.create-postgresql-db
@@ -95,6 +96,7 @@ module "create-cosmotech-api" {
 }
 
 module "create-minio" {
+  count  = local.use_minio_storage ? 1 : 0
   source = "./create-minio"
 
   namespace                   = var.kubernetes_tenant_namespace
@@ -111,7 +113,6 @@ module "create-postgresql-db" {
 
   namespace            = var.kubernetes_tenant_namespace
   monitoring_namespace = var.monitoring_namespace
-  depends_on           = [module.create-minio]
   persistence_size     = var.postgresql_persistence_size
 }
 
