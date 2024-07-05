@@ -19,10 +19,6 @@ variable "helm_repo_url" {
   default = "https://charts.bitnami.com/bitnami"
 }
 
-variable "minio_release_name" {
-  type = string
-}
-
 variable "helm_chart" {
   type    = string
   default = "minio"

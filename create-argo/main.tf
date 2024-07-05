@@ -12,7 +12,7 @@ locals {
     "ARGO_SERVICE_ACCOUNT"        = local.argo_service_account
     "ARGO_BUCKET_NAME"            = var.argo_bucket_name
     "MONITORING_NAMESPACE"        = var.monitoring_namespace
-    "MINIO_RELEASE_NAME"          = local.minio_release_name
+    "MINIO_RELEASE_NAME"          = var.minio_release_name
     "USE_MINIO_STORAGE"           = var.use_minio_storage
     "NAMESPACE"                   = var.namespace
     "POSTGRES_RELEASE_NAME"       = var.postgres_release_name
@@ -22,7 +22,6 @@ locals {
     "ARCHIVE_TTL"                 = var.archive_ttl
   }
   argo_service_account = "argo-workflows-${var.namespace}-service-account"
-  minio_release_name   = "${var.minio_release_name}-${var.namespace}"
 }
 
 locals {

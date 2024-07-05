@@ -4,7 +4,7 @@ module "create-argo" {
   namespace             = var.kubernetes_tenant_namespace
   monitoring_namespace  = var.monitoring_namespace
   postgres_release_name = module.create-postgresql-db.out_postgres_release_name
-  minio_release_name    = local.minio_release_name
+  minio_release_name    = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
   use_minio_storage     = local.use_minio_storage
 
   depends_on = [
@@ -101,7 +101,6 @@ module "create-minio" {
 
   namespace                   = var.kubernetes_tenant_namespace
   monitoring_namespace        = var.monitoring_namespace
-  minio_release_name          = local.minio_release_name
   argo_minio_access_key       = random_password.argo_minio_access_key.result
   argo_minio_secret_key       = random_password.argo_minio_secret_key.result
   argo_minio_persistence_size = var.argo_minio_persistence_size

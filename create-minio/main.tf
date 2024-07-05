@@ -11,7 +11,7 @@ locals {
 }
 
 locals {
-  instance_name = "${var.minio_release_name}-${var.namespace}"
+  instance_name = "minio-${var.namespace}"
 }
 
 resource "helm_release" "minio" {
