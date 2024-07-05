@@ -49,16 +49,6 @@ variable "tenant_resource_group" {
   type = string
 }
 
-variable "redis_disk_name" {
-  type    = string
-  default = ""
-}
-
-variable "redis_disk_sku" {
-  type    = string
-  default = ""
-}
-
 variable "redis_persistence_size" {
   type    = string
   default = "64Gi"
@@ -93,11 +83,6 @@ variable "tenant_client_id" {
 variable "tenant_client_secret" {
   type        = string
   description = "The client_secret of the platform's service principal"
-}
-
-variable "managed_disk_id" {
-  type    = string
-  default = ""
 }
 
 variable "storage_account_key" {
@@ -219,9 +204,4 @@ variable "list_apikey_allowed" {
 
 variable "identifier_uri" {
   type = string
-}
-
-variable "is_bare_metal" {
-  type    = bool
-  default = false
 }

@@ -5,7 +5,6 @@ locals {
     "POSTGRESQL_SECRET_NAME"   = var.postgresql_secret_name
     "POSTGRESQL_PASSWORD"      = random_password.postgres_postgresql_password.result
     "PERSISTENCE_SIZE"         = var.persistence_size
-    "PVC_NAME"                 = var.is_bare_metal ? local.pvc_name : ""
   }
   initdb_data = {
     "COSMOTECH_API_READER_USERNAME" = var.cosmotech_api_reader_username
@@ -19,66 +18,6 @@ locals {
     "ARGO_DATABSE"                  = var.argo_database
   }
   instance_name = "${var.helm_release_name}-${var.namespace}"
-  pv_name       = "${local.instance_name}-pv"
-  pvc_name      = "${local.instance_name}-pvc"
-}
-
-resource "kubernetes_persistent_volume_v1" "postgresql-pv" {
-  count = var.is_bare_metal ? 1 : 0
-  metadata {
-    name = local.pv_name
-    labels = {
-      "cosmotech.com/service" = "postgresql"
-    }
-  }
-  spec {
-    storage_class_name = ""
-    access_modes       = ["ReadWriteOnce"]
-    claim_ref {
-      name      = local.pvc_name
-      namespace = var.namespace
-    }
-    capacity = {
-      storage = var.persistence_size
-    }
-    persistent_volume_source {
-
-      local {
-        path = "/mnt/postgres-storage"
-      }
-    }
-    persistent_volume_reclaim_policy = "Retain"
-
-    node_affinity {
-      required {
-        node_selector_term {
-          match_expressions {
-            key      = "cosmotech.com/tier"
-            operator = "In"
-            values   = ["db"]
-          }
-        }
-      }
-    }
-  }
-}
-
-resource "kubernetes_persistent_volume_claim_v1" "postgresql-pvc" {
-  count = var.is_bare_metal ? 1 : 0
-  metadata {
-    name      = local.pvc_name
-    namespace = var.namespace
-  }
-  spec {
-    storage_class_name = ""
-    access_modes       = ["ReadWriteOnce"]
-    resources {
-      requests = {
-        storage = var.persistence_size
-      }
-    }
-    volume_name = local.pv_name
-  }
 }
 
 resource "helm_release" "postgresql" {
@@ -92,11 +31,6 @@ resource "helm_release" "postgresql" {
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_postgresql)
-  ]
-
-  depends_on = [
-    kubernetes_persistent_volume_v1.postgresql-pv,
-    kubernetes_persistent_volume_claim_v1.postgresql-pvc
   ]
 }
 

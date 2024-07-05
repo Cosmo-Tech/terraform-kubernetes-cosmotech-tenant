@@ -72,7 +72,6 @@ extraConfiguration: |
 persistence:
   enabled: true
   size: ${PERSISTENCE_SIZE}
-  existingClaim: ${PVC_NAME}
 metrics:
   enabled: true
   serviceMonitor:

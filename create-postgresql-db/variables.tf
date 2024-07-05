@@ -64,7 +64,3 @@ variable "helm_release_name" {
 variable "persistence_size" {
   type = string
 }
-
-variable "is_bare_metal" {
-  type = bool
-}
