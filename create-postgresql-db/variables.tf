@@ -56,11 +56,6 @@ variable "postgresql_version" {
   default = "11.6.12"
 }
 
-variable "helm_release_name" {
-  type    = string
-  default = "postgrescsmv2"
-}
-
 variable "persistence_size" {
   type = string
 }

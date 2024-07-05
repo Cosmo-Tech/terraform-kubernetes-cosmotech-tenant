@@ -17,11 +17,10 @@ locals {
     "ARGO_POSTGRESQL_PASSWORD"      = random_password.argo_postgresql_password.result
     "ARGO_DATABSE"                  = var.argo_database
   }
-  instance_name = "${var.helm_release_name}-${var.namespace}"
 }
 
 resource "helm_release" "postgresql" {
-  name       = local.instance_name
+  name       = "postgresql-${var.namespace}"
   repository = var.helm_repo_url
   chart      = var.helm_chart
   version    = var.postgresql_version

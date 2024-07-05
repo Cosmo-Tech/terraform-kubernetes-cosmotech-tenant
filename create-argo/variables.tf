@@ -41,8 +41,7 @@ variable "minio_release_name" {
 }
 
 variable "postgres_release_name" {
-  type    = string
-  default = "postgrescsmv2"
+  type = string
 }
 
 variable "argo_database" {
