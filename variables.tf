@@ -34,7 +34,8 @@ variable "kubernetes_tenant_namespace" {
 }
 
 variable "monitoring_namespace" {
-  type = string
+  type    = string
+  default = "cosmotech-monitoring"
 }
 
 variable "chart_package_version" {
@@ -56,11 +57,13 @@ variable "chart_redis_version" {
 }
 
 variable "argo_minio_persistence_size" {
-  type = string
+  type    = string
+  default = "16Gi"
 }
 
 variable "argo_minio_requests_memory" {
-  type = string
+  type    = string
+  default = "2Gi"
 }
 
 variable "network_client_id" {
@@ -126,6 +129,7 @@ variable "eventbus_uri" {
 variable "create_rabbitmq" {
   description = "Whether to create RabbitMQ resources"
   type        = bool
+  default     = true
 }
 
 variable "rabbitmq_persistence_size" {
@@ -139,7 +143,8 @@ variable "postgresql_persistence_size" {
 }
 
 variable "archive_ttl" {
-  type = string
+  type    = string
+  default = "3d"
 }
 
 variable "cluster_issuer_name" {
@@ -155,15 +160,18 @@ variable "cosmotech_api_version" {
 }
 
 variable "cosmotech_api_ingress_enabled" {
-  type = bool
+  type    = bool
+  default = true
 }
 
 variable "redis_port" {
-  type = number
+  type    = number
+  default = 6379
 }
 
 variable "monitoring_enabled" {
-  type = bool
+  type    = bool
+  default = true
 }
 
 variable "api_replicas" {
