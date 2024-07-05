@@ -72,6 +72,13 @@ extraConfiguration: |
 persistence:
   enabled: true
   size: ${PERSISTENCE_SIZE}
+resources:
+  requests:
+    cpu: 2
+    memory: 512Mi
+  limits:
+    cpu: 3
+    memory: 1024Mi
 metrics:
   enabled: true
   serviceMonitor:
