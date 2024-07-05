@@ -127,8 +127,7 @@ variable "argo_service_account" {
 }
 
 variable "argo_release_name" {
-  type    = string
-  default = "argo"
+  type = string
 }
 
 variable "is_multitenant" {

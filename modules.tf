@@ -66,6 +66,8 @@ module "create-cosmotech-api" {
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
   redis_admin_password          = random_password.redis_admin_password.result
   redis_port                    = var.redis_port
+  argo_release_name             = module.create-argo.out_argo_workflows_release_name
+  argo_service_account          = module.create-argo.out_argo_workflows_service_account
   tenant_resource_group         = var.tenant_resource_group
   use_internal_result_services  = var.create_rabbitmq
   postgresql_release_name       = module.create-postgresql-db.out_postgres_release_name

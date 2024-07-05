@@ -45,7 +45,7 @@ config:
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
       argo:
-        base-uri: "http://${ARGO_RELEASE_NAME}-argo-workflows-server.${NAMESPACE}.svc.cluster.local:2746"
+        base-uri: "http://${ARGO_RELEASE_NAME}-server.${NAMESPACE}.svc.cluster.local:2746"
         workflows:
           namespace: ${NAMESPACE}
           service-account-name: ${ARGO_SERVICE_ACCOUNT}

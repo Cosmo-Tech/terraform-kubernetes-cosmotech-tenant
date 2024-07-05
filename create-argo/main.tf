@@ -20,8 +20,7 @@ locals {
     "REQUEUE_TIME"                = var.requeue_time
     "ARCHIVE_TTL"                 = var.archive_ttl
   }
-  instance_name        = "${var.argo_release_name}-${var.namespace}"
-  argo_service_account = "argo-${var.namespace}-service-account"
+  argo_service_account = "argo-workflows-${var.namespace}-service-account"
   minio_release_name   = "${var.minio_release_name}-${var.namespace}"
 }
 
@@ -60,7 +59,7 @@ resource "kubectl_manifest" "argo_crds" {
 }
 
 resource "helm_release" "argo" {
-  name       = local.instance_name
+  name       = "argo-workflows-${var.namespace}"
   repository = var.helm_repo_url
   chart      = var.helm_chart
   version    = var.argo_version

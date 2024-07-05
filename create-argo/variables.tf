@@ -6,11 +6,6 @@ variable "monitoring_namespace" {
   type = string
 }
 
-variable "argo_release_name" {
-  type    = string
-  default = "argo"
-}
-
 variable "helm_repo_url" {
   type    = string
   default = "https://argoproj.github.io/argo-helm"

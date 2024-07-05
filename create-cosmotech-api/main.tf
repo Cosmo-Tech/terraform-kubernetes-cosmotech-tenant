@@ -8,8 +8,8 @@ locals {
     "REDIS_PORT"                    = var.redis_port
     "REDIS_PASSWORD"                = var.redis_admin_password
     "APP_ID_URI"                    = local.identifier_uri
-    "ARGO_SERVICE_ACCOUNT"          = local.argo_service_account
-    "ARGO_RELEASE_NAME"             = local.argo_instance_name
+    "ARGO_SERVICE_ACCOUNT"          = var.argo_service_account
+    "ARGO_RELEASE_NAME"             = var.argo_release_name
     "COSMOTECH_API_INGRESS_ENABLED" = var.cosmotech_api_ingress_enabled
     "COSMOTECH_API_DNS_NAME"        = var.api_dns_name
     "API_VERSION"                   = var.cosmotech_api_version
@@ -50,14 +50,9 @@ locals {
     "S3_SECRET_ACCESS_KEY"          = var.s3_secret_access_key
     "ALLOWED_API_KEY_CONSUMERS"     = jsonencode(var.list_apikey_allowed)
   }
-  instance_name        = "${var.helm_release_name}-${var.namespace}"
-  argo_service_account = "argo-${var.namespace}-service-account"
-  tls_secret_name      = "${var.tls_secret_name}-${var.namespace}"
-  identifier_uri       = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
-}
-
-locals {
-  argo_instance_name = "${var.argo_release_name}-${var.namespace}"
+  instance_name   = "${var.helm_release_name}-${var.namespace}"
+  tls_secret_name = "${var.tls_secret_name}-${var.namespace}"
+  identifier_uri  = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
 }
 
 resource "helm_release" "cosmotech-api" {
