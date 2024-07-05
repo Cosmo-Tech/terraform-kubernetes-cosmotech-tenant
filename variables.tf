@@ -22,10 +22,6 @@ variable "client_secret" {
   type        = string
 }
 
-variable "location" {
-  type = string
-}
-
 variable "tls_secret_name" {
   type = string
 }
@@ -140,9 +136,6 @@ variable "rabbitmq_persistence_size" {
 variable "postgresql_persistence_size" {
   type    = string
   default = "8Gi"
-}
-
-variable "kube_config" {
 }
 
 variable "archive_ttl" {
