@@ -110,7 +110,7 @@ controller:
     archive: true
     archiveTTL: ${ARCHIVE_TTL}
     postgresql:
-      host: "${POSTGRES_RELEASE_NAME}-postgresql"
+      host: "${POSTGRES_RELEASE_NAME}"
       database: ${ARGO_DATABASE}
       tableName: workflows
       userNameSecret:
