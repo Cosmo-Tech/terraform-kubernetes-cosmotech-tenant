@@ -118,11 +118,12 @@ module "create-postgresql-db" {
 module "create-redis-stack" {
   source = "./create-redis-stack"
 
-  redis_admin_password = random_password.redis_admin_password.result
-  namespace            = var.kubernetes_tenant_namespace
-  depends_on           = [module.create-postgresql-db]
-  redis_pv_capacity    = var.redis_persistence_size
-  chart_redis_version  = var.chart_redis_version
+  redis_admin_password    = random_password.redis_admin_password.result
+  namespace               = var.kubernetes_tenant_namespace
+  depends_on              = [module.create-postgresql-db]
+  redis_pv_capacity       = var.redis_persistence_size
+  chart_redis_version     = var.chart_redis_version
+  version_redis_cosmotech = local.version_redis_cosmotech
 }
 
 module "create-rabbitmq" {

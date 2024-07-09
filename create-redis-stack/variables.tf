@@ -22,7 +22,7 @@ variable "helm_chart_name" {
 }
 
 variable "chart_redis_version" {
-  type    = string
+  type = string
 }
 
 variable "redis_pv_capacity" {
@@ -30,6 +30,5 @@ variable "redis_pv_capacity" {
 }
 
 variable "version_redis_cosmotech" {
-  type    = string
-  default = "1.0.8"
+  type = string
 }
