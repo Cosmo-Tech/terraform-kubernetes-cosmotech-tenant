@@ -79,7 +79,7 @@ config:
       internalResultServices:
         enabled: ${USE_INTERNAL_RESULT_SERVICES}
         storage:
-          host: "${POSTGRESQL_RELEASE_NAME}-postgresql.${NAMESPACE}.svc.cluster.local"
+          host: "${POSTGRESQL_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local"
           port: 5432
           reader:
             username: ${POSTGRESQL_READER_USERNAME}
