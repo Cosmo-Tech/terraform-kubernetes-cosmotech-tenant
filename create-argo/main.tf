@@ -71,8 +71,6 @@ resource "helm_release" "argo" {
   values = [
     templatefile("${path.module}/values.yaml", local.values_argo)
   ]
-
-  depends_on = [kubectl_manifest.argo_crds]
 }
 
 # Experimental: gives helm time to finish cleaning up.
