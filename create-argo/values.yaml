@@ -1,24 +1,32 @@
-singleNamespace: true
-createAggregateRoles: false
-crds:
-  install: false
-  keep: true
 images:
   pullPolicy: IfNotPresent
+createAggregateRoles: false
+crds:
+  install: true
+  keep: true
+singleNamespace: true
 workflow:
+  namespace:
   serviceAccount:
     create: true
     name: ${ARGO_SERVICE_ACCOUNT}
   rbac:
     create: true
 executor:
+  image:
+    registry: quay.io
+    repository: argoproj/argoexec
+    tag: ""
+    pullPolicy: ""
+  resources: {}
+  args: []
   env:
   - name: RESOURCE_STATE_CHECK_INTERVAL
     value: 1s
   - name: WAIT_CONTAINER_STATUS_CHECK_INTERVAL
     value: 1s
-%{ if USE_MINIO_STORAGE }
-useDefaultArtifactRepo: true
+  securityContext: {}
+# useDefaultArtifactRepo: true
 artifactRepository:
   archiveLogs: true
   s3:
@@ -31,60 +39,232 @@ artifactRepository:
     secretKeySecret:
       name: ${MINIO_RELEASE_NAME}
       key: root-password
-%{ endif }
+  gcs: {}
+  azure: {}
+apiVersionOverrides: {}
 server:
-  clusterWorkflowTemplates:
+  enabled: true
+  baseHref: /
+  image:
+    registry: quay.io
+    repository: argoproj/argocli
+    tag: ""
+  deploymentAnnotations: {}
+  podAnnotations: {}
+  podLabels:
+    networking/traffic-allowed: "yes"
+  podSecurityContext: {}
+  rbac:
+    create: true
+  securityContext:
+    readOnlyRootFilesystem: false
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+  name: server
+  serviceType: ClusterIP
+  servicePort: 2746
+
+  hostAliases: []
+
+  serviceAccount:
+    create: true
+    name: ""
+    labels: {}
+    annotations: {}
+
+  serviceAnnotations: {}
+  serviceLabels: {}
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "1"
+  replicas: 1
+  revisionHistoryLimit: 10
+  autoscaling:
     enabled: false
+    minReplicas: 1
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 50
+    targetMemoryUtilizationPercentage: 50
+    behavior: {}
+  pdb:
+    enabled: false
+
+  nodeSelector:
+    "cosmotech.com/tier": "services"
+
+  tolerations:
+  - key: "vendor"
+    operator: "Equal"
+    value: "cosmotech"
+    effect: "NoSchedule"
+
+  affinity: {}
+
+  topologySpreadConstraints: []
+
+  priorityClassName: ""
+
+  secure: false
+
+  extraEnv: []
+
+  authMode: ""
+
+  authModes: []
+
   extraArgs:
   - --auth-mode=server
-  secure: false
-  podLabels:
-    networking/traffic-allowed: "yes"
-  tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
-  nodeSelector:
-    "cosmotech.com/tier": "services"
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "1"
-controller:
-  extraArgs:
-  - "--managed-namespace"
-  - "${NAMESPACE}"
+
+  logging:
+    level: info
+    globallevel: "0"
+    format: "text"
+
+  tmpVolume:
+    emptyDir: {}
+  volumeMounts: []
+  volumes: []
+
+  ingress:
+    enabled: false
+    annotations: {}
+    labels: {}
+    ingressClassName: ""
+
+    hosts: []
+
+    paths:
+      - /
+
+    pathType: Prefix
+    extraPaths: []
+
+    tls: []
+
+  GKEbackendConfig:
+    enabled: false
+    spec: {}
+
+  GKEmanagedCertificate:
+    enabled: false
+    domains:
+    - argoworkflows.example.com
+
+  GKEfrontendConfig:
+    enabled: false
+    spec: {}
+
   clusterWorkflowTemplates:
     enabled: false
-  extraEnv:
-  - name: DEFAULT_REQUEUE_TIME
-    value: ${REQUEUE_TIME}
+    enableEditing: true
+
+  sso:
+    enabled: false
+    issuer: https://accounts.google.com
+    clientId:
+      name: argo-server-sso
+      key: client-id
+    clientSecret:
+      name: argo-server-sso
+      key: client-secret
+    redirectUrl: ""
+    rbac:
+      enabled: true
+      secretWhitelist: []
+    scopes: []
+    sessionExpiry: ""
+    issuerAlias: ""
+    customGroupClaimName: ""
+    userInfoPath: ""
+    insecureSkipVerify: false
+    filterGroupsRegex: []
+
+  extraContainers: []
+
+  extraInitContainers: []
+
+
+nameOverride:
+
+fullnameOverride:
+
+namespaceOverride: ""
+
+commonLabels: {}
+
+kubeVersionOverride: ""
+
+
+
+controller:
+  image:
+    registry: quay.io
+    repository: argoproj/workflow-controller
+    tag: ""
+  parallelism:
+  resourceRateLimit: {}
+
+  rbac:
+    create: true
+    secretWhitelist: []
+    accessAllSecrets: false
+    writeConfigMaps: false
+
+  configMap:
+    create: true
+    name: ${ARGO_SERVICE_ACCOUNT}
+
+  namespaceParallelism:
+  initialDelay:
+  deploymentAnnotations: {}
+  podAnnotations: {}
   podLabels:
     networking/traffic-allowed: "yes"
-  serviceMonitor:
-    enabled: true
-    namespace: ${MONITORING_NAMESPACE}
-  tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
-  nodeSelector:
-    "cosmotech.com/tier": "services"
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "1"
-  containerRuntimeExecutor: k8sapi
+  podSecurityContext: {}
   metricsConfig:
     enabled: true
+    path: /metrics
+    port: 9090
+    metricsTTL: ""
+    ignoreErrors: false
+    secure: false
+    portName: metrics
+    servicePort: 8080
+    servicePortName: metrics
+    headlessService: false
+    relabelings: []
+    metricRelabelings: []
+    targetLabels: []
+  securityContext:
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+  persistence:
+    archive: true
+    archiveTTL: ${ARCHIVE_TTL}
+    postgresql:
+      host: "${POSTGRES_RELEASE_NAME}-postgresql"
+      database: ${ARGO_DATABASE}
+      tableName: workflows
+      userNameSecret:
+        name: ${ARGO_POSTGRESQL_SECRET_NAME}
+        key: argo-username
+      passwordSecret:
+        name: ${ARGO_POSTGRESQL_SECRET_NAME}
+        key: argo-password
+
   workflowDefaults:
     spec:
       # make sure workflows do not run forever. Default limit set is 7 days (604800 seconds)
@@ -108,18 +288,127 @@ controller:
         # attached PVCs.
         # One of "OnWorkflowCompletion", "OnWorkflowSuccess"
         strategy: OnWorkflowCompletion
-  persistence:
-    archive: true
-    archiveTTL: ${ARCHIVE_TTL}
-    postgresql:
-      host: "${POSTGRES_RELEASE_NAME}"
-      database: ${ARGO_DATABASE}
-      tableName: workflows
-      userNameSecret:
-        name: ${ARGO_POSTGRESQL_SECRET_NAME}
-        key: argo-username
-      passwordSecret:
-        name: ${ARGO_POSTGRESQL_SECRET_NAME}
-        key: argo-password
+
+  workflowRestrictions: {}
+
+  telemetryConfig:
+    enabled: false
+    path: /telemetry
+    port: 8081
+    metricsTTL: ""
+    ignoreErrors: false
+    secure: false
+    servicePort: 8081
+    servicePortName: telemetry
+  serviceMonitor:
+    enabled: true
+    namespace: ${MONITORING_NAMESPACE} # ??
+    additionalLabels: {}
+  serviceAccount:
+    create: true
+    name: ""
+    labels: {}
+    annotations: {}
+
+  name: workflow-controller
+
+  workflowNamespaces:
+    - default
+
+  instanceID:
+    enabled: false
+    useReleaseName: false
+
+    explicitID: ""
+
+  logging:
+    level: info
+    globallevel: "0"
+    format: "text"
+
+  serviceType: ClusterIP
+  serviceAnnotations: {}
+  serviceLabels: {}
+  loadBalancerSourceRanges: []
+
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "1"
+
+  livenessProbe:
+    httpGet:
+      port: 6060
+      path: /healthz
+    failureThreshold: 3
+    initialDelaySeconds: 90
+    periodSeconds: 60
+    timeoutSeconds: 30
+
+  extraEnv:
+  - name: DEFAULT_REQUEUE_TIME
+    value: ${REQUEUE_TIME}
+  extraArgs:
+  - "--managed-namespace"
+  - "${NAMESPACE}"
+  volumeMounts: []
+  volumes: []
+  replicas: 1
+  revisionHistoryLimit: 10
+
+  pdb:
+    enabled: false
+
+  nodeSelector:
+    "cosmotech.com/tier": "services"
+  tolerations:
+  - key: "vendor"
+    operator: "Equal"
+    value: "cosmotech"
+    effect: "NoSchedule"
+  affinity: {}
+
+  topologySpreadConstraints: []
+
+  priorityClassName: ""
+
+  links: []
+  columns: []
+  navColor: ""
+  clusterWorkflowTemplates:
+    enabled: false
+  extraContainers: []
+
+  extraInitContainers: []
+
+  retentionPolicy: {}
+
+  nodeEvents:
+    enabled: true
+
+  kubeConfig: {}
+
+  podGCGracePeriodSeconds:
+
+  podGCDeleteDelayDuration: ""
+
 mainContainer:
   imagePullPolicy: IfNotPresent
+  resources: {}
+  env: []
+  envFrom: []
+  securityContext: {}
+
+extraObjects: []
+
+useStaticCredentials: true
+
+customArtifactRepository: {}
+
+artifactRepositoryRef: {}
+
+emissary:
+  images: []

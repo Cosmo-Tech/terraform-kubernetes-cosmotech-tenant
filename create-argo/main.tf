@@ -38,25 +38,25 @@ locals {
   argo_version = "v3.3.8"
 }
 
-data "http" "argo_crds" {
-  for_each = toset(local.crds)
-  url      = "https://raw.githubusercontent.com/argoproj/argo-workflows/${local.argo_version}/manifests/base/crds/minimal/${each.key}"
-}
+# data "http" "argo_crds" {
+#   for_each = toset(local.crds)
+#   url      = "https://raw.githubusercontent.com/argoproj/argo-workflows/${local.argo_version}/manifests/base/crds/minimal/${each.key}"
+# }
 
-data "kubectl_file_documents" "argo_crds" {
-  for_each = data.http.argo_crds
-  content  = each.value.response_body
-}
+# data "kubectl_file_documents" "argo_crds" {
+#   for_each = data.http.argo_crds
+#   content  = each.value.response_body
+# }
 
-# Destroying tenant will also destroy CRDS resources. But being clusterwide, il will impact others Argo installations on the platform
-# A temporary solution could be to remove this resource from state file before destroying the full tenant resources:
-# terraform state rm "module.platform-tenant-resources.module.create-argo.kubectl_manifest.argo_crds"
-resource "kubectl_manifest" "argo_crds" {
-  for_each  = data.kubectl_file_documents.argo_crds
-  yaml_body = data.kubectl_file_documents.argo_crds[each.key].documents[0]
+# # Destroying tenant will also destroy CRDS resources. But being clusterwide, il will impact others Argo installations on the platform
+# # A temporary solution could be to remove this resource from state file before destroying the full tenant resources:
+# # terraform state rm "module.platform-tenant-resources.module.create-argo.kubectl_manifest.argo_crds"
+# resource "kubectl_manifest" "argo_crds" {
+#   for_each  = data.kubectl_file_documents.argo_crds
+#   yaml_body = data.kubectl_file_documents.argo_crds[each.key].documents[0]
 
-  override_namespace = var.namespace
-}
+#   override_namespace = var.namespace
+# }
 
 resource "helm_release" "argo" {
   name       = "argo-workflows-${var.namespace}"
