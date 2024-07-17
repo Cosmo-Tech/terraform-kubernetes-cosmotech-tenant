@@ -149,3 +149,16 @@ tolerations:
 
 nodeSelector:
   "cosmotech.com/tier": "services"
+
+podSecurityContext:
+  seccompProfile:
+    type: "RuntimeDefault"
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  runAsNonRoot: true
+  runAsUser: 1000
