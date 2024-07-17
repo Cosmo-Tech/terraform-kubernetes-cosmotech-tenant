@@ -26,7 +26,7 @@ executor:
   - name: WAIT_CONTAINER_STATUS_CHECK_INTERVAL
     value: 1s
   securityContext: {}
-# useDefaultArtifactRepo: true
+%{ if USE_MINIO_STORAGE }
 artifactRepository:
   archiveLogs: true
   s3:
@@ -41,6 +41,7 @@ artifactRepository:
       key: root-password
   gcs: {}
   azure: {}
+%{ endif }
 apiVersionOverrides: {}
 server:
   enabled: true
