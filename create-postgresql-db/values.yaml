@@ -32,7 +32,6 @@ primary:
   persistence:
     enabled: true
     size: ${PERSISTENCE_SIZE}
-    storageClass: ${STORAGE_CLASS}
   initdb:
     user: postgres
     password: ${POSTGRESQL_PASSWORD}
