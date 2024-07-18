@@ -54,7 +54,9 @@ server:
   podAnnotations: {}
   podLabels:
     networking/traffic-allowed: "yes"
-  podSecurityContext: {}
+  podSecurityContext:
+    seccompProfile:
+      type: "RuntimeDefault"
   rbac:
     create: true
   securityContext:
@@ -230,7 +232,9 @@ controller:
   podAnnotations: {}
   podLabels:
     networking/traffic-allowed: "yes"
-  podSecurityContext: {}
+  podSecurityContext:
+    seccompProfile:
+      type: "RuntimeDefault"
   metricsConfig:
     enabled: true
     path: /metrics

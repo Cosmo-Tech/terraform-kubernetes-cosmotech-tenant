@@ -7,6 +7,19 @@ auth:
   secretKeys:
     adminPasswordKey: postgres-password
 primary:
+  containerSecurityContext:
+    enabled: true
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
+  podSecurityContext:
+    enabled: true
+    seccompProfile:
+      type: RuntimeDefault
   podLabels:
     "networking/traffic-allowed": "yes"
   tolerations:
@@ -32,6 +45,12 @@ resources:
     cpu: "1"
 metrics:
   enabled: true
+  containerSecurityContext:
+    enabled: true
+    capabilities:
+      drop:
+        - ALL
+    allowPrivilegeEscalation: false
   serviceMonitor:
     enabled: true
     namespace: ${MONITORING_NAMESPACE}
