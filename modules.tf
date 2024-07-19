@@ -8,7 +8,7 @@ module "create-argo" {
   use_minio_storage     = local.use_minio_storage
 
   depends_on = [
-    module.create-postgresql-db
+    module.create-postgresql-db, time_sleep.wait_30_seconds
   ]
 }
 
