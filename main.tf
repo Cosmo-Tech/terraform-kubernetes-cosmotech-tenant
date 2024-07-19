@@ -11,6 +11,12 @@ resource "kubernetes_namespace" "main_namespace" {
   }
 }
 
+resource "time_sleep" "wait_30_seconds" {
+  depends_on = [kubernetes_namespace.main_namespace]
+
+  destroy_duration = "30s"
+}
+
 resource "random_password" "redis_admin_password" {
   length  = 30
   special = false
