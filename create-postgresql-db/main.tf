@@ -85,6 +85,7 @@ resource "kubernetes_secret" "postgres-config" {
 
   data = {
     argo-username                 = var.argo_postgresql_user
+    database-password             = random_password.argo_postgresql_password.result
     argo-password                 = random_password.argo_postgresql_password.result
     postgres-username             = "postgres"
     postgres-password             = random_password.postgres_postgresql_password.result

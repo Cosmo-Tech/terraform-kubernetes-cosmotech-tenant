@@ -8,7 +8,7 @@ variable "monitoring_namespace" {
 
 variable "helm_repo_url" {
   type    = string
-  default = "https://argoproj.github.io/argo-helm"
+  default = "https://charts.bitnami.com/bitnami"
 }
 
 variable "helm_chart" {
@@ -18,7 +18,7 @@ variable "helm_chart" {
 
 variable "argo_version" {
   type    = string
-  default = "0.41.2"
+  default = "9.1.6"
 }
 
 variable "argo_service_account" {
