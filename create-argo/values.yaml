@@ -73,7 +73,7 @@ server:
   serviceAccount:
     create: true
     name: ""
-    automountServiceAccountToken: false
+    automountServiceAccountToken: true
     annotations: {}
   nodeSelector:
     "cosmotech.com/tier": "services"
@@ -202,7 +202,7 @@ controller:
   serviceAccount:
     create: true
     name: ""
-    automountServiceAccountToken: false
+    automountServiceAccountToken: true
     annotations: {}
   service:
     type: ClusterIP
@@ -250,7 +250,7 @@ workflows:
   serviceAccount:
     create: true
     name: ${ARGO_SERVICE_ACCOUNT}
-    automountServiceAccountToken: false
+    automountServiceAccountToken: true
   rbac:
     create: true
 
