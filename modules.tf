@@ -135,3 +135,11 @@ module "create-rabbitmq" {
   monitoring_namespace = var.monitoring_namespace
   persistence_size     = var.rabbitmq_persistence_size
 }
+
+module "create-platform-config" {
+  source = "./create-platform-config"
+
+  count = var.create_platform_config ? 1 : 0
+
+  
+}
