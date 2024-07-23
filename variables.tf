@@ -217,3 +217,20 @@ variable "list_apikey_allowed" {
 variable "identifier_uri" {
   type = string
 }
+
+variable "keycloak_admin_user" {
+    type = string
+}
+
+variable "keycloak_admin_password" {
+    type = string
+}
+
+variable "keycloak_url" {
+    type = string
+}
+
+variable "valid_redirect_uri" {
+    type = list(string)
+    default = ["/*"]
+}
