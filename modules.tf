@@ -219,3 +219,11 @@ module "create-seaweedfs" {
     module.create-postgresql-db
   ]
 }
+
+module "create-platform-config" {
+  source = "./create-platform-config"
+
+  count = var.create_platform_config ? 1 : 0
+
+  
+}
