@@ -5,6 +5,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.9 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | 2.9.0 |
+| <a name="requirement_keycloak"></a> [keycloak](#requirement\_keycloak) | 4.4.0 |
 | <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 2.0.4 |
 | <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | 2.20.0 |
 
@@ -23,6 +24,7 @@
 | <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./create-cert-manager | n/a |
 | <a name="module_create-argo"></a> [create-argo](#module\_create-argo) | ./create-argo | n/a |
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
+| <a name="module_create-keycloak-realm"></a> [create-keycloak-realm](#module\_create-keycloak-realm) | ./create-keycloak-realm | n/a |
 | <a name="module_create-minio"></a> [create-minio](#module\_create-minio) | ./create-minio | n/a |
 | <a name="module_create-postgresql-db"></a> [create-postgresql-db](#module\_create-postgresql-db) | ./create-postgresql-db | n/a |
 | <a name="module_create-rabbitmq"></a> [create-rabbitmq](#module\_create-rabbitmq) | ./create-rabbitmq | n/a |
@@ -57,6 +59,9 @@
 | <a name="input_cosmotech_api_version_path"></a> [cosmotech\_api\_version\_path](#input\_cosmotech\_api\_version\_path) | n/a | `string` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_keycloak_admin_password"></a> [keycloak\_admin\_password](#input\_keycloak\_admin\_password) | n/a | `string` | n/a | yes |
+| <a name="input_keycloak_admin_user"></a> [keycloak\_admin\_user](#input\_keycloak\_admin\_user) | n/a | `string` | n/a | yes |
+| <a name="input_keycloak_url"></a> [keycloak\_url](#input\_keycloak\_url) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_network_client_id"></a> [network\_client\_id](#input\_network\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_network_client_secret"></a> [network\_client\_secret](#input\_network\_client\_secret) | n/a | `string` | n/a | yes |
@@ -89,4 +94,5 @@
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | `6379` | no |
 | <a name="input_tls_certificate_custom_certificate"></a> [tls\_certificate\_custom\_certificate](#input\_tls\_certificate\_custom\_certificate) | n/a | `string` | `""` | no |
 | <a name="input_tls_certificate_custom_key"></a> [tls\_certificate\_custom\_key](#input\_tls\_certificate\_custom\_key) | n/a | `string` | `""` | no |
+| <a name="input_valid_redirect_uri"></a> [valid\_redirect\_uri](#input\_valid\_redirect\_uri) | n/a | `list(string)` | <pre>[<br>  "/*"<br>]</pre> | no |
 <!-- END_TF_DOCS -->
