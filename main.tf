@@ -8,6 +8,10 @@ locals {
 resource "kubernetes_namespace" "main_namespace" {
   metadata {
     name = var.kubernetes_tenant_namespace
+    labels = {
+      "pod-security.kubernetes.io/enforce"         = "restricted"
+      "pod-security.kubernetes.io/enforce-version" = "latest"
+    }
   }
 }
 
