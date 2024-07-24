@@ -40,12 +40,12 @@ module "create-tls" {
 module "create-keycloak-realm" {
     source = "./create-keycloak-realm"
 
-    keycloak_admin_user     =
-    keycloak_admin_password =
-    keycloak_url            =
+    keycloak_admin_user     = var.keycloak_admin_user
+    keycloak_admin_password = var.keycloak_admin_password
+    keycloak_url            = var.keycloak_url
     realm_name              = var.tenant_id
     client_root_url         = var.api_dns_name
-    valid_redirect_uri      =
+    valid_redirect_uri      = var.valid_redirect_uri
 }
 
 module "create-cosmotech-api" {
