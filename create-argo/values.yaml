@@ -164,7 +164,7 @@ controller:
         host: {{ include "argo-workflows.controller.database.host" . }}
         port: {{ include "argo-workflows.controller.database.port" . }}
         database: {{ include "argo-workflows.controller.database" . }}
-        tableName: argo_workflows
+        tableName: workflows
         userNameSecret:
           name: {{ include "argo-workflows.controller.database.username.secret" . }}
           key: username
@@ -195,7 +195,22 @@ controller:
   workflowWorkers: 32
   workflowNamespaces:
     - default
-  workflowDefaults: {}
+  workflowDefaults:
+    spec:
+      # make sure workflows do not run forever. Default limit set is 7 days (604800 seconds)
+      activeDeadlineSeconds: 604800
+      ttlStrategy:
+        # keep workflows that succeeded for 1d (86400 seconds).
+        # We can still view them since they are archived.
+        secondsAfterSuccess: 86400
+        # keep workflows that have completed (either successfully or not) for 3d (259200 seconds).
+        # We can still view them since they are archived.
+        secondsAfterCompletion: 259200
+      podGC:
+        # Delete pods when workflows are successful.
+        # We can still access their logs and artifacts since they are archived.
+        # One of "OnPodCompletion", "OnPodSuccess", "OnWorkflowCompletion", "OnWorkflowSuccess"
+        strategy: OnWorkflowSuccess
   logging:
     level: info
     globalLevel: "0"
