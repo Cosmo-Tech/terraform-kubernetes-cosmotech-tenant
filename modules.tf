@@ -225,5 +225,33 @@ module "create-platform-config" {
 
   count = var.create_platform_config ? 1 : 0
 
-  
+  namespace = var.kubernetes_tenant_namespace
+  api_version = var.cosmotech_api_version
+  acr_server = var.acr_login_server
+  acr_username = var.acr_login_username
+  acr_password = var.acr_login_password
+  host_cosmotech_api = "Correspond a ?"
+  monitoring_namespace = var.monitoring_namespace
+  argo_service_account_name = "Correspond a ?"
+  azure_tenant_id = var.tenant_id
+  azure_appid_uri = "Correspond a ?"
+  azure_storage_account_key = var.storage_account_key
+  azure_storage_account_name = var.storage_account_name
+  azure_credentials_client_id = var.client_id
+  azure_credentials_client_secret = var.client_secret
+  azure_credentials_customer_client_id = var.tenant_client_id
+  azure_credentials_customer_client_secret = var.tenant_client_secret
+  adx_base_uri = var.adx_uri
+  adx_ingest_uri = var.adx_ingestion_uri
+  eventbus_base_uri = var.eventbus_uri
+  host_redis_password = "Correspond a ?"
+  rds_hub_listener = "Correspond a ?"
+  rds_hub_sender = "Correspond a ?"
+  rds_storage_admin = "Correspond a ?"
+  rds_storage_reader = "Correspond a ?"
+  rds_storage_writer = "Correspond a ?"
+  host_rds = "Correspond a ?"
+  host_rds_postgres = "Correspond a ?"
+  postgres_release_name = "Correspond a ?"
+  argo_release_name = "Correspond a ?"
 }
