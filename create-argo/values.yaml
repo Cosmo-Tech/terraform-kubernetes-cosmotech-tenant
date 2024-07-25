@@ -141,6 +141,21 @@ controller:
       securityContext: {{- omit .Values.executor.containerSecurityContext "enabled" | toYaml | nindent 4 }}
       {{- end }}
     {{- end }}
+    %{ if USE_MINIO_STORAGE }
+    artifactRepository:
+      archiveLogs: true
+        configuration:
+          s3:
+            bucket: ${ARGO_BUCKET_NAME}
+            endpoint: ${MINIO_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local:9000
+            insecure: true
+            accessKeySecret:
+              name: ${MINIO_RELEASE_NAME}
+              key: root-user
+            secretKeySecret:
+              name: ${MINIO_RELEASE_NAME}
+              key: root-password
+    %{ endif }
     {{- if .Values.controller.metrics.enabled }}
     metricsConfig:
       enabled: true
