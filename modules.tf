@@ -230,7 +230,7 @@ module "create-platform-config" {
   acr_server = var.acr_login_server
   acr_username = var.acr_login_username
   acr_password = var.acr_login_password
-  host_cosmotech_api = "${module.create-cosmotech-api.out_cosmotech_api_release_name}.${var.kubernetes_tenant_namespace}.svc.cluster.local"
+  host_cosmotech_api = "cosmotech-api-${var.kubernetes_tenant_namespace}.${var.kubernetes_tenant_namespace}.svc.cluster.local"
   monitoring_namespace = var.monitoring_namespace
   argo_service_account_name = module.create-argo.out_argo_workflows_service_account
   azure_tenant_id = var.tenant_id
