@@ -232,7 +232,7 @@ module "create-platform-config" {
   acr_password = var.acr_login_password
   host_cosmotech_api = "cosmotech-api-${var.kubernetes_tenant_namespace}.${var.kubernetes_tenant_namespace}.svc.cluster.local"
   monitoring_namespace = var.monitoring_namespace
-  argo_service_account_name = module.create-argo.out_argo_workflows_service_account
+  argo_service_account_name = "argo-workflows-${var.kubernetes_tenant_namespace}-service-account"
   azure_tenant_id = var.tenant_id
   azure_appid_uri = var.identifier_uri
   azure_storage_account_key = var.storage_account_key
@@ -245,13 +245,13 @@ module "create-platform-config" {
   adx_ingest_uri = var.adx_ingestion_uri
   eventbus_base_uri = var.eventbus_uri
   host_redis_password = random_password.redis_admin_password.result
-  rds_hub_listener = module.create-rabbitmq.0.out_rabbitmq_listener_username
-  rds_hub_sender = module.create-rabbitmq.0.out_rabbitmq_sender_username
-  rds_storage_admin = module.create-postgresql-db.out_postgres_admin_username
-  rds_storage_reader = module.create-postgresql-db.out_postgres_reader_username
-  rds_storage_writer = module.create-postgresql-db.out_postgres_writer_username
-  host_rds = "${module.create-rabbitmq.0.out_rabbitmq_release_name}.${var.kubernetes_tenant_namespace}.svc.cluster.local"
-  host_rds_postgres = "${module.create-postgresql-db.out_postgres_release_name}.${var.kubernetes_tenant_namespace}.svc.cluster.local"
-  postgres_release_name = module.create-postgresql-db.out_postgres_release_name
-  argo_release_name = module.create-argo.out_argo_workflows_release_name
+  rds_hub_listener = var.rabbitmq_listener_username
+  rds_hub_sender = var.rabbitmq_sender_username
+  rds_storage_admin = var.cosmotech_api_admin_username
+  rds_storage_reader = var.cosmotech_api_reader_username
+  rds_storage_writer = var.cosmotech_api_writer_username
+  host_rds = "${var.rabbitmq_helm_release_name}-${var.kubernetes_tenant_namespace}.${var.kubernetes_tenant_namespace}.svc.cluster.local"
+  host_rds_postgres = "postgresql-${var.kubernetes_tenant_namespace}.${var.kubernetes_tenant_namespace}.svc.cluster.local"
+  postgres_release_name = "postgresql-${var.kubernetes_tenant_namespace}"
+  argo_release_name = "argo-workflows-${var.kubernetes_tenant_namespace}"
 }
