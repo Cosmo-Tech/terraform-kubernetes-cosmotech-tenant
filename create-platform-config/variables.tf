@@ -75,10 +75,6 @@ variable "eventbus_base_uri" {
   type = string
 }
 
-variable "host_redis_password" {
-  type = string
-}
-
 variable "rds_hub_listener" {
   type = string
 }
@@ -112,5 +108,33 @@ variable "postgres_release_name" {
 }
 
 variable "argo_release_name" {
+  type = string
+}
+
+variable "host_postgres" {
+  type = string
+}
+
+variable "host_redis" {
+  type = string
+}
+
+variable "host_redis_password" {
+  type = string
+}
+
+variable "host_argo_workflow" {
+  type = string
+}
+
+variable "identity_authorization_url" {
+  type = string
+}
+
+variable "identity_token_url" {
+  type = string
+}
+
+variable "acr_registry_url" {
   type = string
 }
