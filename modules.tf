@@ -311,9 +311,9 @@ module "create-platform-config" {
   acr_server                               = var.acr_login_server
   acr_username                             = var.acr_login_username
   acr_password                             = var.acr_login_password
-  host_cosmotech_api                       = "cosmotech-api-${var.kubernetes_tenant_namespace}"
+  acr_registry_url                         = var.acr_registry_url
+  host_cosmotech_api                       = var.api_dns_name
   monitoring_namespace                     = var.monitoring_namespace
-  argo_service_account_name                = "argo-workflows-${var.kubernetes_tenant_namespace}-service-account"
   azure_tenant_id                          = var.tenant_id
   azure_appid_uri                          = var.identifier_uri
   azure_storage_account_key                = var.storage_account_key
@@ -325,14 +325,27 @@ module "create-platform-config" {
   adx_base_uri                             = var.adx_uri
   adx_ingest_uri                           = var.adx_ingestion_uri
   eventbus_base_uri                        = var.eventbus_uri
+  identity_authorization_url               = var.identity_authorization_url
+  identity_token_url                       = var.identity_token_url
   host_redis_password                      = random_password.redis_admin_password.result
-  rds_hub_listener                         = var.rabbitmq_listener_username
-  rds_hub_sender                           = var.rabbitmq_sender_username
+  rds_hub_listener                         = module.create-rabbitmq.0.out_rabbitmq_listener_password
+  rds_hub_sender                           = module.create-rabbitmq.0.out_rabbitmq_sender_password
+  argo_service_account_name                = module.create-argo.out_argo_workflows_service_account
   rds_storage_admin                        = module.create-postgresql-db.out_postgres_admin_password
   rds_storage_reader                       = module.create-postgresql-db.out_postgres_reader_password
   rds_storage_writer                       = module.create-postgresql-db.out_postgres_writer_password
-  host_rds                                 = "${var.rabbitmq_helm_release_name}-${var.kubernetes_tenant_namespace}"
-  host_rds_postgres                        = "postgresql-${var.kubernetes_tenant_namespace}"
-  postgres_release_name                    = "postgresql-${var.kubernetes_tenant_namespace}"
-  argo_release_name                        = "argo-workflows-${var.kubernetes_tenant_namespace}"
+  host_rds                                 = module.create-rabbitmq.0.out_rabbitmq_svc_name
+  host_rds_postgres                        = module.create-postgresql-db.out_postgres_svc_name
+  postgres_release_name                    = module.create-postgresql-db.out_postgres_release_name
+  argo_release_name                        = module.create-argo.out_argo_workflows_release_name
+  host_argo_workflow                       = module.create-argo.out_argo_workflows_svc_name
+  host_postgres                            = module.create-postgresql-db.out_postgres_svc_name
+  host_redis                               = module.create-redis-stack.out_host_svc_redis
+
+  depends_on = [
+    module.create-postgresql-db,
+    module.create-argo,
+    module.create-rabbitmq,
+    module.create-redis-stack
+  ]
 }

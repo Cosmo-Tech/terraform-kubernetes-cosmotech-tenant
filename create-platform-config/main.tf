@@ -15,10 +15,10 @@ locals {
     "ACR_SERVER"                               = var.acr_server
     "ACR_USERNAME"                             = var.acr_username
     "ACR_PASSWORD"                             = var.acr_password
-    "ACR_REGISTRY_URL"                         = "https://${var.acr_server}"
     "HOST_COSMOTECH_API"                       = var.host_cosmotech_api
-    "IDENTITY_AUTHORIZATION_URL"               = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/authorize"
-    "IDENTITY_TOKEN_URL"                       = "https://login.microsoftonline.com/${var.azure_tenant_id}/oauth2/v2.0/token"
+    "ACR_REGISTRY_URL"                         = var.acr_registry_url
+    "IDENTITY_AUTHORIZATION_URL"               = var.identity_authorization_url
+    "IDENTITY_TOKEN_URL"                       = var.identity_token_url
     "MONITORING_NAMESPACE"                     = var.monitoring_namespace
     "ARGO_SERVICE_ACCOUNT_NAME"                = var.argo_service_account_name
     "AZURE_TENANT_ID"                          = var.azure_tenant_id
@@ -32,10 +32,10 @@ locals {
     "ADX_BASE_URI"                             = var.adx_base_uri
     "ADX_INGEST_URI"                           = var.adx_ingest_uri
     "EVENTBUS_BASEURI"                         = var.eventbus_base_uri
-    "HOST_POSTGRES"                            = "${var.postgres_release_name}.${var.namespace}.svc.cluster.local"
-    "HOST_REDIS"                               = "cosmotechredis-${var.namespace}-master.${var.namespace}.svc.cluster.local"
+    "HOST_POSTGRES"                            = var.host_postgres
+    "HOST_REDIS"                               = var.host_redis
     "HOST_REDIS_PASSWORD"                      = var.host_redis_password
-    "HOST_ARGO_WORKFLOWS_SERVER"               = "http://${var.argo_release_name}-server.${var.namespace}.svc.cluster.local:2746"
+    "HOST_ARGO_WORKFLOWS_SERVER"               = var.host_argo_workflow
     "RDS_HUB_LISTENER"                         = var.rds_hub_listener
     "RDS_HUB_SENDER"                           = var.rds_hub_sender
     "RDS_STORAGE_ADMIN"                        = var.rds_storage_admin

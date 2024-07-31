@@ -13,3 +13,6 @@ variable "identity_token_url" {
 variable "acr_login_server_url" {
   type = string
 }
+variable "acr_registry_url" {
+  type = string
+}
