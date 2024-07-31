@@ -7,7 +7,7 @@ image:
   repository: cosmo-tech/cosmotech-redis
   tag: ${VERSION_REDIS_COSMOTECH}
 volumePermissions:
-  enabled: true
+  enabled: false
   image:
     registry: docker.io
     repository: bitnami/os-shell
@@ -24,6 +24,16 @@ master:
     enabled: true
   containerSecurityContext:
     enabled: true
+    seLinuxOptions: {}
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop: ["ALL"]
   persistence:
     enabled: true
     size: ${REDIS_DISK_SIZE}
@@ -48,6 +58,16 @@ replica:
     enabled: true
   containerSecurityContext:
     enabled: true
+    seLinuxOptions: {}
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+    seccompProfile:
+      type: RuntimeDefault
+    capabilities:
+      drop: ["ALL"]
   replicaCount: 1
   podLabels:
     networking/traffic-allowed: "yes"
