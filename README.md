@@ -28,6 +28,7 @@
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
 | <a name="module_create-keycloak"></a> [create-keycloak](#module\_create-keycloak) | ./create-keycloak-realm | n/a |
 | <a name="module_create-minio"></a> [create-minio](#module\_create-minio) | ./create-minio | n/a |
+| <a name="module_create-platform-config"></a> [create-platform-config](#module\_create-platform-config) | ./create-platform-config | n/a |
 | <a name="module_create-postgresql-db"></a> [create-postgresql-db](#module\_create-postgresql-db) | ./create-postgresql-db | n/a |
 | <a name="module_create-rabbitmq"></a> [create-rabbitmq](#module\_create-rabbitmq) | ./create-rabbitmq | n/a |
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
@@ -50,43 +51,20 @@
 | <a name="input_acr_login_server"></a> [acr\_login\_server](#input\_acr\_login\_server) | n/a | `string` | n/a | yes |
 | <a name="input_acr_login_server_url"></a> [acr\_login\_server\_url](#input\_acr\_login\_server\_url) | n/a | `string` | n/a | yes |
 | <a name="input_acr_login_username"></a> [acr\_login\_username](#input\_acr\_login\_username) | n/a | `string` | n/a | yes |
+| <a name="input_acr_registry_url"></a> [acr\_registry\_url](#input\_acr\_registry\_url) | n/a | `string` | n/a | yes |
 | <a name="input_adx_ingestion_uri"></a> [adx\_ingestion\_uri](#input\_adx\_ingestion\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_adx_uri"></a> [adx\_uri](#input\_adx\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_chart_package_version"></a> [api\_chart\_package\_version](#input\_api\_chart\_package\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_deploy"></a> [api\_deploy](#input\_api\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
-| <a name="input_api_helm_chart"></a> [api\_helm\_chart](#input\_api\_helm\_chart) | n/a | `string` | n/a | yes |
-| <a name="input_api_helm_release_name"></a> [api\_helm\_release\_name](#input\_api\_helm\_release\_name) | n/a | `string` | n/a | yes |
-| <a name="input_api_helm_repository"></a> [api\_helm\_repository](#input\_api\_helm\_repository) | n/a | `string` | n/a | yes |
-| <a name="input_api_identifier_uri"></a> [api\_identifier\_uri](#input\_api\_identifier\_uri) | n/a | `string` | n/a | yes |
-| <a name="input_api_is_multitenant"></a> [api\_is\_multitenant](#input\_api\_is\_multitenant) | n/a | `bool` | n/a | yes |
-| <a name="input_api_list_apikey_allowed"></a> [api\_list\_apikey\_allowed](#input\_api\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | n/a | yes |
-| <a name="input_api_persistence_size"></a> [api\_persistence\_size](#input\_api\_persistence\_size) | n/a | `string` | n/a | yes |
-| <a name="input_api_persistence_storage_class"></a> [api\_persistence\_storage\_class](#input\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
-| <a name="input_api_graph_enabled"></a> [api\_graph\_enabled](#input\_api\_graph\_enabled) | n/a | `bool` | n/a | yes |
-| <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
-| <a name="input_api_version"></a> [api\_version](#input\_api\_version) | n/a | `string` | n/a | yes |
-| <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | n/a | `string` | n/a | yes |
-| <a name="input_argo_archive_ttl"></a> [argo\_archive\_ttl](#input\_argo\_archive\_ttl) | n/a | `string` | n/a | yes |
-| <a name="input_argo_database"></a> [argo\_database](#input\_argo\_database) | n/a | `string` | n/a | yes |
-| <a name="input_argo_deploy"></a> [argo\_deploy](#input\_argo\_deploy) | n/a | `bool` | n/a | yes |
-| <a name="input_argo_helm_chart"></a> [argo\_helm\_chart](#input\_argo\_helm\_chart) | n/a | `string` | n/a | yes |
-| <a name="input_argo_helm_chart_version"></a> [argo\_helm\_chart\_version](#input\_argo\_helm\_chart\_version) | n/a | `string` | n/a | yes |
-| <a name="input_argo_helm_repo_url"></a> [argo\_helm\_repo\_url](#input\_argo\_helm\_repo\_url) | n/a | `string` | n/a | yes |
-| <a name="input_argo_postgresql_secret_name"></a> [argo\_postgresql\_secret\_name](#input\_argo\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
-| <a name="input_argo_requeue_time"></a> [argo\_requeue\_time](#input\_argo\_requeue\_time) | n/a | `string` | n/a | yes |
-| <a name="input_argo_s3_bucket_name"></a> [argo\_s3\_bucket\_name](#input\_argo\_s3\_bucket\_name) | n/a | `string` | n/a | yes |
-| <a name="input_argo_service_account"></a> [argo\_service\_account](#input\_argo\_service\_account) | n/a | `string` | n/a | yes |
-| <a name="input_argo_version"></a> [argo\_version](#input\_argo\_version) | n/a | `string` | n/a | yes |
-| <a name="input_cert_cluster_issuer_name"></a> [cert\_cluster\_issuer\_name](#input\_cert\_cluster\_issuer\_name) | n/a | `string` | n/a | yes |
-| <a name="input_cert_tls_namespace"></a> [cert\_tls\_namespace](#input\_cert\_tls\_namespace) | n/a | `string` | n/a | yes |
-| <a name="input_cert_tls_secret_name"></a> [cert\_tls\_secret\_name](#input\_cert\_tls\_secret\_name) | n/a | `string` | n/a | yes |
-| <a name="input_client_id"></a> [client\_id](#input\_client\_id) | n/a | `string` | n/a | yes |
-| <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
-| <a name="input_cosmotech_api_ingress_enabled"></a> [cosmotech\_api\_ingress\_enabled](#input\_cosmotech\_api\_ingress\_enabled) | n/a | `bool` | n/a | yes |
-| <a name="input_custom_tls_certificate_certificate"></a> [custom\_tls\_certificate\_certificate](#input\_custom\_tls\_certificate\_certificate) | n/a | `string` | n/a | yes |
-| <a name="input_custom_tls_certificate_key"></a> [custom\_tls\_certificate\_key](#input\_custom\_tls\_certificate\_key) | n/a | `string` | n/a | yes |
-| <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
+| <a name="input_chart_package_version"></a> [chart\_package\_version](#input\_chart\_package\_version) | n/a | `string` | n/a | yes |
+| <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id of the app registration used to build this | `string` | n/a | yes |
+| <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret of the app registration used to build this | `string` | n/a | yes |
+| <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | n/a | yes |
+| <a name="input_cosmotech_api_version"></a> [cosmotech\_api\_version](#input\_cosmotech\_api\_version) | n/a | `string` | n/a | yes |
+| <a name="input_cosmotech_api_version_path"></a> [cosmotech\_api\_version\_path](#input\_cosmotech\_api\_version\_path) | n/a | `string` | n/a | yes |
+| <a name="input_create_platform_config"></a> [create\_platform\_config](#input\_create\_platform\_config) | n/a | `bool` | n/a | yes |
+| <a name="input_deploy_api"></a> [deploy\_api](#input\_deploy\_api) | n/a | `bool` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_id"></a> [keycloak\_client\_id](#input\_keycloak\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
@@ -105,9 +83,6 @@
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identity_authorization_url"></a> [identity\_authorization\_url](#input\_identity\_authorization\_url) | n/a | `string` | n/a | yes |
 | <a name="input_identity_token_url"></a> [identity\_token\_url](#input\_identity\_token\_url) | n/a | `string` | n/a | yes |
-| <a name="input_is_multitenant"></a> [is\_multitenant](#input\_is\_multitenant) | n/a | `bool` | n/a | yes |
-| <a name="input_kubernetes_cluster_admin_activate"></a> [kubernetes\_cluster\_admin\_activate](#input\_kubernetes\_cluster\_admin\_activate) | n/a | `bool` | n/a | yes |
-| <a name="input_kubernetes_resource_group"></a> [kubernetes\_resource\_group](#input\_kubernetes\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_list_apikey_allowed"></a> [list\_apikey\_allowed](#input\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | n/a | yes |
 | <a name="input_list_authorized_mime_types"></a> [list\_authorized\_mime\_types](#input\_list\_authorized\_mime\_types) | n/a | `list(string)` | n/a | yes |
@@ -174,21 +149,32 @@
 | <a name="input_tenant_client_secret"></a> [tenant\_client\_secret](#input\_tenant\_client\_secret) | The client\_secret of the platform's service principal | `string` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_resource_group"></a> [tenant\_resource\_group](#input\_tenant\_resource\_group) | n/a | `string` | n/a | yes |
-| <a name="input_tenant_sp_client_id"></a> [tenant\_sp\_client\_id](#input\_tenant\_sp\_client\_id) | The client\_id of the platform's service principal | `string` | n/a | yes |
-| <a name="input_tenant_sp_client_secret"></a> [tenant\_sp\_client\_secret](#input\_tenant\_sp\_client\_secret) | The client\_secret of the platform's service principal | `string` | n/a | yes |
-| <a name="input_tf_access_key"></a> [tf\_access\_key](#input\_tf\_access\_key) | n/a | `string` | n/a | yes |
-| <a name="input_tf_blob_name_tenant_infra"></a> [tf\_blob\_name\_tenant\_infra](#input\_tf\_blob\_name\_tenant\_infra) | n/a | `string` | n/a | yes |
-| <a name="input_tf_container_name"></a> [tf\_container\_name](#input\_tf\_container\_name) | n/a | `string` | n/a | yes |
-| <a name="input_tf_resource_group_name"></a> [tf\_resource\_group\_name](#input\_tf\_resource\_group\_name) | n/a | `string` | n/a | yes |
-| <a name="input_tf_storage_account_name"></a> [tf\_storage\_account\_name](#input\_tf\_storage\_account\_name) | n/a | `string` | n/a | yes |
-| <a name="input_tls_certificate_type"></a> [tls\_certificate\_type](#input\_tls\_certificate\_type) | n/a | `string` | n/a | yes |
-| <a name="input_tls_namespace"></a> [tls\_namespace](#input\_tls\_namespace) | n/a | `string` | n/a | yes |
-| <a name="input_use_internal_result_services"></a> [use\_internal\_result\_services](#input\_use\_internal\_result\_services) | n/a | `bool` | n/a | yes |
-| <a name="input_use_minio_storage"></a> [use\_minio\_storage](#input\_use\_minio\_storage) | n/a | `bool` | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_rendered"></a> [rendered](#output\_rendered) | n/a |
+| <a name="input_tls_certificate_type"></a> [tls\_certificate\_type](#input\_tls\_certificate\_type) | n/a | `any` | n/a | yes |
+| <a name="input_tls_secret_name"></a> [tls\_secret\_name](#input\_tls\_secret\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | `1` | no |
+| <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | `"3d"` | no |
+| <a name="input_argo_minio_persistence_size"></a> [argo\_minio\_persistence\_size](#input\_argo\_minio\_persistence\_size) | n/a | `string` | `"16Gi"` | no |
+| <a name="input_argo_minio_requests_memory"></a> [argo\_minio\_requests\_memory](#input\_argo\_minio\_requests\_memory) | n/a | `string` | `"2Gi"` | no |
+| <a name="input_chart_redis_version"></a> [chart\_redis\_version](#input\_chart\_redis\_version) | n/a | `string` | `"17.8.0"` | no |
+| <a name="input_cosmos_key"></a> [cosmos\_key](#input\_cosmos\_key) | n/a | `string` | `""` | no |
+| <a name="input_cosmos_uri"></a> [cosmos\_uri](#input\_cosmos\_uri) | n/a | `string` | `""` | no |
+| <a name="input_cosmotech_api_admin_username"></a> [cosmotech\_api\_admin\_username](#input\_cosmotech\_api\_admin\_username) | n/a | `string` | `"cosmotech_api_admin"` | no |
+| <a name="input_cosmotech_api_ingress_enabled"></a> [cosmotech\_api\_ingress\_enabled](#input\_cosmotech\_api\_ingress\_enabled) | n/a | `bool` | `true` | no |
+| <a name="input_cosmotech_api_persistence_size"></a> [cosmotech\_api\_persistence\_size](#input\_cosmotech\_api\_persistence\_size) | n/a | `string` | `"8Gi"` | no |
+| <a name="input_cosmotech_api_persistence_storage_class"></a> [cosmotech\_api\_persistence\_storage\_class](#input\_cosmotech\_api\_persistence\_storage\_class) | n/a | `string` | `""` | no |
+| <a name="input_cosmotech_api_reader_username"></a> [cosmotech\_api\_reader\_username](#input\_cosmotech\_api\_reader\_username) | n/a | `string` | `"cosmotech_api_reader"` | no |
+| <a name="input_cosmotech_api_writer_username"></a> [cosmotech\_api\_writer\_username](#input\_cosmotech\_api\_writer\_username) | n/a | `string` | `"cosmotech_api_writer"` | no |
+| <a name="input_create_rabbitmq"></a> [create\_rabbitmq](#input\_create\_rabbitmq) | Whether to create RabbitMQ resources | `bool` | `true` | no |
+| <a name="input_list_apikey_allowed"></a> [list\_apikey\_allowed](#input\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | <pre>[<br>  {<br>    "apiKey": "",<br>    "associatedRole": "",<br>    "name": "",<br>    "securedUris": []<br>  }<br>]</pre> | no |
+| <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | `true` | no |
+| <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | `"cosmotech-monitoring"` | no |
+| <a name="input_postgresql_persistence_size"></a> [postgresql\_persistence\_size](#input\_postgresql\_persistence\_size) | n/a | `string` | `"8Gi"` | no |
+| <a name="input_rabbitmq_helm_release_name"></a> [rabbitmq\_helm\_release\_name](#input\_rabbitmq\_helm\_release\_name) | n/a | `string` | `"rabbitmq"` | no |
+| <a name="input_rabbitmq_listener_username"></a> [rabbitmq\_listener\_username](#input\_rabbitmq\_listener\_username) | n/a | `string` | `"cosmotech_api_listener"` | no |
+| <a name="input_rabbitmq_persistence_size"></a> [rabbitmq\_persistence\_size](#input\_rabbitmq\_persistence\_size) | n/a | `string` | `"8Gi"` | no |
+| <a name="input_rabbitmq_sender_username"></a> [rabbitmq\_sender\_username](#input\_rabbitmq\_sender\_username) | n/a | `string` | `"cosmotech_run_sender"` | no |
+| <a name="input_redis_persistence_size"></a> [redis\_persistence\_size](#input\_redis\_persistence\_size) | n/a | `string` | `"64Gi"` | no |
+| <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | `6379` | no |
+| <a name="input_tls_certificate_custom_certificate"></a> [tls\_certificate\_custom\_certificate](#input\_tls\_certificate\_custom\_certificate) | n/a | `string` | `""` | no |
+| <a name="input_tls_certificate_custom_key"></a> [tls\_certificate\_custom\_key](#input\_tls\_certificate\_custom\_key) | n/a | `string` | `""` | no |
 <!-- END_TF_DOCS -->
