@@ -2,6 +2,10 @@ output "out_postgres_release_name" {
   value = helm_release.postgresql.metadata.0.name
 }
 
+output "out_postgres_svc_name" {
+  value = helm_release.postgresql.name
+}
+
 output "out_postgres_reader_username" {
   value     = var.cosmotech_api_reader_username
   sensitive = true
