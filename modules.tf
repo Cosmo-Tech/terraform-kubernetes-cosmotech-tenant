@@ -12,6 +12,9 @@ module "create-argo" {
   s3_username_key             = var.use_minio_storage ? "root-user" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_username
   s3_password_key             = var.use_minio_storage ? "root-password" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_password
   archive_ttl                 = var.argo_archive_ttl
+  minio_release_name          = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
+  use_minio_storage           = local.use_minio_storage
+  argo_bucket_name            = var.argo_bucket_name
   argo_database               = var.argo_database
   argo_postgresql_secret_name = var.argo_postgresql_secret_name
   argo_service_account        = var.argo_service_account
@@ -20,14 +23,13 @@ module "create-argo" {
   helm_repo_url               = var.argo_helm_repo_url
   requeue_time                = var.argo_requeue_time
   s3_bucket_name              = var.argo_s3_bucket_name
-  minio_release_name    = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
-  use_minio_storage     = local.use_minio_storage
   argo_bucket_name            = var.argo_bucket_name
 
   depends_on = [
     module.create-postgresql-db,
     module.create-minio,
     module.create-seaweedfs,
+    module.create-minio
   ]
 }
 
