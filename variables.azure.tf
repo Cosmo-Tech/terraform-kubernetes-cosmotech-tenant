@@ -7,7 +7,7 @@ variable "network_sp_client_id" {
   type = string
 }
 
-variable "network_sp_client_secret" {
+variable "network_client_secret" {
   type = string
 }
 
