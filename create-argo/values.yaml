@@ -1,90 +1,215 @@
-singleNamespace: true
+global:
+
+rbac:
+  singleNamespace: true
 createAggregateRoles: false
-crds:
-  install: false
-  keep: true
-images:
-  pullPolicy: IfNotPresent
-workflow:
-  serviceAccount:
-    create: true
-    name: ${ARGO_SERVICE_ACCOUNT}
+
+server:
+  image:
+    registry: docker.io
+    repository: bitnami/argo-workflow-cli
+    tag: 3.5.8-debian-12-r2
+    digest: ""
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+  enabled: true
+  replicaCount: 1
+  livenessProbe:
+    enabled: true
+    initialDelaySeconds: 10
+    periodSeconds: 20
+    timeoutSeconds: 1
+    failureThreshold: 3
+    successThreshold: 1
+  readinessProbe:
+    enabled: true
+    initialDelaySeconds: 10
+    periodSeconds: 20
+    timeoutSeconds: 1
+    failureThreshold: 3
+    successThreshold: 1
+  startupProbe:
+    enabled: false
+    path: /
+    initialDelaySeconds: 300
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 6
+    successThreshold: 1
+  podSecurityContext:
+    enabled: true
+    fsGroupChangePolicy: Always
+    sysctls: []
+    supplementalGroups: []
+    fsGroup: 1001
+  containerSecurityContext:
+    enabled: true
+    seLinuxOptions: {}
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: true
+    privileged: false
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    seccompProfile:
+      type: "RuntimeDefault"
+    readOnlyRootFilesystem: true
   rbac:
     create: true
-executor:
-  env:
-  - name: RESOURCE_STATE_CHECK_INTERVAL
-    value: 1s
-  - name: WAIT_CONTAINER_STATUS_CHECK_INTERVAL
-    value: 1s
-%{ if USE_MINIO_STORAGE }
-useDefaultArtifactRepo: true
-artifactRepository:
-  archiveLogs: true
-  s3:
-    bucket: ${ARGO_BUCKET_NAME}
-    endpoint: ${MINIO_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local:9000
-    insecure: true
-    accessKeySecret:
-      name: ${MINIO_RELEASE_NAME}
-      key: root-user
-    secretKeySecret:
-      name: ${MINIO_RELEASE_NAME}
-      key: root-password
-%{ endif }
-server:
+  extraArgs: ""
+  auth:
+    enabled: true
+    mode: server
+    sso:
+      enabled: false
   clusterWorkflowTemplates:
     enabled: false
-  extraArgs:
-  - --auth-mode=server
+    enableEditing: true
   secure: false
-  podLabels:
-    networking/traffic-allowed: "yes"
-  tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
+  baseHref: /
+  containerPorts:
+    web: 2746
+  serviceAccount:
+    create: true
+    name: ""
+    automountServiceAccountToken: true
+    annotations: {}
   nodeSelector:
     "cosmotech.com/tier": "services"
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "1"
+  service:
+    type: ClusterIP
+    ports:
+      http: 2746
+  networkPolicy:
+    enabled: true
+    allowExternal: true
+    allowExternalEgress: true
+    kubeAPIServerPorts: [443, 6443, 8443]
+
 controller:
-  extraArgs:
-  - "--managed-namespace"
-  - "${NAMESPACE}"
+  podSecurityContext:
+    enabled: true
+    fsGroupChangePolicy: Always
+    sysctls: []
+    supplementalGroups: []
+    fsGroup: 1001
+  containerSecurityContext:
+    enabled: true
+    seLinuxOptions: {}
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: true
+    privileged: false
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    seccompProfile:
+      type: "RuntimeDefault"
+    readOnlyRootFilesystem: true
+  containerPorts:
+    metrics: 9090
+    telemetry: 8081
+  rbac:
+    create: true
+  existingConfigMap: ""
+  extraArgs: ""
+  persistence:
+    archive:
+      enabled: true
+  config: |
+    {{- if .Values.controller.instanceID.enabled }}
+    {{- if .Values.controller.instanceID.useReleaseName }}
+    instanceID: {{ .Release.Name }}
+    {{- else }}
+    instanceID: {{ .Values.controller.instanceID.explicitID }}
+    {{- end }}
+    {{- end }}
+    parallelism:
+    namespaceParallelism:
+    {{- if or .Values.executor.resources .Values.executor.extraEnvVars .Values.executor.containerSecurityContext }}
+    executor:
+      {{- if .Values.executor.resources }}
+      resources: {{- include "common.tplvalues.render" (dict "value" .Values.executor.resources "context" $) | nindent 4 }}
+      {{- else if ne .Values.executor.resourcesPreset "none" }}
+      resources: {{- include "common.resources.preset" (dict "type" .Values.executor.resourcesPreset) | nindent 4 }}
+      {{- end }}
+      {{- if .Values.executor.extraEnvVars }}
+      env: {{- include "common.tplvalues.render" (dict "value" .Values.executor.extraEnvVars "context" $) | nindent 4 }}
+      {{- end }}
+      {{- if .Values.executor.containerSecurityContext }}
+      securityContext: {{- omit .Values.executor.containerSecurityContext "enabled" | toYaml | nindent 4 }}
+      {{- end }}
+    {{- end }}
+    %{ if USE_MINIO_STORAGE }
+    artifactRepository:
+      archiveLogs: true
+        configuration:
+          s3:
+            bucket: ${ARGO_BUCKET_NAME}
+            endpoint: ${MINIO_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local:9000
+            insecure: true
+            accessKeySecret:
+              name: ${MINIO_RELEASE_NAME}
+              key: root-user
+            secretKeySecret:
+              name: ${MINIO_RELEASE_NAME}
+              key: root-password
+    %{ endif }
+    {{- if .Values.controller.metrics.enabled }}
+    metricsConfig:
+      enabled: true
+      path: {{ .Values.controller.metrics.path }}
+    {{- end }}
+    {{- if .Values.controller.telemetry.enabled }}
+    telemetryConfig: {{- include "common.tplvalues.render" (dict "value" .Values.controller.telemetry "context" $) | nindent 2 }}
+    {{- end }}
+    {{- if (include "argo-workflows.controller.persistence.enabled" .) }}
+    persistence:
+      connectionPool:
+        maxIdleConns: 100
+        maxOpenConns: 0
+      nodeStatusOffLoad: false
+      archive: {{ include "common.tplvalues.render" (dict "value" .Values.controller.persistence.archive.enabled "context" $) }}
+      {{- if or .Values.postgresql.enabled (and .Values.externalDatabase.enabled (eq .Values.externalDatabase.type "postgresql")) }}
+      postgresql:
+      {{- else if or .Values.mysql.enabled (and .Values.externalDatabase.enabled (eq .Values.externalDatabase.type "mysql")) }}
+      mysql:
+      {{- end }}
+        host: {{ include "argo-workflows.controller.database.host" . }}
+        port: {{ include "argo-workflows.controller.database.port" . }}
+        database: {{ include "argo-workflows.controller.database" . }}
+        tableName: workflows
+        userNameSecret:
+          name: {{ include "argo-workflows.controller.database.username.secret" . }}
+          key: username
+        passwordSecret:
+          name: {{ include "argo-workflows.controller.database.password.secret" . }}
+          key: {{ include "argo-workflows.controller.database.password.secret.key" . }}
+    {{- end }}
+    {{- if .Values.controller.workflowDefaults }}
+    workflowDefaults: {{- include "common.tplvalues.render" (dict "value" .Values.controller.workflowDefaults "context" $) | nindent 2 }}
+    {{- end }}
+    {{- if and .Values.server.auth.enabled .Values.server.auth.sso.enabled }}
+    sso: {{- include "common.tplvalues.render" (dict "value" .Values.server.auth.sso.config "context" $) | nindent 2 }}
+    {{- end }}
+  instanceID:
+    enabled: false
+    useReleaseName: false
+    explicitID: ""
   clusterWorkflowTemplates:
     enabled: false
-  extraEnv:
-  - name: DEFAULT_REQUEUE_TIME
-    value: ${REQUEUE_TIME}
-  podLabels:
-    networking/traffic-allowed: "yes"
-  serviceMonitor:
+  metrics:
     enabled: true
-    namespace: ${MONITORING_NAMESPACE}
-  tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
-  nodeSelector:
-    "cosmotech.com/tier": "services"
-  resources:
-    requests:
-      memory: "256Mi"
-      cpu: "100m"
-    limits:
-      memory: "512Mi"
-      cpu: "1"
-  containerRuntimeExecutor: k8sapi
-  metricsConfig:
-    enabled: true
+    path: /metrics
+    serviceMonitor:
+      enabled: true
+  telemetry:
+    enabled: false
+    path: /telemetry
+  workflowWorkers: 32
+  workflowNamespaces:
+    - default
   workflowDefaults:
     spec:
       # make sure workflows do not run forever. Default limit set is 7 days (604800 seconds)
@@ -101,25 +226,76 @@ controller:
         # We can still access their logs and artifacts since they are archived.
         # One of "OnPodCompletion", "OnPodSuccess", "OnWorkflowCompletion", "OnWorkflowSuccess"
         strategy: OnWorkflowSuccess
-      volumeClaimGC:
-        # Delete PVCs when workflows are done. However, due to Kubernetes PVC Protection,
-        # such PVCs will just be marked as Terminating, until no pod is using them.
-        # Pod deletion (either via the Pod GC strategy or the TTL strategy) will allow to free up
-        # attached PVCs.
-        # One of "OnWorkflowCompletion", "OnWorkflowSuccess"
-        strategy: OnWorkflowCompletion
-  persistence:
-    archive: true
-    archiveTTL: ${ARCHIVE_TTL}
-    postgresql:
-      host: "${POSTGRES_RELEASE_NAME}"
-      database: ${ARGO_DATABASE}
-      tableName: workflows
-      userNameSecret:
-        name: ${ARGO_POSTGRESQL_SECRET_NAME}
-        key: argo-username
-      passwordSecret:
-        name: ${ARGO_POSTGRESQL_SECRET_NAME}
-        key: argo-password
-mainContainer:
-  imagePullPolicy: IfNotPresent
+  logging:
+    level: info
+    globalLevel: "0"
+  serviceAccount:
+    create: true
+    name: ""
+    automountServiceAccountToken: true
+    annotations: {}
+  service:
+    type: ClusterIP
+    ports:
+      metrics: 8080
+      telemetry: 8081
+  networkPolicy:
+    enabled: true
+    allowExternal: true
+    allowExternalEgress: true
+    kubeAPIServerPorts: [443, 6443, 8443]
+executor:
+  image:
+    registry: docker.io
+    repository: bitnami/argo-workflow-exec
+    tag: 3.5.8-debian-12-r3
+    digest: ""
+    pullPolicy: IfNotPresent
+    pullSecrets: []
+  resourcesPreset: "nano"
+  resources: {}
+  extraEnvVars:
+  - name: RESOURCE_STATE_CHECK_INTERVAL
+    value: 1s
+  - name: WAIT_CONTAINER_STATUS_CHECK_INTERVAL
+    value: 1s
+  containerSecurityContext:
+    enabled: true
+    seLinuxOptions: {}
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: true
+    privileged: false
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop: ["ALL"]
+    seccompProfile:
+      type: "RuntimeDefault"
+    readOnlyRootFilesystem: true
+
+ingress:
+  enabled: false
+
+workflows:
+  serviceAccount:
+    create: true
+    name: ${ARGO_SERVICE_ACCOUNT}
+    automountServiceAccountToken: true
+  rbac:
+    create: true
+
+postgresql:
+  enabled: false
+
+mysql:
+  enabled: false
+
+externalDatabase:
+  enabled: true
+  type: "postgresql"
+  host: "${POSTGRES_RELEASE_NAME}"
+  port: "5432"
+  username: argo
+  password: ""
+  database: ${ARGO_DATABASE}
+  existingSecret: ${ARGO_POSTGRESQL_SECRET_NAME}

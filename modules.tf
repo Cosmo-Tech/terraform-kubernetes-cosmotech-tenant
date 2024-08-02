@@ -19,6 +19,8 @@ module "create-argo" {
   depends_on = [
     module.create-postgresql-db,
     module.create-minio
+    time_sleep.wait_30_seconds
+
   ]
 }
 

@@ -8,7 +8,17 @@ locals {
 resource "kubernetes_namespace" "main_namespace" {
   metadata {
     name = var.kubernetes_tenant_namespace
+    labels = {
+      "pod-security.kubernetes.io/enforce"         = "restricted"
+      "pod-security.kubernetes.io/enforce-version" = "latest"
+    }
   }
+}
+
+resource "time_sleep" "wait_30_seconds" {
+  depends_on = [kubernetes_namespace.main_namespace]
+
+  destroy_duration = "30s"
 }
 
 resource "random_password" "redis_admin_password" {
