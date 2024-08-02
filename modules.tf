@@ -6,6 +6,15 @@ module "create-argo" {
   postgres_release_name = module.create-postgresql-db.out_postgres_release_name
   minio_release_name    = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
   use_minio_storage     = local.use_minio_storage
+  archive_ttl                 = var.archive_ttl
+  helm_repo_url               = var.argo_helm_repo_url
+  helm_chart                  = var.argo_helm_chart
+  argo_version                = var.argo_version
+  argo_service_account        = var.argo_service_account
+  argo_bucket_name            = var.argo_bucket_name
+  argo_database               = var.argo_database
+  argo_postgresql_secret_name = var.argo_postgresql_secret_name
+  requeue_time                = var.requeue_time
 
   depends_on = [
     module.create-postgresql-db,
@@ -63,7 +72,10 @@ module "create-cosmotech-api" {
   eventbus_uri                  = var.eventbus_uri
   storage_account_key           = var.storage_account_key
   storage_account_name          = var.storage_account_name
-  chart_package_version         = var.chart_package_version
+  helm_chart                    = var.cosmotech_api_helm_chart
+  helm_repository               = var.cosmotech_api_helm_repository
+  helm_release_name             = var.cosmotech_api_helm_release_name
+  chart_package_version         = var.cosmotech_api_chart_package_version
   cosmotech_api_version         = var.cosmotech_api_version
   cosmotech_api_version_path    = var.cosmotech_api_version_path
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
@@ -89,6 +101,7 @@ module "create-cosmotech-api" {
   identifier_uri                = var.identifier_uri
   persistence_size              = var.cosmotech_api_persistence_size
   persistence_storage_class     = var.cosmotech_api_persistence_storage_class
+  is_multitenant                = var.is_multitenant
 
   depends_on = [
     module.create-argo,
@@ -107,6 +120,10 @@ module "create-minio" {
   argo_minio_secret_key       = random_password.argo_minio_secret_key.result
   argo_minio_persistence_size = var.argo_minio_persistence_size
   argo_minio_requests_memory  = var.argo_minio_requests_memory
+  argo_bucket_name            = var.argo_bucket_name
+  minio_version               = var.minio_version
+  helm_repo_url               = var.minio_helm_repo_url
+  helm_chart                  = var.minio_helm_chart
 }
 
 module "create-postgresql-db" {
@@ -115,6 +132,16 @@ module "create-postgresql-db" {
   namespace            = var.kubernetes_tenant_namespace
   monitoring_namespace = var.monitoring_namespace
   persistence_size     = var.postgresql_persistence_size
+  postgresql_version            = var.postgresql_version
+  helm_repo_url                 = var.postgresql_helm_repo_url
+  helm_chart                    = var.postgresql_helm_chart
+  argo_database                 = var.argo_database
+  cosmotech_api_admin_username  = var.cosmotech_api_admin_username
+  cosmotech_api_reader_username = var.cosmotech_api_reader_username
+  cosmotech_api_writer_username = var.cosmotech_api_writer_username
+  postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
+  argo_postgresql_user          = var.argo_postgresql_user
+  postgresql_secret_name        = var.postgresql_secret_name
 }
 
 module "create-redis-stack" {
@@ -123,7 +150,10 @@ module "create-redis-stack" {
   redis_admin_password    = random_password.redis_admin_password.result
   namespace               = var.kubernetes_tenant_namespace
   redis_pv_capacity       = var.redis_persistence_size
-  chart_redis_version     = var.chart_redis_version
+  helm_repo_url           = var.redis_helm_repo_url
+  helm_release_name       = var.redis_helm_release_name
+  helm_chart_name         = var.redis_helm_chart_name
+  chart_redis_version     = var.redis_chart_version
   version_redis_cosmotech = local.version_redis_cosmotech
 
   depends_on = [module.create-postgresql-db]
@@ -136,6 +166,12 @@ module "create-rabbitmq" {
 
   namespace            = var.kubernetes_tenant_namespace
   monitoring_namespace = var.monitoring_namespace
+  helm_repo_url              = var.rabbitmq_helm_repo_url
+  helm_chart                 = var.rabbitmq_helm_chart
+  helm_chart_version         = var.rabbitmq_helm_chart_version
+  helm_release_name          = var.rabbitmq_helm_release_name
+  rabbitmq_listener_username = var.rabbitmq_listener_username
+  rabbitmq_sender_username   = var.rabbitmq_sender_username
   persistence_size     = var.rabbitmq_persistence_size
 }
 
