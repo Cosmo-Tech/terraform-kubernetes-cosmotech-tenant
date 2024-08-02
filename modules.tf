@@ -188,8 +188,8 @@ module "create-redis-stack" {
 
   count = var.redis_deploy ? 1 : 0
 
-  redis_admin_password    = random_password.redis_admin_password.result
   namespace               = var.kubernetes_tenant_namespace
+  redis_admin_password    = random_password.redis_admin_password.result
   redis_pv_capacity       = var.redis_persistence_size
   chart_redis_version     = var.redis_chart_version
   version_redis_cosmotech = var.redis_cosmotech_version
