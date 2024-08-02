@@ -1,11 +1,11 @@
 module "create-argo" {
   source = "./create-argo"
 
-  namespace             = var.kubernetes_tenant_namespace
-  monitoring_namespace  = var.monitoring_namespace
-  postgres_release_name = module.create-postgresql-db.out_postgres_release_name
-  minio_release_name    = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
-  use_minio_storage     = local.use_minio_storage
+  namespace                   = var.kubernetes_tenant_namespace
+  monitoring_namespace        = var.monitoring_namespace
+  postgres_release_name       = module.create-postgresql-db.out_postgres_release_name
+  minio_release_name          = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
+  use_minio_storage           = local.use_minio_storage
   archive_ttl                 = var.archive_ttl
   helm_repo_url               = var.argo_helm_repo_url
   helm_chart                  = var.argo_helm_chart
@@ -129,9 +129,9 @@ module "create-minio" {
 module "create-postgresql-db" {
   source = "./create-postgresql-db"
 
-  namespace            = var.kubernetes_tenant_namespace
-  monitoring_namespace = var.monitoring_namespace
-  persistence_size     = var.postgresql_persistence_size
+  namespace                     = var.kubernetes_tenant_namespace
+  monitoring_namespace          = var.monitoring_namespace
+  persistence_size              = var.postgresql_persistence_size
   postgresql_version            = var.postgresql_version
   helm_repo_url                 = var.postgresql_helm_repo_url
   helm_chart                    = var.postgresql_helm_chart
@@ -164,15 +164,15 @@ module "create-rabbitmq" {
 
   count = var.create_rabbitmq ? 1 : 0
 
-  namespace            = var.kubernetes_tenant_namespace
-  monitoring_namespace = var.monitoring_namespace
+  namespace                  = var.kubernetes_tenant_namespace
+  monitoring_namespace       = var.monitoring_namespace
   helm_repo_url              = var.rabbitmq_helm_repo_url
   helm_chart                 = var.rabbitmq_helm_chart
   helm_chart_version         = var.rabbitmq_helm_chart_version
   helm_release_name          = var.rabbitmq_helm_release_name
   rabbitmq_listener_username = var.rabbitmq_listener_username
   rabbitmq_sender_username   = var.rabbitmq_sender_username
-  persistence_size     = var.rabbitmq_persistence_size
+  persistence_size           = var.rabbitmq_persistence_size
 }
 
 module "create-platform-config" {
