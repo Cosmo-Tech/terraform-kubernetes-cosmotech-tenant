@@ -20,6 +20,9 @@ module "create-argo" {
   helm_repo_url               = var.argo_helm_repo_url
   requeue_time                = var.argo_requeue_time
   s3_bucket_name              = var.argo_s3_bucket_name
+  minio_release_name    = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
+  use_minio_storage     = local.use_minio_storage
+  argo_bucket_name            = var.argo_bucket_name
 
   depends_on = [
     module.create-postgresql-db,
@@ -93,6 +96,9 @@ module "create-cosmotech-api" {
   chart_package_version         = var.api_chart_package_version
   cosmotech_api_version         = var.api_version
   cosmotech_api_version_path    = var.api_version_path
+  helm_chart                    = var.cosmotech_api_helm_chart
+  helm_repository               = var.cosmotech_api_helm_repository
+  helm_release_name             = var.cosmotech_api_helm_release_name
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
   redis_admin_password          = random_password.redis_admin_password.result
   redis_port                    = var.redis_port
@@ -167,7 +173,6 @@ module "create-postgresql-db" {
   postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
   postgresql_secret_name        = var.postgresql_secret_name
   postgresql_version            = var.postgresql_version
-
 }
 
 module "create-redis-stack" {
@@ -185,7 +190,6 @@ module "create-redis-stack" {
   helm_repo_url           = var.redis_helm_repo_url
 
   depends_on = [module.create-argo]
-
 }
 
 module "create-rabbitmq" {
