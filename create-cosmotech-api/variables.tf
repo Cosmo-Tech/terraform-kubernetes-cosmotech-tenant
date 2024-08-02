@@ -96,12 +96,10 @@ variable "redis_port" {
 
 variable "helm_chart" {
   type    = string
-  default = "cosmotech-api-chart"
 }
 
 variable "helm_repository" {
   type    = string
-  default = "oci://ghcr.io/cosmo-tech"
 }
 
 variable "cosmotech_api_version_path" {
@@ -114,7 +112,6 @@ variable "cosmotech_api_version" {
 
 variable "helm_release_name" {
   type    = string
-  default = "cosmotech-api"
 }
 
 variable "chart_package_version" {
@@ -123,7 +120,6 @@ variable "chart_package_version" {
 
 variable "argo_service_account" {
   type    = string
-  default = ""
 }
 
 variable "argo_release_name" {
@@ -132,7 +128,6 @@ variable "argo_release_name" {
 
 variable "is_multitenant" {
   type    = bool
-  default = true
 }
 
 variable "use_internal_result_services" {
@@ -198,12 +193,6 @@ variable "list_apikey_allowed" {
     associatedRole = string
     securedUris    = list(string)
   }))
-  default = [{
-    name           = ""
-    apiKey         = ""
-    associatedRole = ""
-    securedUris    = []
-  }]
 }
 
 variable "identifier_uri" {
