@@ -3,6 +3,8 @@ api:
   version: ${API_VERSION_PATH}
   multiTenant: ${MULTI_TENANT}
   servletContextPath: /cosmotech-api
+  tlsTruststore:
+    enabled: false
 
 image:
   repository: ghcr.io/cosmo-tech/cosmotech-api
@@ -12,6 +14,9 @@ argo:
     password: ${ACR_LOGIN_PASSWORD}
     registry: ${ACR_LOGIN_SERVER}
     username: ${ACR_LOGIN_USERNAME}
+  storage:
+    class:
+      install: false
 config:
   api:
     serviceMonitor:
@@ -110,7 +115,9 @@ config:
         port: ${REDIS_PORT}
         username: "default"
         password: ${REDIS_PASSWORD}
-
+        tls:
+          enabled: false
+          
 ingress:
   enabled: ${COSMOTECH_API_INGRESS_ENABLED}
   annotations:

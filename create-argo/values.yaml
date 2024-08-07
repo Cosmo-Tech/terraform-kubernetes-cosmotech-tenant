@@ -127,20 +127,34 @@ controller:
     {{- end }}
     parallelism:
     namespaceParallelism:
-    {{- if or .Values.executor.resources .Values.executor.extraEnvVars .Values.executor.containerSecurityContext }}
     executor:
-      {{- if .Values.executor.resources }}
-      resources: {{- include "common.tplvalues.render" (dict "value" .Values.executor.resources "context" $) | nindent 4 }}
-      {{- else if ne .Values.executor.resourcesPreset "none" }}
-      resources: {{- include "common.resources.preset" (dict "type" .Values.executor.resourcesPreset) | nindent 4 }}
-      {{- end }}
-      {{- if .Values.executor.extraEnvVars }}
-      env: {{- include "common.tplvalues.render" (dict "value" .Values.executor.extraEnvVars "context" $) | nindent 4 }}
-      {{- end }}
-      {{- if .Values.executor.containerSecurityContext }}
-      securityContext: {{- omit .Values.executor.containerSecurityContext "enabled" | toYaml | nindent 4 }}
-      {{- end }}
-    {{- end }}
+      securityContext:
+        runAsGroup: 1001
+        runAsNonRoot: true
+        runAsUser: 1001
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        privileged: false
+        readOnlyRootFilesystem: true
+        seLinuxOptions: {}
+        seccompProfile:
+          type: RuntimeDefault
+    mainContainer:
+      securityContext:
+        runAsGroup: 1001
+        runAsNonRoot: true
+        runAsUser: 1001
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        privileged: false
+        readOnlyRootFilesystem: true
+        seLinuxOptions: {}
+        seccompProfile:
+          type: RuntimeDefault
     %{ if USE_MINIO_STORAGE }
     artifactRepository:
       archiveLogs: true
@@ -212,6 +226,15 @@ controller:
     - default
   workflowDefaults:
     spec:
+      securityContext:
+        runAsGroup: 1001
+        runAsNonRoot: true
+        runAsUser: 1001
+        fsGroup: 1001
+        fsGroupChangePolicy: Always
+        seLinuxOptions: {}
+        seccompProfile:
+          type: RuntimeDefault
       # make sure workflows do not run forever. Default limit set is 7 days (604800 seconds)
       activeDeadlineSeconds: 604800
       ttlStrategy:
