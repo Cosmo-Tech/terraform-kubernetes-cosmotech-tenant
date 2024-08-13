@@ -77,6 +77,11 @@ server:
     annotations: {}
   nodeSelector:
     "cosmotech.com/tier": "services"
+  tolerations:
+  - key: "vendor"
+    operator: "Equal"
+    value: "cosmotech"
+    effect: "NoSchedule"
   service:
     type: ClusterIP
     ports:
@@ -261,6 +266,13 @@ controller:
     name: ""
     automountServiceAccountToken: true
     annotations: {}
+  nodeSelector:
+    "cosmotech.com/tier": "services"
+  tolerations:
+  - key: "vendor"
+    operator: "Equal"
+    value: "cosmotech"
+    effect: "NoSchedule"
   service:
     type: ClusterIP
     ports:
