@@ -36,13 +36,13 @@ primary:
     user: postgres
     password: ${POSTGRESQL_PASSWORD}
     scriptsSecret: ${POSTGRESQL_INITDB_SECRET}
-resources:
-  requests:
-    memory: "64Mi"
-    cpu: "250m"
-  limits:
-    memory: "256Mi"
-    cpu: "1"
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "250m"
+    limits:
+      memory: "256Mi"
+      cpu: "1"
 metrics:
   enabled: true
   containerSecurityContext:
@@ -56,3 +56,10 @@ metrics:
     namespace: ${MONITORING_NAMESPACE}
     interval: 30s
     scrapeTimeout: 10s
+  resources:
+    requests:
+      memory: "64Mi"
+      cpu: "250m"
+    limits:
+      memory: "256Mi"
+      cpu: "1"
