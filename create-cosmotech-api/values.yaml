@@ -44,6 +44,7 @@ config:
         host: "${ACR_LOGIN_SERVER}"
         username: "${ACR_LOGIN_USERNAME}"
         password: "${ACR_LOGIN_PASSWORD}"
+        checkSolutionImage: false
       identityProvider:
         code: azure
         authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
