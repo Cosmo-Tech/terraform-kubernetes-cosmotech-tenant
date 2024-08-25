@@ -227,8 +227,21 @@ module "create-seaweedfs" {
   ]
 }
 
-module "create-platform-config" {
-  source = "./create-platform-config"
+module "config_vault" {
+  source = "./config-vault"
+
+  count                = var.create_platform_config ? 1 : 0
+  allowed_namespace    = var.allowed_namespace
+  cluster_name         = var.cluster_name
+  tenant_id            = var.tenant_id
+  vault_address        = var.vault_address
+  vault_namespace      = var.vault_namespace
+  vault_sops_namespace = var.vault_sops_namespace
+  organization         = var.organization
+}
+
+module "config_platform" {
+  source = "./config-platform"
 
   count = var.create_platform_config ? 1 : 0
 
@@ -257,21 +270,25 @@ module "create-platform-config" {
   rds_hub_listener                         = module.create-rabbitmq.0.out_rabbitmq_listener_password
   rds_hub_sender                           = module.create-rabbitmq.0.out_rabbitmq_sender_password
   argo_service_account_name                = module.create-argo.out_argo_workflows_service_account
-  rds_storage_admin                        = module.create-postgresql-db.out_postgres_admin_password
-  rds_storage_reader                       = module.create-postgresql-db.out_postgres_reader_password
-  rds_storage_writer                       = module.create-postgresql-db.out_postgres_writer_password
+  rds_storage_admin                        = module.create-postgresql-db.0.out_postgres_admin_password
+  rds_storage_reader                       = module.create-postgresql-db.0.out_postgres_reader_password
+  rds_storage_writer                       = module.create-postgresql-db.0.out_postgres_writer_password
   host_rds                                 = module.create-rabbitmq.0.out_rabbitmq_svc_name
-  host_rds_postgres                        = module.create-postgresql-db.out_postgres_svc_name
-  postgres_release_name                    = module.create-postgresql-db.out_postgres_release_name
+  host_rds_postgres                        = module.create-postgresql-db.0.out_postgres_svc_name
+  postgres_release_name                    = module.create-postgresql-db.0.out_postgres_release_name
   argo_release_name                        = module.create-argo.out_argo_workflows_release_name
   host_argo_workflow                       = module.create-argo.out_argo_workflows_svc_name
-  host_postgres                            = module.create-postgresql-db.out_postgres_svc_name
+  host_postgres                            = module.create-postgresql-db.0.out_postgres_svc_name
   host_redis                               = module.create-redis-stack.out_host_svc_redis
+  vault_address                            = var.vault_address
+  vault_namespace                          = var.vault_namespace
+  cluster_name                             = var.cluster_name
 
   depends_on = [
     module.create-postgresql-db,
     module.create-argo,
     module.create-rabbitmq,
-    module.create-redis-stack
+    module.create-redis-stack,
+    module.config_vault
   ]
 }

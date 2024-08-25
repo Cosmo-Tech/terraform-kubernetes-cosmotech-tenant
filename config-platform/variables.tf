@@ -138,3 +138,15 @@ variable "identity_token_url" {
 variable "acr_registry_url" {
   type = string
 }
+
+variable "vault_namespace" {
+  type = string
+}
+
+variable "vault_address" {
+  type = string
+}
+
+variable "cluster_name" {
+  type = string
+}
