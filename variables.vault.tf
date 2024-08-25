@@ -2,6 +2,10 @@ variable "vault_namespace" {
   type = string
 }
 
+variable "enable_vault" {
+  type = bool
+}
+
 variable "allowed_namespace" {
   type = string
 }
