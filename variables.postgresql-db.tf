@@ -1,3 +1,8 @@
+variable "create_postgresql" {
+  type    = bool
+  default = true
+}
+
 variable "postgresql_persistence_size" {
   type    = string
   default = "8Gi"
