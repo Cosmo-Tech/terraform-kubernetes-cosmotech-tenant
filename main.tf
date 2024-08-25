@@ -5,12 +5,6 @@ locals {
   version_redis_cosmotech = local.use_old_redis ? "1.0.8" : "1.0.12"
 }
 
-resource "kubernetes_namespace" "main_namespace" {
-  metadata {
-    name = var.kubernetes_tenant_namespace
-  }
-}
-
 resource "random_password" "redis_admin_password" {
   length  = 30
   special = false

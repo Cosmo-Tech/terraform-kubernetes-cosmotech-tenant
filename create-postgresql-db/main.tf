@@ -48,6 +48,16 @@ resource "random_password" "postgresql_admin_password" {
   special = false
 }
 
+resource "random_password" "postgres_postgresql_password" {
+  length  = 30
+  special = false
+}
+
+resource "random_password" "argo_postgresql_password" {
+  length  = 30
+  special = false
+}
+
 resource "kubernetes_secret" "postgresql-initdb" {
   metadata {
     name      = var.postgresql_initdb_secret_name
@@ -62,16 +72,7 @@ resource "kubernetes_secret" "postgresql-initdb" {
   }
 
   type = "Opaque"
-}
 
-resource "random_password" "postgres_postgresql_password" {
-  length  = 30
-  special = false
-}
-
-resource "random_password" "argo_postgresql_password" {
-  length  = 30
-  special = false
 }
 
 resource "kubernetes_secret" "postgres-config" {

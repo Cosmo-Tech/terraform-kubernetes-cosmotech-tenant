@@ -4,5 +4,7 @@ modules.json
 .terraform.*
 terraform.*
 tfplan*
-*.sh
-config*
+!/*.sh
+!/*.sh.tlp
+!/**/*.sh
+!/**/*.sh.tlp

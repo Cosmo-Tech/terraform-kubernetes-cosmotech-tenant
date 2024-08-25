@@ -1,14 +1,7 @@
-terraform {
-  required_providers {
-    kubectl = {
-      source  = "alekc/kubectl"
-      version = "2.0.4"
-    }
-  }
-}
-
 locals {
   values_platform_config = {
+    "cluster_name"                             = var.cluster_name
+    "tenant_id"                                = var.azure_tenant_id
     "NAMESPACE"                                = var.namespace
     "API_VERSION"                              = var.api_version
     "ACR_SERVER"                               = var.acr_server
@@ -42,16 +35,75 @@ locals {
     "RDS_STORAGE_WRITER"                       = var.rds_storage_writer
     "HOST_RDS"                                 = var.host_rds
     "HOST_RDS_POSTGRES"                        = var.host_rds_postgres
-    "SPRING_APPLICATION_JSON"                  = "{ \"csm\":{ \"platform\":{ \"identityProvider\":{ \"defaultScopes\":{ \"[${var.azure_appid_uri}/.default]\":\"${var.namespace} scope\" }, \"containerScopes\":{ \"[${var.azure_appid_uri}/platform]\":\"${var.namespace} scope\" } } } } }"
   }
-  platform_secrets_name = "${var.namespace}-platform-secrets"
 }
 
-resource "kubernetes_secret" "platform_config_secret" {
+resource "kubernetes_config_map" "platform_secret_script" {
   metadata {
-    name      = "${var.namespace}-platform-secret"
-    namespace = var.namespace
+    name      = "platform-config-script-${var.namespace}"
+    namespace = var.vault_namespace
   }
-  type = "Opaque"
-  data = local.values_platform_config
+
+  data = {
+    "platform_secret.sh" = templatefile("${path.module}/templates/config.sh.tpl", local.values_platform_config)
+  }
+}
+
+resource "kubernetes_job" "platform_secret_config" {
+  metadata {
+    name      = "platform-config-job-${var.namespace}"
+    namespace = var.vault_namespace
+  }
+
+  spec {
+    template {
+      metadata {
+        name = "platform-config"
+      }
+
+      spec {
+        restart_policy       = "Never"
+        service_account_name = "vault-unseal"
+        container {
+          name    = "platform-config"
+          image   = "bitnami/kubectl:latest"
+          command = ["/bin/bash", "-c", "bash /scripts/platform_secret.sh"]
+
+          env {
+            name  = "VAULT_ADDR"
+            value = var.vault_address
+          }
+
+          env {
+            name  = "VAULT_NAMESPACE"
+            value = var.vault_namespace
+          }
+
+          volume_mount {
+            name       = "config"
+            mount_path = "/scripts"
+          }
+        }
+
+        volume {
+          name = "config"
+          config_map {
+            name = kubernetes_config_map.platform_secret_script.metadata[0].name
+          }
+        }
+      }
+    }
+
+    backoff_limit = 4
+  }
+
+  wait_for_completion = true
+  timeouts {
+    create = "5m"
+    update = "5m"
+  }
+
+  depends_on = [
+    kubernetes_config_map.platform_secret_script
+  ]
 }
