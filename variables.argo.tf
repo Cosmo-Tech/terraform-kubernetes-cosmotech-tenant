@@ -63,6 +63,5 @@ variable "argo_deploy" {
 }
 
 variable "argo_install_crds" {
-  description = "Install argo workflow crds: must be TRUE for first tenant deployment in cluster"
   type        = bool
 }
