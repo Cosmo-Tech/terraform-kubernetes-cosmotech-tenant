@@ -1,12 +1,16 @@
 locals {
+  local_network_client_secret  = var.azure_credentials_network_client_secret == "" ? data.kubernetes_secret.network_client_secret.data.password : var.azure_credentials_network_client_secret
+  local_platform_client_secret = var.azure_credentials_platform_client_secret == "" ? data.kubernetes_secret.platform_client_secret.data.password : var.azure_credentials_platform_client_secret
+  local_acr_login_password     = var.acr_password == "" ? data.kubernetes_secret.acr_login_password.data.password : var.acr_password
+  local_storage_account_name   = var.azure_storage_account_key == "" ? data.kubernetes_secret.storage_account_password.data.password : var.azure_storage_account_key
   values_platform_config = {
     "cluster_name"                             = var.cluster_name
     "tenant_id"                                = var.azure_tenant_id
-    "NAMESPACE"                                = var.namespace
+    "NAMESPACE"                                = var.kubernetes_tenant_namespace
     "API_VERSION"                              = var.api_version
     "ACR_SERVER"                               = var.acr_server
     "ACR_USERNAME"                             = var.acr_username
-    "ACR_PASSWORD"                             = var.acr_password
+    "ACR_PASSWORD"                             = local.local_acr_login_password
     "ACR_REGISTRY_URL"                         = var.acr_registry_url
     "HOST_COSMOTECH_API"                       = var.host_cosmotech_api
     "IDENTITY_AUTHORIZATION_URL"               = var.identity_authorization_url
@@ -15,12 +19,12 @@ locals {
     "ARGO_SERVICE_ACCOUNT_NAME"                = var.argo_service_account_name
     "AZURE_TENANT_ID"                          = var.azure_tenant_id
     "AZURE_APPID_URI"                          = var.azure_appid_uri
-    "AZURE_STORAGE_ACCOUNT_KEY"                = var.azure_storage_account_key
+    "AZURE_STORAGE_ACCOUNT_KEY"                = local.local_storage_account_name
     "AZURE_STORAGE_ACCOUNT_NAME"               = var.azure_storage_account_name
-    "AZURE_CREDENTIALS_CLIENT_ID"              = var.azure_platform_credentials_client_id
-    "AZURE_CREDENTIALS_CLIENT_SECRET"          = var.azure_platform_credentials_client_secret
+    "AZURE_CREDENTIALS_CLIENT_ID"              = var.azure_credentials_platform_client_id
+    "AZURE_CREDENTIALS_CLIENT_SECRET"          = local.local_platform_client_secret
     "AZURE_CREDENTIALS_CUSTOMER_CLIENT_ID"     = var.azure_credentials_network_client_id
-    "AZURE_CREDENTIALS_CUSTOMER_CLIENT_SECRET" = var.azure_credentials_network_client_secret
+    "AZURE_CREDENTIALS_CUSTOMER_CLIENT_SECRET" = local.local_network_client_secret
     "ADX_BASE_URI"                             = var.adx_base_uri
     "ADX_INGEST_URI"                           = var.adx_ingest_uri
     "EVENTBUS_BASEURI"                         = var.eventbus_base_uri
@@ -38,9 +42,37 @@ locals {
   }
 }
 
+data "kubernetes_secret" "network_client_secret" {
+  metadata {
+    name      = "network-client-secret"
+    namespace = "default"
+  }
+}
+
+data "kubernetes_secret" "platform_client_secret" {
+  metadata {
+    name      = "platform-client-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
+data "kubernetes_secret" "storage_account_password" {
+  metadata {
+    name      = "storage-account-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
+data "kubernetes_secret" "acr_login_password" {
+  metadata {
+    name      = "acr-admin-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
 resource "kubernetes_config_map" "platform_secret_script" {
   metadata {
-    name      = "platform-config-script-${var.namespace}"
+    name      = "platform-config-script-${var.kubernetes_tenant_namespace}"
     namespace = var.vault_namespace
   }
 
@@ -51,7 +83,7 @@ resource "kubernetes_config_map" "platform_secret_script" {
 
 resource "kubernetes_job" "platform_secret_config" {
   metadata {
-    name      = "platform-config-job-${var.namespace}"
+    name      = "platform-config-job-${var.kubernetes_tenant_namespace}"
     namespace = var.vault_namespace
   }
 

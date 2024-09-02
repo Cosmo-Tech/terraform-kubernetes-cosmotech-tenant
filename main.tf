@@ -1,7 +1,12 @@
 locals {
-  tls_secret_name   = var.tls_certificate_type != "none" ? var.custom_tls_secret_name : var.cert_tls_secret_name
-  minio_endpoint    = var.use_minio_storage ? "${module.create-minio.0.out_minio_release_name}.${var.kubernetes_tenant_namespace}.svc.cluster.local:9000" : ""
-  use_minio_storage = !startswith(var.api_version, "1.")
+  tls_secret_name        = var.tls_certificate_type != "none" ? var.custom_tls_secret_name : var.cert_tls_secret_name
+  minio_endpoint         = var.use_minio_storage ? "${module.create-minio.0.out_minio_release_name}.${var.kubernetes_tenant_namespace}.svc.cluster.local:9000" : ""
+  use_minio_storage      = !startswith(var.api_version, "1.")
+  kube_config            = data.azurerm_kubernetes_cluster.current.kube_config
+  host                   = local.kube_config.0.host
+  client_certificate     = base64decode(local.kube_config.0.client_certificate)
+  client_key             = base64decode(local.kube_config.0.client_key)
+  cluster_ca_certificate = base64decode(local.kube_config.0.cluster_ca_certificate)
 }
 
 resource "kubernetes_namespace" "main_namespace" {
@@ -14,10 +19,34 @@ resource "kubernetes_namespace" "main_namespace" {
   }
 }
 
-resource "time_sleep" "wait_30_seconds" {
-  depends_on = [kubernetes_namespace.main_namespace]
+provider "kubernetes" {
+  host                   = local.host
+  client_certificate     = local.client_certificate
+  client_key             = local.client_key
+  cluster_ca_certificate = local.cluster_ca_certificate
+}
 
-  destroy_duration = "30s"
+provider "helm" {
+  kubernetes {
+    host                   = local.host
+    client_certificate     = local.client_certificate
+    client_key             = local.client_key
+    cluster_ca_certificate = local.cluster_ca_certificate
+  }
+}
+
+provider "kubectl" {
+  host                   = local.host
+  client_certificate     = local.client_certificate
+  client_key             = local.client_key
+  cluster_ca_certificate = local.cluster_ca_certificate
+
+  load_config_file = false
+}
+
+data "azurerm_kubernetes_cluster" "current" {
+  name                = var.cluster_name
+  resource_group_name = var.common_resource_group
 }
 
 resource "random_password" "redis_admin_password" {
