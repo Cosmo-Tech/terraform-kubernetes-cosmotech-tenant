@@ -33,7 +33,6 @@ resource "helm_release" "argo" {
   chart      = var.helm_chart
   version    = var.argo_version
   namespace  = var.namespace
-
   reset_values = true
   skip_crds    = true
 

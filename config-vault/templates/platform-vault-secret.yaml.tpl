@@ -7,7 +7,7 @@ spec:
   vaultAuthRef: ${allowed_namespace}-static-auth
   mount: ${organization}
   type: kv-v2
-  path: ${tenant_id}/clusters/${cluster_name}/${allowed_namespace}-platform-secrets
+  path: ${tenant_id}/${cluster_name}/${allowed_namespace}-platform-secrets
   refreshAfter: 10s
   destination:
     create: true

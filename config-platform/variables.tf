@@ -1,4 +1,4 @@
-variable "namespace" {
+variable "kubernetes_tenant_namespace" {
   type = string
 }
 
@@ -46,11 +46,11 @@ variable "azure_storage_account_name" {
   type = string
 }
 
-variable "azure_platform_credentials_client_id" {
+variable "azure_credentials_platform_client_id" {
   type = string
 }
 
-variable "azure_platform_credentials_client_secret" {
+variable "azure_credentials_platform_client_secret" {
   type = string
 }
 
@@ -61,7 +61,6 @@ variable "azure_credentials_network_client_id" {
 variable "azure_credentials_network_client_secret" {
   type = string
 }
-
 
 variable "adx_base_uri" {
   type = string
