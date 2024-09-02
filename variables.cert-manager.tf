@@ -10,5 +10,5 @@ variable "tls_secret_name" {
 }
 
 variable "tls_certificate_type" {
-
+  type = string
 }

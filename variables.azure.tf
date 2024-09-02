@@ -3,12 +3,13 @@ variable "subscription_id" {
   type        = string
 }
 
-variable "network_client_id" {
+variable "network_sp_client_id" {
   type = string
 }
 
-variable "network_client_secret" {
+variable "network_sp_client_secret" {
   type = string
+  default = ""
 }
 
 variable "storage_account_key" {
@@ -50,5 +51,9 @@ variable "cosmos_key" {
 }
 
 variable "eventbus_uri" {
+  type = string
+}
+
+variable "common_resource_group" {
   type = string
 }

@@ -8,3 +8,6 @@ tfplan*
 !/*.sh.tlp
 !/**/*.sh
 !/**/*.sh.tlp
+out_*
+export_*
+tfplan_*

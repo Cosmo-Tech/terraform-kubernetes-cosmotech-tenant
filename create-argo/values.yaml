@@ -17,7 +17,6 @@ executor:
     value: 1s
   - name: WAIT_CONTAINER_STATUS_CHECK_INTERVAL
     value: 1s
-%{ if USE_MINIO_STORAGE }
 useDefaultArtifactRepo: true
 artifactRepository:
   archiveLogs: true
@@ -31,7 +30,6 @@ artifactRepository:
     secretKeySecret:
       name: ${MINIO_RELEASE_NAME}
       key: root-password
-%{ endif }
 server:
   clusterWorkflowTemplates:
     enabled: false

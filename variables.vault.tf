@@ -1,4 +1,4 @@
-variable "enable_vault" {
+variable "vault_enable" {
   type = bool
 }
 

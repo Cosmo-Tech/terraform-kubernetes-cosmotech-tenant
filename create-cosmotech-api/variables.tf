@@ -1,7 +1,3 @@
-variable "namespace" {
-  type = string
-}
-
 variable "api_replicas" {
   type = number
 }
@@ -78,11 +74,11 @@ variable "storage_account_name" {
   type = string
 }
 
-variable "network_client_id" {
+variable "network_sp_client_id" {
   type = string
 }
 
-variable "network_client_secret" {
+variable "network_sp_client_secret" {
   type = string
 }
 
@@ -204,5 +200,9 @@ variable "persistence_size" {
 }
 
 variable "persistence_storage_class" {
+  type = string
+}
+
+variable "kubernetes_tenant_namespace" {
   type = string
 }
