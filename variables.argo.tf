@@ -42,3 +42,7 @@ variable "archive_ttl" {
   type    = string
   default = "3d"
 }
+
+variable "argo_deploy" {
+  type = bool
+}

@@ -1,4 +1,4 @@
-variable "create_rabbitmq" {
+variable "rabbitmq_deploy" {
   description = "Whether to create RabbitMQ resources"
   type        = bool
   default     = true

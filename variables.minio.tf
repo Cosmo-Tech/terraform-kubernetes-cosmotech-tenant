@@ -22,3 +22,17 @@ variable "minio_version" {
   type    = string
   default = "12.1.3"
 }
+
+variable "argo_minio_secret_key" {
+  type = string
+  default = ""
+}
+
+variable "argo_minio_access_key" {
+  type = string
+  default = ""
+}
+
+variable "minio_deploy" {
+  type = bool
+}
