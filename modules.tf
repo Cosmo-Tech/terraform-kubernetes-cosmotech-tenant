@@ -36,7 +36,9 @@ module "create-argo" {
 module "cert-manager" {
   source = "./create-cert-manager"
 
-  count               = var.tls_certificate_type == "let_s_encrypt" ? 1 : 0
+  count = var.cert_deploy ? 1 : 0
+
+  tls_secret_name     = local.tls_secret_name
   namespace           = var.kubernetes_tenant_namespace
   cluster_issuer_name = var.cert_cluster_issuer_name
   tls_secret_name     = local.tls_secret_name
@@ -46,7 +48,7 @@ module "cert-manager" {
 module "create-tls" {
   source = "./create-secret-tls"
 
-  count = var.tls_certificate_type == "let_s_encrypt" ? 0 : 1
+  count = var.tls_deploy ? 1 : 0
 
   namespace                          = var.kubernetes_tenant_namespace
   tls_secret_name                    = var.custom_tls_secret_name
@@ -86,7 +88,6 @@ module "create-cosmotech-api" {
   monitoring_namespace          = var.monitoring_namespace
   api_dns_name                  = var.api_dns_name
   api_replicas                  = var.api_replicas
-  tls_secret_name               = local.tls_secret_name
   acr_login_password            = var.acr_login_password
   acr_login_server              = var.acr_login_server
   acr_login_username            = var.acr_login_username
@@ -102,19 +103,10 @@ module "create-cosmotech-api" {
   helm_repository               = var.cosmotech_api_helm_repository
   helm_release_name             = var.cosmotech_api_helm_release_name
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
-  redis_admin_password          = random_password.redis_admin_password.result
   redis_port                    = var.redis_port
-  argo_release_name             = module.create-argo.0.out_argo_workflows_release_name
-  argo_service_account          = module.create-argo.0.out_argo_workflows_service_account
   tenant_resource_group         = var.tenant_resource_group
   use_internal_result_services  = var.rabbitmq_deploy
-  postgresql_release_name       = module.create-postgresql-db.0.out_postgres_release_name
-  postgresql_reader_username    = module.create-postgresql-db.0.out_postgres_reader_username
-  postgresql_reader_password    = module.create-postgresql-db.0.out_postgres_reader_password
-  postgresql_writer_username    = module.create-postgresql-db.0.out_postgres_writer_username
-  postgresql_writer_password    = module.create-postgresql-db.0.out_postgres_writer_password
-  postgresql_admin_username     = module.create-postgresql-db.0.out_postgres_admin_username
-  postgresql_admin_password     = module.create-postgresql-db.0.out_postgres_admin_password
+  redis_admin_password          = var.redis_deploy ? module.create-redis-stack.0.out_redis_admin_password : ""
   rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
   rabbitmq_listener_username    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_username : ""
   rabbitmq_listener_password    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
@@ -130,6 +122,15 @@ module "create-cosmotech-api" {
   helm_release_name             = var.api_helm_release_name
   helm_repository               = var.api_helm_repository
   is_multitenant                = var.api_is_multitenant
+  argo_release_name             = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
+  argo_service_account          = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
+  postgresql_release_name       = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_release_name : ""
+  postgresql_reader_username    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_reader_username : ""
+  postgresql_reader_password    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_reader_password : ""
+  postgresql_writer_username    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_username : ""
+  postgresql_writer_password    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_password : ""
+  postgresql_admin_username     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_username : ""
+  postgresql_admin_password     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_password : ""
 
   depends_on = [
     module.create-argo,
@@ -143,7 +144,7 @@ module "create-cosmotech-api" {
 module "create-minio" {
   source = "./create-minio"
 
-  count = var.use_minio_storage ? 1 : 0
+  count = var.minio_deploy ? 1 : 0
 
   namespace                   = var.kubernetes_tenant_namespace
   monitoring_namespace        = var.monitoring_namespace
@@ -152,6 +153,7 @@ module "create-minio" {
   argo_minio_persistence_size = var.minio_argo_persistence_size
   argo_minio_requests_memory  = var.minio_argo_requests_memory
   argo_bucket_name            = var.minio_argo_bucket_name
+
   helm_chart                  = var.minio_helm_chart
   helm_repo_url               = var.minio_helm_repo_url
   minio_version               = var.minio_version
@@ -230,7 +232,8 @@ module "create-seaweedfs" {
 module "config_vault" {
   source = "./config-vault"
 
-  count                = var.create_platform_config ? 1 : 0
+  count = var.create_platform_config ? 1 : 0
+
   allowed_namespace    = var.allowed_namespace
   cluster_name         = var.cluster_name
   tenant_id            = var.tenant_id
@@ -265,24 +268,24 @@ module "config_platform" {
   eventbus_base_uri                        = var.eventbus_uri
   identity_authorization_url               = var.identity_authorization_url
   identity_token_url                       = var.identity_token_url
-  host_redis_password                      = random_password.redis_admin_password.result
-  rds_hub_listener                         = module.create-rabbitmq.0.out_rabbitmq_listener_password
-  rds_hub_sender                           = module.create-rabbitmq.0.out_rabbitmq_sender_password
-  argo_service_account_name                = module.create-argo.out_argo_workflows_service_account
-  rds_storage_admin                        = module.create-postgresql-db.0.out_postgres_admin_password
-  rds_storage_reader                       = module.create-postgresql-db.0.out_postgres_reader_password
-  rds_storage_writer                       = module.create-postgresql-db.0.out_postgres_writer_password
-  host_rds                                 = module.create-rabbitmq.0.out_rabbitmq_svc_name
-  host_rds_postgres                        = module.create-postgresql-db.0.out_postgres_svc_name
-  postgres_release_name                    = module.create-postgresql-db.0.out_postgres_release_name
-  argo_release_name                        = module.create-argo.out_argo_workflows_release_name
-  host_argo_workflow                       = module.create-argo.out_argo_workflows_svc_name
-  host_postgres                            = module.create-postgresql-db.0.out_postgres_svc_name
-  host_redis                               = module.create-redis-stack.out_host_svc_redis
   vault_address                            = var.vault_address
   vault_namespace                          = var.vault_namespace
   cluster_name                             = var.cluster_name
   kubernetes_tenant_namespace              = var.kubernetes_tenant_namespace
+  host_redis_password                      = var.redis_admin_password
+  rds_hub_listener                         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
+  rds_hub_sender                           = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
+  host_rds                                 = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_svc_name : ""
+  rds_storage_admin                        = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_password : ""
+  rds_storage_reader                       = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_reader_password : ""
+  rds_storage_writer                       = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_password : ""
+  host_rds_postgres                        = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_svc_name : ""
+  postgres_release_name                    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_release_name : ""
+  host_postgres                            = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_svc_name : ""
+  argo_service_account_name                = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
+  argo_release_name                        = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
+  host_argo_workflow                       = var.argo_deploy ? module.create-argo.0.out_argo_workflows_svc_name : ""
+  host_redis                               = var.redis_deploy ? module.create-redis-stack.0.out_host_svc_redis : ""
 
   depends_on = [
     module.create-postgresql-db,

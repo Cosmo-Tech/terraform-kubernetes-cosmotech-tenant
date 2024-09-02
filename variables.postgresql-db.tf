@@ -1,4 +1,4 @@
-variable "create_postgresql" {
+variable "postgresql_deploy" {
   type    = bool
   default = true
 }

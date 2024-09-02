@@ -1,6 +1,7 @@
 locals {
+  local_redis_admin_password = var.redis_admin_password == "" ? random_password.redis_admin_password.result : var.redis_admin_password
   values_redis = {
-    "REDIS_PASSWORD"          = var.redis_admin_password
+    "REDIS_PASSWORD"          = local.local_redis_admin_password
     "VERSION_REDIS_COSMOTECH" = var.version_redis_cosmotech
     "REDIS_DISK_SIZE"         = var.redis_pv_capacity
   }
@@ -8,6 +9,11 @@ locals {
 
 locals {
   instance_name = "${var.helm_release_name}-${var.namespace}"
+}
+
+resource "random_password" "redis_admin_password" {
+  length  = 30
+  special = false
 }
 
 resource "helm_release" "cosmotechredis" {
