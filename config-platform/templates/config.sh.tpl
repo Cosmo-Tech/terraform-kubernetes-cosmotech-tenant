@@ -5,7 +5,7 @@ vault_cmd() {
   kubectl -n $VAULT_NAMESPACE exec -i vault-0 -- vault "$@"
 }
 
-vault_cmd kv put -mount=fakeapp ${tenant_id}/clusters/${cluster_name}/${NAMESPACE}-platform-secrets API_VERSION=${API_VERSION} \
+vault_cmd kv put -mount=fakeapp ${tenant_id}/${cluster_name}/${NAMESPACE}-platform-secrets API_VERSION=${API_VERSION} \
   ACR_SERVER=${ACR_SERVER} \
   ACR_USERNAME=${ACR_USERNAME} \
   ACR_PASSWORD=${ACR_PASSWORD} \

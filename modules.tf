@@ -319,22 +319,21 @@ module "config_platform" {
 
   count = var.create_platform_config ? 1 : 0
 
-  namespace                                = var.kubernetes_tenant_namespace
   api_version                              = var.cosmotech_api_version
   acr_server                               = var.acr_login_server
   acr_username                             = var.acr_login_username
   acr_password                             = var.acr_login_password
-  acr_registry_url                         = var.acr_registry_url
+  acr_registry_url                         = var.acr_login_server_url
   host_cosmotech_api                       = var.api_dns_name
   monitoring_namespace                     = var.monitoring_namespace
   azure_tenant_id                          = var.tenant_id
   azure_appid_uri                          = var.identifier_uri
   azure_storage_account_key                = var.storage_account_key
   azure_storage_account_name               = var.storage_account_name
-  azure_platform_credentials_client_id     = var.tenant_client_id
-  azure_platform_credentials_client_secret = var.tenant_client_secret
-  azure_credentials_network_client_id      = var.network_client_id
-  azure_credentials_network_client_secret  = var.network_client_secret
+  azure_credentials_platform_client_id     = var.tenant_sp_client_id
+  azure_credentials_platform_client_secret = var.tenant_sp_client_secret
+  azure_credentials_network_client_id      = var.network_sp_client_id
+  azure_credentials_network_client_secret  = var.network_sp_client_secret
   adx_base_uri                             = var.adx_uri
   adx_ingest_uri                           = var.adx_ingestion_uri
   eventbus_base_uri                        = var.eventbus_uri
@@ -357,6 +356,7 @@ module "config_platform" {
   vault_address                            = var.vault_address
   vault_namespace                          = var.vault_namespace
   cluster_name                             = var.cluster_name
+  kubernetes_tenant_namespace              = var.kubernetes_tenant_namespace
 
   depends_on = [
     module.create-postgresql-db,
