@@ -102,6 +102,20 @@ data "kubernetes_secret" "acr_login_password" {
   }
 }
 
+data "kubernetes_secret" "storage_account_password" {
+  metadata {
+    name      = "storage-account-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
+data "kubernetes_secret" "acr_login_password" {
+  metadata {
+    name      = "acr-admin-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
 resource "helm_release" "cosmotech-api" {
   name       = local.local_instance_name
   repository = var.helm_repository

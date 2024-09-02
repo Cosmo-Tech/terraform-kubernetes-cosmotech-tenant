@@ -23,7 +23,7 @@ fi
 
 # Créer des politiques et des rôles pour namespace
 NAMESPACE_POLICY='
-path "${organization}/data/${tenant_id}/clusters/${cluster_name}/${allowed_namespace}-platform-secrets" {
+path "${organization}/data/${tenant_id}/${cluster_name}/${allowed_namespace}-platform-secrets" {
   capabilities = ["create", "read", "update", "patch", "delete", "list"]
 }
 '
