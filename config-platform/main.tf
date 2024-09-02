@@ -2,16 +2,18 @@ locals {
   local_network_client_secret  = var.azure_credentials_network_client_secret == "" ? data.kubernetes_secret.network_client_secret.data.password : var.azure_credentials_network_client_secret
   local_platform_client_secret = var.azure_credentials_platform_client_secret == "" ? data.kubernetes_secret.platform_client_secret.data.password : var.azure_credentials_platform_client_secret
   local_acr_login_password     = var.acr_password == "" ? data.kubernetes_secret.acr_login_password.data.password : var.acr_password
+  local_acr_login_username     = var.acr_username == "" ? data.kubernetes_secret.acr_login_password.data.username : var.acr_username
+  local_acr_login_registry     = var.acr_server == "" ? data.kubernetes_secret.acr_login_password.data.registry : var.acr_server
   local_storage_account_name   = var.azure_storage_account_key == "" ? data.kubernetes_secret.storage_account_password.data.password : var.azure_storage_account_key
   values_platform_config = {
     "cluster_name"                             = var.cluster_name
     "tenant_id"                                = var.azure_tenant_id
     "NAMESPACE"                                = var.kubernetes_tenant_namespace
     "API_VERSION"                              = var.api_version
-    "ACR_SERVER"                               = var.acr_server
-    "ACR_USERNAME"                             = var.acr_username
+    "ACR_SERVER"                               = local.local_acr_login_registry
+    "ACR_USERNAME"                             = local.local_acr_login_username
     "ACR_PASSWORD"                             = local.local_acr_login_password
-    "ACR_REGISTRY_URL"                         = var.acr_registry_url
+    "ACR_REGISTRY_URL"                         = "https://${local.local_acr_login_registry}"
     "HOST_COSMOTECH_API"                       = var.host_cosmotech_api
     "IDENTITY_AUTHORIZATION_URL"               = var.identity_authorization_url
     "IDENTITY_TOKEN_URL"                       = var.identity_token_url
