@@ -12,3 +12,7 @@ variable "secret_tls_secret_name" {
   type    = string
   default = "custom-tls-secret"
 }
+
+variable "tls_deploy" {
+  type = bool
+}

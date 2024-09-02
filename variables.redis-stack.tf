@@ -28,3 +28,12 @@ variable "redis_port" {
   type    = number
   default = 6379
 }
+
+variable "redis_deploy" {
+  type = bool
+}
+
+variable "redis_admin_password" {
+  type = string
+  default = ""
+}
