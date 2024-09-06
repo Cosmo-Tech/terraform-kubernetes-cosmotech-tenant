@@ -20,7 +20,8 @@ variable "vault_address" {
 }
 
 variable "vault_sops_namespace" {
-  type = string
+  type    = string
+  default = "vault-secrets-operator"
 }
 
 variable "organization" {
