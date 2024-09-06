@@ -33,3 +33,7 @@ variable "rabbitmq_sender_username" {
 variable "persistence_size" {
   type = string
 }
+
+variable "create_rabbitmq_secret" {
+  type = bool
+}
