@@ -1,12 +1,16 @@
 locals {
+  local_rabbitmq_admin_password    = var.create_rabbitmq_secret ? random_password.rabbitmq_admin_password.result : data.kubernetes_secret.rabbitmq_data.data.admin
+  local_rabbitmq_listener_password = var.create_rabbitmq_secret ? random_password.rabbitmq_listener_password.result : data.kubernetes_secret.rabbitmq_data.data.listener
+  local_rabbitmq_sender_password   = var.create_rabbitmq_secret ? random_password.rabbitmq_sender_password.result : data.kubernetes_secret.rabbitmq_data.data.sender
+
   values_rabbitmq = {
     "MONITORING_NAMESPACE" = var.monitoring_namespace
     "INSTANCE_NAME"        = local.instance_name
-    "ADMIN_PASSWORD"       = random_password.rabbitmq_admin_password.result
+    "ADMIN_PASSWORD"       = local.local_rabbitmq_admin_password
     "SENDER_USERNAME"      = var.rabbitmq_sender_username
-    "SENDER_PASSWORD"      = random_password.rabbitmq_sender_password.result
+    "SENDER_PASSWORD"      = local.local_rabbitmq_sender_password
     "LISTENER_USERNAME"    = var.rabbitmq_listener_username
-    "LISTENER_PASSWORD"    = random_password.rabbitmq_listener_password.result
+    "LISTENER_PASSWORD"    = local.local_rabbitmq_listener_password
     "PERSISTENCE_SIZE"     = var.persistence_size
   }
   instance_name = "${var.helm_release_name}-${var.namespace}"
@@ -41,7 +45,15 @@ resource "random_password" "rabbitmq_sender_password" {
   special = false
 }
 
+data "kubernetes_secret" "rabbitmq_data" {
+  metadata {
+    name      = "rabbitmq-data-secret"
+    namespace = var.namespace
+  }
+}
+
 resource "kubernetes_secret" "rabbitmq-secret" {
+  count = var.create_rabbitmq_secret ? 1 : 0
   metadata {
     name      = "${local.instance_name}-secret"
     namespace = var.namespace

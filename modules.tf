@@ -177,6 +177,7 @@ module "create-postgresql-db" {
   postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
   postgresql_secret_name        = var.postgresql_secret_name
   postgresql_version            = var.postgresql_version
+  create_secrets_config         = var.create_secrets_config
 }
 
 module "create-redis-stack" {
@@ -241,6 +242,8 @@ module "config_vault" {
   vault_namespace      = var.vault_namespace
   vault_sops_namespace = var.vault_sops_namespace
   organization         = var.organization
+  persistence_size           = var.rabbitmq_persistence_size
+  create_rabbitmq_secret     = var.create_rabbitmq_secret
 }
 
 module "config_platform" {
@@ -291,7 +294,6 @@ module "config_platform" {
     module.create-postgresql-db,
     module.create-argo,
     module.create-rabbitmq,
-    module.create-redis-stack,
-    module.config_vault
+    module.create-redis-stack
   ]
 }

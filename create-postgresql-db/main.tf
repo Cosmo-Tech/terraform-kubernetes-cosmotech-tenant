@@ -66,6 +66,7 @@ resource "random_password" "argo_postgresql_password" {
 }
 
 resource "kubernetes_secret" "postgresql-initdb" {
+  count = var.create_secrets_config ? 1 : 0
   metadata {
     name      = var.postgresql_initdb_secret_name
     namespace = var.namespace
@@ -83,6 +84,7 @@ resource "kubernetes_secret" "postgresql-initdb" {
 }
 
 resource "kubernetes_secret" "postgres-config" {
+  count = var.create_secrets_config ? 1 : 0
   metadata {
     name      = var.postgresql_secret_name
     namespace = var.namespace
