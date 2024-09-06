@@ -10,7 +10,7 @@ variable "tls_secret_name" {
 }
 
 variable "tls_certificate_type" {
-  type = string
+  type    = string
   default = "let_s_encrypt"
 }
 

@@ -49,3 +49,7 @@ variable "postgresql_version" {
 variable "persistence_size" {
   type = string
 }
+
+variable "create_secrets_config" {
+  type = bool
+}

@@ -1,7 +1,3 @@
-variable "vault_enable" {
-  type = bool
-}
-
 variable "vault_namespace" {
   type    = string
   default = "vault"

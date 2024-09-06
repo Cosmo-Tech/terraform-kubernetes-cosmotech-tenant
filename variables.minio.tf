@@ -24,12 +24,12 @@ variable "minio_version" {
 }
 
 variable "argo_minio_secret_key" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "argo_minio_access_key" {
-  type = string
+  type    = string
   default = ""
 }
 

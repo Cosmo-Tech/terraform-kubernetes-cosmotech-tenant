@@ -12,7 +12,7 @@ output "out_postgres_reader_username" {
 }
 
 output "out_postgres_reader_password" {
-  value     = random_password.postgresql_reader_password.result
+  value     = var.create_secrets_config ? random_password.postgresql_reader_password.result : ""
   sensitive = true
 }
 
@@ -22,7 +22,7 @@ output "out_postgres_writer_username" {
 }
 
 output "out_postgres_writer_password" {
-  value     = random_password.postgresql_writer_password.result
+  value     = var.create_secrets_config ? random_password.postgresql_writer_password.result : ""
   sensitive = true
 }
 
@@ -32,6 +32,6 @@ output "out_postgres_admin_username" {
 }
 
 output "out_postgres_admin_password" {
-  value     = random_password.postgresql_admin_password.result
+  value     = var.create_secrets_config ? random_password.postgresql_admin_password.result : ""
   sensitive = true
 }

@@ -34,6 +34,6 @@ variable "redis_deploy" {
 }
 
 variable "redis_admin_password" {
-  type = string
+  type    = string
   default = ""
 }

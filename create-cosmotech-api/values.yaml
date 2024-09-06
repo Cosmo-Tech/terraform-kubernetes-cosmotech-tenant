@@ -2,7 +2,7 @@ replicaCount: ${API_REPLICAS}
 api:
   version: ${API_VERSION_PATH}
   multiTenant: ${MULTI_TENANT}
-  servletContextPath: /cosmotech-api
+  servletContextPath: /
 
 image:
   repository: ghcr.io/cosmo-tech/cosmotech-api

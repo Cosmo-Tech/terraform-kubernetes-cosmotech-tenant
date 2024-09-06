@@ -149,6 +149,7 @@ module "create-postgresql-db" {
   postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
   argo_postgresql_user          = var.argo_postgresql_user
   postgresql_secret_name        = var.postgresql_secret_name
+  create_secrets_config         = var.create_secrets_config
 }
 
 module "create-redis-stack" {
@@ -182,20 +183,7 @@ module "create-rabbitmq" {
   rabbitmq_listener_username = var.rabbitmq_listener_username
   rabbitmq_sender_username   = var.rabbitmq_sender_username
   persistence_size           = var.rabbitmq_persistence_size
-}
-
-module "config_vault" {
-  source = "./config-vault"
-
-  count = var.create_platform_config ? 1 : 0
-
-  allowed_namespace    = var.allowed_namespace
-  cluster_name         = var.cluster_name
-  tenant_id            = var.tenant_id
-  vault_address        = var.vault_address
-  vault_namespace      = var.vault_namespace
-  vault_sops_namespace = var.vault_sops_namespace
-  organization         = var.organization
+  create_rabbitmq_secret     = var.create_rabbitmq_secret
 }
 
 module "config_platform" {
@@ -246,8 +234,7 @@ module "config_platform" {
     module.create-postgresql-db,
     module.create-argo,
     module.create-rabbitmq,
-    module.create-redis-stack,
-    module.config_vault
+    module.create-redis-stack
   ]
 }
 

@@ -38,3 +38,7 @@ variable "rabbitmq_persistence_size" {
   type    = string
   default = "8Gi"
 }
+
+variable "create_rabbitmq_secret" {
+  type = bool
+}

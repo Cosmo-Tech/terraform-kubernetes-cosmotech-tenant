@@ -1,4 +1,10 @@
 locals {
+  local_acr_login_password   = var.acr_login_password == "" ? data.kubernetes_secret.acr_login_password.data.password : var.acr_login_password
+  local_storage_account_name = var.storage_account_key == "" ? data.kubernetes_secret.storage_account_password.data.password : var.storage_account_key
+  local_instance_name        = "${var.helm_release_name}-${var.kubernetes_tenant_namespace}"
+  local_tls_secret_name      = "${var.tls_secret_name}-${var.kubernetes_tenant_namespace}"
+  local_identifier_uri       = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
+
   values_cosmotech_api = {
     "API_REPLICAS"                  = var.api_replicas
     "MONITORING_ENABLED"            = var.monitoring_enabled
@@ -48,11 +54,6 @@ locals {
     "PERSISTENCE_SIZE"              = var.persistence_size
     "PERSISTENCE_STORAGE_CLASS"     = var.persistence_storage_class
   }
-  local_acr_login_password   = var.acr_login_password == "" ? data.kubernetes_secret.acr_login_password : var.acr_login_password
-  local_storage_account_name = var.storage_account_key == "" ? data.kubernetes_secret.storage_account_password : var.storage_account_key
-  local_instance_name        = "${var.helm_release_name}-${var.kubernetes_tenant_namespace}"
-  local_tls_secret_name      = "${var.tls_secret_name}-${var.kubernetes_tenant_namespace}"
-  local_identifier_uri       = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
 }
 
 data "kubernetes_secret" "storage_account_password" {
