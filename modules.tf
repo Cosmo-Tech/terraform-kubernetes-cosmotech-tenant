@@ -168,8 +168,6 @@ module "create-postgresql-db" {
   # 
   count = var.postgresql_deploy ? 1 : 0
 
-  count = var.postgresql_deploy ? 1 : 0
-
   namespace                        = var.kubernetes_tenant_namespace
   monitoring_namespace             = var.monitoring_namespace
   persistence_size                 = var.postgresql_persistence_size
@@ -366,8 +364,7 @@ module "config_platform" {
     module.create-postgresql-db,
     module.create-argo,
     module.create-rabbitmq,
-    module.create-redis-stack,
-    module.config_vault
+    module.create-redis-stack
   ]
 }
 
