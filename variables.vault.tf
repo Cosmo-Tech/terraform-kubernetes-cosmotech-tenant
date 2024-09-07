@@ -13,6 +13,7 @@ variable "cluster_name" {
 
 variable "vault_address" {
   type = string
+  default = "http://vault.vault.svc.cluster.local"
 }
 
 variable "vault_sops_namespace" {
@@ -20,6 +21,6 @@ variable "vault_sops_namespace" {
   default = "vault-secrets-operator"
 }
 
-variable "organization" {
+variable "vault_engine_secret" {
   type = string
 }

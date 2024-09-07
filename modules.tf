@@ -136,20 +136,20 @@ module "create-postgresql-db" {
   # 
   count = var.postgresql_deploy ? 1 : 0
 
-  namespace                     = var.kubernetes_tenant_namespace
-  monitoring_namespace          = var.monitoring_namespace
-  persistence_size              = var.postgresql_persistence_size
-  postgresql_version            = var.postgresql_version
-  helm_repo_url                 = var.postgresql_helm_repo_url
-  helm_chart                    = var.postgresql_helm_chart
-  argo_database                 = var.argo_database
-  cosmotech_api_admin_username  = var.cosmotech_api_admin_username
-  cosmotech_api_reader_username = var.cosmotech_api_reader_username
-  cosmotech_api_writer_username = var.cosmotech_api_writer_username
-  postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
-  argo_postgresql_user          = var.argo_postgresql_user
-  postgresql_secret_name        = var.postgresql_secret_name
-  create_secrets_config         = var.create_secrets_config
+  namespace                        = var.kubernetes_tenant_namespace
+  monitoring_namespace             = var.monitoring_namespace
+  persistence_size                 = var.postgresql_persistence_size
+  postgresql_version               = var.postgresql_version
+  helm_repo_url                    = var.postgresql_helm_repo_url
+  helm_chart                       = var.postgresql_helm_chart
+  argo_database                    = var.argo_database
+  cosmotech_api_admin_username     = var.cosmotech_api_admin_username
+  cosmotech_api_reader_username    = var.cosmotech_api_reader_username
+  cosmotech_api_writer_username    = var.cosmotech_api_writer_username
+  postgresql_initdb_secret_name    = var.postgresql_initdb_secret_name
+  argo_postgresql_user             = var.argo_postgresql_user
+  postgresql_secret_name           = var.postgresql_secret_name
+  postgresql_secrets_config_create = var.postgresql_secrets_config_create
 }
 
 module "create-redis-stack" {
@@ -213,6 +213,7 @@ module "config_platform" {
   identity_token_url                       = var.identity_token_url
   vault_address                            = var.vault_address
   vault_namespace                          = var.vault_namespace
+  vault_engine_secret                      = var.vault_engine_secret
   cluster_name                             = var.cluster_name
   kubernetes_tenant_namespace              = var.kubernetes_tenant_namespace
   host_redis_password                      = var.redis_admin_password

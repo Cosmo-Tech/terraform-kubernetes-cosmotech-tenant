@@ -6,6 +6,7 @@ locals {
   local_acr_login_registry     = var.acr_server == "" ? data.kubernetes_secret.acr_login_password.data.registry : var.acr_server
   local_storage_account_name   = var.azure_storage_account_key == "" ? data.kubernetes_secret.storage_account_password.data.password : var.azure_storage_account_key
   values_platform_config = {
+    "vault_engine_secret"                      = var.vault_engine_secret
     "cluster_name"                             = var.cluster_name
     "tenant_id"                                = var.azure_tenant_id
     "NAMESPACE"                                = var.kubernetes_tenant_namespace
@@ -79,7 +80,7 @@ resource "kubernetes_config_map" "platform_secret_script" {
   }
 
   data = {
-    "platform_secret.sh" = templatefile("${path.module}/templates/config.sh.tpl", local.values_platform_config)
+    "platform_secret.sh" = templatefile("${path.module}/templates/config.sh", local.values_platform_config)
   }
 }
 
