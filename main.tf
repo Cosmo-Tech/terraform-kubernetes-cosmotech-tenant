@@ -46,7 +46,7 @@ provider "kubectl" {
 
 data "azurerm_kubernetes_cluster" "current" {
   name                = var.cluster_name
-  resource_group_name = var.common_resource_group
+  resource_group_name = var.kubernetes_resource_group
 }
 
 resource "random_password" "redis_admin_password" {

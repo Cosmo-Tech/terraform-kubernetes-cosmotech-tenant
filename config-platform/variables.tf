@@ -149,3 +149,7 @@ variable "vault_address" {
 variable "cluster_name" {
   type = string
 }
+
+variable "vault_engine_secret" {
+  type = string
+}

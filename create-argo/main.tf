@@ -46,7 +46,7 @@ resource "helm_release" "argo" {
 # Otherwise, after `terraform destroy`:
 # │ Error: uninstallation completed with 1 error(s): uninstall: Failed to purge
 #   the release: release: not found
-resource "time_sleep" "wait_30_seconds" {
+resource "time_sleep" "wait_seconds" {
   depends_on = [helm_release.argo]
 
   destroy_duration = "30s"

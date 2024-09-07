@@ -178,6 +178,7 @@ module "create-postgresql-db" {
   postgresql_secret_name        = var.postgresql_secret_name
   postgresql_version            = var.postgresql_version
   create_secrets_config         = var.create_secrets_config
+  postgresql_secrets_config_create = var.postgresql_secrets_config_create
 }
 
 module "create-redis-stack" {
@@ -273,6 +274,7 @@ module "config_platform" {
   identity_token_url                       = var.identity_token_url
   vault_address                            = var.vault_address
   vault_namespace                          = var.vault_namespace
+  vault_engine_secret                      = var.vault_engine_secret
   cluster_name                             = var.cluster_name
   kubernetes_tenant_namespace              = var.kubernetes_tenant_namespace
   host_redis_password                      = var.redis_admin_password
