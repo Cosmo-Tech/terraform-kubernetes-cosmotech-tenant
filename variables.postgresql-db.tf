@@ -53,6 +53,6 @@ variable "postgresql_secret_name" {
   default = "postgres-config"
 }
 
-variable "create_secrets_config" {
+variable "postgresql_secrets_config_create" {
   type = bool
 }

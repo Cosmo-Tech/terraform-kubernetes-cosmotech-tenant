@@ -22,22 +22,27 @@ variable "storage_account_name" {
 
 variable "acr_login_password" {
   type = string
+  default = ""
 }
 
 variable "acr_login_server" {
   type = string
+  default = ""
 }
 
 variable "acr_login_username" {
   type = string
+  default = ""
 }
 
 variable "adx_ingestion_uri" {
   type = string
+  default = ""
 }
 
 variable "adx_uri" {
   type = string
+  default = ""
 }
 
 variable "cosmos_uri" {
@@ -52,8 +57,9 @@ variable "cosmos_key" {
 
 variable "eventbus_uri" {
   type = string
+  default = ""
 }
 
-variable "common_resource_group" {
+variable "kubernetes_resource_group" {
   type = string
 }

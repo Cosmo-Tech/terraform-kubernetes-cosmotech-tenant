@@ -50,6 +50,6 @@ variable "persistence_size" {
   type = string
 }
 
-variable "create_secrets_config" {
+variable "postgresql_secrets_config_create" {
   type = bool
 }
