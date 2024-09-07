@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    kubectl = {
-      source  = "alekc/kubectl"
-      version = "2.0.4"
-    }
-  }
-}
-
 locals {
   values_argo = {
     "ARGO_SERVICE_ACCOUNT"        = local.argo_service_account
