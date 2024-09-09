@@ -217,3 +217,34 @@ variable "list_apikey_allowed" {
 variable "identifier_uri" {
   type = string
 }
+
+variable "identity_provider" {
+  type = object({
+    code = string
+    authorizationUrl = string
+    tokenUrl = string
+    defaultScopes = map(any)
+    containerScopes = map(any)
+    serverBaseUrl = string
+    audience = string
+    identity = object({
+      clientId = string
+      clientSecret = string
+      tenantId = string
+    })
+  })
+  default = {
+    audience = ""
+    authorizationUrl = ""
+    code = ""
+    containerScopes = {}
+    defaultScopes = {}
+    identity = {
+      clientId = ""
+      clientSecret = ""
+      tenantId = ""
+    }
+    serverBaseUrl = ""
+    tokenUrl = ""
+  }
+}

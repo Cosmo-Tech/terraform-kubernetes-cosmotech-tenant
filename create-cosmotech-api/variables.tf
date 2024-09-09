@@ -217,3 +217,7 @@ variable "persistence_size" {
 variable "persistence_storage_class" {
   type = string
 }
+
+variable "identity_provider" {
+  
+}
