@@ -12,7 +12,7 @@ output "out_rabbitmq_listener_username" {
 }
 
 output "out_rabbitmq_listener_password" {
-  value     = var.create_rabbitmq_secret ? random_password.rabbitmq_listener_password.result : data.kubernetes_secret.rabbitmq_data.data.listener
+  value     = var.create_rabbitmq_secret ? random_password.rabbitmq_listener_password.result : data.kubernetes_secret.rabbitmq_data.0.data.listener
   sensitive = true
 }
 
@@ -22,6 +22,6 @@ output "out_rabbitmq_sender_username" {
 }
 
 output "out_rabbitmq_sender_password" {
-  value     = var.create_rabbitmq_secret ? random_password.rabbitmq_sender_password.result : data.kubernetes_secret.rabbitmq_data.data.sender
+  value     = var.create_rabbitmq_secret ? random_password.rabbitmq_sender_password.result : data.kubernetes_secret.rabbitmq_data.0.data.sender
   sensitive = true
 }

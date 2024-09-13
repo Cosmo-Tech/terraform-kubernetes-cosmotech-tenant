@@ -1,7 +1,7 @@
 locals {
-  local_rabbitmq_admin_password    = var.create_rabbitmq_secret ? random_password.rabbitmq_admin_password.result : data.kubernetes_secret.rabbitmq_data.data.admin
-  local_rabbitmq_listener_password = var.create_rabbitmq_secret ? random_password.rabbitmq_listener_password.result : data.kubernetes_secret.rabbitmq_data.data.listener
-  local_rabbitmq_sender_password   = var.create_rabbitmq_secret ? random_password.rabbitmq_sender_password.result : data.kubernetes_secret.rabbitmq_data.data.sender
+  local_rabbitmq_admin_password    = var.create_rabbitmq_secret ? random_password.rabbitmq_admin_password.result : data.kubernetes_secret.rabbitmq_data.0.data.admin
+  local_rabbitmq_listener_password = var.create_rabbitmq_secret ? random_password.rabbitmq_listener_password.result : data.kubernetes_secret.rabbitmq_data.0.data.listener
+  local_rabbitmq_sender_password   = var.create_rabbitmq_secret ? random_password.rabbitmq_sender_password.result : data.kubernetes_secret.rabbitmq_data.0.data.sender
 
   values_rabbitmq = {
     "MONITORING_NAMESPACE" = var.monitoring_namespace
