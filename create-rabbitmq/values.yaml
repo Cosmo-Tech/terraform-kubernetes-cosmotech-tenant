@@ -14,56 +14,6 @@ auth:
   existingPasswordSecret: ${INSTANCE_NAME}-secret
   existingSecretPasswordKey: admin-password
 extraPlugins: "rabbitmq_amqp1_0 rabbitmq_prometheus"
-extraSecrets:
-  ${INSTANCE_NAME}-load-definition:
-    load_definition.json: |
-      {
-        "users": [
-          {
-            "name": "admin",
-            "password": "${ADMIN_PASSWORD}",
-            "tags": "administrator"
-          },
-          {
-            "name": "${LISTENER_USERNAME}",
-            "password": "${LISTENER_PASSWORD}",
-            "tags": ""
-          },
-          {
-            "name": "${SENDER_USERNAME}",
-            "password": "${SENDER_PASSWORD}",
-            "tags": ""
-          }
-        ],
-        "vhosts": [
-          {
-            "name": "/"
-          }
-        ],
-        "permissions": [
-          {
-            "user": "admin",
-            "vhost": "/",
-            "configure": ".*",
-            "write": ".*",
-            "read": ".*"
-          },
-          {
-            "user": "${LISTENER_USERNAME}",
-            "vhost": "/",
-            "configure": ".*",
-            "write": ".*",
-            "read": ".*"
-          },
-          {
-            "user": "${SENDER_USERNAME}",
-            "vhost": "/",
-            "configure": ".*",
-            "write": ".*",
-            "read": ".*"
-          }
-        ]
-      }
 loadDefinition:
   enabled: true
   existingSecret: ${INSTANCE_NAME}-load-definition
