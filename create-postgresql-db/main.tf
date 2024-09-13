@@ -33,7 +33,7 @@ resource "helm_release" "postgresql" {
   version    = var.postgresql_version
   namespace  = var.namespace
 
-  reuse_values = true
+  reset_values = true
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_postgresql)
