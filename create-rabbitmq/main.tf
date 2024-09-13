@@ -46,6 +46,7 @@ resource "random_password" "rabbitmq_sender_password" {
 }
 
 data "kubernetes_secret" "rabbitmq_data" {
+  count = var.create_rabbitmq_secret ? 0 : 1
   metadata {
     name      = "rabbitmq-data-secret"
     namespace = var.namespace
