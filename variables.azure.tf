@@ -14,10 +14,12 @@ variable "network_sp_client_secret" {
 
 variable "storage_account_key" {
   type = string
+  default = ""
 }
 
 variable "storage_account_name" {
   type = string
+  default = ""
 }
 
 variable "acr_login_password" {
