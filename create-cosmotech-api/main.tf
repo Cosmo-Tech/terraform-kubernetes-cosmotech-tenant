@@ -1,6 +1,9 @@
 locals {
   local_acr_login_password   = var.acr_login_password == "" ? data.kubernetes_secret.acr_login_password.data.password : var.acr_login_password
-  local_storage_account_name = var.storage_account_key == "" ? data.kubernetes_secret.storage_account_password.data.password : var.storage_account_key
+  local_acr_login_registry   = var.acr_login_server == "" ? data.kubernetes_secret.acr_login_password.data.registry : var.acr_login_server
+  local_acr_login_username   = var.acr_login_username == "" ? data.kubernetes_secret.acr_login_password.data.username : var.acr_login_username
+  local_storage_account_key  = var.storage_account_key == "" ? data.kubernetes_secret.storage_account_password.data.password : var.storage_account_key
+  local_storage_account_name = var.storage_account_name == "" ? data.kubernetes_secret.storage_account_password.data.name : var.storage_account_name
   local_instance_name        = "${var.helm_release_name}-${var.kubernetes_tenant_namespace}"
   local_tls_secret_name      = "${var.tls_secret_name}-${var.kubernetes_tenant_namespace}"
   local_identifier_uri       = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
@@ -21,8 +24,8 @@ locals {
     "API_VERSION"                   = var.cosmotech_api_version
     "API_VERSION_PATH"              = var.cosmotech_api_version_path
     "ACR_LOGIN_PASSWORD"            = local.local_acr_login_password
-    "ACR_LOGIN_SERVER"              = var.acr_login_server
-    "ACR_LOGIN_USERNAME"            = var.acr_login_username
+    "ACR_LOGIN_SERVER"              = local.local_acr_login_registry
+    "ACR_LOGIN_USERNAME"            = local.local_acr_login_username
     "COSMOS_KEY"                    = var.cosmos_key
     "COSMOS_URI"                    = var.cosmos_uri
     "CLIENT_ID"                     = var.client_id
@@ -31,8 +34,8 @@ locals {
     "ADX_URI"                       = var.adx_uri
     "ADX_INGESTION_URI"             = var.adx_ingestion_uri
     "EVENTBUS_URI"                  = var.eventbus_uri
-    "STORAGE_ACCOUNT_KEY"           = local.local_storage_account_name
-    "STORAGE_ACCOUNT_NAME"          = var.storage_account_name
+    "STORAGE_ACCOUNT_KEY"           = local.local_storage_account_key
+    "STORAGE_ACCOUNT_NAME"          = local.local_storage_account_name
     "NETWORK_ADT_PASSWORD"          = var.network_sp_client_secret
     "NETWORK_ADT_CLIENTID"          = var.network_sp_client_id
     "MULTI_TENANT"                  = var.is_multitenant

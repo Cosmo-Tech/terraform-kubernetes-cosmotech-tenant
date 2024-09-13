@@ -23,7 +23,7 @@ resource "helm_release" "rabbitmq" {
   version    = var.helm_chart_version
   namespace  = var.namespace
 
-  reuse_values = true
+  reset_values = true
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_rabbitmq)
