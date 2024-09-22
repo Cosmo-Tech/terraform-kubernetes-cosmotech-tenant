@@ -9,7 +9,3 @@ variable "cert_tls_namespace" {
 variable "cert_tls_secret_name" {
   type = string
 }
-
-variable "cert_deploy" {
-  type = bool
-}
