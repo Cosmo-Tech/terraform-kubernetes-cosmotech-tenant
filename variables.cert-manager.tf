@@ -13,7 +13,3 @@ variable "tls_certificate_type" {
   type    = string
   default = "let_s_encrypt"
 }
-
-variable "cert_deploy" {
-  type = bool
-}

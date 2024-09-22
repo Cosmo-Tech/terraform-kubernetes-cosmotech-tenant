@@ -1,9 +1,9 @@
-variable "tls_certificate_custom_certificate" {
-  type    = string
+variable "certificate_cert_content" {
+  type = string
   default = ""
 }
 
-variable "tls_certificate_custom_key" {
+variable "certificate_key_content" {
   type    = string
   default = ""
 }
@@ -11,8 +11,4 @@ variable "tls_certificate_custom_key" {
 variable "secret_tls_secret_name" {
   type    = string
   default = "custom-tls-secret"
-}
-
-variable "tls_deploy" {
-  type = bool
 }
