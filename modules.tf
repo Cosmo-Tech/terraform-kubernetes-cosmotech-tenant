@@ -36,7 +36,7 @@ module "create-argo" {
 module "cert-manager" {
   source = "./create-cert-manager"
 
-  count = var.cert_deploy ? 1 : 0
+  count = var.tls_certificate_type == "let_s_encrypt" ? 1 : 0
 
   tls_secret_name     = local.tls_secret_name
   namespace           = var.kubernetes_tenant_namespace
@@ -48,7 +48,7 @@ module "cert-manager" {
 module "create-tls" {
   source = "./create-secret-tls"
 
-  count = var.tls_deploy ? 1 : 0
+  count = var.tls_certificate_type == "custom" ? 1 : 0
 
   namespace                          = var.kubernetes_tenant_namespace
   tls_secret_name                    = var.custom_tls_secret_name

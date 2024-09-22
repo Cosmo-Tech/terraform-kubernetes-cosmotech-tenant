@@ -10,7 +10,3 @@ variable "cert_tls_secret_name" {
   type = string
   default = "let_s_encrypt"
 }
-
-variable "cert_deploy" {
-  type = bool
-}
