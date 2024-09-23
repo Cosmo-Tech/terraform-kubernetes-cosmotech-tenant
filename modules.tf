@@ -40,8 +40,8 @@ module "create-tls" {
 
   count = var.tls_certificate_type == "custom" ? 1 : 0
 
+  tls_secret_name          = local.tls_secret_name
   namespace                = var.kubernetes_tenant_namespace
-  tls_secret_name          = var.tls_secret_name
   certificate_cert_content = var.certificate_cert_content
   certificate_key_content  = var.certificate_key_content
 
