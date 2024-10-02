@@ -220,31 +220,31 @@ variable "identifier_uri" {
 
 variable "identity_provider" {
   type = object({
-    code = string
+    code             = string
     authorizationUrl = string
-    tokenUrl = string
-    defaultScopes = map(any)
-    containerScopes = map(any)
-    serverBaseUrl = string
-    audience = string
+    tokenUrl         = string
+    defaultScopes    = map(any)
+    containerScopes  = map(any)
+    serverBaseUrl    = string
+    audience         = string
     identity = object({
-      clientId = string
+      clientId     = string
       clientSecret = string
-      tenantId = string
+      tenantId     = string
     })
   })
   default = {
-    audience = ""
+    audience         = ""
     authorizationUrl = ""
-    code = ""
-    containerScopes = {}
-    defaultScopes = {}
+    code             = ""
+    containerScopes  = {}
+    defaultScopes    = {}
     identity = {
-      clientId = ""
+      clientId     = ""
       clientSecret = ""
-      tenantId = ""
+      tenantId     = ""
     }
     serverBaseUrl = ""
-    tokenUrl = ""
+    tokenUrl      = ""
   }
 }

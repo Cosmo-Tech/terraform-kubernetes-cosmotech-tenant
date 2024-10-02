@@ -219,5 +219,5 @@ variable "persistence_storage_class" {
 }
 
 variable "identity_provider" {
-  
+
 }
