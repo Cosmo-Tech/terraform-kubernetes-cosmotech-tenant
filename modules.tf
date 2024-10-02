@@ -88,6 +88,8 @@ module "create-cosmotech-api" {
   persistence_size              = var.cosmotech_api_persistence_size
   persistence_storage_class     = var.cosmotech_api_persistence_storage_class
 
+  identity_provider = var.identity_provider
+
   depends_on = [
     module.create-argo,
     module.create-postgresql-db,

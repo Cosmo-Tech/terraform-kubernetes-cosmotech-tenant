@@ -45,14 +45,7 @@ config:
         username: "${ACR_LOGIN_USERNAME}"
         password: "${ACR_LOGIN_PASSWORD}"
         checkSolutionImage: false
-      identityProvider:
-        code: azure
-        authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
-        tokenUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token"
-        defaultScopes:
-          "[${APP_ID_URI}/platform]": "${TENANT_RESOURCE_GROUP} scope"
-        containerScopes:
-          "[${APP_ID_URI}/.default]": "${TENANT_RESOURCE_GROUP} scope"
+      identityProvider: ${IDENTITY_PROVIDER}
       namespace: ${NAMESPACE}
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
