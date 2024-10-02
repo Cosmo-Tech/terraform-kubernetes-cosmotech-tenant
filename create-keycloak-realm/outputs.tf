@@ -1,0 +1,1 @@
+# Outputs to be consumed by Cosmo Tech API

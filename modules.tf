@@ -135,3 +135,12 @@ module "create-rabbitmq" {
   monitoring_namespace = var.monitoring_namespace
   persistence_size     = var.rabbitmq_persistence_size
 }
+
+module "create-keycloak" {
+  source = "./create-keycloak-realm"
+
+  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
+  api_dns_name = var.api_dns_name
+
+  depends_on = [ module.create-cosmotech-api ]
+}
