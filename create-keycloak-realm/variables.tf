@@ -5,5 +5,5 @@ variable "kubernetes_tenant_namespace" {
 
 variable "api_dns_name" {
   description = "The DNS name of the API"
-  type        = string  
+  type        = string
 }

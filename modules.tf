@@ -87,6 +87,8 @@ module "create-cosmotech-api" {
   identifier_uri                = var.identifier_uri
   persistence_size              = var.cosmotech_api_persistence_size
   persistence_storage_class     = var.cosmotech_api_persistence_storage_class
+  keycloak_client_id            = module.create-keycloak.out_keycloak_client_id
+  keycloak_client_secret        = module.create-keycloak.out_keycloak_client_secret
 
   depends_on = [
     module.create-argo,
@@ -140,7 +142,7 @@ module "create-keycloak" {
   source = "./create-keycloak-realm"
 
   kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
-  api_dns_name = var.api_dns_name
+  api_dns_name                = var.api_dns_name
 
-  depends_on = [ module.create-cosmotech-api ]
+  depends_on = [module.create-argo]
 }

@@ -217,3 +217,19 @@ variable "list_apikey_allowed" {
 variable "identifier_uri" {
   type = string
 }
+
+variable "keycloak_client_id" {
+  type = string
+}
+
+variable "keycloak_username" {
+  type = string
+}
+
+variable "keycloak_password" {
+  type = string
+}
+
+variable "keycloak_url" {
+  type = string
+}

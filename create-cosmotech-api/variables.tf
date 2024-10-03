@@ -217,3 +217,11 @@ variable "persistence_size" {
 variable "persistence_storage_class" {
   type = string
 }
+
+variable "keycloak_client_id" {
+  type = string
+}
+
+variable "keycloak_client_secret" {
+  type = string
+}
