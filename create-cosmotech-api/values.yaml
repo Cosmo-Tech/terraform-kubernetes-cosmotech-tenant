@@ -46,6 +46,8 @@ config:
           clientId: ${KEYCLOAK_CLIENT_ID}
           clientSecret: ${KEYCLOAK_CLIENT_SECRET}
           tenantId: ${NAMESPACE}
+        tls:
+          enabled: false
       namespace: ${NAMESPACE}
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
@@ -104,6 +106,8 @@ config:
           sender:
             username: ${RABBITMQ_SENDER_USERNAME}
             password: ${RABBITMQ_SENDER_PASSWORD}
+          tls:
+            enabled: false
       twincache:
         host: "cosmotechredis-${NAMESPACE}-master.${NAMESPACE}.svc.cluster.local"
         port: ${REDIS_PORT}

@@ -8,8 +8,9 @@ terraform {
 }
 
 resource "keycloak_realm" "realm" {
-  realm   = var.kubernetes_tenant_namespace
-  enabled = true
+  realm                       = var.kubernetes_tenant_namespace
+  default_signature_algorithm = "RS256"
+  enabled                     = true
 }
 
 # create web client
@@ -35,6 +36,56 @@ resource "keycloak_openid_client" "cosmotech-web-client" {
   base_url           = "/cosmotech-api/${var.kubernetes_tenant_namespace}/v4/"
   web_origins        = ["+"]
   full_scope_allowed = true
+}
+
+resource "keycloak_generic_protocol_mapper" "branch_code_mapper" {
+  realm_id        = keycloak_realm.realm.id
+  client_id       = keycloak_openid_client.cosmotech-web-client.id
+  name            = "BranchCodeMapper"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-attribute-mapper"
+  config = {
+    "aggregate.attrs" : "false",
+    "multivalued" : "false",
+    "userinfo.token.claim" : "true",
+    "user.attribute" : "branch",
+    "id.token.claim" : "false",
+    "access.token.claim" : "true",
+    "claim.name" : "branch",
+    "jsonType.label" : "String"
+  }
+}
+
+resource "keycloak_generic_protocol_mapper" "email_mapper" {
+  realm_id        = keycloak_realm.realm.id
+  client_id       = keycloak_openid_client.cosmotech-web-client.id
+  name            = "email"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-property-mapper"
+  config = {
+    "user.attribute" : "email",
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "claim.name" : "email",
+    "jsonType.label" : "String",
+    "userinfo.token.claim" : "true"
+  }
+}
+
+resource "keycloak_generic_protocol_mapper" "realm_roles_mapper" {
+  realm_id        = keycloak_realm.realm.id
+  client_id       = keycloak_openid_client.cosmotech-web-client.id
+  name            = "realm roles"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-realm-role-mapper"
+  config = {
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "claim.name" : "userRoles",
+    "jsonType.label" : "String",
+    "multivalued" : "true",
+    "userinfo.token.claim" : "true"
+  }
 }
 
 resource "keycloak_openid_client_default_scopes" "client_default_scopes" {
@@ -102,4 +153,12 @@ resource "keycloak_user" "user_with_initial_password" {
   realm_id = keycloak_realm.realm.id
   username = "default-tenant-user"
   enabled  = true
+
+  lifecycle {
+    ignore_changes = [
+      email,
+      first_name,
+      last_name,
+    ]
+  }
 }

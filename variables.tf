@@ -219,8 +219,8 @@ variable "identifier_uri" {
 }
 
 variable "create_keycloak" {
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
   description = <<EOT
 Wether to create Keycloak resources fot this tenant :
 - realm
