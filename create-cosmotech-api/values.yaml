@@ -34,25 +34,20 @@ config:
   csm:
     platform:
       containerRegistry:
-        # Compatibility with API version 3.x and lower
-        provider: azure
-        registryUrl: "https://${ACR_LOGIN_SERVER}"
-        registryUserName: "${ACR_LOGIN_USERNAME}"
-        registryPassword: "${ACR_LOGIN_PASSWORD}"
-        # End of compatibility block
-        scheme: https
-        host: "${ACR_LOGIN_SERVER}"
-        username: "${ACR_LOGIN_USERNAME}"
-        password: "${ACR_LOGIN_PASSWORD}"
-        checkSolutionImage: false
       identityProvider:
-        code: azure
-        authorizationUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/authorize"
-        tokenUrl: "https://login.microsoftonline.com/${TENANT_ID}/oauth2/v2.0/token"
+        code: keycloak
+        authorizationUrl: "https://${COSMOTECH_API_DNS_NAME}/keycloak/realms/${NAMESPACE}/protocol/openid-connect/auth"
+        tokenUrl: "https://${COSMOTECH_API_DNS_NAME}/keycloak/realms/${NAMESPACE}/protocol/openid-connect/token"
         defaultScopes:
-          "[${APP_ID_URI}/platform]": "${TENANT_RESOURCE_GROUP} scope"
-        containerScopes:
-          "[${APP_ID_URI}/.default]": "${TENANT_RESOURCE_GROUP} scope"
+          openid: "OpenId Scope"
+        serverBaseUrl: "https://${COSMOTECH_API_DNS_NAME}/keycloak"
+        audience: "account"
+        identity:
+          clientId: ${KEYCLOAK_CLIENT_ID}
+          clientSecret: ${KEYCLOAK_CLIENT_SECRET}
+          tenantId: ${NAMESPACE}
+        tls:
+          enabled: false
       namespace: ${NAMESPACE}
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
@@ -111,6 +106,8 @@ config:
           sender:
             username: ${RABBITMQ_SENDER_USERNAME}
             password: ${RABBITMQ_SENDER_PASSWORD}
+          tls:
+            enabled: false
       twincache:
         host: "cosmotechredis-${NAMESPACE}-master.${NAMESPACE}.svc.cluster.local"
         port: ${REDIS_PORT}

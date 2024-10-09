@@ -47,6 +47,8 @@ locals {
     "ALLOWED_API_KEY_CONSUMERS"     = jsonencode(var.list_apikey_allowed)
     "PERSISTENCE_SIZE"              = var.persistence_size
     "PERSISTENCE_STORAGE_CLASS"     = var.persistence_storage_class
+    "KEYCLOAK_CLIENT_ID"            = var.keycloak_client_id
+    "KEYCLOAK_CLIENT_SECRET"        = var.keycloak_client_secret
   }
   instance_name   = "${var.helm_release_name}-${var.namespace}"
   tls_secret_name = "${var.tls_secret_name}-${var.namespace}"
@@ -61,7 +63,7 @@ resource "helm_release" "cosmotech-api" {
   namespace  = var.namespace
 
   reset_values = true
-  timeout      = 600
+  timeout      = 300
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_cosmotech_api)
