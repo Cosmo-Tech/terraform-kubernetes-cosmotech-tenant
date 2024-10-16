@@ -33,7 +33,3 @@ variable "rabbitmq_persistence_size" {
 variable "rabbitmq_deploy" {
   type = bool
 }
-
-variable "create_rabbitmq_secret" {
-  type = bool
-}
