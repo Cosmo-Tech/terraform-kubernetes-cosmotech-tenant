@@ -31,5 +31,9 @@ variable "rabbitmq_persistence_size" {
 }
 
 variable "rabbitmq_deploy" {
+  type        = bool
+}
+
+variable "rabbitmq_deploy" {
   type = bool
 }
