@@ -8,7 +8,7 @@ variable "network_sp_client_id" {
 }
 
 variable "network_sp_client_secret" {
-  type    = string
+  type = string
 }
 
 variable "storage_account_key" {
