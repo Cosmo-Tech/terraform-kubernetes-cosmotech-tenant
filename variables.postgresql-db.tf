@@ -1,45 +1,45 @@
 variable "postgresql_deploy" {
-  type    = bool
+  type = bool
 }
 
 variable "postgresql_persistence_size" {
-  type    = string
+  type = string
 }
 
 variable "postgresql_version" {
-  type    = string
+  type = string
 }
 
 variable "postgresql_helm_repo_url" {
-  type    = string
+  type = string
 }
 
 variable "postgresql_helm_chart" {
-  type    = string
+  type = string
 }
 
 variable "cosmotech_api_reader_username" {
-  type    = string
+  type = string
 }
 
 variable "cosmotech_api_writer_username" {
-  type    = string
+  type = string
 }
 
 variable "cosmotech_api_admin_username" {
-  type    = string
+  type = string
 }
 
 variable "postgresql_initdb_secret_name" {
-  type    = string
+  type = string
 }
 
 variable "argo_postgresql_user" {
-  type    = string
+  type = string
 }
 
 variable "postgresql_secret_name" {
-  type    = string
+  type = string
 }
 
 variable "postgresql_secrets_config_create" {
