@@ -1,29 +1,29 @@
 variable "argo_minio_persistence_size" {
-  type    = string
+  type = string
 }
 
 variable "argo_minio_requests_memory" {
-  type    = string
+  type = string
 }
 
 variable "minio_helm_repo_url" {
-  type    = string
+  type = string
 }
 
 variable "minio_helm_chart" {
-  type    = string
+  type = string
 }
 
 variable "minio_version" {
-  type    = string
+  type = string
 }
 
 variable "argo_minio_secret_key" {
-  type    = string
+  type = string
 }
 
 variable "argo_minio_access_key" {
-  type    = string
+  type = string
 }
 
 variable "minio_deploy" {

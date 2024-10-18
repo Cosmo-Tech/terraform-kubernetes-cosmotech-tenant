@@ -1,5 +1,5 @@
 variable "vault_namespace" {
-  type    = string
+  type = string
 }
 
 variable "allowed_namespace" {
@@ -15,7 +15,7 @@ variable "vault_address" {
 }
 
 variable "vault_sops_namespace" {
-  type    = string
+  type = string
 }
 
 variable "vault_engine_secret" {

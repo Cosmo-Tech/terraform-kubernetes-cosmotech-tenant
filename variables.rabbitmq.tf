@@ -4,31 +4,31 @@ variable "rabbitmq_deploy" {
 }
 
 variable "rabbitmq_helm_repo_url" {
-  type    = string
+  type = string
 }
 
 variable "rabbitmq_helm_chart" {
-  type    = string
+  type = string
 }
 
 variable "rabbitmq_helm_chart_version" {
-  type    = string
+  type = string
 }
 
 variable "rabbitmq_helm_release_name" {
-  type    = string
+  type = string
 }
 
 variable "rabbitmq_listener_username" {
-  type    = string
+  type = string
 }
 
 variable "rabbitmq_sender_username" {
-  type    = string
+  type = string
 }
 
 variable "rabbitmq_persistence_size" {
-  type    = string
+  type = string
 }
 
 variable "create_rabbitmq_secret" {

@@ -8,7 +8,7 @@ variable "network_sp_client_id" {
 }
 
 variable "network_sp_client_secret" {
-  type    = string
+  type = string
 }
 
 variable "storage_account_key" {
@@ -40,11 +40,11 @@ variable "adx_uri" {
 }
 
 variable "cosmos_uri" {
-  type    = string
+  type = string
 }
 
 variable "cosmos_key" {
-  type    = string
+  type = string
 }
 
 variable "eventbus_uri" {
