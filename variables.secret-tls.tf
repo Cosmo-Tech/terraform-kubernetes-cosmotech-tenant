@@ -3,9 +3,9 @@ variable "certificate_cert_content" {
 }
 
 variable "certificate_key_content" {
-  type    = string
+  type = string
 }
 
 variable "secret_tls_secret_name" {
-  type    = string
+  type = string
 }

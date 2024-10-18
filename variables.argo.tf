@@ -55,7 +55,7 @@ variable "argo_archive_ttl" {
 }
 
 variable "argo_bucket_name" {
-  type    = string
+  type = string
 }
 
 variable "argo_deploy" {

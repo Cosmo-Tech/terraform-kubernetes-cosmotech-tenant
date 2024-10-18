@@ -6,6 +6,10 @@ variable "minio_argo_secret_key" {
   type = string
 }
 
+variable "argo_minio_requests_memory" {
+  type = string
+}
+
 variable "minio_helm_repo_url" {
   type = string
 }
