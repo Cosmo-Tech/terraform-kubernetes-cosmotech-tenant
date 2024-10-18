@@ -1,36 +1,29 @@
 variable "argo_minio_persistence_size" {
-  type    = string
-  default = "16Gi"
+  type = string
 }
 
 variable "argo_minio_requests_memory" {
-  type    = string
-  default = "2Gi"
+  type = string
 }
 
 variable "minio_helm_repo_url" {
-  type    = string
-  default = "https://charts.bitnami.com/bitnami"
+  type = string
 }
 
 variable "minio_helm_chart" {
-  type    = string
-  default = "minio"
+  type = string
 }
 
 variable "minio_version" {
-  type    = string
-  default = "12.1.3"
+  type = string
 }
 
 variable "argo_minio_secret_key" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "argo_minio_access_key" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "minio_deploy" {

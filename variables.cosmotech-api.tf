@@ -3,18 +3,15 @@ variable "deploy_api" {
 }
 
 variable "cosmotech_api_helm_chart" {
-  type    = string
-  default = "cosmotech-api-chart"
+  type = string
 }
 
 variable "cosmotech_api_helm_repository" {
-  type    = string
-  default = "oci://ghcr.io/cosmo-tech"
+  type = string
 }
 
 variable "cosmotech_api_helm_release_name" {
-  type    = string
-  default = "cosmotech-api"
+  type = string
 }
 
 variable "cosmotech_api_chart_package_version" {
@@ -22,18 +19,15 @@ variable "cosmotech_api_chart_package_version" {
 }
 
 variable "is_multitenant" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "monitoring_enabled" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "monitoring_namespace" {
-  type    = string
-  default = "cosmotech-monitoring"
+  type = string
 }
 
 variable "identifier_uri" {
@@ -45,8 +39,7 @@ variable "api_dns_name" {
 }
 
 variable "api_replicas" {
-  type    = number
-  default = 1
+  type = number
 }
 
 variable "cosmotech_api_version_path" {
@@ -58,18 +51,15 @@ variable "cosmotech_api_version" {
 }
 
 variable "cosmotech_api_ingress_enabled" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "cosmotech_api_persistence_size" {
-  type    = string
-  default = "8Gi"
+  type = string
 }
 
 variable "cosmotech_api_persistence_storage_class" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "list_apikey_allowed" {

@@ -1,46 +1,37 @@
 variable "argo_helm_repo_url" {
-  type    = string
-  default = "https://argoproj.github.io/argo-helm"
+  type = string
 }
 
 variable "argo_helm_chart" {
-  type    = string
-  default = "argo-workflows"
+  type = string
 }
 
 variable "argo_version" {
-  type    = string
-  default = "0.41.2"
+  type = string
 }
 
 variable "argo_service_account" {
-  type    = string
-  default = ""
+  type = string
 }
 
 variable "argo_bucket_name" {
-  type    = string
-  default = "argo-workflows"
+  type = string
 }
 
 variable "argo_database" {
-  type    = string
-  default = "argo_workflows"
+  type = string
 }
 
 variable "argo_postgresql_secret_name" {
-  type    = string
-  default = "postgres-config"
+  type = string
 }
 
 variable "requeue_time" {
-  type    = string
-  default = "1s"
+  type = string
 }
 
 variable "archive_ttl" {
-  type    = string
-  default = "3d"
+  type = string
 }
 
 variable "argo_deploy" {

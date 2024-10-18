@@ -1,15 +1,12 @@
 
 variable "cluster_issuer_name" {
-  type    = string
-  default = "letsencrypt-prod"
+  type = string
 }
 
 variable "tls_secret_name" {
-  type    = string
-  default = "letsencrypt-prod"
+  type = string
 }
 
 variable "tls_certificate_type" {
-  type    = string
-  default = "let_s_encrypt"
+  type = string
 }

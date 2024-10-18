@@ -1,56 +1,45 @@
 variable "postgresql_deploy" {
-  type    = bool
-  default = true
+  type = bool
 }
 
 variable "postgresql_persistence_size" {
-  type    = string
-  default = "8Gi"
+  type = string
 }
 
 variable "postgresql_version" {
-  type    = string
-  default = "11.6.12"
+  type = string
 }
 
 variable "postgresql_helm_repo_url" {
-  type    = string
-  default = "https://charts.bitnami.com/bitnami"
+  type = string
 }
 
 variable "postgresql_helm_chart" {
-  type    = string
-  default = "postgresql"
+  type = string
 }
 
 variable "cosmotech_api_reader_username" {
-  type    = string
-  default = "cosmotech_api_reader"
+  type = string
 }
 
 variable "cosmotech_api_writer_username" {
-  type    = string
-  default = "cosmotech_api_writer"
+  type = string
 }
 
 variable "cosmotech_api_admin_username" {
-  type    = string
-  default = "cosmotech_api_admin"
+  type = string
 }
 
 variable "postgresql_initdb_secret_name" {
-  type    = string
-  default = "postgres-initdb"
+  type = string
 }
 
 variable "argo_postgresql_user" {
-  type    = string
-  default = "argo"
+  type = string
 }
 
 variable "postgresql_secret_name" {
-  type    = string
-  default = "postgres-config"
+  type = string
 }
 
 variable "postgresql_secrets_config_create" {
