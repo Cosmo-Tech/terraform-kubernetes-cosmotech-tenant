@@ -69,10 +69,4 @@ variable "list_apikey_allowed" {
     associatedRole = string
     securedUris    = list(string)
   }))
-  default = [{
-    name           = ""
-    apiKey         = ""
-    associatedRole = ""
-    securedUris    = []
-  }]
 }
