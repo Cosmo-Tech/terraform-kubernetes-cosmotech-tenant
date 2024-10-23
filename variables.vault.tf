@@ -12,7 +12,7 @@ variable "cluster_name" {
 }
 
 variable "vault_address" {
-  type = string
+  type    = string
   default = "http://vault.vault.svc.cluster.local"
 }
 

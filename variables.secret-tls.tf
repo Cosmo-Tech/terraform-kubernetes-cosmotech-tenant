@@ -1,5 +1,5 @@
 variable "certificate_cert_content" {
-  type = string
+  type    = string
   default = ""
 }
 

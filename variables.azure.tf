@@ -13,37 +13,37 @@ variable "network_sp_client_secret" {
 }
 
 variable "storage_account_key" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "storage_account_name" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "acr_login_password" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "acr_login_server" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "acr_login_username" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "adx_ingestion_uri" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "adx_uri" {
-  type = string
+  type    = string
   default = ""
 }
 
@@ -58,7 +58,7 @@ variable "cosmos_key" {
 }
 
 variable "eventbus_uri" {
-  type = string
+  type    = string
   default = ""
 }
 
