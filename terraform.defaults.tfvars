@@ -21,6 +21,32 @@ eventbus_uri                            = ""
 cluster_issuer_name                     = "letsencrypt-prod"
 tls_secret_name                         = "letsencrypt-prod"
 tls_certificate_type                    = "let_s_encrypt"
+
+# Azure (main)
+network_sp_client_secret = ""
+storage_account_key      = ""
+storage_account_name     = ""
+acr_login_password       = ""
+acr_login_server         = ""
+acr_login_username       = ""
+adx_ingestion_uri        = ""
+adx_uri                  = ""
+eventbus_uri             = ""
+
+# Platform config
+identity_authorization_url = ""
+identity_token_url         = ""
+acr_login_server_url       = ""
+
+# Cert-manager
+cluster_issuer_name      = "letsencrypt-prod"
+tls_secret_name          = "letsencrypt-prod"
+tls_certificate_type     = "let_s_encrypt"
+certificate_cert_content = ""
+certificate_key_content  = ""
+secret_tls_secret_name   = "custom-tls-secret"
+
+# Cosmotech API
 cosmotech_api_helm_chart                = "cosmotech-api-chart"
 cosmotech_api_helm_repository           = "oci://ghcr.io/cosmo-tech"
 cosmotech_api_helm_release_name         = "cosmotech-api"
