@@ -15,8 +15,15 @@ locals {
     "COSMOTECH_API_ADMIN_PASSWORD"  = random_password.postgresql_admin_password.result
     "ARGO_POSTGRESQL_USER"          = var.argo_postgresql_user
     "ARGO_POSTGRESQL_PASSWORD"      = random_password.argo_postgresql_password.result
-    "ARGO_DATABSE"                  = var.argo_database
+    "ARGO_DATABASE"                 = var.argo_database
+    "SEAWEEDFS_USERNAME"            = local.seaweedfs_username
+    "SEAWEEDFS_PASSWORD"            = random_password.seaweedfs_postgresql_password.result
+    "SEAWEEDFS_DATABASE"            = local.seaweedfs_database
   }
+
+  seaweedfs_username        = "seaweedfs"
+  seaweedfs_password_secret = "${var.postgresql_secret_name}-seaweedfs"
+  seaweedfs_database        = "seaweedfs"
 }
 
 resource "helm_release" "postgresql" {
@@ -95,6 +102,28 @@ resource "kubernetes_secret" "postgres-config" {
     cosmotech-api-reader-password = random_password.postgresql_reader_password.result
     cosmotech-api-writer-username = var.cosmotech_api_writer_username
     cosmotech-api-writer-password = random_password.postgresql_writer_password.result
+  }
+
+  type = "Opaque"
+}
+
+resource "random_password" "seaweedfs_postgresql_password" {
+  length  = 30
+  special = false
+}
+
+resource "kubernetes_secret" "postgres-seaweedfs-config" {
+  metadata {
+    name      = local.seaweedfs_password_secret
+    namespace = var.namespace
+    labels = {
+      "app" = "postgres"
+    }
+  }
+
+  data = {
+    postgresql-username = local.seaweedfs_username
+    postgresql-password = random_password.seaweedfs_postgresql_password.result
   }
 
   type = "Opaque"

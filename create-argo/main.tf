@@ -10,10 +10,12 @@ terraform {
 locals {
   values_argo = {
     "ARGO_SERVICE_ACCOUNT"        = local.argo_service_account
-    "ARGO_BUCKET_NAME"            = var.argo_bucket_name
     "MONITORING_NAMESPACE"        = var.monitoring_namespace
-    "MINIO_RELEASE_NAME"          = var.minio_release_name
-    "USE_MINIO_STORAGE"           = var.use_minio_storage
+    "S3_ENDPOINT"                 = var.s3_endpoint
+    "S3_BUCKET_NAME"              = var.s3_bucket_name
+    "S3_CREDENTIALS_SECRET"       = var.s3_credentials_secret
+    "S3_USERNAME_KEY"             = var.s3_username_key
+    "S3_PASSWORD_KEY"             = var.s3_password_key
     "NAMESPACE"                   = var.namespace
     "POSTGRES_RELEASE_NAME"       = var.postgres_release_name
     "ARGO_DATABASE"               = var.argo_database

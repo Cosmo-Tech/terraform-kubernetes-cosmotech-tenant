@@ -31,3 +31,18 @@ output "out_postgres_admin_password" {
   value     = random_password.postgresql_admin_password.result
   sensitive = true
 }
+
+output "out_postgres_seawweedfs_database" {
+  value     = local.seaweedfs_database
+  sensitive = true
+}
+
+output "out_postgres_seawweedfs_username" {
+  value     = local.seaweedfs_username
+  sensitive = true
+}
+
+output "out_postgres_seawweedfs_password_secret" {
+  value     = local.seaweedfs_password_secret
+  sensitive = true
+}

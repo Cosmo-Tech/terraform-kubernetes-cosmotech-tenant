@@ -164,21 +164,18 @@ controller:
         seLinuxOptions: {}
         seccompProfile:
           type: RuntimeDefault
-    %{ if USE_MINIO_STORAGE }
     artifactRepository:
       archiveLogs: true
-        configuration:
-          s3:
-            bucket: ${ARGO_BUCKET_NAME}
-            endpoint: ${MINIO_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local:9000
-            insecure: true
-            accessKeySecret:
-              name: ${MINIO_RELEASE_NAME}
-              key: root-user
-            secretKeySecret:
-              name: ${MINIO_RELEASE_NAME}
-              key: root-password
-    %{ endif }
+      s3:
+        endpoint: "${S3_ENDPOINT}"
+        bucket: "${S3_BUCKET_NAME}"
+        insecure: true
+        accessKeySecret:
+          name: "${S3_CREDENTIALS_SECRET}"
+          key: "${S3_USERNAME_KEY}"
+        secretKeySecret:
+          name: "${S3_CREDENTIALS_SECRET}"
+          key: "${S3_PASSWORD_KEY}"
     {{- if .Values.controller.metrics.enabled }}
     metricsConfig:
       enabled: true

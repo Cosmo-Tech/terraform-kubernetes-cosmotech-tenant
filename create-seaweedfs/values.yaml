@@ -1,0 +1,74 @@
+master:
+  nodeSelector:
+    cosmotech.com/tier: "services"
+mariadb:
+  enabled: false
+externalDatabase:
+  enabled: true
+  store: postgresql
+  host: "${POSTGRESQL_HOST}"
+  port: ${POSTGRESQL_PORT}
+  database: "${POSTGRESQL_DATABASE}"
+  user: "${POSTGRESQL_USERNAME}"
+  existingSecret: "${POSTGRESQL_SECRET}"
+volume:
+  nodeSelector:
+    cosmotech.com/tier: "db"
+filer:
+  nodeSelector:
+    cosmotech.com/tier: "services"
+  resourcesPreset: medium
+s3:
+  enabled: true
+  nodeSelector:
+    cosmotech.com/tier: "services"
+  containerPorts:
+    http: 9000
+  auth:
+    enabled: true
+    existingSecret: "${S3_AUTH_SECRET}"
+extraDeploy:
+  # There are no value entries to setup initial s3-buckets/http-folders
+  # So we deploy a Job as a post-{install,upgrade} to create them through the http filer api
+  - |
+    apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: {{ printf "%s-init-buckets" (include "common.names.fullname" .) | trunc 63 | trimSuffix "-" }}
+      namespace: {{ include "common.names.namespace" . | quote }}
+      labels:
+        {{- include "common.labels.standard" ( dict "customLabels" .Values.commonLabels "context" $ ) | nindent 4 }}
+      annotations:
+        helm.sh/hook: post-install,post-upgrade
+        helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+    spec:
+      template:
+        metadata:
+          labels:
+            {{- include "common.labels.standard" ( dict "customLabels" .Values.commonLabels "context" $ ) | nindent 8 }}
+        spec:
+          restartPolicy: OnFailure
+          {{- if .Values.filer.podSecurityContext.enabled }}
+          securityContext:
+            {{- include "common.compatibility.renderSecurityContext" (dict "secContext" .Values.filer.podSecurityContext "context" $) | nindent 8 }}
+          {{- end }}
+          nodeSelector:
+            cosmotech.com/tier: services
+          containers:
+            - name: init-buckets
+              image: alpine
+              {{- if .Values.filer.containerSecurityContext.enabled }}
+              securityContext:
+                {{- include "common.compatibility.renderSecurityContext" (dict "secContext" .Values.filer.containerSecurityContext "context" $) | nindent 12 }}
+              {{- end }}
+              command:
+                - /bin/sh
+              args:
+                - -exc
+                - |
+                  %{~ for bucket in S3_INIT_BUCKETS ~}
+                  if ! `wget --quiet -O /dev/null --spider ${FILER_ENDPOINT}/buckets/${bucket}/`
+                  then
+                    wget --quiet -O /dev/null --post-data= --header "Content-Type:" ${FILER_ENDPOINT}/buckets/${bucket}/
+                  fi
+                  %{~ endfor ~}

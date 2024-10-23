@@ -29,6 +29,7 @@
 | <a name="module_create-postgresql-db"></a> [create-postgresql-db](#module\_create-postgresql-db) | ./create-postgresql-db | n/a |
 | <a name="module_create-rabbitmq"></a> [create-rabbitmq](#module\_create-rabbitmq) | ./create-rabbitmq | n/a |
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
+| <a name="module_create-seaweedfs"></a> [create-seaweedfs](#module\_create-seaweedfs) | ./create-seaweedfs | n/a |
 | <a name="module_create-tls"></a> [create-tls](#module\_create-tls) | ./create-secret-tls | n/a |
 
 ## Resources
@@ -94,6 +95,7 @@
 | <a name="input_rabbitmq_persistence_size"></a> [rabbitmq\_persistence\_size](#input\_rabbitmq\_persistence\_size) | n/a | `string` | `"8Gi"` | no |
 | <a name="input_redis_persistence_size"></a> [redis\_persistence\_size](#input\_redis\_persistence\_size) | n/a | `string` | `"64Gi"` | no |
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | `6379` | no |
+| <a name="input_seaweedfs_chart_version"></a> [seaweedfs\_chart\_version](#input\_seaweedfs\_chart\_version) | SeaweedFS chart version | `string` | `"3.0.4"` | no |
 | <a name="input_tls_certificate_custom_certificate"></a> [tls\_certificate\_custom\_certificate](#input\_tls\_certificate\_custom\_certificate) | n/a | `string` | `""` | no |
 | <a name="input_tls_certificate_custom_key"></a> [tls\_certificate\_custom\_key](#input\_tls\_certificate\_custom\_key) | n/a | `string` | `""` | no |
 <!-- END_TF_DOCS -->

@@ -4,11 +4,16 @@ module "create-argo" {
   namespace             = var.kubernetes_tenant_namespace
   monitoring_namespace  = var.monitoring_namespace
   postgres_release_name = module.create-postgresql-db.out_postgres_release_name
-  minio_release_name    = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
-  use_minio_storage     = local.use_minio_storage
+  s3_endpoint           = local.use_minio_storage ? local.minio_endpoint : module.create-seaweedfs.0.out_s3_endpoint
+  s3_credentials_secret = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : module.create-seaweedfs.0.out_s3_credentials_secret
+  s3_username_key       = local.use_minio_storage ? "root-user" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_username
+  s3_password_key       = local.use_minio_storage ? "root-password" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_password
 
   depends_on = [
-    module.create-postgresql-db, time_sleep.wait_30_seconds
+    module.create-postgresql-db,
+    module.create-minio,
+    module.create-seaweedfs,
+    time_sleep.wait_30_seconds
   ]
 }
 
@@ -147,4 +152,21 @@ module "create-keycloak" {
   api_dns_name                = var.api_dns_name
 
   depends_on = [module.create-argo]
+}
+
+module "create-seaweedfs" {
+  count  = local.use_minio_storage ? 0 : 1
+  source = "./create-seaweedfs"
+
+  namespace                  = var.kubernetes_tenant_namespace
+  chart_version              = var.seaweedfs_chart_version
+  postgresql_host            = module.create-postgresql-db.out_postgres_release_name
+  postgresql_port            = 5432
+  postgresql_database        = module.create-postgresql-db.out_postgres_seawweedfs_database
+  postgresql_username        = module.create-postgresql-db.out_postgres_seawweedfs_username
+  postgresql_password_secret = module.create-postgresql-db.out_postgres_seawweedfs_password_secret
+
+  depends_on = [
+    module.create-postgresql-db
+  ]
 }
