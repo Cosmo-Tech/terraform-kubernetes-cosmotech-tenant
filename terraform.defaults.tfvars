@@ -7,8 +7,6 @@ acr_login_server         = ""
 acr_login_username       = ""
 adx_ingestion_uri        = ""
 adx_uri                  = ""
-cosmos_uri               = ""
-cosmos_key               = ""
 eventbus_uri             = ""
 
 # Platform config
