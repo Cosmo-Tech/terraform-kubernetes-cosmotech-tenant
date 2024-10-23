@@ -26,17 +26,25 @@ variable "argo_service_account" {
   default = ""
 }
 
-variable "argo_bucket_name" {
+variable "s3_endpoint" {
+  type = string
+}
+
+variable "s3_bucket_name" {
   type    = string
   default = "argo-workflows"
 }
 
-variable "minio_release_name" {
+variable "s3_credentials_secret" {
   type = string
 }
 
-variable "use_minio_storage" {
-  type = bool
+variable "s3_username_key" {
+  type = string
+}
+
+variable "s3_password_key" {
+  type = string
 }
 
 variable "postgres_release_name" {
