@@ -43,7 +43,7 @@ list_apikey_allowed = [{
 # Argo
 argo_helm_repo_url          = "https://argoproj.github.io/argo-helm"
 argo_helm_chart             = "argo-workflows"
-argo_version                = "0.41.2"
+argo_version                = "0.16.6"
 argo_service_account        = ""
 argo_bucket_name            = "argo-workflows"
 argo_database               = "argo_workflows"
