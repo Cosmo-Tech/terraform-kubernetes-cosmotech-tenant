@@ -29,6 +29,7 @@
 | <a name="module_create-postgresql-db"></a> [create-postgresql-db](#module\_create-postgresql-db) | ./create-postgresql-db | n/a |
 | <a name="module_create-rabbitmq"></a> [create-rabbitmq](#module\_create-rabbitmq) | ./create-rabbitmq | n/a |
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
+| <a name="module_create-seaweedfs"></a> [create-seaweedfs](#module\_create-seaweedfs) | ./create-seaweedfs | n/a |
 | <a name="module_create-tls"></a> [create-tls](#module\_create-tls) | ./create-secret-tls | n/a |
 
 ## Resources
