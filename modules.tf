@@ -10,13 +10,14 @@ module "create-argo" {
   archive_ttl                 = var.archive_ttl
   helm_repo_url               = var.argo_helm_repo_url
   helm_chart                  = var.argo_helm_chart
-  argo_version                = var.argo_version
+  helm_chart_version          = var.argo_helm_chart_version
   argo_service_account        = var.argo_service_account
   argo_bucket_name            = var.argo_bucket_name
   argo_database               = var.argo_database
   argo_postgresql_secret_name = var.argo_postgresql_secret_name
   requeue_time                = var.requeue_time
   postgres_release_name       = module.create-postgresql-db.0.out_postgres_release_name
+  install_argo_crds           = var.argo_install_crds
 
   depends_on = [
     module.create-postgresql-db,
