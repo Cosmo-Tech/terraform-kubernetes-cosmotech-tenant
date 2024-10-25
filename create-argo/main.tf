@@ -32,14 +32,3 @@ resource "helm_release" "argo" {
     templatefile("${path.module}/values.yaml", local.values_argo)
   ]
 }
-
-# Experimental: gives helm time to finish cleaning up.
-#
-# Otherwise, after `terraform destroy`:
-# │ Error: uninstallation completed with 1 error(s): uninstall: Failed to purge
-#   the release: release: not found
-resource "time_sleep" "wait_seconds" {
-  depends_on = [helm_release.argo]
-
-  destroy_duration = "30s"
-}
