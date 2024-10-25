@@ -14,7 +14,7 @@ variable "helm_chart" {
   type    = string
 }
 
-variable "argo_version" {
+variable "helm_chart_version" {
   type    = string
 }
 
@@ -64,4 +64,8 @@ variable "requeue_time" {
 
 variable "archive_ttl" {
   type    = string
+}
+
+variable "install_argo_crds" {
+  type = bool
 }

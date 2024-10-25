@@ -24,6 +24,8 @@ module "create-argo" {
   requeue_time                = var.argo_requeue_time
   s3_bucket_name              = var.argo_s3_bucket_name
   argo_bucket_name            = var.argo_bucket_name
+  helm_chart_version          = var.argo_helm_chart_version
+  install_argo_crds           = var.argo_install_crds
 
   depends_on = [
     module.create-postgresql-db,

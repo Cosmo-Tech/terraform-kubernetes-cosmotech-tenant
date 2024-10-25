@@ -43,13 +43,14 @@ list_apikey_allowed = [{
 # Argo
 argo_helm_repo_url          = "https://argoproj.github.io/argo-helm"
 argo_helm_chart             = "argo-workflows"
-argo_version                = "0.16.6"
+argo_helm_chart_version     = "0.16.6"
 argo_service_account        = ""
 argo_bucket_name            = "argo-workflows"
 argo_database               = "argo_workflows"
 argo_postgresql_secret_name = "postgres-config"
 requeue_time                = "1s"
 archive_ttl                 = "3d"
+argo_install_crds           = true
 
 # MinIO
 argo_minio_persistence_size = "16Gi"

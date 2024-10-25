@@ -53,6 +53,15 @@ server:
     seccompProfile:
       type: "RuntimeDefault"
     readOnlyRootFilesystem: true
+crds:
+  install: ${INSTALL_CRDS}
+  keep: true
+images:
+  pullPolicy: IfNotPresent
+workflow:
+  serviceAccount:
+    create: true
+    name: ${ARGO_SERVICE_ACCOUNT}
   rbac:
     create: true
   extraArgs: ""
