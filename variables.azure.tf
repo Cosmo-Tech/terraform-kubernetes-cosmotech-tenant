@@ -39,14 +39,6 @@ variable "adx_uri" {
   type = string
 }
 
-variable "cosmos_uri" {
-  type = string
-}
-
-variable "cosmos_key" {
-  type = string
-}
-
 variable "eventbus_uri" {
   type = string
 }

@@ -26,8 +26,6 @@ locals {
     "ACR_LOGIN_PASSWORD"            = local.local_acr_login_password
     "ACR_LOGIN_SERVER"              = local.local_acr_login_registry
     "ACR_LOGIN_USERNAME"            = local.local_acr_login_username
-    "COSMOS_KEY"                    = var.cosmos_key
-    "COSMOS_URI"                    = var.cosmos_uri
     "CLIENT_ID"                     = var.client_id
     "CLIENT_SECRET"                 = var.client_secret
     "TENANT_ID"                     = var.tenant_id

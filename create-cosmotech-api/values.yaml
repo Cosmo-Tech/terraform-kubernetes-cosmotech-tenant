@@ -62,9 +62,6 @@ config:
         appIdUri: ${APP_ID_URI}
         containerRegistries:
           solutions: ${ACR_LOGIN_SERVER}
-        cosmos:
-          key: ${COSMOS_KEY}
-          uri: ${COSMOS_URI}
         credentials:
           clientId: ${CLIENT_ID}
           clientSecret: ${CLIENT_SECRET}

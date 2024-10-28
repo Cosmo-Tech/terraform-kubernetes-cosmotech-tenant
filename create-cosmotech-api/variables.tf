@@ -46,14 +46,6 @@ variable "acr_login_username" {
   type = string
 }
 
-variable "cosmos_key" {
-  type = string
-}
-
-variable "cosmos_uri" {
-  type = string
-}
-
 variable "adx_uri" {
   type = string
 }
