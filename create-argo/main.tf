@@ -12,6 +12,7 @@ locals {
     "REQUEUE_TIME"                = var.requeue_time
     "ARCHIVE_TTL"                 = var.archive_ttl
     "INSTALL_CRDS"                = var.install_argo_crds
+    "INSTALL_CRDS"                = var.install_argo_crds
   }
   argo_service_account = "argo-workflows-${var.namespace}-service-account"
 }
@@ -22,8 +23,8 @@ resource "helm_release" "argo" {
   chart      = var.helm_chart
   version    = var.helm_chart_version
   namespace  = var.namespace
- 
-  reset_values = true
+
+  reuse_values = true
   skip_crds    = true
 
   values = [

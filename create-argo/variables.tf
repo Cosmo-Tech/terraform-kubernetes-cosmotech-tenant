@@ -7,23 +7,23 @@ variable "monitoring_namespace" {
 }
 
 variable "helm_repo_url" {
-  type    = string
+  type = string
 }
 
 variable "helm_chart" {
-  type    = string
+  type = string
 }
 
 variable "helm_chart_version" {
-  type    = string
+  type = string
 }
 
 variable "argo_service_account" {
-  type    = string
+  type = string
 }
 
 variable "argo_bucket_name" {
-  type    = string
+  type = string
 }
 
 variable "minio_release_name" {
@@ -39,19 +39,19 @@ variable "postgres_release_name" {
 }
 
 variable "argo_database" {
-  type    = string
+  type = string
 }
 
 variable "argo_postgresql_secret_name" {
-  type    = string
+  type = string
 }
 
 variable "requeue_time" {
-  type    = string
+  type = string
 }
 
 variable "archive_ttl" {
-  type    = string
+  type = string
 }
 
 variable "install_argo_crds" {
