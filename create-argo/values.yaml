@@ -258,6 +258,13 @@ controller:
         # We can still access their logs and artifacts since they are archived.
         # One of "OnPodCompletion", "OnPodSuccess", "OnWorkflowCompletion", "OnWorkflowSuccess"
         strategy: OnWorkflowSuccess
+      volumeClaimGC:
+        # Delete PVCs when workflows are done. However, due to Kubernetes PVC Protection,
+        # such PVCs will just be marked as Terminating, until no pod is using them.
+        # Pod deletion (either via the Pod GC strategy or the TTL strategy) will allow to free up
+        # attached PVCs.
+        # One of "OnWorkflowCompletion", "OnWorkflowSuccess"
+        strategy: OnWorkflowCompletion
   logging:
     level: info
     globalLevel: "0"
