@@ -15,7 +15,6 @@ locals {
     "REQUEUE_TIME"                = var.requeue_time
     "ARCHIVE_TTL"                 = var.archive_ttl
     "INSTALL_CRDS"                = var.install_argo_crds
-    "INSTALL_CRDS"                = var.install_argo_crds
   }
   argo_service_account = "argo-workflows-${var.namespace}-service-account"
 }
