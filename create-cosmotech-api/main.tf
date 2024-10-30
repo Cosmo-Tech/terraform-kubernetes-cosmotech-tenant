@@ -102,6 +102,28 @@ data "kubernetes_secret" "acr_login_password" {
   }
 }
 
+data "kubernetes_secret" "network_client_password" {
+  metadata {
+    name      = "network-client-secret"
+    namespace = "default"
+  }
+}
+
+data "kubernetes_secret" "platform_client_password" {
+  metadata {
+    name      = "platform-client-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
+
+data "kubernetes_secret" "adx_ingestion_uri_secret" {
+  metadata {
+    name      = "adx-admin-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
 data "kubernetes_secret" "storage_account_password" {
   metadata {
     name      = "storage-account-secret"
