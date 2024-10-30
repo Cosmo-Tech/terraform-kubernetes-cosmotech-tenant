@@ -7,6 +7,9 @@ locals {
   local_instance_name        = "${var.helm_release_name}-${var.kubernetes_tenant_namespace}"
   local_tls_secret_name      = "${var.tls_secret_name}-${var.kubernetes_tenant_namespace}"
   local_identifier_uri       = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
+  local_network_sp_client_secret = var.network_sp_client_secret == "" ? data.kubernetes_secret.network_client_password.data.password : var.network_sp_client_secret
+  local_tenant_sp_client_secret  = var.tenant_sp_client_secret == "" ? data.kubernetes_secret.platform_client_password.data.password : var.tenant_sp_client_secret
+  local_adx_ingestion_uri        = var.adx_ingestion_uri == "" ? data.kubernetes_secret.adx_ingestion_uri_secret.data.uri : var.adx_ingestion_uri
 
   values_cosmotech_api = {
     "API_REPLICAS"                  = var.api_replicas
@@ -26,15 +29,15 @@ locals {
     "ACR_LOGIN_PASSWORD"            = local.local_acr_login_password
     "ACR_LOGIN_SERVER"              = local.local_acr_login_registry
     "ACR_LOGIN_USERNAME"            = local.local_acr_login_username
-    "CLIENT_ID"                     = var.client_id
-    "CLIENT_SECRET"                 = var.client_secret
+    "CLIENT_ID"                     = var.tenant_sp_client_id
+    "CLIENT_SECRET"                 = local.local_tenant_sp_client_secret
     "TENANT_ID"                     = var.tenant_id
     "ADX_URI"                       = var.adx_uri
-    "ADX_INGESTION_URI"             = var.adx_ingestion_uri
+    "ADX_INGESTION_URI"             = local.local_adx_ingestion_uri
     "EVENTBUS_URI"                  = var.eventbus_uri
     "STORAGE_ACCOUNT_KEY"           = local.local_storage_account_key
     "STORAGE_ACCOUNT_NAME"          = local.local_storage_account_name
-    "NETWORK_ADT_PASSWORD"          = var.network_sp_client_secret
+    "NETWORK_ADT_PASSWORD"          = local.local_network_sp_client_secret
     "NETWORK_ADT_CLIENTID"          = var.network_sp_client_id
     "MULTI_TENANT"                  = var.is_multitenant
     "USE_INTERNAL_RESULT_SERVICES"  = var.use_internal_result_services
@@ -56,6 +59,28 @@ locals {
     "PERSISTENCE_STORAGE_CLASS"     = var.persistence_storage_class
     "KEYCLOAK_CLIENT_ID"            = var.keycloak_client_id
     "KEYCLOAK_CLIENT_SECRET"        = var.keycloak_client_secret
+  }
+}
+
+data "kubernetes_secret" "network_client_password" {
+  metadata {
+    name      = "network-client-secret"
+    namespace = "default"
+  }
+}
+
+data "kubernetes_secret" "platform_client_password" {
+  metadata {
+    name      = "platform-client-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
+
+data "kubernetes_secret" "adx_ingestion_uri_secret" {
+  metadata {
+    name      = "adx-admin-secret"
+    namespace = var.kubernetes_tenant_namespace
   }
 }
 

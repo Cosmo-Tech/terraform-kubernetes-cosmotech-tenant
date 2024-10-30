@@ -81,6 +81,8 @@ module "create-cosmotech-api" {
   client_id                     = var.tenant_sp_client_id
   client_secret                 = var.tenant_sp_client_secret
   tenant_id                     = var.tenant_id
+  tenant_sp_client_id           = var.tenant_sp_client_id
+  tenant_sp_client_secret       = var.tenant_sp_client_secret
   network_sp_client_id          = var.network_sp_client_id
   network_sp_client_secret      = var.network_sp_client_secret
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
