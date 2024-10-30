@@ -202,3 +202,11 @@ variable "keycloak_client_id" {
 variable "keycloak_client_secret" {
   type = string
 }
+
+variable "tenant_sp_client_secret" {
+  type = string
+}
+
+variable "tenant_sp_client_id" {
+  type = string
+}
