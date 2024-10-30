@@ -79,7 +79,6 @@ module "create-cosmotech-api" {
   tls_secret_name               = local.tls_secret_name
   client_id                     = var.tenant_sp_client_id
   client_secret                 = var.tenant_sp_client_secret
-  tls_secret_name               = local.tls_secret_name
   tenant_id                     = var.tenant_id
   tenant_sp_client_id           = var.tenant_sp_client_id
   tenant_sp_client_secret       = var.tenant_sp_client_secret
