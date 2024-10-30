@@ -198,3 +198,11 @@ variable "persistence_storage_class" {
 variable "kubernetes_tenant_namespace" {
   type = string
 }
+
+variable "tenant_sp_client_secret" {
+  type = string
+}
+
+variable "tenant_sp_client_id" {
+  type = string
+}
