@@ -24,7 +24,6 @@ resource "helm_release" "argo" {
   namespace  = var.namespace
 
   reset_values = true
-  skip_crds    = true
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_argo)
