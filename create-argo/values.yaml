@@ -54,7 +54,7 @@ server:
       type: "RuntimeDefault"
     readOnlyRootFilesystem: true
 crds:
-  #install: ${INSTALL_CRDS}
+  install: ${INSTALL_CRDS}
   keep: true
 images:
   pullPolicy: IfNotPresent
