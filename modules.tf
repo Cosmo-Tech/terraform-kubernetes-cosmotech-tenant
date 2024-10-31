@@ -157,7 +157,7 @@ module "create-redis-stack" {
 
   count = var.redis_deploy ? 1 : 0
 
-  version_redis_cosmotech = local.version_redis_cosmotech
+  version_redis_cosmotech = var.version_redis_cosmotech
   namespace               = var.kubernetes_tenant_namespace
   redis_pv_capacity       = var.redis_persistence_size
   helm_repo_url           = var.redis_helm_repo_url
