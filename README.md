@@ -63,6 +63,7 @@
 | <a name="input_argo_helm_chart"></a> [argo\_helm\_chart](#input\_argo\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_argo_helm_chart_version"></a> [argo\_helm\_chart\_version](#input\_argo\_helm\_chart\_version) | n/a | `string` | n/a | yes |
 | <a name="input_argo_helm_repo_url"></a> [argo\_helm\_repo\_url](#input\_argo\_helm\_repo\_url) | n/a | `string` | n/a | yes |
+| <a name="input_argo_install_crds"></a> [argo\_install\_crds](#input\_argo\_install\_crds) | Install argo workflow crds: must be TRUE for first tenant deployment in cluster | `bool` | n/a | yes |
 | <a name="input_argo_minio_access_key"></a> [argo\_minio\_access\_key](#input\_argo\_minio\_access\_key) | n/a | `string` | n/a | yes |
 | <a name="input_argo_minio_persistence_size"></a> [argo\_minio\_persistence\_size](#input\_argo\_minio\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_argo_minio_requests_memory"></a> [argo\_minio\_requests\_memory](#input\_argo\_minio\_requests\_memory) | n/a | `string` | n/a | yes |
@@ -185,4 +186,11 @@
 | <a name="input_vault_engine_secret"></a> [vault\_engine\_secret](#input\_vault\_engine\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_sops_namespace"></a> [vault\_sops\_namespace](#input\_vault\_sops\_namespace) | n/a | `string` | n/a | yes |
+| <a name="input_version_redis_cosmotech"></a> [version\_redis\_cosmotech](#input\_version\_redis\_cosmotech) | Redis version | `string` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_out_argo_workflows_install_crds"></a> [out\_argo\_workflows\_install\_crds](#output\_out\_argo\_workflows\_install\_crds) | n/a |
 <!-- END_TF_DOCS -->
