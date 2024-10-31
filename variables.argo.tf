@@ -6,7 +6,7 @@ variable "argo_helm_chart" {
   type = string
 }
 
-variable "argo_version" {
+variable "argo_helm_chart_version" {
   type = string
 }
 
@@ -36,4 +36,9 @@ variable "archive_ttl" {
 
 variable "argo_deploy" {
   type = bool
+}
+
+variable "argo_install_crds" {
+  description = "Install argo workflow crds: must be TRUE for first tenant deployment in cluster"
+  type        = bool
 }

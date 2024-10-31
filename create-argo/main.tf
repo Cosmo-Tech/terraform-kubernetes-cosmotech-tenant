@@ -11,59 +11,23 @@ locals {
     "ARGO_POSTGRESQL_SECRET_NAME" = var.argo_postgresql_secret_name
     "REQUEUE_TIME"                = var.requeue_time
     "ARCHIVE_TTL"                 = var.archive_ttl
+    "INSTALL_CRDS"                = var.install_argo_crds
   }
   argo_service_account = "argo-workflows-${var.namespace}-service-account"
-}
-
-locals {
-  crds = [
-    "argoproj.io_clusterworkflowtemplates.yaml",
-    "argoproj.io_cronworkflows.yaml",
-    # "argoproj.io_workflowartifactgctasks.yaml", # Rollback to 0.16.6 version
-    "argoproj.io_workfloweventbindings.yaml",
-    "argoproj.io_workflows.yaml",
-    "argoproj.io_workflowtaskresults.yaml",
-    "argoproj.io_workflowtasksets.yaml",
-    "argoproj.io_workflowtemplates.yaml"
-  ]
-  argo_version = "v3.3.8"
-}
-
-data "http" "argo_crds" {
-  for_each = toset(local.crds)
-  url      = "https://raw.githubusercontent.com/argoproj/argo-workflows/${local.argo_version}/manifests/base/crds/minimal/${each.key}"
-}
-
-data "kubectl_file_documents" "argo_crds" {
-  for_each = data.http.argo_crds
-  content  = each.value.response_body
-}
-
-# Destroying tenant will also destroy CRDS resources. But being clusterwide, il will impact others Argo installations on the platform
-# A temporary solution could be to remove this resource from state file before destroying the full tenant resources:
-# terraform state rm "module.platform-tenant-resources.module.create-argo.kubectl_manifest.argo_crds"
-resource "kubectl_manifest" "argo_crds" {
-  for_each  = data.kubectl_file_documents.argo_crds
-  yaml_body = data.kubectl_file_documents.argo_crds[each.key].documents[0]
-
-  override_namespace = var.namespace
 }
 
 resource "helm_release" "argo" {
   name       = "argo-workflows-${var.namespace}"
   repository = var.helm_repo_url
   chart      = var.helm_chart
-  version    = var.argo_version
+  version    = var.helm_chart_version
   namespace  = var.namespace
- 
+
   reset_values = true
-  skip_crds    = true
 
   values = [
     templatefile("${path.module}/values.yaml", local.values_argo)
   ]
-
-  depends_on = [kubectl_manifest.argo_crds]
 }
 
 # Experimental: gives helm time to finish cleaning up.
@@ -71,8 +35,8 @@ resource "helm_release" "argo" {
 # Otherwise, after `terraform destroy`:
 # │ Error: uninstallation completed with 1 error(s): uninstall: Failed to purge
 #   the release: release: not found
-resource "time_sleep" "wait_seconds" {
+resource "time_sleep" "wait_30_seconds" {
   depends_on = [helm_release.argo]
 
-  destroy_duration = "60s"
+  destroy_duration = "30s"
 }
