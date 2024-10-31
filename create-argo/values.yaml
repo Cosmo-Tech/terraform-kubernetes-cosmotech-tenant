@@ -2,6 +2,7 @@ singleNamespace: true
 createAggregateRoles: false
 crds:
   install: ${INSTALL_CRDS}
+  # Keep CRDS on chart uninstall/destroy
   keep: true
 images:
   pullPolicy: IfNotPresent
