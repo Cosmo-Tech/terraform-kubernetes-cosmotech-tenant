@@ -11,6 +11,7 @@ resource "keycloak_realm" "realm" {
   realm                       = var.kubernetes_tenant_namespace
   default_signature_algorithm = "RS256"
   enabled                     = true
+  access_token_lifespan       = "30m"
 }
 
 # create web client
