@@ -18,6 +18,11 @@ argo:
     class:
       install: false
 config:
+  spring:
+    servlet:
+      multipart:
+        max-file-size: ${MAX_FILE_SIZE}
+        max-request-size: ${MAX_REQUEST_SIZE}
   api:
     serviceMonitor:
       enabled: ${MONITORING_ENABLED}
@@ -116,7 +121,9 @@ config:
         password: ${REDIS_PASSWORD}
         tls:
           enabled: false
-          
+      upload:
+        authorized-mime-types:
+          workspace: ${AUTHORIZED_MIME_TYPES}
 ingress:
   enabled: ${COSMOTECH_API_INGRESS_ENABLED}
   annotations:
