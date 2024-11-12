@@ -91,6 +91,9 @@
 | <a name="input_kubernetes_resource_group"></a> [kubernetes\_resource\_group](#input\_kubernetes\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_list_apikey_allowed"></a> [list\_apikey\_allowed](#input\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | n/a | yes |
+| <a name="input_list_authorized_mime_types"></a> [list\_authorized\_mime\_types](#input\_list\_authorized\_mime\_types) | n/a | `list(string)` | n/a | yes |
+| <a name="input_max_file_size"></a> [max\_file\_size](#input\_max\_file\_size) | n/a | `string` | n/a | yes |
+| <a name="input_max_request_size"></a> [max\_request\_size](#input\_max\_request\_size) | n/a | `string` | n/a | yes |
 | <a name="input_minio_deploy"></a> [minio\_deploy](#input\_minio\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_minio_helm_chart"></a> [minio\_helm\_chart](#input\_minio\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
