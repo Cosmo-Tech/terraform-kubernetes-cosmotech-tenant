@@ -70,3 +70,15 @@ variable "list_apikey_allowed" {
     securedUris    = list(string)
   }))
 }
+
+variable "list_authorized_mime_types" {
+  type = list(string)
+}
+
+variable "max_file_size" {
+  type = string
+}
+
+variable "max_request_size" {
+  type = string
+}
