@@ -109,6 +109,9 @@ module "create-cosmotech-api" {
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
   redis_port                    = var.redis_port
   tenant_resource_group         = var.tenant_resource_group
+  list_authorized_mime_types    = var.list_authorized_mime_types
+  max_file_size                 = var.max_file_size
+  max_request_size              = var.max_request_size
   use_internal_result_services  = var.rabbitmq_deploy
   redis_admin_password          = var.redis_deploy ? module.create-redis-stack.0.out_redis_admin_password : ""
   rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""

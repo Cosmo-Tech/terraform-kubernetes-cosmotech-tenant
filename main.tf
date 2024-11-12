@@ -9,16 +9,6 @@ locals {
   cluster_ca_certificate = base64decode(local.kube_config.0.cluster_ca_certificate)
 }
 
-resource "kubernetes_namespace" "main_namespace" {
-  metadata {
-    name = var.kubernetes_tenant_namespace
-    labels = {
-      "pod-security.kubernetes.io/enforce"         = "restricted"
-      "pod-security.kubernetes.io/enforce-version" = "latest"
-    }
-  }
-}
-
 provider "kubernetes" {
   host                   = local.host
   client_certificate     = local.client_certificate
