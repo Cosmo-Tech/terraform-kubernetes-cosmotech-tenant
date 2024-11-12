@@ -104,6 +104,7 @@ redis_chart_version     = "17.8.0"
 redis_persistence_size  = "64Gi"
 redis_port              = 6379
 redis_admin_password    = ""
+version_redis_cosmotech = "1.0.12"
 
 # Vault
 vault_namespace      = "vault"
