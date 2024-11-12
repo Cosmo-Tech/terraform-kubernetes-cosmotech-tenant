@@ -87,6 +87,9 @@ module "create-cosmotech-api" {
   tenant_resource_group         = var.tenant_resource_group
   redis_port                    = var.redis_port
   list_apikey_allowed           = var.list_apikey_allowed
+  list_authorized_mime_types    = var.list_authorized_mime_types
+  max_file_size                 = var.max_file_size
+  max_request_size              = var.max_request_size
   identifier_uri                = var.identifier_uri
   persistence_size              = var.cosmotech_api_persistence_size
   persistence_storage_class     = var.cosmotech_api_persistence_storage_class

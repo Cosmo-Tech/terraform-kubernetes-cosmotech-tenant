@@ -13,6 +13,11 @@ argo:
     registry: ${ACR_LOGIN_SERVER}
     username: ${ACR_LOGIN_USERNAME}
 config:
+  spring:
+    servlet:
+      multipart:
+        max-file-size: ${MAX_FILE_SIZE}
+        max-request-size: ${MAX_REQUEST_SIZE}
   api:
     serviceMonitor:
       enabled: ${MONITORING_ENABLED}
@@ -107,7 +112,9 @@ config:
         port: ${REDIS_PORT}
         username: "default"
         password: ${REDIS_PASSWORD}
-
+      upload:
+        authorized-mime-types:
+          workspace: ${AUTHORIZED_MIME_TYPES}
 ingress:
   enabled: ${COSMOTECH_API_INGRESS_ENABLED}
   annotations:

@@ -206,3 +206,15 @@ variable "tenant_sp_client_secret" {
 variable "tenant_sp_client_id" {
   type = string
 }
+
+variable "max_file_size" {
+  type = string
+}
+
+variable "max_request_size" {
+  type = string
+}
+
+variable "list_authorized_mime_types" {
+  type = list(string)
+}
