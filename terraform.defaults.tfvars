@@ -63,6 +63,18 @@ list_apikey_allowed = [{
   associatedRole = ""
   securedUris    = []
 }]
+list_authorized_mime_types = [
+  "application/zip",
+  "application/xml",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "application/x-tika-ooxml",
+  "text/csv",
+  "text/plain",
+  "text/x-yaml",
+  "application/json",
+]
+max_file_size    = "1MB"
+max_request_size = "10MB"
 
 # Argo
 argo_helm_repo_url          = "https://argoproj.github.io/argo-helm"
