@@ -1,15 +1,36 @@
-# Azure
+requeue_time                            = "1s"
+archive_ttl                             = "3d"
+network_sp_client_secret                = ""
+storage_account_key                     = ""
+storage_account_name                    = ""
+acr_login_password                      = ""
+acr_login_server                        = ""
+acr_login_username                      = ""
+adx_ingestion_uri                       = ""
+adx_uri                                 = ""
+cosmos_uri                              = ""
+cosmos_key                              = ""
+eventbus_uri                            = ""
+cluster_issuer_name                     = "letsencrypt-prod"
+tls_secret_name                         = "letsencrypt-prod"
+tls_certificate_type                    = "let_s_encrypt"
+
+# Azure (main)
 network_sp_client_secret = ""
 storage_account_key      = ""
 storage_account_name     = ""
-adx_ingestion_uri        = ""
-eventbus_uri             = ""
 acr_login_password       = ""
+acr_login_server         = ""
+acr_login_username       = ""
+adx_ingestion_uri        = ""
+adx_uri                  = ""
+eventbus_uri             = ""
 
 # Platform config
 identity_authorization_url = ""
 identity_token_url         = ""
 tenant_sp_client_secret    = ""
+acr_login_server_url       = ""
 
 # Cert-manager
 cluster_issuer_name      = "letsencrypt-prod"
@@ -137,6 +158,7 @@ postgresql_secret_name        = "postgres-config"
 postgresql_argo_database      = "argo_workflows"
 
 # rabbitmq
+
 rabbitmq_deploy             = true
 rabbitmq_helm_repo_url      = "https://charts.bitnami.com/bitnami"
 rabbitmq_helm_chart         = "rabbitmq"
