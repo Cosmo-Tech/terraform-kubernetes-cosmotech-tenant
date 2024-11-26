@@ -25,7 +25,7 @@ resource "helm_release" "cosmotechredis" {
   version    = var.chart_redis_version
   namespace  = var.namespace
 
-  reuse_values = true
+  reset_values = true
   wait         = true
   timeout      = 600
 
