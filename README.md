@@ -24,6 +24,7 @@
 | <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./create-cert-manager | n/a |
 | <a name="module_create-argo"></a> [create-argo](#module\_create-argo) | ./create-argo | n/a |
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
+| <a name="module_create-grafana-loki"></a> [create-grafana-loki](#module\_create-grafana-loki) | ./create-grafana-loki | n/a |
 | <a name="module_create-keycloak"></a> [create-keycloak](#module\_create-keycloak) | ./create-keycloak-realm | n/a |
 | <a name="module_create-minio"></a> [create-minio](#module\_create-minio) | ./create-minio | n/a |
 | <a name="module_create-postgresql-db"></a> [create-postgresql-db](#module\_create-postgresql-db) | ./create-postgresql-db | n/a |
@@ -80,6 +81,7 @@
 | <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | `"3d"` | no |
 | <a name="input_argo_minio_persistence_size"></a> [argo\_minio\_persistence\_size](#input\_argo\_minio\_persistence\_size) | n/a | `string` | `"16Gi"` | no |
 | <a name="input_argo_minio_requests_memory"></a> [argo\_minio\_requests\_memory](#input\_argo\_minio\_requests\_memory) | n/a | `string` | `"2Gi"` | no |
+| <a name="input_chart_grafana_loki_version"></a> [chart\_grafana\_loki\_version](#input\_chart\_grafana\_loki\_version) | Grafana-loki chart version | `string` | `"4.6.23"` | no |
 | <a name="input_chart_redis_version"></a> [chart\_redis\_version](#input\_chart\_redis\_version) | n/a | `string` | `"17.8.0"` | no |
 | <a name="input_cosmos_key"></a> [cosmos\_key](#input\_cosmos\_key) | n/a | `string` | `""` | no |
 | <a name="input_cosmos_uri"></a> [cosmos\_uri](#input\_cosmos\_uri) | n/a | `string` | `""` | no |
@@ -88,6 +90,7 @@
 | <a name="input_cosmotech_api_persistence_storage_class"></a> [cosmotech\_api\_persistence\_storage\_class](#input\_cosmotech\_api\_persistence\_storage\_class) | n/a | `string` | `""` | no |
 | <a name="input_create_keycloak"></a> [create\_keycloak](#input\_create\_keycloak) | Wether to create Keycloak resources fot this tenant :<br>- realm<br>- OpenID client & scopes<br>- roles<br>- Authentication flow<br>- Default user<br>After this deployment, you will need to manually set the authentication flow<br> as the default to the broker identification. To do so go to the Authentication menu.<br> On the new line with the "auto link user" flow, click the 3 dot at the end of the line<br>  and then "Bind flow". Then select **First broker login flow**.<br> You should have the newly created flow "auto link user" with the column Used by set to<br>  First broker login flow. | `bool` | `true` | no |
 | <a name="input_create_rabbitmq"></a> [create\_rabbitmq](#input\_create\_rabbitmq) | Whether to create RabbitMQ resources | `bool` | `true` | no |
+| <a name="input_grafana_loki_bucket_name"></a> [grafana\_loki\_bucket\_name](#input\_grafana\_loki\_bucket\_name) | n/a | `string` | `"grafana-loki"` | no |
 | <a name="input_list_apikey_allowed"></a> [list\_apikey\_allowed](#input\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | <pre>[<br>  {<br>    "apiKey": "",<br>    "associatedRole": "",<br>    "name": "",<br>    "securedUris": []<br>  }<br>]</pre> | no |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | `"cosmotech-monitoring"` | no |
