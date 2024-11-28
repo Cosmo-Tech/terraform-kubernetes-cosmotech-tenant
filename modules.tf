@@ -170,3 +170,20 @@ module "create-seaweedfs" {
     module.create-postgresql-db
   ]
 }
+
+module "create-grafana-loki" {
+  count  = local.use_minio_storage ? 0 : 1
+  source = "./create-grafana-loki"
+
+  namespace                      = var.kubernetes_tenant_namespace
+  chart_grafana_loki_version     = var.chart_grafana_loki_version
+  grafana_loki_bucket_name       = var.grafana_loki_bucket_name
+  grafana_loki_s3_endpoint_url   = module.create-seaweedfs.0.out_s3_endpoint
+  grafana_loki_access_key_id     = module.create-seaweedfs.0.out_s3_credentials_keys.grafana_loki_username
+  grafana_loki_secret_access_key = module.create-seaweedfs.0.out_s3_credentials_keys.grafana_loki_password
+
+  depends_on = [
+    module.create-seaweedfs,
+    time_sleep.wait_30_seconds
+  ]
+}

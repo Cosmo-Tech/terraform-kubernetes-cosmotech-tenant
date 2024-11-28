@@ -13,6 +13,22 @@
         "List",
         "Write"
       ]
+    },
+    {
+      "name": "${GRAFANA_LOKI_USERNAME}",
+      "credentials": [
+        {
+          "accessKey": "${GRAFANA_LOKI_USERNAME}",
+          "secretKey": "${GRAFANA_LOKI_PASSWORD}"
+        }
+      ],
+      "actions": [
+        "Read",
+        "List",
+        "Write",
+        "Tagging",
+        "Admin"
+      ]
     }
   ]
 }

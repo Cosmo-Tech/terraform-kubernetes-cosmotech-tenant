@@ -10,5 +10,7 @@ output "out_s3_credentials_keys" {
   value = {
     "argo_workflows_username" = "argo-workflows-username"
     "argo_workflows_password" = "argo-workflows-password"
+    "grafana_loki_username"   = "grafana-loki-username"
+    "grafana_loki_password"   = "grafana-loki-password"
   }
 }

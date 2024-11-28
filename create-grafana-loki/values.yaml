@@ -1,0 +1,71 @@
+deploymentMode: SingleBinary
+commonLabels:
+  networking/traffic-allowed: "yes"
+promtail:
+  enabled: false
+memcached:
+  podSecurityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 1003
+memcachedExporter:
+  podSecurityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    runAsUser: 1003
+    seccompProfile:
+      type: RuntimeDefault
+gateway:
+  networkPolicy:
+    enabled: false
+  podSecurityContext:
+    runAsNonRoot: true
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+    runAsUser: 1003
+loki:
+  overrideConfiguration:
+    storage_config:
+      aws:
+        bucketnames: ${BUCKET_NAME}
+        endpoint: ${S3_ENDPOINT_URL}
+        access_key_id: ${ACCESS_KEY_ID}
+        secret_access_key: ${SECRET_ACCESS_KEY}
+        s3forcepathstyle: true
+    schema_config:
+      configs:
+      - from: "2024-01-01"
+        store: tsdb
+        index:
+          prefix: loki_index_
+          period: 24h
+        object_store: 'aws'
+        schema: v13
+  storage:
+    type: 'aws'
+  auth_enabled: false
+  commonConfig:
+    replication_factor: 1
+  podSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+  containerSecurityContext:
+    seccompProfile:
+      type: RuntimeDefault
+singleBinary:
+  replicas: 1
+read:
+  replicas: 0
+backend:
+  replicas: 0
+write:
+  replicas: 0

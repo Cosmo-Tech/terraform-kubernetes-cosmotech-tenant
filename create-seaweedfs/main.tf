@@ -7,14 +7,17 @@ locals {
     "POSTGRESQL_SECRET"   = var.postgresql_password_secret
     "FILER_ENDPOINT"      = "http://${local.release_name}-filer.${var.namespace}.svc.cluster.local:8888"
     "S3_AUTH_SECRET"      = "${local.release_name}-s3-config"
-    "S3_INIT_BUCKETS"     = ["argo-workflows"]
+    "S3_INIT_BUCKETS"     = ["argo-workflows", "grafana-loki"]
   }
   s3_config_values = {
     "ARGO_WORKFLOWS_USERNAME" = local.argo_workflows_username
     "ARGO_WORKFLOWS_PASSWORD" = random_password.argo_workflows_password.result
+    "GRAFANA_LOKI_USERNAME"   = local.grafana_loki_username
+    "GRAFANA_LOKI_PASSWORD"   = random_password.grafana_loki_password.result
   }
   release_name            = "seaweedfs-${var.namespace}"
   argo_workflows_username = "argo_workflows"
+  grafana_loki_username   = "grafana_loki"
 }
 
 resource "helm_release" "seaweedfs" {
@@ -36,6 +39,11 @@ resource "random_password" "argo_workflows_password" {
   special = false
 }
 
+resource "random_password" "grafana_loki_password" {
+  length  = 30
+  special = false
+}
+
 resource "kubernetes_secret" "s3_credentials" {
   metadata {
     name      = "${local.release_name}-s3-auth"
@@ -49,6 +57,8 @@ resource "kubernetes_secret" "s3_credentials" {
   data = {
     "argo-workflows-username" = local.argo_workflows_username
     "argo-workflows-password" = random_password.argo_workflows_password.result
+    "grafana-loki-username"   = local.grafana_loki_username
+    "grafana-loki-password"   = random_password.grafana_loki_password.result
   }
 }
 
