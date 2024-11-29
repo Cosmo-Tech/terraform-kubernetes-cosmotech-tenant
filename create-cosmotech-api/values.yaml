@@ -4,11 +4,7 @@ api:
   multiTenant: ${MULTI_TENANT}
   servletContextPath: /cosmotech-api
   tlsTruststore:
-    enabled: true                                                                                                                       │
-    fileName: ca.crt                                                                                                                    │
-    secretKey: ca.crt                                                                                                                   │
-    secretName: custom-root-ca                                                                                                          │
-    type: pem
+    enabled: false
 
 image:
   repository: ghcr.io/cosmo-tech/cosmotech-api
@@ -51,7 +47,7 @@ config:
           clientSecret: ${KEYCLOAK_CLIENT_SECRET}
           tenantId: ${NAMESPACE}
         tls:
-          enabled: true
+          enabled: false
       namespace: ${NAMESPACE}
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
