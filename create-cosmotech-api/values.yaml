@@ -4,11 +4,11 @@ api:
   multiTenant: ${MULTI_TENANT}
   servletContextPath: /cosmotech-api
   tlsTruststore:
-│   enabled: true                                                                                                                       │
-│   fileName: ca.crt                                                                                                                    │
-│   secretKey: ca.crt                                                                                                                   │
-│   secretName: custom-root-ca                                                                                                          │
-│   type: pem
+    enabled: true                                                                                                                       │
+    fileName: ca.crt                                                                                                                    │
+    secretKey: ca.crt                                                                                                                   │
+    secretName: custom-root-ca                                                                                                          │
+    type: pem
 
 image:
   repository: ghcr.io/cosmo-tech/cosmotech-api
