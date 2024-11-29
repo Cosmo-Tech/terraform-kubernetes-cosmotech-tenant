@@ -1,6 +1,6 @@
 # Outputs to be consumed by Cosmo Tech API
 output "out_keycloak_client_id" {
-  value = keycloak_openid_client.cosmotech-web-client.id
+  value = keycloak_openid_client.cosmotech-web-client.client_id
 }
 
 output "out_keycloak_client_secret" {

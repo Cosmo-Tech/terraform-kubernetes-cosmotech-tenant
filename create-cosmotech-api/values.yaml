@@ -47,7 +47,7 @@ config:
           clientSecret: ${KEYCLOAK_CLIENT_SECRET}
           tenantId: ${NAMESPACE}
         tls:
-          enabled: false
+          enabled: true
       namespace: ${NAMESPACE}
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
