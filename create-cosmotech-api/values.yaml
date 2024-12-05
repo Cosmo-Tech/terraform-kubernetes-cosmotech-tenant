@@ -34,6 +34,10 @@ config:
   csm:
     platform:
       containerRegistry:
+        scheme: https
+        host: ${ACR_LOGIN_SERVER}
+        password: ${ACR_LOGIN_PASSWORD}
+        username: ${ACR_LOGIN_USERNAME}
       identityProvider:
         code: keycloak
         authorizationUrl: "https://${COSMOTECH_API_DNS_NAME}/keycloak/realms/${NAMESPACE}/protocol/openid-connect/auth"
