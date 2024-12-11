@@ -1,0 +1,57 @@
+modelingApiConfig:
+  configYaml: |-
+    nodeSelector:
+      cosmotech.com/tier: services
+    tolerations:
+      - key: vendor
+        value: cosmotech
+        effect: NoSchedule
+    serviceMonitor:
+      enabled: ${MONITORING_ENABLED}
+      namespace: ${MONITORING_NAMESPACE}
+    persistence:
+      storageClass: ${PERSISTENCE_STORAGE_CLASS}
+    extraEnv:
+      env:
+        - name: CSM_MODELINGAPI_S3_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: minio-barni-tenant
+              key: root-user
+        - name: CSM_MODELINGAPI_S3_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: minio-barni-tenant
+              key: root-password
+    config:
+      csm:
+        modelingApi:
+          argoWorkflows:
+            host: "http://${ARGO_RELEASE_NAME}-server.${NAMESPACE}.svc.cluster.local:2746"
+            namespace: ${NAMESPACE}
+            serviceAccountName: ${ARGO_SERVICE_ACCOUNT}
+          loki:
+            host: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
+          s3:
+            host: http://miniocsmv2.barni.svc.cluster.local:9000
+            bucket: argo-workflows
+          simulatorRegistry:
+            host: csmenginesdev.azurecr.io
+    image:
+      tag: "nightly"
+      credentials:
+        # -- Existing image pull secret
+        pullSecret: "modeling-api-docker-secret"
+helmSa:
+  serviceAccount:
+    annotations: {}
+kubernetesClusterDomain: cluster.local
+host: ${COSMOTECH_API_DNS_NAME}
+registry_url: ghcr.io/cosmo-tech
+chart_name: cosmotech-modeling-api-chart
+chart_version: 0.0-main
+modelingApiGithubWebhookSecret:
+  secretToken: ${WEBHOOK_SECRET}
+modelingApiDockerSecret:
+  dockerconfigjson: ${DOCKER_SECRET}
+
