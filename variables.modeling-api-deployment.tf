@@ -22,11 +22,11 @@ variable "modeling_api_monitoring_enabled" {
   type = bool
 }
 
-variable "monitoring_namespace" {
+variable "modeling_api_monitoring_namespace" {
   type = string
 }
 
-variable "api_dns_name" {
+variable "event_listener_dns_name" {
   type = string
 }
 

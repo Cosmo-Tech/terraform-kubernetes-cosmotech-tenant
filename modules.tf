@@ -251,8 +251,8 @@ module "create-modeling-api-deployment" {
 
   kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
   monitoring_enabled            = var.modeling_api_monitoring_enabled
-  monitoring_namespace          = var.monitoring_namespace
-  api_dns_name                  = var.api_dns_name
+  monitoring_namespace          = var.modeling_api_monitoring_namespace
+  api_dns_name                  = var.event_listener_dns_name
   helm_chart                    = var.deployment_helm_chart
   helm_repository               = var.deployment_helm_repository
   helm_release_name             = var.deployment_helm_release_name
