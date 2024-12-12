@@ -23,6 +23,7 @@
 | <a name="module_create-argo"></a> [create-argo](#module\_create-argo) | ./create-argo | n/a |
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
 | <a name="module_create-minio"></a> [create-minio](#module\_create-minio) | ./create-minio | n/a |
+| <a name="module_create-modeling-api-deployment"></a> [create-modeling-api-deployment](#module\_create-modeling-api-deployment) | ./create-modeling-api-deployment | n/a |
 | <a name="module_create-postgresql-db"></a> [create-postgresql-db](#module\_create-postgresql-db) | ./create-postgresql-db | n/a |
 | <a name="module_create-rabbitmq"></a> [create-rabbitmq](#module\_create-rabbitmq) | ./create-rabbitmq | n/a |
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
@@ -83,6 +84,12 @@
 | <a name="input_create_platform_config"></a> [create\_platform\_config](#input\_create\_platform\_config) | n/a | `bool` | n/a | yes |
 | <a name="input_create_rabbitmq_secret"></a> [create\_rabbitmq\_secret](#input\_create\_rabbitmq\_secret) | n/a | `bool` | n/a | yes |
 | <a name="input_deploy_api"></a> [deploy\_api](#input\_deploy\_api) | n/a | `bool` | n/a | yes |
+| <a name="input_deploy_modeling_api_deployment"></a> [deploy\_modeling\_api\_deployment](#input\_deploy\_modeling\_api\_deployment) | n/a | `bool` | n/a | yes |
+| <a name="input_deployment_chart_package_version"></a> [deployment\_chart\_package\_version](#input\_deployment\_chart\_package\_version) | n/a | `string` | n/a | yes |
+| <a name="input_deployment_helm_chart"></a> [deployment\_helm\_chart](#input\_deployment\_helm\_chart) | n/a | `string` | n/a | yes |
+| <a name="input_deployment_helm_release_name"></a> [deployment\_helm\_release\_name](#input\_deployment\_helm\_release\_name) | n/a | `string` | n/a | yes |
+| <a name="input_deployment_helm_repository"></a> [deployment\_helm\_repository](#input\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
+| <a name="input_docker_secret"></a> [docker\_secret](#input\_docker\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identity_authorization_url"></a> [identity\_authorization\_url](#input\_identity\_authorization\_url) | n/a | `string` | n/a | yes |
@@ -98,6 +105,8 @@
 | <a name="input_minio_helm_chart"></a> [minio\_helm\_chart](#input\_minio\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_monitoring_enabled"></a> [modeling\_api\_monitoring\_enabled](#input\_modeling\_api\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
+| <a name="input_modeling_api_persistence_storage_class"></a> [modeling\_api\_persistence\_storage\_class](#input\_modeling\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_network_sp_client_id"></a> [network\_sp\_client\_id](#input\_network\_sp\_client\_id) | n/a | `string` | n/a | yes |
@@ -142,6 +151,7 @@
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_sops_namespace"></a> [vault\_sops\_namespace](#input\_vault\_sops\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_version_redis_cosmotech"></a> [version\_redis\_cosmotech](#input\_version\_redis\_cosmotech) | Redis version | `string` | n/a | yes |
+| <a name="input_wehbook_secret"></a> [wehbook\_secret](#input\_wehbook\_secret) | n/a | `string` | n/a | yes |
 
 ## Outputs
 
