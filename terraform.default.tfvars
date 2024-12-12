@@ -110,3 +110,14 @@ version_redis_cosmotech = "1.0.12"
 vault_namespace      = "vault"
 vault_address        = "http://vault.vault.svc.cluster.local"
 vault_sops_namespace = "vault-secrets-operator"
+
+#Modeling API Deployment
+deployment_helm_chart                   = "cosmotech-modeling-api-deploy"
+deployment_helm_repository           = "https://lukacsbarni.github.io/tekton/"
+deployment_helm_release_name         = "modeling-api-deployment"
+modeling_api_monitoring_enabled         = false
+monitoring_namespace                    = "cosmotech-monitoring"
+modeling_api_persistence_storage_class = "azurefile-csi"
+deployment_chart_package_version = "0.1.9"
+docker_secret = ""
+wehbook_secret = ""
