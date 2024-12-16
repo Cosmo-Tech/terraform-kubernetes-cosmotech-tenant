@@ -140,7 +140,6 @@ module "create-cosmotech-api" {
     module.create-rabbitmq,
     module.create-redis-stack,
     module.create-keycloak,
-    module.create-redis-stack
   ]
 }
 
