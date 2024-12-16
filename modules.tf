@@ -114,7 +114,8 @@ module "create-cosmotech-api" {
   depends_on = [
     module.create-argo,
     module.create-postgresql-db,
-    module.create-rabbitmq
+    module.create-rabbitmq,
+    module.create-redis-stack
   ]
 }
 
