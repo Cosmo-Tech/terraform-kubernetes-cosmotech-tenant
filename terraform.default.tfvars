@@ -118,6 +118,6 @@ deployment_helm_release_name         = "modeling-api-deployment"
 modeling_api_monitoring_enabled         = false
 modeling_api_monitoring_namespace       = "cosmotech-monitoring"
 modeling_api_persistence_storage_class = "azurefile-csi"
-deployment_chart_package_version = "0.1.10"
+deployment_chart_package_version = "0.1.12"
 docker_secret = ""
 wehbook_secret = ""
