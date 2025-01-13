@@ -19,12 +19,9 @@ tls_certificate_type                    = "let_s_encrypt"
 network_sp_client_secret = ""
 storage_account_key      = ""
 storage_account_name     = ""
-acr_login_password       = ""
-acr_login_server         = ""
-acr_login_username       = ""
 adx_ingestion_uri        = ""
-adx_uri                  = ""
 eventbus_uri             = ""
+acr_login_password       = ""
 
 # Platform config
 identity_authorization_url = ""
