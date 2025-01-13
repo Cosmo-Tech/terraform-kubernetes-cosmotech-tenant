@@ -2,7 +2,7 @@ locals {
   tls_secret_name        = var.tls_certificate_type != "none" ? var.custom_tls_secret_name : var.cert_tls_secret_name
   minio_endpoint         = var.use_minio_storage ? "${module.create-minio.0.out_minio_release_name}.${var.kubernetes_tenant_namespace}.svc.cluster.local:9000" : ""
   use_minio_storage      = !startswith(var.api_version, "1.")
-  kube_config            = data.azurerm_kubernetes_cluster.current.kube_config
+  kube_config            = var.kubernetes_cluster_admin_activate ? data.azurerm_kubernetes_cluster.current.kube_admin_config : data.azurerm_kubernetes_cluster.current.kube_config
   host                   = local.kube_config.0.host
   client_certificate     = base64decode(local.kube_config.0.client_certificate)
   client_key             = base64decode(local.kube_config.0.client_key)
@@ -41,11 +41,11 @@ data "terraform_remote_state" "tenant_infra" {
   }
 }
 
-data "template_file" "example" {
+data "template_file" "summary" {
   template = file("${path.module}/summary.tpl.md")
   vars = {
-    subscription_id      = data.terraform_remote_state.tenant_infra.outputs.out_subscription_id
-    azure_resource_group = data.terraform_remote_state.tenant_infra.outputs.out_tenant_resource_group
+    subscription_id      = data.terraform_remote_state.tenant_infra.outputs.out_azure_subscription_id
+    azure_resource_group = data.terraform_remote_state.tenant_infra.outputs.out_azure_tenant_resource_group
     azure_location       = data.terraform_remote_state.tenant_infra.outputs.out_azure_resource_location
 
     acr_login_server = data.terraform_remote_state.tenant_infra.outputs.out_acr_login_server
