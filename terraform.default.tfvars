@@ -2,17 +2,14 @@
 network_sp_client_secret = ""
 storage_account_key      = ""
 storage_account_name     = ""
-acr_login_password       = ""
-acr_login_server         = ""
-acr_login_username       = ""
 adx_ingestion_uri        = ""
-adx_uri                  = ""
 eventbus_uri             = ""
+acr_login_password       = ""
 
 # Platform config
 identity_authorization_url = ""
 identity_token_url         = ""
-acr_login_server_url       = ""
+tenant_sp_client_secret    = ""
 
 # Cert-manager
 cluster_issuer_name      = "letsencrypt-prod"
@@ -110,3 +107,5 @@ version_redis_cosmotech = "1.0.12"
 vault_namespace      = "vault"
 vault_address        = "http://vault.vault.svc.cluster.local"
 vault_sops_namespace = "vault-secrets-operator"
+
+kubernetes_cluster_admin_activate = false

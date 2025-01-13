@@ -1,5 +1,5 @@
 locals {
-  kube_config            = data.azurerm_kubernetes_cluster.current.kube_admin_config
+  kube_config            = var.kubernetes_cluster_admin_activate ? data.azurerm_kubernetes_cluster.current.kube_admin_config : data.azurerm_kubernetes_cluster.current.kube_config
   tls_secret_name        = var.tls_certificate_type == "let_s_encrypt" ? "letsencrypt-prod" : "custom-tls-secret"
   use_minio_storage      = !startswith(var.cosmotech_api_version, "1.")
   host                   = local.kube_config.0.host
@@ -25,11 +25,11 @@ data "terraform_remote_state" "tenant_infra" {
   }
 }
 
-data "template_file" "example" {
+data "template_file" "summary" {
   template = file("${path.module}/summary.tpl.md")
   vars = {
-    subscription_id      = data.terraform_remote_state.tenant_infra.outputs.out_subscription_id
-    azure_resource_group = data.terraform_remote_state.tenant_infra.outputs.out_tenant_resource_group
+    subscription_id      = data.terraform_remote_state.tenant_infra.outputs.out_azure_subscription_id
+    azure_resource_group = data.terraform_remote_state.tenant_infra.outputs.out_azure_tenant_resource_group
     azure_location       = data.terraform_remote_state.tenant_infra.outputs.out_azure_resource_location
 
     acr_login_server = data.terraform_remote_state.tenant_infra.outputs.out_acr_login_server
