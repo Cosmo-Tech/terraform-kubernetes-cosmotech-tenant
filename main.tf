@@ -14,21 +14,6 @@ data "azurerm_kubernetes_cluster" "current" {
   resource_group_name = var.kubernetes_resource_group
 }
 
-resource "random_password" "redis_admin_password" {
-  length  = 30
-  special = false
-}
-
-resource "random_password" "argo_minio_secret_key" {
-  length  = 30
-  special = false
-}
-
-resource "random_password" "argo_minio_access_key" {
-  length  = 30
-  special = false
-}
-
 data "terraform_remote_state" "tenant_infra" {
   backend = "azurerm"
 
