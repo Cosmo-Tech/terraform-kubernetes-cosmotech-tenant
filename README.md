@@ -180,6 +180,11 @@
 | <a name="input_tenant_resource_group"></a> [tenant\_resource\_group](#input\_tenant\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_sp_client_id"></a> [tenant\_sp\_client\_id](#input\_tenant\_sp\_client\_id) | The client\_id of the platform's service principal | `string` | n/a | yes |
 | <a name="input_tenant_sp_client_secret"></a> [tenant\_sp\_client\_secret](#input\_tenant\_sp\_client\_secret) | The client\_secret of the platform's service principal | `string` | n/a | yes |
+| <a name="input_tf_access_key"></a> [tf\_access\_key](#input\_tf\_access\_key) | n/a | `string` | n/a | yes |
+| <a name="input_tf_blob_name_tenant_infra"></a> [tf\_blob\_name\_tenant\_infra](#input\_tf\_blob\_name\_tenant\_infra) | n/a | `string` | n/a | yes |
+| <a name="input_tf_container_name"></a> [tf\_container\_name](#input\_tf\_container\_name) | n/a | `string` | n/a | yes |
+| <a name="input_tf_resource_group_name"></a> [tf\_resource\_group\_name](#input\_tf\_resource\_group\_name) | n/a | `string` | n/a | yes |
+| <a name="input_tf_storage_account_name"></a> [tf\_storage\_account\_name](#input\_tf\_storage\_account\_name) | n/a | `string` | n/a | yes |
 | <a name="input_tls_certificate_type"></a> [tls\_certificate\_type](#input\_tls\_certificate\_type) | n/a | `string` | n/a | yes |
 | <a name="input_tls_secret_name"></a> [tls\_secret\_name](#input\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_vault_address"></a> [vault\_address](#input\_vault\_address) | n/a | `string` | n/a | yes |
