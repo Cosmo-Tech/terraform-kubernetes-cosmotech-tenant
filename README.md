@@ -111,6 +111,7 @@
 | <a name="input_identity_authorization_url"></a> [identity\_authorization\_url](#input\_identity\_authorization\_url) | n/a | `string` | n/a | yes |
 | <a name="input_identity_token_url"></a> [identity\_token\_url](#input\_identity\_token\_url) | n/a | `string` | n/a | yes |
 | <a name="input_is_multitenant"></a> [is\_multitenant](#input\_is\_multitenant) | n/a | `bool` | n/a | yes |
+| <a name="input_kubernetes_cluster_admin_activate"></a> [kubernetes\_cluster\_admin\_activate](#input\_kubernetes\_cluster\_admin\_activate) | n/a | `bool` | n/a | yes |
 | <a name="input_kubernetes_resource_group"></a> [kubernetes\_resource\_group](#input\_kubernetes\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_list_apikey_allowed"></a> [list\_apikey\_allowed](#input\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | n/a | yes |
@@ -197,5 +198,5 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_out_argo_workflows_install_crds"></a> [out\_argo\_workflows\_install\_crds](#output\_out\_argo\_workflows\_install\_crds) | n/a |
+| <a name="output_rendered"></a> [rendered](#output\_rendered) | n/a |
 <!-- END_TF_DOCS -->
