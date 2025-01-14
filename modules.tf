@@ -264,3 +264,74 @@ module "create-modeling-api-deployment" {
   wehbook_secret = var.wehbook_secret
 
 }
+
+module "create-api-deployment" {
+  source = "./create-cosmotech-api-deployment"
+
+  count = var.deploy_cosmotech_api_deployment ? 1 : 0
+
+  tls_secret_name               = local.tls_secret_name
+  client_id                     = var.client_id
+  client_secret                 = var.client_secret
+  tenant_id                     = var.tenant_id
+  tenant_sp_client_id           = var.tenant_sp_client_id
+  tenant_sp_client_secret       = var.tenant_sp_client_secret
+  network_sp_client_id          = var.network_sp_client_id
+  network_sp_client_secret      = var.network_sp_client_secret
+  kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
+  monitoring_enabled            = var.monitoring_enabled
+  monitoring_namespace          = var.monitoring_namespace
+  api_dns_name                  = var.api_dns_name
+  api_replicas                  = var.api_replicas
+  acr_login_password            = var.acr_login_password
+  acr_login_server              = var.acr_login_server
+  acr_login_username            = var.acr_login_username
+  adx_uri                       = var.adx_uri
+  adx_ingestion_uri             = var.adx_ingestion_uri
+  eventbus_uri                  = var.eventbus_uri
+  storage_account_key           = var.storage_account_key
+  storage_account_name          = var.storage_account_name
+  helm_chart                    = var.cosmotech_api_helm_chart
+  helm_repository               = var.cosmotech_api_helm_repository
+  helm_release_name             = var.cosmotech_api_helm_release_name
+  chart_package_version         = var.cosmotech_api_chart_package_version
+  cosmotech_api_version         = var.cosmotech_api_version
+  cosmotech_api_version_path    = var.cosmotech_api_version_path
+  cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
+  tenant_resource_group         = var.tenant_resource_group
+  redis_port                    = var.redis_port
+  list_apikey_allowed           = var.list_apikey_allowed
+  list_authorized_mime_types    = var.list_authorized_mime_types
+  max_file_size                 = var.max_file_size
+  max_request_size              = var.max_request_size
+  identifier_uri                = var.identifier_uri
+  persistence_size              = var.cosmotech_api_persistence_size
+  persistence_storage_class     = var.cosmotech_api_persistence_storage_class
+  is_multitenant                = var.is_multitenant
+  redis_admin_password          = var.redis_deploy ? module.create-redis-stack.0.out_redis_admin_password : ""
+  use_internal_result_services  = var.rabbitmq_deploy
+  rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
+  rabbitmq_listener_username    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_username : ""
+  rabbitmq_listener_password    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
+  rabbitmq_sender_username      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
+  rabbitmq_sender_password      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
+  argo_release_name             = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
+  argo_service_account          = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
+  postgresql_release_name       = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_release_name : ""
+  postgresql_reader_username    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_reader_username : ""
+  postgresql_reader_password    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_reader_password : ""
+  postgresql_writer_username    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_username : ""
+  postgresql_writer_password    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_password : ""
+  postgresql_admin_username     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_username : ""
+  postgresql_admin_password     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_password : ""
+  docker_secret = var.docker_secret
+  wehbook_secret = var.wehbook_secret
+
+  depends_on = [
+    module.create-argo,
+    module.create-postgresql-db,
+    module.create-rabbitmq
+  ]
+
+
+}

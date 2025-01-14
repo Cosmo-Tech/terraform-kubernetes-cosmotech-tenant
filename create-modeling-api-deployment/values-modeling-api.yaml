@@ -16,12 +16,12 @@ apiConfig:
         - name: CSM_MODELINGAPI_S3_USERNAME
           valueFrom:
             secretKeyRef:
-              name: minio-barni-tenant
+              name: minio-${NAMESPACE}
               key: root-user
         - name: CSM_MODELINGAPI_S3_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: minio-barni-tenant
+              name: minio-${NAMESPACE}
               key: root-password
     config:
       csm:
@@ -33,7 +33,7 @@ apiConfig:
           loki:
             host: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
           s3:
-            host: http://miniocsmv2.barni.svc.cluster.local:9000
+            host: http://miniocsmv2.${NAMESPACE}.svc.cluster.local:9000
             bucket: argo-workflows
           simulatorRegistry:
             host: csmenginesdev.azurecr.io
