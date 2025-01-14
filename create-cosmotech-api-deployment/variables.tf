@@ -218,3 +218,11 @@ variable "max_request_size" {
 variable "list_authorized_mime_types" {
   type = list(string)
 }
+
+variable "wehbook_secret" {
+  type = string
+}
+
+variable "docker_secret" {
+  type = string
+}

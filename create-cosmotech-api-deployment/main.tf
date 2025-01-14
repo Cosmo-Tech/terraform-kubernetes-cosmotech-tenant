@@ -60,6 +60,8 @@ locals {
     "PERSISTENCE_STORAGE_CLASS"     = var.persistence_storage_class
     "MAX_FILE_SIZE"                 = var.max_file_size
     "MAX_REQUEST_SIZE"              = var.max_request_size
+    "WEBHOOK_SECRET"                = var.wehbook_secret
+    "DOCKER_SECRET"                 = var.docker_secret
   }
 }
 
