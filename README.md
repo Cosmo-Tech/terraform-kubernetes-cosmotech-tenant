@@ -20,6 +20,7 @@
 |------|--------|---------|
 | <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./create-cert-manager | n/a |
 | <a name="module_config_platform"></a> [config\_platform](#module\_config\_platform) | ./config-platform | n/a |
+| <a name="module_create-api-deployment"></a> [create-api-deployment](#module\_create-api-deployment) | ./create-cosmotech-api-deployment | n/a |
 | <a name="module_create-argo"></a> [create-argo](#module\_create-argo) | ./create-argo | n/a |
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
 | <a name="module_create-minio"></a> [create-minio](#module\_create-minio) | ./create-minio | n/a |
@@ -84,6 +85,7 @@
 | <a name="input_create_platform_config"></a> [create\_platform\_config](#input\_create\_platform\_config) | n/a | `bool` | n/a | yes |
 | <a name="input_create_rabbitmq_secret"></a> [create\_rabbitmq\_secret](#input\_create\_rabbitmq\_secret) | n/a | `bool` | n/a | yes |
 | <a name="input_deploy_api"></a> [deploy\_api](#input\_deploy\_api) | n/a | `bool` | n/a | yes |
+| <a name="input_deploy_cosmotech_api_deployment"></a> [deploy\_cosmotech\_api\_deployment](#input\_deploy\_cosmotech\_api\_deployment) | n/a | `bool` | n/a | yes |
 | <a name="input_deploy_modeling_api_deployment"></a> [deploy\_modeling\_api\_deployment](#input\_deploy\_modeling\_api\_deployment) | n/a | `bool` | n/a | yes |
 | <a name="input_deployment_chart_package_version"></a> [deployment\_chart\_package\_version](#input\_deployment\_chart\_package\_version) | n/a | `string` | n/a | yes |
 | <a name="input_deployment_helm_chart"></a> [deployment\_helm\_chart](#input\_deployment\_helm\_chart) | n/a | `string` | n/a | yes |
