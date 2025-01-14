@@ -1,4 +1,4 @@
-modelingApiConfig:
+apiConfig:
   configYaml: |-
     nodeSelector:
       cosmotech.com/tier: services
@@ -42,7 +42,7 @@ modelingApiConfig:
       credentials:
         # -- Existing image pull secret
         pullSecret: "modeling-api-docker-secret"
-helmSa:
+tektonSa:
   serviceAccount:
     annotations: {}
 kubernetesClusterDomain: cluster.local
@@ -50,9 +50,9 @@ host: ${COSMOTECH_API_DNS_NAME}
 registry_url: ghcr.io/cosmo-tech
 chart_name: cosmotech-modeling-api-chart
 chart_version: 0.0-main
-modelingApiGithubWebhookSecret:
+ApiGithubWebhookSecret:
   secretToken: ${WEBHOOK_SECRET}
-modelingApiDockerSecret:
+ApiDockerSecret:
   dockerconfigjson: ${DOCKER_SECRET}
 tolerations:
   - key: "vendor"
