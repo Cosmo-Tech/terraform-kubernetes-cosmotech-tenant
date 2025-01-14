@@ -12,6 +12,7 @@ locals {
     "DOCKER_SECRET"                 = var.docker_secret
     "ARGO_SERVICE_ACCOUNT"          = var.argo_service_account
     "ARGO_RELEASE_NAME"             = var.argo_release_name
+    "HELM_RELEASE_NAME"             = var.helm_release_name
   }
 }
 

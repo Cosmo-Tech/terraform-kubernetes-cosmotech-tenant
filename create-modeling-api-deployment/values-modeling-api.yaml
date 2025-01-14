@@ -41,7 +41,7 @@ apiConfig:
       tag: "nightly"
       credentials:
         # -- Existing image pull secret
-        pullSecret: "modeling-api-docker-secret"
+        pullSecret: "${HELM_RELEASE_NAME}-${NAMESPACE}-api-docker-secret"
 tektonSa:
   serviceAccount:
     annotations: {}
