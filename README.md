@@ -47,6 +47,10 @@
 | <a name="input_adx_ingestion_uri"></a> [adx\_ingestion\_uri](#input\_adx\_ingestion\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_adx_uri"></a> [adx\_uri](#input\_adx\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_allowed_namespace"></a> [allowed\_namespace](#input\_allowed\_namespace) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_chart_package_version"></a> [api\_deployment\_chart\_package\_version](#input\_api\_deployment\_chart\_package\_version) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_chart"></a> [api\_deployment\_helm\_chart](#input\_api\_deployment\_helm\_chart) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_release_name"></a> [api\_deployment\_helm\_release\_name](#input\_api\_deployment\_helm\_release\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_repository"></a> [api\_deployment\_helm\_repository](#input\_api\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
 | <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | n/a | yes |
