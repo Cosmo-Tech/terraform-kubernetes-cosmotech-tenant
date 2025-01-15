@@ -103,9 +103,9 @@ data "kubernetes_secret" "acr_login_password" {
 
 resource "helm_release" "cosmotech-api" {
   name       = local.local_instance_name
-  repository = var.helm_repository
-  chart      = var.helm_chart
-  version    = var.chart_package_version
+  repository = var.tekton_helm_repository
+  chart      = var.tekton_helm_chart
+  version    = var.tekton_chart_package_version
   namespace  = var.kubernetes_tenant_namespace
 
   reset_values = true
