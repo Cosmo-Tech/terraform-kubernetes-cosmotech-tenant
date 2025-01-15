@@ -226,15 +226,3 @@ variable "wehbook_secret" {
 variable "docker_secret" {
   type = string
 }
-
-variable "tekton_helm_chart" {
-  type    = string
-}
-
-variable "tekton_helm_repository" {
-  type    = string
-}
-
-variable "tekton_chart_package_version" {
-  type = string
-}
