@@ -291,10 +291,10 @@ module "create-api-deployment" {
   eventbus_uri                  = var.eventbus_uri
   storage_account_key           = var.storage_account_key
   storage_account_name          = var.storage_account_name
-  helm_chart                    = var.cosmotech_api_helm_chart
-  helm_repository               = var.cosmotech_api_helm_repository
-  helm_release_name             = var.cosmotech_api_helm_release_name
-  chart_package_version         = var.cosmotech_api_chart_package_version
+  helm_chart                    = var.api_deployment_helm_chart
+  helm_repository               = var.api_deployment_helm_repository
+  helm_release_name             = var.api_deployment_helm_release_name
+  chart_package_version         = var.api_deployment_chart_package_version
   cosmotech_api_version         = var.cosmotech_api_version
   cosmotech_api_version_path    = var.cosmotech_api_version_path
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
