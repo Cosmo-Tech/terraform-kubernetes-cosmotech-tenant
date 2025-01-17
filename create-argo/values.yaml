@@ -1,5 +1,3 @@
-global:
-
 rbac:
   singleNamespace: true
 createAggregateRoles: false
@@ -78,10 +76,10 @@ server:
   nodeSelector:
     "cosmotech.com/tier": "services"
   tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
+    - key: "vendor"
+      operator: "Equal"
+      value: "cosmotech"
+      effect: "NoSchedule"
   service:
     type: ClusterIP
     ports:
@@ -132,38 +130,20 @@ controller:
     {{- end }}
     parallelism:
     namespaceParallelism:
+    {{- if or .Values.executor.resources .Values.executor.extraEnvVars .Values.executor.containerSecurityContext }}
     executor:
-      resources:
-        limits:
-          cpu: 500m
-          memory: 512Mi
-      securityContext:
-        runAsGroup: 1001
-        runAsNonRoot: true
-        runAsUser: 1001
-        allowPrivilegeEscalation: false
-        capabilities:
-          drop:
-          - ALL
-        privileged: false
-        readOnlyRootFilesystem: true
-        seLinuxOptions: {}
-        seccompProfile:
-          type: RuntimeDefault
-    mainContainer:
-      securityContext:
-        runAsGroup: 1001
-        runAsNonRoot: true
-        runAsUser: 1001
-        allowPrivilegeEscalation: false
-        capabilities:
-          drop:
-          - ALL
-        privileged: false
-        readOnlyRootFilesystem: true
-        seLinuxOptions: {}
-        seccompProfile:
-          type: RuntimeDefault
+      {{- if .Values.executor.resources }}
+      resources: {{- include "common.tplvalues.render" (dict "value" .Values.executor.resources "context" $) | nindent 4 }}
+      {{- else if ne .Values.executor.resourcesPreset "none" }}
+      resources: {{- include "common.resources.preset" (dict "type" .Values.executor.resourcesPreset) | nindent 4 }}
+      {{- end }}
+      {{- if .Values.executor.extraEnvVars }}
+      env: {{- include "common.tplvalues.render" (dict "value" .Values.executor.extraEnvVars "context" $) | nindent 4 }}
+      {{- end }}
+      {{- if .Values.executor.containerSecurityContext }}
+      securityContext: {{- omit .Values.executor.containerSecurityContext "enabled" | toYaml | nindent 4 }}
+      {{- end }}
+    {{- end }}
     artifactRepository:
       archiveLogs: true
       s3:
@@ -199,7 +179,7 @@ controller:
         host: {{ include "argo-workflows.controller.database.host" . }}
         port: {{ include "argo-workflows.controller.database.port" . }}
         database: {{ include "argo-workflows.controller.database" . }}
-        tableName: workflows
+        tableName: argo_workflows
         userNameSecret:
           name: {{ include "argo-workflows.controller.database.username.secret" . }}
           key: username
@@ -273,10 +253,10 @@ controller:
   nodeSelector:
     "cosmotech.com/tier": "services"
   tolerations:
-  - key: "vendor"
-    operator: "Equal"
-    value: "cosmotech"
-    effect: "NoSchedule"
+    - key: "vendor"
+      operator: "Equal"
+      value: "cosmotech"
+      effect: "NoSchedule"
   service:
     type: ClusterIP
     ports:
@@ -296,12 +276,18 @@ executor:
     pullPolicy: IfNotPresent
     pullSecrets: []
   resourcesPreset: "nano"
-  resources: {}
+  resources:
+    requests:
+      cpu: 2
+      memory: 512Mi
+    limits:
+      cpu: 3
+      memory: 1024Mi
   extraEnvVars:
-  - name: RESOURCE_STATE_CHECK_INTERVAL
-    value: 1s
-  - name: WAIT_CONTAINER_STATUS_CHECK_INTERVAL
-    value: 1s
+    - name: RESOURCE_STATE_CHECK_INTERVAL
+      value: 1s
+    - name: WAIT_CONTAINER_STATUS_CHECK_INTERVAL
+      value: 1s
   containerSecurityContext:
     enabled: true
     seLinuxOptions: {}
@@ -311,7 +297,8 @@ executor:
     privileged: false
     allowPrivilegeEscalation: false
     capabilities:
-      drop: ["ALL"]
+      drop:
+        - ALL
     seccompProfile:
       type: "RuntimeDefault"
     readOnlyRootFilesystem: true
@@ -330,15 +317,12 @@ workflows:
 postgresql:
   enabled: false
 
-mysql:
-  enabled: false
-
 externalDatabase:
   enabled: true
   type: "postgresql"
   host: "${POSTGRES_RELEASE_NAME}"
   port: "5432"
-  username: argo
+  username: ${ARGO_POSTGRESQL_USER}
   password: ""
   database: ${ARGO_DATABASE}
   existingSecret: ${ARGO_POSTGRESQL_SECRET_NAME}
