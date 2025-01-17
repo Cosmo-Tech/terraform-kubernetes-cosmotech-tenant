@@ -86,7 +86,7 @@ variable "api_helm_release_name" {
   type = string
 }
 
-variable "chart_package_version" {
+variable "api_chart_package_version" {
   type = string
 }
 
