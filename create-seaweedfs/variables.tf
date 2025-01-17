@@ -23,6 +23,5 @@ variable "postgresql_username" {
 }
 
 variable "postgresql_password_secret" {
-  type        = string
-  description = "Name of the secret containing the password"
+  type = string
 }

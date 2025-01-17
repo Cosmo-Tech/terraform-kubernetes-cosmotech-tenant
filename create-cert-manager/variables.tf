@@ -1,6 +1,5 @@
 variable "cluster_issuer_name" {
   type    = string
-  default = "letsencrypt-prod"
 }
 
 variable "namespace" {
@@ -9,7 +8,6 @@ variable "namespace" {
 
 variable "tls_secret_name" {
   type    = string
-  default = "letsencrypt-prod"
 }
 
 variable "api_dns_name" {
