@@ -1,7 +1,3 @@
-variable "argo_namespace" {
-  type = string
-}
-
 variable "argo_helm_repo_url" {
   type = string
 }

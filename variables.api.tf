@@ -1,7 +1,3 @@
-variable "api_namespace" {
-  type = string
-}
-
 variable "api_replicas" {
   type = number
 }

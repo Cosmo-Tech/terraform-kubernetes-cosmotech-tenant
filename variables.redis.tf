@@ -2,10 +2,6 @@ variable "redis_admin_password" {
   type = string
 }
 
-variable "redis_namespace" {
-  type = string
-}
-
 variable "redis_helm_repo_url" {
   type = string
 }
