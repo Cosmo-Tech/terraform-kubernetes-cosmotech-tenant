@@ -59,7 +59,6 @@
 | <a name="input_api_identifier_uri"></a> [api\_identifier\_uri](#input\_api\_identifier\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_is_multitenant"></a> [api\_is\_multitenant](#input\_api\_is\_multitenant) | n/a | `bool` | n/a | yes |
 | <a name="input_api_list_apikey_allowed"></a> [api\_list\_apikey\_allowed](#input\_api\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | n/a | yes |
-| <a name="input_api_namespace"></a> [api\_namespace](#input\_api\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_api_persistence_size"></a> [api\_persistence\_size](#input\_api\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_api_persistence_storage_class"></a> [api\_persistence\_storage\_class](#input\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
@@ -69,7 +68,6 @@
 | <a name="input_argo_database"></a> [argo\_database](#input\_argo\_database) | n/a | `string` | n/a | yes |
 | <a name="input_argo_helm_chart"></a> [argo\_helm\_chart](#input\_argo\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_argo_helm_repo_url"></a> [argo\_helm\_repo\_url](#input\_argo\_helm\_repo\_url) | n/a | `string` | n/a | yes |
-| <a name="input_argo_namespace"></a> [argo\_namespace](#input\_argo\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_argo_postgresql_secret_name"></a> [argo\_postgresql\_secret\_name](#input\_argo\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_argo_requeue_time"></a> [argo\_requeue\_time](#input\_argo\_requeue\_time) | n/a | `string` | n/a | yes |
 | <a name="input_argo_s3_bucket_name"></a> [argo\_s3\_bucket\_name](#input\_argo\_s3\_bucket\_name) | n/a | `string` | n/a | yes |
@@ -99,7 +97,6 @@
 | <a name="input_minio_argo_secret_key"></a> [minio\_argo\_secret\_key](#input\_minio\_argo\_secret\_key) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_chart"></a> [minio\_helm\_chart](#input\_minio\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
-| <a name="input_minio_namespace"></a> [minio\_namespace](#input\_minio\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
@@ -116,7 +113,6 @@
 | <a name="input_postgresql_helm_chart"></a> [postgresql\_helm\_chart](#input\_postgresql\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_helm_repo_url"></a> [postgresql\_helm\_repo\_url](#input\_postgresql\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_initdb_secret_name"></a> [postgresql\_initdb\_secret\_name](#input\_postgresql\_initdb\_secret\_name) | n/a | `string` | n/a | yes |
-| <a name="input_postgresql_namespace"></a> [postgresql\_namespace](#input\_postgresql\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_persistence_size"></a> [postgresql\_persistence\_size](#input\_postgresql\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_reader_password"></a> [postgresql\_reader\_password](#input\_postgresql\_reader\_password) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_reader_username"></a> [postgresql\_reader\_username](#input\_postgresql\_reader\_username) | n/a | `string` | n/a | yes |
@@ -143,7 +139,6 @@
 | <a name="input_redis_helm_chart_name"></a> [redis\_helm\_chart\_name](#input\_redis\_helm\_chart\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_helm_release_name"></a> [redis\_helm\_release\_name](#input\_redis\_helm\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_helm_repo_url"></a> [redis\_helm\_repo\_url](#input\_redis\_helm\_repo\_url) | n/a | `string` | n/a | yes |
-| <a name="input_redis_namespace"></a> [redis\_namespace](#input\_redis\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_redis_persistence_size"></a> [redis\_persistence\_size](#input\_redis\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | n/a | yes |
 | <a name="input_redis_pv_capacity"></a> [redis\_pv\_capacity](#input\_redis\_pv\_capacity) | n/a | `string` | n/a | yes |
