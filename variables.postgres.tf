@@ -1,7 +1,3 @@
-variable "postgresql_namespace" {
-  type = string
-}
-
 variable "postgresql_cosmotech_api_reader_username" {
   type = string
 }

@@ -1,7 +1,3 @@
-variable "minio_namespace" {
-  type = string
-}
-
 variable "minio_argo_access_key" {
   type = string
 }

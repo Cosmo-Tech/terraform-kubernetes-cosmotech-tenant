@@ -13,3 +13,8 @@ variable "monitoring_enabled" {
 variable "tls_certificate_type" {
   type = string
 }
+
+variable "kubernetes_tenant_namespace" {
+  description = "The namespace of the tenant"
+  type        = string
+}
