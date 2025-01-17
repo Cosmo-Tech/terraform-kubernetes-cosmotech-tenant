@@ -56,7 +56,7 @@ keycloak_password      = ""
 keycloak_url           = ""
 
 # minio
-use_minio_storage           = true
+use_minio_storage           = false
 minio_argo_access_key       = ""
 minio_argo_secret_key       = ""
 minio_helm_repo_url         = "https://charts.bitnami.com/bitnami"
