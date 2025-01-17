@@ -7,18 +7,15 @@ variable "namespace" {
 }
 
 variable "helm_repo_url" {
-  type    = string
-  default = "https://charts.bitnami.com/bitnami"
+  type = string
 }
 
 variable "helm_release_name" {
-  type    = string
-  default = "cosmotechredis"
+  type = string
 }
 
 variable "helm_chart_name" {
-  type    = string
-  default = "redis"
+  type = string
 }
 
 variable "chart_redis_version" {

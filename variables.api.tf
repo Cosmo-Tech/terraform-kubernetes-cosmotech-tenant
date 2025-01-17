@@ -1,17 +1,9 @@
-variable "namespace" {
+variable "api_namespace" {
   type = string
 }
 
 variable "api_replicas" {
   type = number
-}
-
-variable "monitoring_enabled" {
-  type = bool
-}
-
-variable "monitoring_namespace" {
-  type = string
 }
 
 variable "client_id" {
@@ -23,18 +15,6 @@ variable "client_secret" {
 }
 
 variable "tenant_id" {
-  type = string
-}
-
-variable "api_dns_name" {
-  type = string
-}
-
-variable "tls_secret_name" {
-  type = string
-}
-
-variable "redis_admin_password" {
   type = string
 }
 
@@ -86,23 +66,23 @@ variable "redis_port" {
   type = number
 }
 
-variable "helm_chart" {
+variable "api_helm_chart" {
   type = string
 }
 
-variable "helm_repository" {
+variable "api_helm_repository" {
   type = string
 }
 
-variable "cosmotech_api_version_path" {
+variable "api_version_path" {
   type = string
 }
 
-variable "cosmotech_api_version" {
+variable "api_version" {
   type = string
 }
 
-variable "helm_release_name" {
+variable "api_helm_release_name" {
   type = string
 }
 
@@ -110,15 +90,7 @@ variable "chart_package_version" {
   type = string
 }
 
-variable "argo_service_account" {
-  type = string
-}
-
-variable "argo_release_name" {
-  type = string
-}
-
-variable "is_multitenant" {
+variable "api_is_multitenant" {
   type = bool
 }
 
@@ -162,15 +134,7 @@ variable "rabbitmq_release_name" {
   type = string
 }
 
-variable "rabbitmq_listener_username" {
-  type = string
-}
-
 variable "rabbitmq_listener_password" {
-  type = string
-}
-
-variable "rabbitmq_sender_username" {
   type = string
 }
 
@@ -178,7 +142,7 @@ variable "rabbitmq_sender_password" {
   type = string
 }
 
-variable "list_apikey_allowed" {
+variable "api_list_apikey_allowed" {
   type = list(object({
     name           = string
     apiKey         = string
@@ -187,22 +151,14 @@ variable "list_apikey_allowed" {
   }))
 }
 
-variable "identifier_uri" {
+variable "api_identifier_uri" {
   type = string
 }
 
-variable "persistence_size" {
+variable "api_persistence_size" {
   type = string
 }
 
-variable "persistence_storage_class" {
-  type = string
-}
-
-variable "keycloak_client_id" {
-  type = string
-}
-
-variable "keycloak_client_secret" {
+variable "api_persistence_storage_class" {
   type = string
 }
