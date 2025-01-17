@@ -73,7 +73,7 @@ module "create-cosmotech-api" {
   eventbus_uri                  = var.eventbus_uri
   storage_account_key           = var.storage_account_key
   storage_account_name          = var.storage_account_name
-  chart_package_version         = var.chart_package_version
+  chart_package_version         = var.api_chart_package_version
   cosmotech_api_version         = var.api_version
   cosmotech_api_version_path    = var.api_version_path
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled

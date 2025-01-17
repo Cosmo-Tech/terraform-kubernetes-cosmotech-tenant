@@ -12,6 +12,7 @@ api_list_apikey_allowed = [{
 api_persistence_size          = "8Gi"
 api_persistence_storage_class = ""
 api_identifier_uri            = ""
+api_chart_package_version     = ""
 
 # argo workflows
 argo_namespace              = ""
@@ -35,7 +36,6 @@ cert_cluster_issuer_name = "letsencrypt-prod"
 cert_tls_namespace       = ""
 cert_tls_secret_name     = "letsencrypt-prod"
 
-
 # custom tls
 tls_namespace                      = ""
 custom_tls_secret_name             = "custom-tls-secret"
@@ -49,13 +49,12 @@ monitoring_enabled   = true
 tls_certificate_type = ""
 
 # keycloak
-keycloak_deploy             = true
-kubernetes_tenant_namespace = ""
-keycloak_client_id          = ""
-keycloak_client_secret      = ""
-keycloak_username           = ""
-keycloak_password           = ""
-keycloak_url                = ""
+keycloak_deploy        = true
+keycloak_client_id     = ""
+keycloak_client_secret = ""
+keycloak_username      = ""
+keycloak_password      = ""
+keycloak_url           = ""
 
 # minio
 use_minio_storage           = true
