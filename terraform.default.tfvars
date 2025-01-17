@@ -42,7 +42,7 @@ custom_tls_certificate_certificate = ""
 custom_tls_certificate_key         = ""
 
 # global
-monitoring_namespace = ""
+monitoring_namespace = "cosmotech-monitoring"
 api_dns_name         = ""
 monitoring_enabled   = true
 tls_certificate_type = ""
