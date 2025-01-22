@@ -41,3 +41,6 @@ variable "postgresql_version" {
 variable "postgresql_persistence_size" {
   type = string
 }
+variable "postgresql_deploy" {
+  type = bool
+}

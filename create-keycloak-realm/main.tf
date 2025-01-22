@@ -53,7 +53,8 @@ resource "keycloak_generic_protocol_mapper" "branch_code_mapper" {
     "id.token.claim" : "false",
     "access.token.claim" : "true",
     "claim.name" : "branch",
-    "jsonType.label" : "String"
+    "jsonType.label" : "String",
+    "introspection.token.claim" = "true"
   }
 }
 
@@ -69,7 +70,8 @@ resource "keycloak_generic_protocol_mapper" "email_mapper" {
     "access.token.claim" : "true",
     "claim.name" : "email",
     "jsonType.label" : "String",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" = "true"
   }
 }
 
@@ -85,7 +87,8 @@ resource "keycloak_generic_protocol_mapper" "realm_roles_mapper" {
     "claim.name" : var.keycloak_realm_jwt_claim_web_client,
     "jsonType.label" : "String",
     "multivalued" : "true",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" = "true"
   }
 }
 
@@ -190,7 +193,8 @@ resource "keycloak_generic_protocol_mapper" "api_realm_roles_mapper" {
     "claim.name" : var.keycloak_realm_jwt_claim_api_client,
     "jsonType.label" : "String",
     "multivalued" : "true",
-    "userinfo.token.claim" : "true"
+    "userinfo.token.claim" : "true",
+    "introspection.token.claim" = "true"
   }
 }
 

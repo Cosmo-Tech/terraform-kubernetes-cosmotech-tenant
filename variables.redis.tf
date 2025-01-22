@@ -29,3 +29,6 @@ variable "redis_cosmotech_version" {
 variable "redis_persistence_size" {
   type = string
 }
+variable "redis_deploy" {
+  type = bool
+}

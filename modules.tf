@@ -1,10 +1,12 @@
 module "create-argo" {
   source = "./create-argo"
 
+  count = var.argo_deploy ? 1 : 0
+
   namespace                   = var.kubernetes_tenant_namespace
   monitoring_namespace        = var.monitoring_namespace
-  postgres_argo_user          = module.create-postgresql-db.out_argo_postgresql_user
-  postgres_release_name       = module.create-postgresql-db.out_postgres_release_name
+  postgres_argo_user          = module.create-postgresql-db.0.out_argo_postgresql_user
+  postgres_release_name       = module.create-postgresql-db.0.out_postgres_release_name
   s3_endpoint                 = var.use_minio_storage ? local.minio_endpoint : module.create-seaweedfs.0.out_s3_endpoint
   s3_credentials_secret       = var.use_minio_storage ? module.create-minio.0.out_minio_release_name : module.create-seaweedfs.0.out_s3_credentials_secret
   s3_username_key             = var.use_minio_storage ? "root-user" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_username
@@ -67,6 +69,8 @@ module "create-keycloak" {
 module "create-cosmotech-api" {
   source = "./create-cosmotech-api"
 
+  count = var.api_deploy ? 1 : 0
+
   client_id                     = var.tenant_client_id
   client_secret                 = var.tenant_client_secret
   tenant_id                     = var.tenant_id
@@ -92,17 +96,17 @@ module "create-cosmotech-api" {
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
   redis_admin_password          = random_password.redis_admin_password.result
   redis_port                    = var.redis_port
-  argo_release_name             = module.create-argo.out_argo_workflows_release_name
-  argo_service_account          = module.create-argo.out_argo_workflows_service_account
+  argo_release_name             = module.create-argo.0.out_argo_workflows_release_name
+  argo_service_account          = module.create-argo.0.out_argo_workflows_service_account
   tenant_resource_group         = var.tenant_resource_group
   use_internal_result_services  = var.rabbitmq_deploy
-  postgresql_release_name       = module.create-postgresql-db.out_postgres_release_name
-  postgresql_reader_username    = module.create-postgresql-db.out_postgres_reader_username
-  postgresql_reader_password    = module.create-postgresql-db.out_postgres_reader_password
-  postgresql_writer_username    = module.create-postgresql-db.out_postgres_writer_username
-  postgresql_writer_password    = module.create-postgresql-db.out_postgres_writer_password
-  postgresql_admin_username     = module.create-postgresql-db.out_postgres_admin_username
-  postgresql_admin_password     = module.create-postgresql-db.out_postgres_admin_password
+  postgresql_release_name       = module.create-postgresql-db.0.out_postgres_release_name
+  postgresql_reader_username    = module.create-postgresql-db.0.out_postgres_reader_username
+  postgresql_reader_password    = module.create-postgresql-db.0.out_postgres_reader_password
+  postgresql_writer_username    = module.create-postgresql-db.0.out_postgres_writer_username
+  postgresql_writer_password    = module.create-postgresql-db.0.out_postgres_writer_password
+  postgresql_admin_username     = module.create-postgresql-db.0.out_postgres_admin_username
+  postgresql_admin_password     = module.create-postgresql-db.0.out_postgres_admin_password
   rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
   rabbitmq_listener_username    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_username : ""
   rabbitmq_listener_password    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
@@ -129,8 +133,9 @@ module "create-cosmotech-api" {
 }
 
 module "create-minio" {
-  count  = var.use_minio_storage ? 1 : 0
   source = "./create-minio"
+
+  count = var.use_minio_storage ? 1 : 0
 
   namespace                   = var.kubernetes_tenant_namespace
   monitoring_namespace        = var.monitoring_namespace
@@ -146,6 +151,8 @@ module "create-minio" {
 
 module "create-postgresql-db" {
   source = "./create-postgresql-db"
+
+  count = var.postgresql_deploy ? 1 : 0
 
   namespace                     = var.kubernetes_tenant_namespace
   monitoring_namespace          = var.monitoring_namespace
@@ -165,6 +172,8 @@ module "create-postgresql-db" {
 
 module "create-redis-stack" {
   source = "./create-redis-stack"
+
+  count = var.redis_deploy ? 1 : 0
 
   redis_admin_password    = random_password.redis_admin_password.result
   namespace               = var.kubernetes_tenant_namespace
@@ -200,11 +209,11 @@ module "create-seaweedfs" {
 
   namespace                  = var.kubernetes_tenant_namespace
   chart_version              = var.seaweedfs_chart_version
-  postgresql_host            = module.create-postgresql-db.out_postgres_release_name
+  postgresql_host            = module.create-postgresql-db.0.out_postgres_release_name
   postgresql_port            = 5432
-  postgresql_database        = module.create-postgresql-db.out_postgres_seawweedfs_database
-  postgresql_username        = module.create-postgresql-db.out_postgres_seawweedfs_username
-  postgresql_password_secret = module.create-postgresql-db.out_postgres_seawweedfs_password_secret
+  postgresql_database        = module.create-postgresql-db.0.out_postgres_seawweedfs_database
+  postgresql_username        = module.create-postgresql-db.0.out_postgres_seawweedfs_username
+  postgresql_password_secret = module.create-postgresql-db.0.out_postgres_seawweedfs_password_secret
 
   depends_on = [
     module.create-postgresql-db
