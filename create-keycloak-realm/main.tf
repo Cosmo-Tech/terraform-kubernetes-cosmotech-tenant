@@ -82,7 +82,7 @@ resource "keycloak_generic_protocol_mapper" "realm_roles_mapper" {
   config = {
     "id.token.claim" : "true",
     "access.token.claim" : "true",
-    "claim.name" : "userRoles",
+    "claim.name" : var.keycloak_realm_jwt_claim_web_client,
     "jsonType.label" : "String",
     "multivalued" : "true",
     "userinfo.token.claim" : "true"
@@ -162,4 +162,41 @@ resource "keycloak_user" "user_with_initial_password" {
       last_name,
     ]
   }
+}
+
+# cosmotech api client
+resource "keycloak_openid_client" "cosmotech-api-client" {
+  realm_id                 = keycloak_realm.realm.id
+  client_id                = "cosmotech-api-client"
+  name                     = "cosmotech-api-client"
+  enabled                  = true
+  standard_flow_enabled    = false
+  access_type              = "CONFIDENTIAL"
+  service_accounts_enabled = true
+  login_theme              = "keycloak"
+  root_url                 = "https://${var.api_dns_name}"
+  full_scope_allowed       = true
+}
+
+resource "keycloak_generic_protocol_mapper" "api_realm_roles_mapper" {
+  realm_id        = keycloak_realm.realm.id
+  client_id       = keycloak_openid_client.cosmotech-api-client.id
+  name            = "realm roles"
+  protocol        = "openid-connect"
+  protocol_mapper = "oidc-usermodel-realm-role-mapper"
+  config = {
+    "id.token.claim" : "true",
+    "access.token.claim" : "true",
+    "claim.name" : var.keycloak_realm_jwt_claim_api_client,
+    "jsonType.label" : "String",
+    "multivalued" : "true",
+    "userinfo.token.claim" : "true"
+  }
+}
+
+resource "keycloak_openid_client_service_account_realm_role" "client_service_account_role" {
+  realm_id                = keycloak_realm.realm.id
+  service_account_user_id = keycloak_openid_client.cosmotech-api-client.service_account_user_id
+  role                    = keycloak_role.platform_admin_role.name
+  depends_on              = [keycloak_openid_client.cosmotech-api-client]
 }

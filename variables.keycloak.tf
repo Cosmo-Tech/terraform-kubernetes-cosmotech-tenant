@@ -35,3 +35,9 @@ variable "keycloak_password" {
 variable "keycloak_url" {
   type = string
 }
+variable "keycloak_realm_jwt_claim_api_client" {
+  type = string
+}
+variable "keycloak_realm_jwt_claim_web_client" {
+  type = string
+}
