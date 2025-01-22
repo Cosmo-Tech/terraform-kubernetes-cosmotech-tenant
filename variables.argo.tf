@@ -53,3 +53,7 @@ variable "argo_requeue_time" {
 variable "argo_archive_ttl" {
   type = string
 }
+
+variable "argo_deploy" {
+  type = bool
+}

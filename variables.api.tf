@@ -158,3 +158,6 @@ variable "api_persistence_size" {
 variable "api_persistence_storage_class" {
   type = string
 }
+variable "api_deploy" {
+  type = bool
+}

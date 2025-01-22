@@ -16,6 +16,10 @@ terraform {
       source  = "mrparkers/keycloak"
       version = "4.4.0"
     }
+    template = {
+      source  = "hashicorp/template"
+      version = "2.2.0"
+    }
   }
   required_version = ">= 1.3.9"
 }

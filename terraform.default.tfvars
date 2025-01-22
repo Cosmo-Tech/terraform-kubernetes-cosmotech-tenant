@@ -1,4 +1,5 @@
 # api
+api_deploy            = true
 api_helm_chart        = "cosmotech-api-chart"
 api_helm_repository   = "oci://ghcr.io/cosmo-tech"
 api_helm_release_name = "cosmotech-api"
@@ -15,6 +16,7 @@ api_identifier_uri            = ""
 api_chart_package_version     = ""
 
 # argo workflows
+argo_deploy                 = true
 argo_helm_repo_url          = "https://charts.bitnami.com/bitnami"
 argo_helm_chart             = "argo-workflows"
 argo_version                = "9.1.6"
@@ -69,6 +71,7 @@ minio_argo_persistence_size = "16Gi"
 minio_argo_requests_memory  = "2Gi"
 
 # postgres
+postgresql_deploy             = true
 cosmotech_api_reader_username = "cosmotech_api_reader"
 cosmotech_api_writer_username = "cosmotech_api_writer"
 cosmotech_api_admin_username  = "cosmotech_api_admin"
@@ -92,6 +95,7 @@ rabbitmq_sender_username    = "cosmotech_run_sender"
 rabbitmq_persistence_size   = "8Gi"
 
 # redis
+redis_deploy            = true
 redis_admin_password    = ""
 redis_helm_repo_url     = "https://charts.bitnami.com/bitnami"
 redis_helm_release_name = "cosmotechredis"
