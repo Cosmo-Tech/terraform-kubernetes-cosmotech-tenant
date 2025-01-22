@@ -51,6 +51,19 @@ module "create-tls" {
   ]
 }
 
+module "create-keycloak" {
+  source = "./create-keycloak-realm"
+
+  count = var.keycloak_deploy ? 1 : 0
+
+  kubernetes_tenant_namespace         = var.kubernetes_tenant_namespace
+  api_dns_name                        = var.api_dns_name
+  keycloak_realm_jwt_claim_api_client = var.keycloak_realm_jwt_claim_api_client
+  keycloak_realm_jwt_claim_web_client = var.keycloak_realm_jwt_claim_web_client
+
+  depends_on = [module.create-argo]
+}
+
 module "create-cosmotech-api" {
   source = "./create-cosmotech-api"
 
@@ -99,8 +112,8 @@ module "create-cosmotech-api" {
   identifier_uri                = var.api_identifier_uri
   persistence_size              = var.api_persistence_size
   persistence_storage_class     = var.api_persistence_storage_class
-  keycloak_client_id            = module.create-keycloak.0.out_keycloak_client_id
-  keycloak_client_secret        = module.create-keycloak.0.out_keycloak_client_secret
+  keycloak_client_id            = module.create-keycloak.0.out_keycloak_api_client_id
+  keycloak_client_secret        = module.create-keycloak.0.out_keycloak_api_client_secret
   helm_chart                    = var.api_helm_chart
   helm_release_name             = var.api_helm_release_name
   helm_repository               = var.api_helm_repository
@@ -110,7 +123,8 @@ module "create-cosmotech-api" {
     module.create-argo,
     module.create-postgresql-db,
     module.create-rabbitmq,
-    module.create-redis-stack
+    module.create-redis-stack,
+    module.create-keycloak
   ]
 }
 
@@ -178,19 +192,6 @@ module "create-rabbitmq" {
   helm_repo_url              = var.rabbitmq_helm_repo_url
   rabbitmq_listener_username = var.rabbitmq_listener_username
   rabbitmq_sender_username   = var.rabbitmq_sender_username
-}
-
-module "create-keycloak" {
-  source = "./create-keycloak-realm"
-
-  count = var.keycloak_deploy ? 1 : 0
-
-  kubernetes_tenant_namespace         = var.kubernetes_tenant_namespace
-  api_dns_name                        = var.api_dns_name
-  keycloak_realm_jwt_claim_api_client = var.keycloak_realm_jwt_claim_api_client
-  keycloak_realm_jwt_claim_web_client = var.keycloak_realm_jwt_claim_web_client
-
-  depends_on = [module.create-argo]
 }
 
 module "create-seaweedfs" {
