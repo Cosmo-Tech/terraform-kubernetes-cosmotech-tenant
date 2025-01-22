@@ -87,6 +87,8 @@
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_deploy"></a> [keycloak\_deploy](#input\_keycloak\_deploy) | Wether to create Keycloak resources fot this tenant :<br>- realm<br>- OpenID client & scopes<br>- roles<br>- Authentication flow<br>- Default user<br>After this deployment, you will need to manually set the authentication flow<br> as the default to the broker identification. To do so go to the Authentication menu.<br> On the new line with the "auto link user" flow, click the 3 dot at the end of the line<br>  and then "Bind flow". Then select **First broker login flow**.<br> You should have the newly created flow "auto link user" with the column Used by set to<br>  First broker login flow. | `bool` | n/a | yes |
 | <a name="input_keycloak_password"></a> [keycloak\_password](#input\_keycloak\_password) | n/a | `string` | n/a | yes |
+| <a name="input_keycloak_realm_jwt_claim_api_client"></a> [keycloak\_realm\_jwt\_claim\_api\_client](#input\_keycloak\_realm\_jwt\_claim\_api\_client) | n/a | `string` | n/a | yes |
+| <a name="input_keycloak_realm_jwt_claim_web_client"></a> [keycloak\_realm\_jwt\_claim\_web\_client](#input\_keycloak\_realm\_jwt\_claim\_web\_client) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_url"></a> [keycloak\_url](#input\_keycloak\_url) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_username"></a> [keycloak\_username](#input\_keycloak\_username) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | The namespace of the tenant | `string` | n/a | yes |
