@@ -48,12 +48,14 @@ monitoring_enabled   = true
 tls_certificate_type = ""
 
 # keycloak
-keycloak_deploy        = true
-keycloak_client_id     = ""
-keycloak_client_secret = ""
-keycloak_username      = ""
-keycloak_password      = ""
-keycloak_url           = ""
+keycloak_deploy                     = true
+keycloak_client_id                  = ""
+keycloak_client_secret              = ""
+keycloak_username                   = ""
+keycloak_password                   = ""
+keycloak_url                        = ""
+keycloak_realm_jwt_claim_web_client = "customRoles"
+keycloak_realm_jwt_claim_api_client = "customRoles"
 
 # minio
 use_minio_storage           = false
