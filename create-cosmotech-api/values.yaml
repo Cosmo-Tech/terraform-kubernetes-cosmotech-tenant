@@ -112,6 +112,7 @@ config:
         port: ${REDIS_PORT}
         username: "default"
         password: ${REDIS_PASSWORD}
+        useGraphModule: "${GRAPH_ENABLED}"
       upload:
         authorized-mime-types:
           workspace: ${AUTHORIZED_MIME_TYPES}

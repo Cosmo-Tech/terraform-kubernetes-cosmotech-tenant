@@ -110,6 +110,7 @@ module "create-cosmotech-api" {
   postgresql_writer_password    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_password : ""
   postgresql_admin_username     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_username : ""
   postgresql_admin_password     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_password : ""
+  api_graph_enabled             = var.api_graph_enabled
 
   depends_on = [
     module.create-argo,
