@@ -82,3 +82,7 @@ variable "max_file_size" {
 variable "max_request_size" {
   type = string
 }
+
+variable "api_graph_enabled" {
+  type = bool
+}

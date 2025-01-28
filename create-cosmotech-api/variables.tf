@@ -222,3 +222,7 @@ variable "max_request_size" {
 variable "list_authorized_mime_types" {
   type = list(string)
 }
+
+variable "api_graph_enabled" {
+  type = bool
+}

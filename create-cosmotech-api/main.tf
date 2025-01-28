@@ -14,6 +14,7 @@ locals {
   values_cosmotech_api = {
     "API_REPLICAS"                  = var.api_replicas
     "MONITORING_ENABLED"            = var.monitoring_enabled
+    "GRAPH_ENABLED"                 = var.api_graph_enabled
     "MONITORING_NAMESPACE"          = var.monitoring_namespace
     "TLS_SECRET_NAME"               = local.local_tls_secret_name
     "NAMESPACE"                     = var.kubernetes_tenant_namespace
