@@ -50,6 +50,7 @@
 | <a name="input_adx_uri"></a> [adx\_uri](#input\_adx\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_allowed_namespace"></a> [allowed\_namespace](#input\_allowed\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_graph_enabled"></a> [api\_graph\_enabled](#input\_api\_graph\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
 | <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | n/a | yes |
 | <a name="input_argo_bucket_name"></a> [argo\_bucket\_name](#input\_argo\_bucket\_name) | n/a | `string` | n/a | yes |
