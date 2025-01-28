@@ -113,8 +113,9 @@ list_authorized_mime_types = [
   "text/x-yaml",
   "application/json",
 ]
-max_file_size    = "1MB"
-max_request_size = "10MB"
+max_file_size     = "1MB"
+max_request_size  = "10MB"
+api_graph_enabled = true
 
 # Argo
 argo_helm_repo_url          = "https://argoproj.github.io/argo-helm"
