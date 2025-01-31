@@ -52,7 +52,7 @@
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_api_graph_enabled"></a> [api\_graph\_enabled](#input\_api\_graph\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
-| <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | n/a | yes |
+| <a name="input_argo_archive_ttl"></a> [argo\_archive\_ttl](#input\_argo\_archive\_ttl) | n/a | `string` | n/a | yes |
 | <a name="input_argo_bucket_name"></a> [argo\_bucket\_name](#input\_argo\_bucket\_name) | n/a | `string` | n/a | yes |
 | <a name="input_argo_database"></a> [argo\_database](#input\_argo\_database) | n/a | `string` | n/a | yes |
 | <a name="input_argo_deploy"></a> [argo\_deploy](#input\_argo\_deploy) | n/a | `bool` | n/a | yes |
@@ -66,6 +66,7 @@
 | <a name="input_argo_minio_secret_key"></a> [argo\_minio\_secret\_key](#input\_argo\_minio\_secret\_key) | n/a | `string` | n/a | yes |
 | <a name="input_argo_postgresql_secret_name"></a> [argo\_postgresql\_secret\_name](#input\_argo\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_argo_postgresql_user"></a> [argo\_postgresql\_user](#input\_argo\_postgresql\_user) | n/a | `string` | n/a | yes |
+| <a name="input_argo_requeue_time"></a> [argo\_requeue\_time](#input\_argo\_requeue\_time) | n/a | `string` | n/a | yes |
 | <a name="input_argo_service_account"></a> [argo\_service\_account](#input\_argo\_service\_account) | n/a | `string` | n/a | yes |
 | <a name="input_certificate_cert_content"></a> [certificate\_cert\_content](#input\_certificate\_cert\_content) | n/a | `string` | n/a | yes |
 | <a name="input_certificate_key_content"></a> [certificate\_key\_content](#input\_certificate\_key\_content) | n/a | `string` | n/a | yes |
@@ -89,6 +90,7 @@
 | <a name="input_create_rabbitmq_secret"></a> [create\_rabbitmq\_secret](#input\_create\_rabbitmq\_secret) | n/a | `bool` | n/a | yes |
 | <a name="input_deploy_api"></a> [deploy\_api](#input\_deploy\_api) | n/a | `bool` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identity_authorization_url"></a> [identity\_authorization\_url](#input\_identity\_authorization\_url) | n/a | `string` | n/a | yes |
 | <a name="input_identity_token_url"></a> [identity\_token\_url](#input\_identity\_token\_url) | n/a | `string` | n/a | yes |
@@ -132,7 +134,6 @@
 | <a name="input_redis_helm_repo_url"></a> [redis\_helm\_repo\_url](#input\_redis\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_redis_persistence_size"></a> [redis\_persistence\_size](#input\_redis\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | n/a | yes |
-| <a name="input_requeue_time"></a> [requeue\_time](#input\_requeue\_time) | n/a | `string` | n/a | yes |
 | <a name="input_secret_tls_secret_name"></a> [secret\_tls\_secret\_name](#input\_secret\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_storage_account_key"></a> [storage\_account\_key](#input\_storage\_account\_key) | n/a | `string` | n/a | yes |
 | <a name="input_storage_account_name"></a> [storage\_account\_name](#input\_storage\_account\_name) | n/a | `string` | n/a | yes |
