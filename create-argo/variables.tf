@@ -38,6 +38,10 @@ variable "postgres_release_name" {
   type = string
 }
 
+variable "postgres_argo_user" {
+  type = string
+}
+
 variable "argo_database" {
   type = string
 }

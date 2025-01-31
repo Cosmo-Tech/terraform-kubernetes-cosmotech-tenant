@@ -29,3 +29,7 @@ variable "redis_pv_capacity" {
 variable "version_redis_cosmotech" {
   type = string
 }
+
+variable "first_tenant_in_cluster" {
+  type = bool
+}

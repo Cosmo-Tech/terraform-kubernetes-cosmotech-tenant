@@ -35,3 +35,7 @@ variable "version_redis_cosmotech" {
   type        = string
   description = "Redis version"
 }
+
+variable "first_tenant_in_cluster" {
+  type = bool
+}

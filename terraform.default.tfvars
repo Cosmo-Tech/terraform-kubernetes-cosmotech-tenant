@@ -51,15 +51,16 @@ max_request_size  = "10MB"
 api_graph_enabled = true
 
 # Argo
-argo_helm_repo_url          = "https://argoproj.github.io/argo-helm"
+argo_deploy                 = true
+argo_helm_repo_url          = "https://charts.bitnami.com/bitnami"
 argo_helm_chart             = "argo-workflows"
-argo_helm_chart_version     = "0.16.6"
+argo_helm_chart_version     = "9.1.6"
 argo_service_account        = ""
 argo_bucket_name            = "argo-workflows"
 argo_database               = "argo_workflows"
 argo_postgresql_secret_name = "postgres-config"
-requeue_time                = "1s"
-archive_ttl                 = "3d"
+argo_requeue_time           = "1s"
+argo_archive_ttl            = "3d"
 argo_install_crds           = true
 
 # MinIO
@@ -103,6 +104,8 @@ redis_persistence_size  = "64Gi"
 redis_port              = 6379
 redis_admin_password    = ""
 version_redis_cosmotech = "1.0.12"
+
+first_tenant_in_cluster = true
 
 # Vault
 vault_namespace      = "vault"

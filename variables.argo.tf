@@ -26,11 +26,11 @@ variable "argo_postgresql_secret_name" {
   type = string
 }
 
-variable "requeue_time" {
+variable "argo_requeue_time" {
   type = string
 }
 
-variable "archive_ttl" {
+variable "argo_archive_ttl" {
   type = string
 }
 

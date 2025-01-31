@@ -7,7 +7,7 @@ module "create-argo" {
   use_minio_storage           = local.use_minio_storage
   namespace                   = var.kubernetes_tenant_namespace
   monitoring_namespace        = var.monitoring_namespace
-  archive_ttl                 = var.archive_ttl
+  archive_ttl                 = var.argo_archive_ttl
   helm_repo_url               = var.argo_helm_repo_url
   helm_chart                  = var.argo_helm_chart
   helm_chart_version          = var.argo_helm_chart_version
@@ -15,7 +15,8 @@ module "create-argo" {
   argo_bucket_name            = var.argo_bucket_name
   argo_database               = var.argo_database
   argo_postgresql_secret_name = var.argo_postgresql_secret_name
-  requeue_time                = var.requeue_time
+  requeue_time                = var.argo_requeue_time
+  postgres_argo_user          = module.create-postgresql-db.0.out_argo_postgresql_user
   postgres_release_name       = module.create-postgresql-db.0.out_postgres_release_name
   install_argo_crds           = var.argo_install_crds
 
@@ -171,6 +172,7 @@ module "create-redis-stack" {
   helm_chart_name         = var.redis_helm_chart_name
   chart_redis_version     = var.redis_chart_version
   redis_admin_password    = var.redis_admin_password
+  first_tenant_in_cluster = var.first_tenant_in_cluster
 
   depends_on = [module.create-postgresql-db]
 }
