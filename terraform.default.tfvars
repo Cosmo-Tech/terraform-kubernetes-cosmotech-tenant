@@ -177,6 +177,9 @@ redis_pv_capacity       = ""
 redis_cosmotech_version = "1.0.12"
 redis_persistence_size  = "64Gi"
 version_redis_cosmotech = "1.0.12"
+redis_master_existing_pvc_name  = "pvc-disk-redis-master-tenant"
+redis_replica_existing_pvc_name = "pvc-disk-redis-replica-tenant"
+redis_pvc_storage_class_name    = "default"
 
 # seaweedfs
 seaweedfs_chart_version = "4.8.0"

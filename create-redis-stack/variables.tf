@@ -29,3 +29,14 @@ variable "redis_pv_capacity" {
 variable "version_redis_cosmotech" {
   type = string
 }
+variable "redis_master_existing_pvc_name" {
+  type = string
+}
+
+variable "redis_replica_existing_pvc_name" {
+  type = string
+}
+
+variable "redis_pvc_storage_class_name" {
+  type = string
+}
