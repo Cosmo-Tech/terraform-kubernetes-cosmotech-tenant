@@ -191,3 +191,7 @@ vault_address        = "http://vault.vault.svc.cluster.local"
 vault_sops_namespace = "vault-secrets-operator"
 
 kubernetes_cluster_admin_activate = false
+
+# pvc redis
+pvc_redis_replicas    = 1
+pvc_redis_storage_gbi = 128
