@@ -157,7 +157,7 @@ module "create-postgresql-db" {
   postgresql_secret_name           = var.postgresql_secret_name
   postgresql_secrets_config_create = var.postgresql_secrets_config_create
 
-  depends_on = [ module.deploy-pvc-postgres ]
+  depends_on = [module.deploy-pvc-postgres]
 }
 
 module "create-redis-stack" {
@@ -165,14 +165,17 @@ module "create-redis-stack" {
 
   count = var.redis_deploy ? 1 : 0
 
-  version_redis_cosmotech = var.version_redis_cosmotech
-  namespace               = var.kubernetes_tenant_namespace
-  redis_pv_capacity       = var.redis_persistence_size
-  helm_repo_url           = var.redis_helm_repo_url
-  helm_release_name       = var.redis_helm_release_name
-  helm_chart_name         = var.redis_helm_chart_name
-  chart_redis_version     = var.redis_chart_version
-  redis_admin_password    = var.redis_admin_password
+  version_redis_cosmotech         = var.version_redis_cosmotech
+  namespace                       = var.kubernetes_tenant_namespace
+  redis_pv_capacity               = var.redis_persistence_size
+  helm_repo_url                   = var.redis_helm_repo_url
+  helm_release_name               = var.redis_helm_release_name
+  helm_chart_name                 = var.redis_helm_chart_name
+  chart_redis_version             = var.redis_chart_version
+  redis_admin_password            = var.redis_admin_password
+  redis_master_existing_pvc_name  = var.redis_master_existing_pvc_name
+  redis_replica_existing_pvc_name = var.redis_replica_existing_pvc_name
+  redis_pvc_storage_class_name    = var.redis_pvc_storage_class_name
 
   depends_on = [
     module.create-postgresql-db,

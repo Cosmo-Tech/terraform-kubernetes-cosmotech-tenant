@@ -95,14 +95,17 @@ rabbitmq_sender_username    = "cosmotech_run_sender"
 rabbitmq_persistence_size   = "8Gi"
 
 # Redis
-redis_helm_repo_url     = "https://charts.bitnami.com/bitnami"
-redis_helm_release_name = "cosmotechredis"
-redis_helm_chart_name   = "redis"
-redis_chart_version     = "17.8.0"
-redis_persistence_size  = "64Gi"
-redis_port              = 6379
-redis_admin_password    = ""
-version_redis_cosmotech = "1.0.12"
+redis_helm_repo_url             = "https://charts.bitnami.com/bitnami"
+redis_helm_release_name         = "cosmotechredis"
+redis_helm_chart_name           = "redis"
+redis_chart_version             = "17.8.0"
+redis_persistence_size          = "64Gi"
+redis_port                      = 6379
+redis_admin_password            = ""
+version_redis_cosmotech         = "1.0.12"
+redis_master_existing_pvc_name  = "pvc-disk-redis-master-tenant"
+redis_replica_existing_pvc_name = "pvc-disk-redis-replica-tenant"
+redis_pvc_storage_class_name    = "default"
 
 # Vault
 vault_namespace      = "vault"
