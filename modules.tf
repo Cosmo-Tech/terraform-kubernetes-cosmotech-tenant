@@ -196,7 +196,10 @@ module "create-redis-stack" {
   helm_release_name       = var.redis_helm_release_name
   helm_repo_url           = var.redis_helm_repo_url
 
-  depends_on = [module.create-argo]
+  depends_on = [
+    module.create-postgresql-db,
+    module.deploy-pvc-redis
+  ]
 }
 
 module "create-rabbitmq" {
@@ -368,3 +371,9 @@ module "config_platform" {
 }
 
 
+module "deploy-pvc-redis" {
+  source                      = "./persistence-claim-redis"
+  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
+  pvc_redis_replicas          = var.pvc_redis_replicas
+  pvc_redis_storage_gbi       = var.pvc_redis_storage_gbi
+}

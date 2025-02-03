@@ -5,9 +5,6 @@ locals {
     "VERSION_REDIS_COSMOTECH" = var.version_redis_cosmotech
     "REDIS_DISK_SIZE"         = var.redis_pv_capacity
   }
-}
-
-locals {
   instance_name = "${var.helm_release_name}-${var.namespace}"
 }
 
