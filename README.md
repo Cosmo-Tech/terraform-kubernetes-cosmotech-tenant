@@ -137,8 +137,11 @@
 | <a name="input_redis_helm_chart_name"></a> [redis\_helm\_chart\_name](#input\_redis\_helm\_chart\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_helm_release_name"></a> [redis\_helm\_release\_name](#input\_redis\_helm\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_helm_repo_url"></a> [redis\_helm\_repo\_url](#input\_redis\_helm\_repo\_url) | n/a | `string` | n/a | yes |
+| <a name="input_redis_master_existing_pvc_name"></a> [redis\_master\_existing\_pvc\_name](#input\_redis\_master\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_persistence_size"></a> [redis\_persistence\_size](#input\_redis\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | n/a | yes |
+| <a name="input_redis_pvc_storage_class_name"></a> [redis\_pvc\_storage\_class\_name](#input\_redis\_pvc\_storage\_class\_name) | n/a | `string` | n/a | yes |
+| <a name="input_redis_replica_existing_pvc_name"></a> [redis\_replica\_existing\_pvc\_name](#input\_redis\_replica\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_requeue_time"></a> [requeue\_time](#input\_requeue\_time) | n/a | `string` | n/a | yes |
 | <a name="input_secret_tls_secret_name"></a> [secret\_tls\_secret\_name](#input\_secret\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_storage_account_key"></a> [storage\_account\_key](#input\_storage\_account\_key) | n/a | `string` | n/a | yes |
