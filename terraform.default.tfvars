@@ -195,3 +195,7 @@ kubernetes_cluster_admin_activate = false
 # pvc redis
 pvc_redis_replicas    = 1
 pvc_redis_storage_gbi = 128
+
+# pvc postgres
+pvc_postgres_replicas    = 1
+pvc_postgres_storage_gbi = 128

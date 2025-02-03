@@ -377,3 +377,10 @@ module "deploy-pvc-redis" {
   pvc_redis_replicas          = var.pvc_redis_replicas
   pvc_redis_storage_gbi       = var.pvc_redis_storage_gbi
 }
+
+module "deploy-pvc-postgres" {
+  source                      = "./persistence-claim-postgres"
+  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
+  pvc_postgres_replicas       = var.pvc_postgres_replicas
+  pvc_postgres_storage_gbi    = var.pvc_postgres_storage_gbi
+}
