@@ -112,10 +112,12 @@
 | <a name="input_network_sp_client_id"></a> [network\_sp\_client\_id](#input\_network\_sp\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_network_sp_client_secret"></a> [network\_sp\_client\_secret](#input\_network\_sp\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_deploy"></a> [postgresql\_deploy](#input\_postgresql\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_postgresql_existing_pvc_name"></a> [postgresql\_existing\_pvc\_name](#input\_postgresql\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_helm_chart"></a> [postgresql\_helm\_chart](#input\_postgresql\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_helm_repo_url"></a> [postgresql\_helm\_repo\_url](#input\_postgresql\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_initdb_secret_name"></a> [postgresql\_initdb\_secret\_name](#input\_postgresql\_initdb\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_persistence_size"></a> [postgresql\_persistence\_size](#input\_postgresql\_persistence\_size) | n/a | `string` | n/a | yes |
+| <a name="input_postgresql_pvc_storage_class_name"></a> [postgresql\_pvc\_storage\_class\_name](#input\_postgresql\_pvc\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_secret_name"></a> [postgresql\_secret\_name](#input\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_secrets_config_create"></a> [postgresql\_secrets\_config\_create](#input\_postgresql\_secrets\_config\_create) | n/a | `bool` | n/a | yes |
 | <a name="input_postgresql_version"></a> [postgresql\_version](#input\_postgresql\_version) | n/a | `string` | n/a | yes |
