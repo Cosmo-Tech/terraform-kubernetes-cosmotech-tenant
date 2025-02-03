@@ -33,6 +33,7 @@
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
 | <a name="module_create-seaweedfs"></a> [create-seaweedfs](#module\_create-seaweedfs) | ./create-seaweedfs | n/a |
 | <a name="module_create-tls"></a> [create-tls](#module\_create-tls) | ./create-secret-tls | n/a |
+| <a name="module_deploy-pvc-redis"></a> [deploy-pvc-redis](#module\_deploy-pvc-redis) | ./persistence-claim-redis | n/a |
 
 ## Resources
 
