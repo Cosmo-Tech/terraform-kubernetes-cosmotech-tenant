@@ -154,7 +154,9 @@ postgresql_argo_user          = "argo"
 postgresql_secret_name        = "postgres-config"
 postgresql_argo_database      = "argo_workflows"
 
-# rabbitmq
+argo_postgresql_user              = "argo"
+postgresql_existing_pvc_name      = "pv-disk-postgres-tenant"
+postgresql_pvc_storage_class_name = "default"
 
 rabbitmq_deploy             = true
 rabbitmq_helm_repo_url      = "https://charts.bitnami.com/bitnami"
