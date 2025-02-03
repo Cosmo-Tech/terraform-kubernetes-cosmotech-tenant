@@ -181,7 +181,7 @@ module "create-postgresql-db" {
   postgresql_version               = var.postgresql_version
   postgresql_secrets_config_create = var.postgresql_secrets_config_create
 
-  depends_on = [ module.deploy-pvc-postgres ]
+  depends_on = [module.deploy-pvc-postgres]
 }
 
 module "create-redis-stack" {
