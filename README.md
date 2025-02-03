@@ -139,6 +139,7 @@
 | <a name="input_postgresql_cosmotech_api_reader_username"></a> [postgresql\_cosmotech\_api\_reader\_username](#input\_postgresql\_cosmotech\_api\_reader\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_writer_username"></a> [postgresql\_cosmotech\_api\_writer\_username](#input\_postgresql\_cosmotech\_api\_writer\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_deploy"></a> [postgresql\_deploy](#input\_postgresql\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_postgresql_existing_pvc_name"></a> [postgresql\_existing\_pvc\_name](#input\_postgresql\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_helm_chart"></a> [postgresql\_helm\_chart](#input\_postgresql\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_helm_repo_url"></a> [postgresql\_helm\_repo\_url](#input\_postgresql\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_initdb_secret_name"></a> [postgresql\_initdb\_secret\_name](#input\_postgresql\_initdb\_secret\_name) | n/a | `string` | n/a | yes |
@@ -146,6 +147,7 @@
 | <a name="input_postgresql_reader_password"></a> [postgresql\_reader\_password](#input\_postgresql\_reader\_password) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_reader_username"></a> [postgresql\_reader\_username](#input\_postgresql\_reader\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_release_name"></a> [postgresql\_release\_name](#input\_postgresql\_release\_name) | n/a | `string` | n/a | yes |
+| <a name="input_postgresql_pvc_storage_class_name"></a> [postgresql\_pvc\_storage\_class\_name](#input\_postgresql\_pvc\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_secret_name"></a> [postgresql\_secret\_name](#input\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_version"></a> [postgresql\_version](#input\_postgresql\_version) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_writer_password"></a> [postgresql\_writer\_password](#input\_postgresql\_writer\_password) | n/a | `string` | n/a | yes |
