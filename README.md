@@ -33,6 +33,7 @@
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
 | <a name="module_create-seaweedfs"></a> [create-seaweedfs](#module\_create-seaweedfs) | ./create-seaweedfs | n/a |
 | <a name="module_create-tls"></a> [create-tls](#module\_create-tls) | ./create-secret-tls | n/a |
+| <a name="module_deploy-pvc-postgres"></a> [deploy-pvc-postgres](#module\_deploy-pvc-postgres) | ./persistence-claim-postgres | n/a |
 | <a name="module_deploy-pvc-redis"></a> [deploy-pvc-redis](#module\_deploy-pvc-redis) | ./persistence-claim-redis | n/a |
 
 ## Resources
@@ -149,6 +150,11 @@
 | <a name="input_postgresql_writer_password"></a> [postgresql\_writer\_password](#input\_postgresql\_writer\_password) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_writer_username"></a> [postgresql\_writer\_username](#input\_postgresql\_writer\_username) | n/a | `string` | n/a | yes |
 | <a name="input_rabbitmq_deploy"></a> [rabbitmq\_deploy](#input\_rabbitmq\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_pvc_postgres_replicas"></a> [pvc\_postgres\_replicas](#input\_pvc\_postgres\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_pvc_postgres_storage_gbi"></a> [pvc\_postgres\_storage\_gbi](#input\_pvc\_postgres\_storage\_gbi) | n/a | `number` | n/a | yes |
+| <a name="input_pvc_redis_replicas"></a> [pvc\_redis\_replicas](#input\_pvc\_redis\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_pvc_redis_storage_gbi"></a> [pvc\_redis\_storage\_gbi](#input\_pvc\_redis\_storage\_gbi) | n/a | `number` | n/a | yes |
+| <a name="input_rabbitmq_deploy"></a> [rabbitmq\_deploy](#input\_rabbitmq\_deploy) | Whether to create RabbitMQ resources | `bool` | n/a | yes |
 | <a name="input_rabbitmq_helm_chart"></a> [rabbitmq\_helm\_chart](#input\_rabbitmq\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_rabbitmq_helm_chart_version"></a> [rabbitmq\_helm\_chart\_version](#input\_rabbitmq\_helm\_chart\_version) | n/a | `string` | n/a | yes |
 | <a name="input_rabbitmq_helm_release_name"></a> [rabbitmq\_helm\_release\_name](#input\_rabbitmq\_helm\_release\_name) | n/a | `string` | n/a | yes |
