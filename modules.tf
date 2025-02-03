@@ -142,20 +142,22 @@ module "create-postgresql-db" {
   # 
   count = var.postgresql_deploy ? 1 : 0
 
-  namespace                        = var.kubernetes_tenant_namespace
-  monitoring_namespace             = var.monitoring_namespace
-  persistence_size                 = var.postgresql_persistence_size
-  postgresql_version               = var.postgresql_version
-  helm_repo_url                    = var.postgresql_helm_repo_url
-  helm_chart                       = var.postgresql_helm_chart
-  argo_database                    = var.argo_database
-  cosmotech_api_admin_username     = var.cosmotech_api_admin_username
-  cosmotech_api_reader_username    = var.cosmotech_api_reader_username
-  cosmotech_api_writer_username    = var.cosmotech_api_writer_username
-  postgresql_initdb_secret_name    = var.postgresql_initdb_secret_name
-  argo_postgresql_user             = var.argo_postgresql_user
-  postgresql_secret_name           = var.postgresql_secret_name
-  postgresql_secrets_config_create = var.postgresql_secrets_config_create
+  namespace                         = var.kubernetes_tenant_namespace
+  monitoring_namespace              = var.monitoring_namespace
+  persistence_size                  = var.postgresql_persistence_size
+  postgresql_version                = var.postgresql_version
+  helm_repo_url                     = var.postgresql_helm_repo_url
+  helm_chart                        = var.postgresql_helm_chart
+  argo_database                     = var.argo_database
+  cosmotech_api_admin_username      = var.cosmotech_api_admin_username
+  cosmotech_api_reader_username     = var.cosmotech_api_reader_username
+  cosmotech_api_writer_username     = var.cosmotech_api_writer_username
+  postgresql_initdb_secret_name     = var.postgresql_initdb_secret_name
+  argo_postgresql_user              = var.argo_postgresql_user
+  postgresql_secret_name            = var.postgresql_secret_name
+  postgresql_secrets_config_create  = var.postgresql_secrets_config_create
+  postgresql_existing_pvc_name      = var.postgresql_existing_pvc_name
+  postgresql_pvc_storage_class_name = var.postgresql_pvc_storage_class_name
 
   depends_on = [module.deploy-pvc-postgres]
 }

@@ -1,10 +1,12 @@
 locals {
   values_postgresql = {
-    "POSTGRESQL_INITDB_SECRET" = var.postgresql_initdb_secret_name
-    "MONITORING_NAMESPACE"     = var.monitoring_namespace
-    "POSTGRESQL_SECRET_NAME"   = var.postgresql_secret_name
-    "POSTGRESQL_PASSWORD"      = random_password.postgres_postgresql_password.result
-    "PERSISTENCE_SIZE"         = var.persistence_size
+    "POSTGRESQL_INITDB_SECRET"      = var.postgresql_initdb_secret_name
+    "MONITORING_NAMESPACE"          = var.monitoring_namespace
+    "POSTGRESQL_SECRET_NAME"        = var.postgresql_secret_name
+    "POSTGRESQL_PASSWORD"           = random_password.postgres_postgresql_password.result
+    "PERSISTENCE_SIZE"              = var.persistence_size
+    "POSTGRESQL_EXISTING_PVC_NAME"  = "${var.postgresql_existing_pvc_name}-${var.namespace}"
+    "POSTGRESQL_STORAGE_CLASS_NAME" = var.postgresql_pvc_storage_class_name
   }
   initdb_data = {
     "COSMOTECH_API_READER_USERNAME" = var.cosmotech_api_reader_username

@@ -72,17 +72,19 @@ argo_minio_secret_key       = ""
 argo_minio_access_key       = ""
 
 # Postgres
-postgresql_deploy             = true
-postgresql_persistence_size   = "8Gi"
-postgresql_version            = "11.6.12"
-postgresql_helm_repo_url      = "https://charts.bitnami.com/bitnami"
-postgresql_helm_chart         = "postgresql"
-cosmotech_api_reader_username = "cosmotech_api_reader"
-cosmotech_api_writer_username = "cosmotech_api_writer"
-cosmotech_api_admin_username  = "cosmotech_api_admin"
-postgresql_initdb_secret_name = "postgres-initdb"
-argo_postgresql_user          = "argo"
-postgresql_secret_name        = "postgres-config"
+postgresql_deploy                 = true
+postgresql_persistence_size       = "8Gi"
+postgresql_version                = "11.6.12"
+postgresql_helm_repo_url          = "https://charts.bitnami.com/bitnami"
+postgresql_helm_chart             = "postgresql"
+cosmotech_api_reader_username     = "cosmotech_api_reader"
+cosmotech_api_writer_username     = "cosmotech_api_writer"
+cosmotech_api_admin_username      = "cosmotech_api_admin"
+postgresql_initdb_secret_name     = "postgres-initdb"
+argo_postgresql_user              = "argo"
+postgresql_secret_name            = "postgres-config"
+postgresql_existing_pvc_name      = "pv-disk-postgres-tenant"
+postgresql_pvc_storage_class_name = "default"
 
 # Rabbitmq
 rabbitmq_deploy             = true

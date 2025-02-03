@@ -53,3 +53,11 @@ variable "persistence_size" {
 variable "postgresql_secrets_config_create" {
   type = bool
 }
+
+variable "postgresql_existing_pvc_name" {
+  type = string
+}
+
+variable "postgresql_pvc_storage_class_name" {
+  type = string
+}
