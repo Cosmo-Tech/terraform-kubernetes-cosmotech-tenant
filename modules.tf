@@ -172,7 +172,10 @@ module "create-redis-stack" {
   chart_redis_version     = var.redis_chart_version
   redis_admin_password    = var.redis_admin_password
 
-  depends_on = [module.create-postgresql-db]
+  depends_on = [
+    module.create-postgresql-db,
+    module.deploy-pvc-redis
+  ]
 }
 
 module "create-rabbitmq" {
@@ -246,3 +249,9 @@ module "config_platform" {
 }
 
 
+module "deploy-pvc-redis" {
+  source                      = "./persistence-claim-redis"
+  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
+  pvc_redis_replicas          = var.pvc_redis_replicas
+  pvc_redis_storage_gbi       = var.pvc_redis_storage_gbi
+}
