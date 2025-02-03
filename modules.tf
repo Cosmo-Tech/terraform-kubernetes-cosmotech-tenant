@@ -381,6 +381,11 @@ module "deploy-pvc-redis" {
 module "deploy-pvc-postgres" {
   source                      = "./persistence-claim-postgres"
   kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
-  pvc_postgres_replicas       = var.pvc_postgres_replicas
   pvc_postgres_storage_gbi    = var.pvc_postgres_storage_gbi
+}
+
+module "deploy-pvc-postgres" {
+  source                      = "./persistence-claim-seaweedfs"
+  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
+  pvc_seaweedfs_storage_gbi   = var.pvc_seaweedfs_storage_gbi
 }
