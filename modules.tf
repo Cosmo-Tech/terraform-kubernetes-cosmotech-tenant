@@ -156,6 +156,8 @@ module "create-postgresql-db" {
   argo_postgresql_user             = var.argo_postgresql_user
   postgresql_secret_name           = var.postgresql_secret_name
   postgresql_secrets_config_create = var.postgresql_secrets_config_create
+
+  depends_on = [ module.deploy-pvc-postgres ]
 }
 
 module "create-redis-stack" {
@@ -262,7 +264,7 @@ module "deploy-pvc-postgres" {
   pvc_postgres_storage_gbi    = var.pvc_postgres_storage_gbi
 }
 
-module "deploy-pvc-postgres" {
+module "deploy-pvc-seaweedfs" {
   source                      = "./persistence-claim-seaweedfs"
   kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
   pvc_seaweedfs_storage_gbi   = var.pvc_seaweedfs_storage_gbi
