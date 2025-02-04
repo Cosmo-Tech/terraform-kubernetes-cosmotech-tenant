@@ -28,6 +28,7 @@
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
 | <a name="module_create-keycloak"></a> [create-keycloak](#module\_create-keycloak) | ./create-keycloak-realm | n/a |
 | <a name="module_create-minio"></a> [create-minio](#module\_create-minio) | ./create-minio | n/a |
+| <a name="module_create-modeling-api-deployment"></a> [create-modeling-api-deployment](#module\_create-modeling-api-deployment) | ./create-modeling-api-deployment | n/a |
 | <a name="module_create-postgresql-db"></a> [create-postgresql-db](#module\_create-postgresql-db) | ./create-postgresql-db | n/a |
 | <a name="module_create-rabbitmq"></a> [create-rabbitmq](#module\_create-rabbitmq) | ./create-rabbitmq | n/a |
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
