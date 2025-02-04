@@ -10,6 +10,7 @@ resource "kubernetes_persistent_volume_claim" "redis_master" {
   }
   spec {
     access_modes = ["ReadWriteOnce"]
+    storage_class_name = var.pvc_redis_storage_class_name
     resources {
       requests = {
         storage = "${var.pvc_redis_storage_gbi}Gi"
@@ -27,6 +28,7 @@ resource "kubernetes_persistent_volume_claim" "redis_replicas" {
   }
   spec {
     access_modes = ["ReadWriteOnce"]
+    storage_class_name = var.pvc_redis_storage_class_name
     resources {
       requests = {
         storage = "${var.pvc_redis_storage_gbi}Gi"

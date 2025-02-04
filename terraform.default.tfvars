@@ -198,9 +198,14 @@ vault_sops_namespace = "vault-secrets-operator"
 kubernetes_cluster_admin_activate = false
 
 # pvc redis
-pvc_redis_replicas    = 1
-pvc_redis_storage_gbi = 128
+pvc_redis_replicas           = 1
+pvc_redis_storage_gbi        = 128
+pvc_redis_storage_class_name = "cosmotech-azure-retain"
 
 # pvc postgres
-pvc_postgres_replicas    = 1
-pvc_postgres_storage_gbi = 128
+pvc_postgres_replicas           = 1
+pvc_postgres_storage_gbi        = 128
+pvc_postgres_storage_class_name = "cosmotech-azure-retain"
+
+# pvc seaweedfs
+pvc_seaweedfs_storage_class_name = "cosmotech-azure-retain"

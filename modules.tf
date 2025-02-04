@@ -374,20 +374,23 @@ module "config_platform" {
 
 
 module "deploy-pvc-redis" {
-  source                      = "./persistence-claim-redis"
-  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
-  pvc_redis_replicas          = var.pvc_redis_replicas
-  pvc_redis_storage_gbi       = var.pvc_redis_storage_gbi
+  source                       = "./persistence-claim-redis"
+  kubernetes_tenant_namespace  = var.kubernetes_tenant_namespace
+  pvc_redis_replicas           = var.pvc_redis_replicas
+  pvc_redis_storage_gbi        = var.pvc_redis_storage_gbi
+  pvc_redis_storage_class_name = var.pvc_redis_storage_class_name
 }
 
 module "deploy-pvc-postgres" {
-  source                      = "./persistence-claim-postgres"
-  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
-  pvc_postgres_storage_gbi    = var.pvc_postgres_storage_gbi
+  source                          = "./persistence-claim-postgres"
+  kubernetes_tenant_namespace     = var.kubernetes_tenant_namespace
+  pvc_postgres_storage_gbi        = var.pvc_postgres_storage_gbi
+  pvc_postgres_storage_class_name = var.pvc_postgres_storage_class_name
 }
 
 module "deploy-pvc-seaweedfs" {
-  source                      = "./persistence-claim-seaweedfs"
-  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
-  pvc_seaweedfs_storage_gbi   = var.pvc_seaweedfs_storage_gbi
+  source                           = "./persistence-claim-seaweedfs"
+  kubernetes_tenant_namespace      = var.kubernetes_tenant_namespace
+  pvc_seaweedfs_storage_gbi        = var.pvc_seaweedfs_storage_gbi
+  pvc_seaweedfs_storage_class_name = var.pvc_seaweedfs_storage_class_name
 }
