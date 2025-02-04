@@ -9,6 +9,7 @@ resource "kubernetes_persistent_volume_claim" "seaweedfs_master" {
   }
   spec {
     access_modes = ["ReadWriteOnce"]
+    storage_class_name = var.pvc_seaweedfs_storage_class_name
     resources {
       requests = {
         storage = "${var.pvc_seaweedfs_storage_gbi}Gi"
