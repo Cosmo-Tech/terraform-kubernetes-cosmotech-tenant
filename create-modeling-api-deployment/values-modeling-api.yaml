@@ -47,7 +47,7 @@ tektonSa:
     annotations: {}
 kubernetesClusterDomain: cluster.local
 host: ${COSMOTECH_API_DNS_NAME}
-host_path_context: tekton
+host_path_context: eng-test-dev/modeling-api
 registry_url: ghcr.io/cosmo-tech
 chart_name: cosmotech-modeling-api-chart
 chart_version: 0.0-main
