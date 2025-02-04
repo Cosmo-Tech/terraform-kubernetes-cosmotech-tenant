@@ -219,3 +219,24 @@ module "create-seaweedfs" {
     module.create-postgresql-db
   ]
 }
+
+module "create-modeling-api-deployment" {
+  source = "./create-modeling-api-deployment"
+
+  count = var.deploy_modeling_api_deployment ? 1 : 0
+
+  kubernetes_tenant_namespace   = var.kubernetes_tenant_namespace
+  monitoring_enabled            = var.modeling_api_monitoring_enabled
+  monitoring_namespace          = var.modeling_api_monitoring_namespace
+  api_dns_name                  = var.event_listener_dns_name
+  helm_chart                    = var.deployment_helm_chart
+  helm_repository               = var.deployment_helm_repository
+  helm_release_name             = var.deployment_helm_release_name
+  chart_package_version         = var.deployment_chart_package_version
+  persistence_storage_class     = var.modeling_api_persistence_storage_class
+  argo_release_name             = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
+  argo_service_account          = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
+  docker_secret = var.docker_secret
+  wehbook_secret = var.wehbook_secret
+
+}
