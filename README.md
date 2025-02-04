@@ -87,6 +87,13 @@
 | <a name="input_custom_tls_certificate_certificate"></a> [custom\_tls\_certificate\_certificate](#input\_custom\_tls\_certificate\_certificate) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_certificate_key"></a> [custom\_tls\_certificate\_key](#input\_custom\_tls\_certificate\_key) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
+| <a name="input_deploy_modeling_api_deployment"></a> [deploy\_modeling\_api\_deployment](#input\_deploy\_modeling\_api\_deployment) | n/a | `bool` | n/a | yes |
+| <a name="input_deployment_chart_package_version"></a> [deployment\_chart\_package\_version](#input\_deployment\_chart\_package\_version) | n/a | `string` | n/a | yes |
+| <a name="input_deployment_helm_chart"></a> [deployment\_helm\_chart](#input\_deployment\_helm\_chart) | n/a | `string` | n/a | yes |
+| <a name="input_deployment_helm_release_name"></a> [deployment\_helm\_release\_name](#input\_deployment\_helm\_release\_name) | n/a | `string` | n/a | yes |
+| <a name="input_deployment_helm_repository"></a> [deployment\_helm\_repository](#input\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
+| <a name="input_docker_secret"></a> [docker\_secret](#input\_docker\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_event_listener_dns_name"></a> [event\_listener\_dns\_name](#input\_event\_listener\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_id"></a> [keycloak\_client\_id](#input\_keycloak\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
@@ -105,6 +112,9 @@
 | <a name="input_minio_helm_chart"></a> [minio\_helm\_chart](#input\_minio\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_monitoring_enabled"></a> [modeling\_api\_monitoring\_enabled](#input\_modeling\_api\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
+| <a name="input_modeling_api_monitoring_namespace"></a> [modeling\_api\_monitoring\_namespace](#input\_modeling\_api\_monitoring\_namespace) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_persistence_storage_class"></a> [modeling\_api\_persistence\_storage\_class](#input\_modeling\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_network_client_id"></a> [network\_client\_id](#input\_network\_client\_id) | n/a | `string` | n/a | yes |
@@ -166,6 +176,7 @@
 | <a name="input_tls_namespace"></a> [tls\_namespace](#input\_tls\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_use_internal_result_services"></a> [use\_internal\_result\_services](#input\_use\_internal\_result\_services) | n/a | `bool` | n/a | yes |
 | <a name="input_use_minio_storage"></a> [use\_minio\_storage](#input\_use\_minio\_storage) | n/a | `bool` | n/a | yes |
+| <a name="input_wehbook_secret"></a> [wehbook\_secret](#input\_wehbook\_secret) | n/a | `string` | n/a | yes |
 
 ## Outputs
 
