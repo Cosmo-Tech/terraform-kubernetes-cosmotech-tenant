@@ -9,6 +9,7 @@ resource "kubernetes_persistent_volume_claim" "postgres_master" {
   }
   spec {
     access_modes = ["ReadWriteOnce"]
+    storage_class_name = var.pvc_postgres_storage_class_name
     resources {
       requests = {
         storage = "${var.pvc_postgres_storage_gbi}Gi"
