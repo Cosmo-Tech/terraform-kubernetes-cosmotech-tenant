@@ -154,9 +154,12 @@
 | <a name="input_postgresql_writer_username"></a> [postgresql\_writer\_username](#input\_postgresql\_writer\_username) | n/a | `string` | n/a | yes |
 | <a name="input_rabbitmq_deploy"></a> [rabbitmq\_deploy](#input\_rabbitmq\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pvc_postgres_replicas"></a> [pvc\_postgres\_replicas](#input\_pvc\_postgres\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_pvc_postgres_storage_class_name"></a> [pvc\_postgres\_storage\_class\_name](#input\_pvc\_postgres\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_postgres_storage_gbi"></a> [pvc\_postgres\_storage\_gbi](#input\_pvc\_postgres\_storage\_gbi) | n/a | `number` | n/a | yes |
 | <a name="input_pvc_redis_replicas"></a> [pvc\_redis\_replicas](#input\_pvc\_redis\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_pvc_redis_storage_class_name"></a> [pvc\_redis\_storage\_class\_name](#input\_pvc\_redis\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_redis_storage_gbi"></a> [pvc\_redis\_storage\_gbi](#input\_pvc\_redis\_storage\_gbi) | n/a | `number` | n/a | yes |
+| <a name="input_pvc_seaweedfs_storage_class_name"></a> [pvc\_seaweedfs\_storage\_class\_name](#input\_pvc\_seaweedfs\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_storage_gbi"></a> [pvc\_seaweedfs\_storage\_gbi](#input\_pvc\_seaweedfs\_storage\_gbi) | n/a | `number` | n/a | yes |
 | <a name="input_rabbitmq_deploy"></a> [rabbitmq\_deploy](#input\_rabbitmq\_deploy) | Whether to create RabbitMQ resources | `bool` | n/a | yes |
 | <a name="input_rabbitmq_helm_chart"></a> [rabbitmq\_helm\_chart](#input\_rabbitmq\_helm\_chart) | n/a | `string` | n/a | yes |
