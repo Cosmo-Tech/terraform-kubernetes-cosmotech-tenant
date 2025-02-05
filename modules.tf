@@ -397,6 +397,7 @@ module "deploy-pvc-postgres" {
 
 module "deploy-pvc-seaweedfs" {
   source                           = "./persistence-claim-seaweedfs"
+  count                            = var.minio_deploy ? 0 : 1
   kubernetes_tenant_namespace      = var.kubernetes_tenant_namespace
   pvc_seaweedfs_storage_gbi        = var.pvc_seaweedfs_storage_gbi
   pvc_seaweedfs_storage_class_name = var.pvc_seaweedfs_storage_class_name
