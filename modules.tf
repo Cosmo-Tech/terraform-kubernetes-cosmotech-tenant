@@ -203,6 +203,7 @@ module "create-redis-stack" {
   redis_master_existing_pvc_name  = var.redis_master_existing_pvc_name
   redis_pvc_storage_class_name    = var.pvc_redis_storage_class_name
   redis_replica_existing_pvc_name = var.redis_replica_existing_pvc_name
+  first_tenant_in_cluster         = var.first_tenant_in_cluster
 
   depends_on = [
     module.create-postgresql-db,
