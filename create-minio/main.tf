@@ -9,6 +9,8 @@ locals {
     "ARGO_MINIO_REQUESTS_MEMORY"  = var.argo_minio_requests_memory
     "ARGO_MINIO_ACCESS_KEY"       = local.local_argo_minio_access_key
     "ARGO_MINIO_SECRET_KEY"       = local.local_argo_minio_secret_key
+    "MINIO_EXISTING_PVC_NAME"     = "${var.minio_existing_pvc_name}-${var.namespace}"
+    "MINIO_STORAGE_CLASS_NAME"    = var.minio_storage_class_name
   }
 }
 

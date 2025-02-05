@@ -63,6 +63,7 @@ archive_ttl                 = "3d"
 argo_install_crds           = true
 
 # MinIO
+minio_deploy                = true
 argo_minio_persistence_size = "16Gi"
 argo_minio_requests_memory  = "2Gi"
 minio_helm_repo_url         = "https://charts.bitnami.com/bitnami"
@@ -70,21 +71,22 @@ minio_helm_chart            = "minio"
 minio_version               = "12.1.3"
 argo_minio_secret_key       = ""
 argo_minio_access_key       = ""
+minio_existing_pvc_name     = "pvc-disk-minio-tenant"
+minio_storage_class_name    = ""
 
 # Postgres
-postgresql_deploy                 = true
-postgresql_persistence_size       = "8Gi"
-postgresql_version                = "11.6.12"
-postgresql_helm_repo_url          = "https://charts.bitnami.com/bitnami"
-postgresql_helm_chart             = "postgresql"
-cosmotech_api_reader_username     = "cosmotech_api_reader"
-cosmotech_api_writer_username     = "cosmotech_api_writer"
-cosmotech_api_admin_username      = "cosmotech_api_admin"
-postgresql_initdb_secret_name     = "postgres-initdb"
-argo_postgresql_user              = "argo"
-postgresql_secret_name            = "postgres-config"
-postgresql_existing_pvc_name      = "pv-disk-postgres-tenant"
-postgresql_pvc_storage_class_name = "default"
+postgresql_deploy             = true
+postgresql_persistence_size   = "8Gi"
+postgresql_version            = "11.6.12"
+postgresql_helm_repo_url      = "https://charts.bitnami.com/bitnami"
+postgresql_helm_chart         = "postgresql"
+cosmotech_api_reader_username = "cosmotech_api_reader"
+cosmotech_api_writer_username = "cosmotech_api_writer"
+cosmotech_api_admin_username  = "cosmotech_api_admin"
+postgresql_initdb_secret_name = "postgres-initdb"
+argo_postgresql_user          = "argo"
+postgresql_secret_name        = "postgres-config"
+postgresql_existing_pvc_name  = "pv-disk-postgres-tenant"
 
 # Rabbitmq
 rabbitmq_deploy             = true
@@ -107,7 +109,6 @@ redis_admin_password            = ""
 version_redis_cosmotech         = "1.0.12"
 redis_master_existing_pvc_name  = "pvc-disk-redis-master-tenant"
 redis_replica_existing_pvc_name = "pvc-disk-redis-replica-tenant"
-redis_pvc_storage_class_name    = "default"
 
 # Vault
 vault_namespace      = "vault"
@@ -119,12 +120,12 @@ kubernetes_cluster_admin_activate = false
 # pvc redis
 pvc_redis_replicas           = 1
 pvc_redis_storage_gbi        = 128
-pvc_redis_storage_class_name = "cosmotech-azure-retain"
+pvc_redis_storage_class_name = ""
 
 # pvc postgres
 pvc_postgres_replicas           = 1
 pvc_postgres_storage_gbi        = 128
-pvc_postgres_storage_class_name = "cosmotech-azure-retain"
+pvc_postgres_storage_class_name = ""
 
 # pvc seaweedfs
-pvc_seaweedfs_storage_class_name = "cosmotech-azure-retain"
+pvc_seaweedfs_storage_class_name = ""

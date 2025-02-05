@@ -135,6 +135,8 @@ module "create-minio" {
   minio_version               = var.minio_version
   helm_repo_url               = var.minio_helm_repo_url
   helm_chart                  = var.minio_helm_chart
+  minio_existing_pvc_name     = var.minio_existing_pvc_name
+  minio_storage_class_name    = var.minio_storage_class_name
 }
 
 module "create-postgresql-db" {
@@ -157,7 +159,7 @@ module "create-postgresql-db" {
   postgresql_secret_name            = var.postgresql_secret_name
   postgresql_secrets_config_create  = var.postgresql_secrets_config_create
   postgresql_existing_pvc_name      = var.postgresql_existing_pvc_name
-  postgresql_pvc_storage_class_name = var.postgresql_pvc_storage_class_name
+  postgresql_pvc_storage_class_name = var.pvc_postgres_storage_class_name
 
   depends_on = [module.deploy-pvc-postgres]
 }
@@ -176,8 +178,8 @@ module "create-redis-stack" {
   chart_redis_version             = var.redis_chart_version
   redis_admin_password            = var.redis_admin_password
   redis_master_existing_pvc_name  = var.redis_master_existing_pvc_name
+  redis_pvc_storage_class_name    = var.pvc_redis_storage_class_name
   redis_replica_existing_pvc_name = var.redis_replica_existing_pvc_name
-  redis_pvc_storage_class_name    = var.redis_pvc_storage_class_name
 
   depends_on = [
     module.create-postgresql-db,

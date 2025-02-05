@@ -29,3 +29,11 @@ variable "argo_minio_access_key" {
 variable "minio_deploy" {
   type = bool
 }
+
+variable "minio_existing_pvc_name" {
+  type = string
+}
+
+variable "minio_storage_class_name" {
+  type = string
+}

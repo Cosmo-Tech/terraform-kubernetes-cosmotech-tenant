@@ -37,3 +37,11 @@ variable "argo_minio_persistence_size" {
 variable "argo_minio_requests_memory" {
   type    = string
 }
+
+variable "minio_existing_pvc_name" {
+  type = string
+}
+
+variable "minio_storage_class_name" {
+  type = string
+}
