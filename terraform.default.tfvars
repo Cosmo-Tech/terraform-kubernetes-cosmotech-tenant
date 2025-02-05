@@ -109,6 +109,7 @@ redis_admin_password            = ""
 version_redis_cosmotech         = "1.0.12"
 redis_master_existing_pvc_name  = "pvc-disk-redis-master-tenant"
 redis_replica_existing_pvc_name = "pvc-disk-redis-replica-tenant"
+first_tenant_in_cluster         = false
 
 # Vault
 vault_namespace      = "vault"
