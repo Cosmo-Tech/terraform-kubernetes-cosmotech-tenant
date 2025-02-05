@@ -29,6 +29,7 @@
 | <a name="module_create-rabbitmq"></a> [create-rabbitmq](#module\_create-rabbitmq) | ./create-rabbitmq | n/a |
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
 | <a name="module_create-tls"></a> [create-tls](#module\_create-tls) | ./create-secret-tls | n/a |
+| <a name="module_deploy-pvc-minio"></a> [deploy-pvc-minio](#module\_deploy-pvc-minio) | ./persistence-claim-minio | n/a |
 | <a name="module_deploy-pvc-postgres"></a> [deploy-pvc-postgres](#module\_deploy-pvc-postgres) | ./persistence-claim-postgres | n/a |
 | <a name="module_deploy-pvc-redis"></a> [deploy-pvc-redis](#module\_deploy-pvc-redis) | ./persistence-claim-redis | n/a |
 | <a name="module_deploy-pvc-seaweedfs"></a> [deploy-pvc-seaweedfs](#module\_deploy-pvc-seaweedfs) | ./persistence-claim-seaweedfs | n/a |
@@ -122,6 +123,8 @@
 | <a name="input_postgresql_secret_name"></a> [postgresql\_secret\_name](#input\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_secrets_config_create"></a> [postgresql\_secrets\_config\_create](#input\_postgresql\_secrets\_config\_create) | n/a | `bool` | n/a | yes |
 | <a name="input_postgresql_version"></a> [postgresql\_version](#input\_postgresql\_version) | n/a | `string` | n/a | yes |
+| <a name="input_pvc_minio_storage_class_name"></a> [pvc\_minio\_storage\_class\_name](#input\_pvc\_minio\_storage\_class\_name) | n/a | `string` | n/a | yes |
+| <a name="input_pvc_minio_storage_gbi"></a> [pvc\_minio\_storage\_gbi](#input\_pvc\_minio\_storage\_gbi) | n/a | `number` | n/a | yes |
 | <a name="input_pvc_postgres_storage_class_name"></a> [pvc\_postgres\_storage\_class\_name](#input\_pvc\_postgres\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_postgres_storage_gbi"></a> [pvc\_postgres\_storage\_gbi](#input\_pvc\_postgres\_storage\_gbi) | n/a | `number` | n/a | yes |
 | <a name="input_pvc_redis_replicas"></a> [pvc\_redis\_replicas](#input\_pvc\_redis\_replicas) | n/a | `number` | n/a | yes |
