@@ -104,8 +104,10 @@
 | <a name="input_max_file_size"></a> [max\_file\_size](#input\_max\_file\_size) | n/a | `string` | n/a | yes |
 | <a name="input_max_request_size"></a> [max\_request\_size](#input\_max\_request\_size) | n/a | `string` | n/a | yes |
 | <a name="input_minio_deploy"></a> [minio\_deploy](#input\_minio\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_minio_existing_pvc_name"></a> [minio\_existing\_pvc\_name](#input\_minio\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_chart"></a> [minio\_helm\_chart](#input\_minio\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
+| <a name="input_minio_storage_class_name"></a> [minio\_storage\_class\_name](#input\_minio\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
@@ -117,7 +119,6 @@
 | <a name="input_postgresql_helm_repo_url"></a> [postgresql\_helm\_repo\_url](#input\_postgresql\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_initdb_secret_name"></a> [postgresql\_initdb\_secret\_name](#input\_postgresql\_initdb\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_persistence_size"></a> [postgresql\_persistence\_size](#input\_postgresql\_persistence\_size) | n/a | `string` | n/a | yes |
-| <a name="input_postgresql_pvc_storage_class_name"></a> [postgresql\_pvc\_storage\_class\_name](#input\_postgresql\_pvc\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_secret_name"></a> [postgresql\_secret\_name](#input\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_secrets_config_create"></a> [postgresql\_secrets\_config\_create](#input\_postgresql\_secrets\_config\_create) | n/a | `bool` | n/a | yes |
 | <a name="input_postgresql_version"></a> [postgresql\_version](#input\_postgresql\_version) | n/a | `string` | n/a | yes |
@@ -145,7 +146,6 @@
 | <a name="input_redis_master_existing_pvc_name"></a> [redis\_master\_existing\_pvc\_name](#input\_redis\_master\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_persistence_size"></a> [redis\_persistence\_size](#input\_redis\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | n/a | yes |
-| <a name="input_redis_pvc_storage_class_name"></a> [redis\_pvc\_storage\_class\_name](#input\_redis\_pvc\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_replica_existing_pvc_name"></a> [redis\_replica\_existing\_pvc\_name](#input\_redis\_replica\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_requeue_time"></a> [requeue\_time](#input\_requeue\_time) | n/a | `string` | n/a | yes |
 | <a name="input_secret_tls_secret_name"></a> [secret\_tls\_secret\_name](#input\_secret\_tls\_secret\_name) | n/a | `string` | n/a | yes |
