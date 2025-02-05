@@ -112,6 +112,7 @@
 | <a name="input_minio_argo_persistence_size"></a> [minio\_argo\_persistence\_size](#input\_minio\_argo\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_minio_argo_requests_memory"></a> [minio\_argo\_requests\_memory](#input\_minio\_argo\_requests\_memory) | n/a | `string` | n/a | yes |
 | <a name="input_minio_argo_secret_key"></a> [minio\_argo\_secret\_key](#input\_minio\_argo\_secret\_key) | n/a | `string` | n/a | yes |
+| <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identity_authorization_url"></a> [identity\_authorization\_url](#input\_identity\_authorization\_url) | n/a | `string` | n/a | yes |
 | <a name="input_identity_token_url"></a> [identity\_token\_url](#input\_identity\_token\_url) | n/a | `string` | n/a | yes |
