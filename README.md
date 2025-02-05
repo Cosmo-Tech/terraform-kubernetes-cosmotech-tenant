@@ -93,6 +93,7 @@
 | <a name="input_create_rabbitmq_secret"></a> [create\_rabbitmq\_secret](#input\_create\_rabbitmq\_secret) | n/a | `bool` | n/a | yes |
 | <a name="input_deploy_api"></a> [deploy\_api](#input\_deploy\_api) | n/a | `bool` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identity_authorization_url"></a> [identity\_authorization\_url](#input\_identity\_authorization\_url) | n/a | `string` | n/a | yes |
 | <a name="input_identity_token_url"></a> [identity\_token\_url](#input\_identity\_token\_url) | n/a | `string` | n/a | yes |
