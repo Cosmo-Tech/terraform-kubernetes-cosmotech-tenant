@@ -139,6 +139,29 @@ max_file_size     = "1MB"
 max_request_size  = "10MB"
 api_graph_enabled = true
 
+# Argo
+argo_helm_repo_url          = "https://argoproj.github.io/argo-helm"
+argo_helm_chart             = "argo-workflows"
+argo_helm_chart_version     = "0.16.6"
+argo_service_account        = ""
+argo_bucket_name            = "argo-workflows"
+argo_database               = "argo_workflows"
+argo_postgresql_secret_name = "postgres-config"
+requeue_time                = "1s"
+archive_ttl                 = "3d"
+argo_install_crds           = true
+
+# MinIO
+minio_deploy                = true
+argo_minio_persistence_size = "16Gi"
+argo_minio_requests_memory  = "2Gi"
+minio_helm_repo_url         = "https://charts.bitnami.com/bitnami"
+minio_helm_chart            = "minio"
+minio_version               = "12.1.3"
+argo_minio_secret_key       = ""
+argo_minio_access_key       = ""
+minio_existing_pvc_name     = "pvc-disk-minio-tenant"
+minio_storage_class_name    = ""
 
 # Postgres
 postgresql_deploy             = true
@@ -181,7 +204,6 @@ redis_persistence_size  = "64Gi"
 version_redis_cosmotech = "1.0.12"
 redis_master_existing_pvc_name  = "pvc-disk-redis-master-tenant"
 redis_replica_existing_pvc_name = "pvc-disk-redis-replica-tenant"
-redis_pvc_storage_class_name    = "default"
 
 # seaweedfs
 seaweedfs_chart_version = "4.8.0"
@@ -200,12 +222,12 @@ kubernetes_cluster_admin_activate = false
 # pvc redis
 pvc_redis_replicas           = 1
 pvc_redis_storage_gbi        = 128
-pvc_redis_storage_class_name = "cosmotech-azure-retain"
+pvc_redis_storage_class_name = ""
 
 # pvc postgres
 pvc_postgres_replicas           = 1
 pvc_postgres_storage_gbi        = 128
-pvc_postgres_storage_class_name = "cosmotech-azure-retain"
+pvc_postgres_storage_class_name = ""
 
 # pvc seaweedfs
-pvc_seaweedfs_storage_class_name = "cosmotech-azure-retain"
+pvc_seaweedfs_storage_class_name = ""
