@@ -231,3 +231,7 @@ pvc_postgres_storage_class_name = ""
 
 # pvc seaweedfs
 pvc_seaweedfs_storage_class_name = ""
+
+# pvc minio
+pvc_minio_storage_class_name = ""
+pvc_minio_storage_gbi        = 128

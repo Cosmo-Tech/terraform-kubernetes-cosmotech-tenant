@@ -400,3 +400,10 @@ module "deploy-pvc-seaweedfs" {
   pvc_seaweedfs_storage_gbi        = var.pvc_seaweedfs_storage_gbi
   pvc_seaweedfs_storage_class_name = var.pvc_seaweedfs_storage_class_name
 }
+
+module "deploy-pvc-minio" {
+  source                       = "./persistence-claim-minio"
+  kubernetes_tenant_namespace  = var.kubernetes_tenant_namespace
+  pvc_minio_storage_gbi        = var.pvc_minio_storage_gbi
+  pvc_minio_storage_class_name = var.pvc_minio_storage_class_name
+}
