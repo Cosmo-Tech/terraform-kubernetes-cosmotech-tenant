@@ -14,8 +14,8 @@ locals {
 
 data "kubernetes_secret" "redis_secret" {
   metadata {
-    name      = "redis-admin-secret"
-    namespace = var.namespace
+    name      = var.first_tenant_in_cluster ? "prom-redis-datasource" : "redis-admin-secret"
+    namespace = var.first_tenant_in_cluster ? "default" : var.namespace
   }
 }
 

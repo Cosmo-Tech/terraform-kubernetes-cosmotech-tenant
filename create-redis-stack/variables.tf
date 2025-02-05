@@ -40,3 +40,7 @@ variable "redis_replica_existing_pvc_name" {
 variable "redis_pvc_storage_class_name" {
   type = string
 }
+
+variable "first_tenant_in_cluster" {
+  type = bool
+}
