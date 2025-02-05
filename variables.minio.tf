@@ -41,3 +41,11 @@ variable "use_minio_storage" {
 variable "minio_deploy" {
   type = bool
 }
+
+variable "minio_existing_pvc_name" {
+  type = string
+}
+
+variable "minio_storage_class_name" {
+  type = string
+}

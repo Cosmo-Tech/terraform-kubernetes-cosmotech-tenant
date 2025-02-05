@@ -155,10 +155,11 @@ module "create-minio" {
   argo_minio_persistence_size = var.minio_argo_persistence_size
   argo_minio_requests_memory  = var.minio_argo_requests_memory
   argo_bucket_name            = var.minio_argo_bucket_name
-
   helm_chart    = var.minio_helm_chart
   helm_repo_url = var.minio_helm_repo_url
   minio_version = var.minio_version
+  minio_existing_pvc_name     = var.minio_existing_pvc_name
+  minio_storage_class_name    = var.minio_storage_class_name
 }
 
 module "create-postgresql-db" {
@@ -180,6 +181,8 @@ module "create-postgresql-db" {
   postgresql_secret_name           = var.postgresql_secret_name
   postgresql_version               = var.postgresql_version
   postgresql_secrets_config_create = var.postgresql_secrets_config_create
+  postgresql_existing_pvc_name      = var.postgresql_existing_pvc_name
+  postgresql_pvc_storage_class_name = var.pvc_postgres_storage_class_name
 
   depends_on = [module.deploy-pvc-postgres]
 }
@@ -197,6 +200,9 @@ module "create-redis-stack" {
   helm_chart_name         = var.redis_helm_chart_name
   helm_release_name       = var.redis_helm_release_name
   helm_repo_url           = var.redis_helm_repo_url
+  redis_master_existing_pvc_name  = var.redis_master_existing_pvc_name
+  redis_pvc_storage_class_name    = var.pvc_redis_storage_class_name
+  redis_replica_existing_pvc_name = var.redis_replica_existing_pvc_name
 
   depends_on = [
     module.create-postgresql-db,
