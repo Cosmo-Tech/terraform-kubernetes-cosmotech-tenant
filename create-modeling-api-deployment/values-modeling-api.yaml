@@ -16,13 +16,13 @@ apiConfig:
         - name: CSM_MODELINGAPI_S3_USERNAME
           valueFrom:
             secretKeyRef:
-              name: minio-${NAMESPACE}
-              key: root-user
+              name: seaweedfs-${NAMESPACE}-s3-auth
+              key: argo-workflows-username
         - name: CSM_MODELINGAPI_S3_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: minio-${NAMESPACE}
-              key: root-password
+              name: seaweedfs-${NAMESPACE}-s3-auth
+              key: argo-workflows-password
     config:
       csm:
         modelingApi:
