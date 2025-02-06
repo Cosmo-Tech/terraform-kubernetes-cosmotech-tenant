@@ -115,12 +115,18 @@ tenant_client_secret = ""
 #Modeling API Deployment
 deployment_helm_chart                   = "api-deployment"
 deployment_helm_repository              = "https://cosmo-tech.github.io/tekton/"
+deployment_chart_package_version        = "0.1.12"
 deployment_helm_release_name            = "modeling-api-deployment"
 modeling_api_monitoring_enabled         = false
 modeling_api_monitoring_namespace       = "cosmotech-monitoring"
 modeling_api_persistence_storage_class  = "azurefile-csi"
-deployment_chart_package_version        = "0.1.11"
+
 docker_secret = ""
 wehbook_secret = ""
 
 
+#Cosmotech API Deployment
+api_deployment_helm_chart                   = "api-deployment"
+api_deployment_helm_repository              = "https://cosmo-tech.github.io/tekton/"
+api_deployment_chart_package_version        = "0.1.12"
+api_deployment_helm_release_name            = "cosmotech-api-deployment"

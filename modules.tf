@@ -238,5 +238,74 @@ module "create-modeling-api-deployment" {
   argo_service_account          = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
   docker_secret = var.docker_secret
   wehbook_secret = var.wehbook_secret
+}
+
+module "create-api-deployment" {
+  source = "./create-cosmotech-api-deployment"
+
+  count = var.deploy_cosmotech_api_deployment ? 1 : 0
+
+  client_id                     = var.tenant_client_id
+  client_secret                 = var.tenant_client_secret
+  tenant_id                     = var.tenant_id
+  network_client_id             = var.network_client_id
+  network_client_secret         = var.network_client_secret
+  namespace                     = var.kubernetes_tenant_namespace
+  monitoring_enabled            = var.monitoring_enabled
+  monitoring_namespace          = var.monitoring_namespace
+  api_dns_name                  = var.api_dns_name
+  api_replicas                  = var.api_replicas
+  tls_secret_name               = local.tls_secret_name
+  acr_login_password            = var.acr_login_password
+  acr_login_server              = var.acr_login_server
+  acr_login_username            = var.acr_login_username
+  adx_uri                       = var.adx_uri
+  adx_ingestion_uri             = var.adx_ingestion_uri
+  eventbus_uri                  = var.eventbus_uri
+  storage_account_key           = var.storage_account_key
+  storage_account_name          = var.storage_account_name
+  chart_package_version         = var.api_chart_package_version
+  cosmotech_api_version         = var.api_version
+  cosmotech_api_version_path    = var.api_version_path
+  cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
+  redis_admin_password          = random_password.redis_admin_password.result
+  redis_port                    = var.redis_port
+  argo_release_name             = module.create-argo.0.out_argo_workflows_release_name
+  argo_service_account          = module.create-argo.0.out_argo_workflows_service_account
+  tenant_resource_group         = var.tenant_resource_group
+  use_internal_result_services  = var.rabbitmq_deploy
+  postgresql_release_name       = module.create-postgresql-db.0.out_postgres_release_name
+  postgresql_reader_username    = module.create-postgresql-db.0.out_postgres_reader_username
+  postgresql_reader_password    = module.create-postgresql-db.0.out_postgres_reader_password
+  postgresql_writer_username    = module.create-postgresql-db.0.out_postgres_writer_username
+  postgresql_writer_password    = module.create-postgresql-db.0.out_postgres_writer_password
+  postgresql_admin_username     = module.create-postgresql-db.0.out_postgres_admin_username
+  postgresql_admin_password     = module.create-postgresql-db.0.out_postgres_admin_password
+  rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
+  rabbitmq_listener_username    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_username : ""
+  rabbitmq_listener_password    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
+  rabbitmq_sender_username      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
+  rabbitmq_sender_password      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
+  list_apikey_allowed           = var.api_list_apikey_allowed
+  identifier_uri                = var.api_identifier_uri
+  persistence_size              = var.api_persistence_size
+  persistence_storage_class     = var.api_persistence_storage_class
+  keycloak_client_id            = module.create-keycloak.0.out_keycloak_api_client_id
+  keycloak_client_secret        = module.create-keycloak.0.out_keycloak_api_client_secret
+  helm_chart                    = var.api_helm_chart
+  helm_release_name             = var.api_helm_release_name
+  helm_repository               = var.api_helm_repository
+  is_multitenant                = var.api_is_multitenant
+  docker_secret = var.docker_secret
+  wehbook_secret = var.wehbook_secret
+
+  depends_on = [
+    module.create-argo,
+    module.create-postgresql-db,
+    module.create-rabbitmq,
+    module.create-redis-stack,
+    module.create-keycloak
+  ]
+
 
 }
