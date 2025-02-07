@@ -236,7 +236,9 @@ module "create-modeling-api-deployment" {
   persistence_storage_class     = var.modeling_api_persistence_storage_class
   argo_release_name             = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
   argo_service_account          = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
-  docker_secret = var.docker_secret
-  wehbook_secret = var.wehbook_secret
+  docker_secret                 = var.docker_secret
+  wehbook_secret                = var.wehbook_secret
+  ingress_type                  = var.ingress_type
+  ngrok_host                    = var.ngrok_host
 
 }

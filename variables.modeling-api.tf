@@ -42,3 +42,11 @@ variable "docker_secret" {
 variable "wehbook_secret" {
   type = string
 }
+
+variable "ingress_type" {
+  type = string
+}
+
+variable "ngrok_host" {
+  type = string
+}
