@@ -299,7 +299,7 @@ module "create-api-deployment" {
   helm_repository               = var.api_helm_repository
   is_multitenant                = var.api_is_multitenant
   docker_secret                 = var.api_docker_secret
-  wehbook_secret                = var.api_wehbook_secret
+  wehbook_secret                = var.api_webhook_secret
   ngrok_host                    = var.api_ngrok_host
   ingress_type                  = var.api_ingress_type
 

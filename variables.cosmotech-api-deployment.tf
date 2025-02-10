@@ -22,7 +22,7 @@ variable "api_docker_secret" {
   type = string
 }
 
-variable "api_wehbook_secret" {
+variable "api_webhook_secret" {
   type = string
 }
 
