@@ -39,7 +39,7 @@ variable "modeling_api_docker_secret" {
   type = string
 }
 
-variable "modeling_api_wehbook_secret" {
+variable "modeling_api_webhook_secret" {
   type = string
 }
 

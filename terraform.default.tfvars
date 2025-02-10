@@ -121,7 +121,7 @@ modeling_api_monitoring_enabled         = false
 modeling_api_monitoring_namespace       = "cosmotech-monitoring"
 modeling_api_persistence_storage_class  = ""
 modeling_api_docker_secret              = "" 
-modeling_api_wehbook_secret             = ""
+modeling_api_webhook_secret             = ""
 modeling_api_ingress_type               = ""
 modeling_api_ngrok_host                 = ""
 
@@ -132,7 +132,7 @@ api_deployment_helm_repository              = "https://cosmo-tech.github.io/tekt
 api_deployment_chart_package_version        = "0.1.13"
 api_deployment_helm_release_name            = "cosmotech-api-deployment"
 api_docker_secret                           = "" 
-api_wehbook_secret                          = ""
+api_webhook_secret                          = ""
 api_ingress_type                            = ""
 api_ngrok_host                              = ""
 
