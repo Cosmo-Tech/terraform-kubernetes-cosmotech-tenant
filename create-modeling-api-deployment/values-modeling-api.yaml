@@ -63,3 +63,5 @@ tolerations:
 nodeSelector:
   "cosmotech.com/tier": "services"
   "kubernetes.io/os": "linux"
+ingress_type: "${INGRESS_TYPE}"
+ngrok_host: "${NGROK_HOST}"

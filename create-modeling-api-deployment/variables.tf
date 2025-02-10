@@ -54,3 +54,11 @@ variable "argo_service_account" {
 variable "argo_release_name" {
   type = string
 }
+
+variable "ingress_type" {
+  type = string
+}
+
+variable "ngrok_host" {
+  type = string
+}
