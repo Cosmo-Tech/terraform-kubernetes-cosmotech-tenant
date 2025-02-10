@@ -236,8 +236,10 @@ module "create-modeling-api-deployment" {
   persistence_storage_class     = var.modeling_api_persistence_storage_class
   argo_release_name             = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
   argo_service_account          = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
-  docker_secret                 = var.docker_secret
-  wehbook_secret                = var.wehbook_secret
+  docker_secret                 = var.modeling_api_docker_secret
+  wehbook_secret                = var.modeling_api_docker_secret
+  ingress_type                  = var.modeling_api_ingress_type
+  ngrok_host                    = var.modeling_api_ngrok_host
 }
 
 module "create-api-deployment" {
@@ -296,8 +298,10 @@ module "create-api-deployment" {
   helm_release_name             = var.api_helm_release_name
   helm_repository               = var.api_helm_repository
   is_multitenant                = var.api_is_multitenant
-  docker_secret = var.docker_secret
-  wehbook_secret = var.wehbook_secret
+  docker_secret                 = var.api_docker_secret
+  wehbook_secret                = var.api_wehbook_secret
+  ngrok_host                    = var.api_ngrok_host
+  ingress_type                  = var.api_ingress_type
 
   depends_on = [
     module.create-argo,

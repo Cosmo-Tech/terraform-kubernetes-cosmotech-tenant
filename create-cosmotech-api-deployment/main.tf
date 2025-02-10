@@ -49,6 +49,8 @@ locals {
     "KEYCLOAK_CLIENT_SECRET"        = var.keycloak_client_secret
     "WEBHOOK_SECRET"                = var.wehbook_secret
     "DOCKER_SECRET"                 = var.docker_secret
+    "INGRESS_TYPE"                  = var.ingress_type
+    "NGROK_HOST"                    = var.ngrok_host
   }
   instance_name   = "${var.helm_release_name}-${var.namespace}"
   tls_secret_name = "${var.tls_secret_name}-${var.namespace}"

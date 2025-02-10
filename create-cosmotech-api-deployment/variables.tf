@@ -215,3 +215,11 @@ variable "wehbook_secret" {
 variable "docker_secret" {
   type = string
 }
+
+variable "ingress_type" {
+  type = string
+}
+
+variable "ngrok_host" {
+  type = string
+}

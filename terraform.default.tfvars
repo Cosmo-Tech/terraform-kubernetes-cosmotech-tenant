@@ -115,13 +115,24 @@ tenant_client_secret = ""
 #Modeling API Deployment
 deployment_helm_chart                   = "api-deployment"
 deployment_helm_repository              = "https://cosmo-tech.github.io/tekton/"
-deployment_chart_package_version        = "0.1.12"
+deployment_chart_package_version        = "0.1.13"
 deployment_helm_release_name            = "modeling-api-deployment"
 modeling_api_monitoring_enabled         = false
 modeling_api_monitoring_namespace       = "cosmotech-monitoring"
-modeling_api_persistence_storage_class  = "azurefile-csi"
-deployment_chart_package_version        = "0.1.11"
-docker_secret                           = ""
-wehbook_secret                          = ""
-ingress_type                            = ""
-ngrok_host                              = ""
+modeling_api_persistence_storage_class  = ""
+modeling_api_docker_secret              = "" 
+modeling_api_wehbook_secret             = ""
+modeling_api_ingress_type               = ""
+modeling_api_ngrok_host                 = ""
+
+
+#Cosmotech API Deployment
+api_deployment_helm_chart                   = "api-deployment"
+api_deployment_helm_repository              = "https://cosmo-tech.github.io/tekton/"
+api_deployment_chart_package_version        = "0.1.13"
+api_deployment_helm_release_name            = "cosmotech-api-deployment"
+api_docker_secret                           = "" 
+api_wehbook_secret                          = ""
+api_ingress_type                            = ""
+api_ngrok_host                              = ""
+
