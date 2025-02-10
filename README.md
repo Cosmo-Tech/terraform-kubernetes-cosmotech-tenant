@@ -24,6 +24,7 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./create-cert-manager | n/a |
+| <a name="module_create-api-deployment"></a> [create-api-deployment](#module\_create-api-deployment) | ./create-cosmotech-api-deployment | n/a |
 | <a name="module_create-argo"></a> [create-argo](#module\_create-argo) | ./create-argo | n/a |
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
 | <a name="module_create-keycloak"></a> [create-keycloak](#module\_create-keycloak) | ./create-keycloak-realm | n/a |
@@ -57,18 +58,26 @@
 | <a name="input_adx_uri"></a> [adx\_uri](#input\_adx\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_chart_package_version"></a> [api\_chart\_package\_version](#input\_api\_chart\_package\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_deploy"></a> [api\_deploy](#input\_api\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_api_deployment_chart_package_version"></a> [api\_deployment\_chart\_package\_version](#input\_api\_deployment\_chart\_package\_version) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_chart"></a> [api\_deployment\_helm\_chart](#input\_api\_deployment\_helm\_chart) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_release_name"></a> [api\_deployment\_helm\_release\_name](#input\_api\_deployment\_helm\_release\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_repository"></a> [api\_deployment\_helm\_repository](#input\_api\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_docker_secret"></a> [api\_docker\_secret](#input\_api\_docker\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_api_helm_chart"></a> [api\_helm\_chart](#input\_api\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_api_helm_release_name"></a> [api\_helm\_release\_name](#input\_api\_helm\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_api_helm_repository"></a> [api\_helm\_repository](#input\_api\_helm\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_api_identifier_uri"></a> [api\_identifier\_uri](#input\_api\_identifier\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_api_ingress_type"></a> [api\_ingress\_type](#input\_api\_ingress\_type) | n/a | `string` | n/a | yes |
 | <a name="input_api_is_multitenant"></a> [api\_is\_multitenant](#input\_api\_is\_multitenant) | n/a | `bool` | n/a | yes |
 | <a name="input_api_list_apikey_allowed"></a> [api\_list\_apikey\_allowed](#input\_api\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | n/a | yes |
+| <a name="input_api_ngrok_host"></a> [api\_ngrok\_host](#input\_api\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_api_persistence_size"></a> [api\_persistence\_size](#input\_api\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_api_persistence_storage_class"></a> [api\_persistence\_storage\_class](#input\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
 | <a name="input_api_version"></a> [api\_version](#input\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | n/a | `string` | n/a | yes |
+| <a name="input_api_wehbook_secret"></a> [api\_wehbook\_secret](#input\_api\_wehbook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_argo_archive_ttl"></a> [argo\_archive\_ttl](#input\_argo\_archive\_ttl) | n/a | `string` | n/a | yes |
 | <a name="input_argo_database"></a> [argo\_database](#input\_argo\_database) | n/a | `string` | n/a | yes |
 | <a name="input_argo_deploy"></a> [argo\_deploy](#input\_argo\_deploy) | n/a | `bool` | n/a | yes |
@@ -88,15 +97,14 @@
 | <a name="input_custom_tls_certificate_certificate"></a> [custom\_tls\_certificate\_certificate](#input\_custom\_tls\_certificate\_certificate) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_certificate_key"></a> [custom\_tls\_certificate\_key](#input\_custom\_tls\_certificate\_key) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
+| <a name="input_deploy_cosmotech_api_deployment"></a> [deploy\_cosmotech\_api\_deployment](#input\_deploy\_cosmotech\_api\_deployment) | n/a | `bool` | n/a | yes |
 | <a name="input_deploy_modeling_api_deployment"></a> [deploy\_modeling\_api\_deployment](#input\_deploy\_modeling\_api\_deployment) | n/a | `bool` | n/a | yes |
 | <a name="input_deployment_chart_package_version"></a> [deployment\_chart\_package\_version](#input\_deployment\_chart\_package\_version) | n/a | `string` | n/a | yes |
 | <a name="input_deployment_helm_chart"></a> [deployment\_helm\_chart](#input\_deployment\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_deployment_helm_release_name"></a> [deployment\_helm\_release\_name](#input\_deployment\_helm\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_deployment_helm_repository"></a> [deployment\_helm\_repository](#input\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
-| <a name="input_docker_secret"></a> [docker\_secret](#input\_docker\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_event_listener_dns_name"></a> [event\_listener\_dns\_name](#input\_event\_listener\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
-| <a name="input_ingress_type"></a> [ingress\_type](#input\_ingress\_type) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_id"></a> [keycloak\_client\_id](#input\_keycloak\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_deploy"></a> [keycloak\_deploy](#input\_keycloak\_deploy) | Wether to create Keycloak resources fot this tenant :<br>- realm<br>- OpenID client & scopes<br>- roles<br>- Authentication flow<br>- Default user<br>After this deployment, you will need to manually set the authentication flow<br> as the default to the broker identification. To do so go to the Authentication menu.<br> On the new line with the "auto link user" flow, click the 3 dot at the end of the line<br>  and then "Bind flow". Then select **First broker login flow**.<br> You should have the newly created flow "auto link user" with the column Used by set to<br>  First broker login flow. | `bool` | n/a | yes |
@@ -114,14 +122,17 @@
 | <a name="input_minio_helm_chart"></a> [minio\_helm\_chart](#input\_minio\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_docker_secret"></a> [modeling\_api\_docker\_secret](#input\_modeling\_api\_docker\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_ingress_type"></a> [modeling\_api\_ingress\_type](#input\_modeling\_api\_ingress\_type) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_monitoring_enabled"></a> [modeling\_api\_monitoring\_enabled](#input\_modeling\_api\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_modeling_api_monitoring_namespace"></a> [modeling\_api\_monitoring\_namespace](#input\_modeling\_api\_monitoring\_namespace) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_ngrok_host"></a> [modeling\_api\_ngrok\_host](#input\_modeling\_api\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_persistence_storage_class"></a> [modeling\_api\_persistence\_storage\_class](#input\_modeling\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_wehbook_secret"></a> [modeling\_api\_wehbook\_secret](#input\_modeling\_api\_wehbook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_network_client_id"></a> [network\_client\_id](#input\_network\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_network_client_secret"></a> [network\_client\_secret](#input\_network\_client\_secret) | n/a | `string` | n/a | yes |
-| <a name="input_ngrok_host"></a> [ngrok\_host](#input\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_postgres_release_name"></a> [postgres\_release\_name](#input\_postgres\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_admin_password"></a> [postgresql\_admin\_password](#input\_postgresql\_admin\_password) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_admin_username"></a> [postgresql\_admin\_username](#input\_postgresql\_admin\_username) | n/a | `string` | n/a | yes |
@@ -179,7 +190,6 @@
 | <a name="input_tls_namespace"></a> [tls\_namespace](#input\_tls\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_use_internal_result_services"></a> [use\_internal\_result\_services](#input\_use\_internal\_result\_services) | n/a | `bool` | n/a | yes |
 | <a name="input_use_minio_storage"></a> [use\_minio\_storage](#input\_use\_minio\_storage) | n/a | `bool` | n/a | yes |
-| <a name="input_wehbook_secret"></a> [wehbook\_secret](#input\_wehbook\_secret) | n/a | `string` | n/a | yes |
 
 ## Outputs
 
