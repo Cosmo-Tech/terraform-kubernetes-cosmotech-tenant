@@ -105,6 +105,7 @@
 | <a name="input_deployment_helm_repository"></a> [deployment\_helm\_repository](#input\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_event_listener_dns_name"></a> [event\_listener\_dns\_name](#input\_event\_listener\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_ingress_type"></a> [ingress\_type](#input\_ingress\_type) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_id"></a> [keycloak\_client\_id](#input\_keycloak\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_deploy"></a> [keycloak\_deploy](#input\_keycloak\_deploy) | Wether to create Keycloak resources fot this tenant :<br>- realm<br>- OpenID client & scopes<br>- roles<br>- Authentication flow<br>- Default user<br>After this deployment, you will need to manually set the authentication flow<br> as the default to the broker identification. To do so go to the Authentication menu.<br> On the new line with the "auto link user" flow, click the 3 dot at the end of the line<br>  and then "Bind flow". Then select **First broker login flow**.<br> You should have the newly created flow "auto link user" with the column Used by set to<br>  First broker login flow. | `bool` | n/a | yes |
@@ -123,16 +124,15 @@
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_docker_secret"></a> [modeling\_api\_docker\_secret](#input\_modeling\_api\_docker\_secret) | n/a | `string` | n/a | yes |
-| <a name="input_modeling_api_ingress_type"></a> [modeling\_api\_ingress\_type](#input\_modeling\_api\_ingress\_type) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_monitoring_enabled"></a> [modeling\_api\_monitoring\_enabled](#input\_modeling\_api\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_modeling_api_monitoring_namespace"></a> [modeling\_api\_monitoring\_namespace](#input\_modeling\_api\_monitoring\_namespace) | n/a | `string` | n/a | yes |
-| <a name="input_modeling_api_ngrok_host"></a> [modeling\_api\_ngrok\_host](#input\_modeling\_api\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_persistence_storage_class"></a> [modeling\_api\_persistence\_storage\_class](#input\_modeling\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_webhook_secret"></a> [modeling\_api\_webhook\_secret](#input\_modeling\_api\_webhook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_network_client_id"></a> [network\_client\_id](#input\_network\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_network_client_secret"></a> [network\_client\_secret](#input\_network\_client\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_ngrok_host"></a> [ngrok\_host](#input\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_postgres_release_name"></a> [postgres\_release\_name](#input\_postgres\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_admin_password"></a> [postgresql\_admin\_password](#input\_postgresql\_admin\_password) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_admin_username"></a> [postgresql\_admin\_username](#input\_postgresql\_admin\_username) | n/a | `string` | n/a | yes |
