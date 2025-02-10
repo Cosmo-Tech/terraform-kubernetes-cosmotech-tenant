@@ -128,7 +128,7 @@
 | <a name="input_modeling_api_monitoring_namespace"></a> [modeling\_api\_monitoring\_namespace](#input\_modeling\_api\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_ngrok_host"></a> [modeling\_api\_ngrok\_host](#input\_modeling\_api\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_persistence_storage_class"></a> [modeling\_api\_persistence\_storage\_class](#input\_modeling\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
-| <a name="input_modeling_api_wehbook_secret"></a> [modeling\_api\_wehbook\_secret](#input\_modeling\_api\_wehbook\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_webhook_secret"></a> [modeling\_api\_webhook\_secret](#input\_modeling\_api\_webhook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_network_client_id"></a> [network\_client\_id](#input\_network\_client\_id) | n/a | `string` | n/a | yes |
