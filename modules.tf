@@ -266,7 +266,7 @@ module "create-api-deployment" {
   eventbus_uri                  = var.eventbus_uri
   storage_account_key           = var.storage_account_key
   storage_account_name          = var.storage_account_name
-  chart_package_version         = var.api_chart_package_version
+  chart_package_version         = var.api_deployment_chart_package_version
   cosmotech_api_version         = var.api_version
   cosmotech_api_version_path    = var.api_version_path
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
@@ -294,9 +294,9 @@ module "create-api-deployment" {
   persistence_storage_class     = var.api_persistence_storage_class
   keycloak_client_id            = module.create-keycloak.0.out_keycloak_api_client_id
   keycloak_client_secret        = module.create-keycloak.0.out_keycloak_api_client_secret
-  helm_chart                    = var.api_helm_chart
-  helm_release_name             = var.api_helm_release_name
-  helm_repository               = var.api_helm_repository
+  helm_chart                    = var.api_deployment_helm_chart
+  helm_release_name             = var.api_deployment_helm_release_name
+  helm_repository               = var.api_deployment_helm_repository
   is_multitenant                = var.api_is_multitenant
   docker_secret                 = var.api_docker_secret
   wehbook_secret                = var.api_webhook_secret
