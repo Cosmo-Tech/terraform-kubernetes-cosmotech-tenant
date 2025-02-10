@@ -77,7 +77,7 @@
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
 | <a name="input_api_version"></a> [api\_version](#input\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | n/a | `string` | n/a | yes |
-| <a name="input_api_wehbook_secret"></a> [api\_wehbook\_secret](#input\_api\_wehbook\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_api_webhook_secret"></a> [api\_webhook\_secret](#input\_api\_webhook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_argo_archive_ttl"></a> [argo\_archive\_ttl](#input\_argo\_archive\_ttl) | n/a | `string` | n/a | yes |
 | <a name="input_argo_database"></a> [argo\_database](#input\_argo\_database) | n/a | `string` | n/a | yes |
 | <a name="input_argo_deploy"></a> [argo\_deploy](#input\_argo\_deploy) | n/a | `bool` | n/a | yes |
