@@ -238,8 +238,8 @@ module "create-modeling-api-deployment" {
   argo_service_account          = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
   docker_secret                 = var.modeling_api_docker_secret
   wehbook_secret                = var.modeling_api_webhook_secret
-  ingress_type                  = var.modeling_api_ingress_type
-  ngrok_host                    = var.modeling_api_ngrok_host
+  ingress_type                  = var.ingress_type
+  ngrok_host                    = var.ngrok_host
 }
 
 module "create-api-deployment" {

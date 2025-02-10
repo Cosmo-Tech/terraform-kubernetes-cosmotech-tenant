@@ -122,8 +122,8 @@ modeling_api_monitoring_namespace       = "cosmotech-monitoring"
 modeling_api_persistence_storage_class  = ""
 modeling_api_docker_secret              = "" 
 modeling_api_webhook_secret             = ""
-modeling_api_ingress_type               = ""
-modeling_api_ngrok_host                 = ""
+ingress_type               = ""
+ngrok_host                 = ""
 
 
 #Cosmotech API Deployment

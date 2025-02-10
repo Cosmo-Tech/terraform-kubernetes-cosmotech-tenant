@@ -43,10 +43,10 @@ variable "modeling_api_webhook_secret" {
   type = string
 }
 
-variable "modeling_api_ingress_type" {
+variable "ingress_type" {
   type = string
 }
 
-variable "modeling_api_ngrok_host" {
+variable "ngrok_host" {
   type = string
 }
