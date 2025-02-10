@@ -59,7 +59,7 @@ locals {
 
 
 
-resource "helm_release" "cosmotech-api" {
+resource "helm_release" "cosmotech-api-deployment" {
   name       = local.instance_name
   repository = var.helm_repository
   chart      = var.helm_chart
