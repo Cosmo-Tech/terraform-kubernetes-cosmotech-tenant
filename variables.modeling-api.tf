@@ -50,3 +50,7 @@ variable "ingress_type" {
 variable "ngrok_host" {
   type = string
 }
+
+variable "modeling_api_helm_chart_pull_type" {
+  type = string
+}

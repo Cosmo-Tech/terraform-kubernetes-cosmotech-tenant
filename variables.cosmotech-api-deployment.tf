@@ -33,3 +33,7 @@ variable "api_ingress_type" {
 variable "api_ngrok_host" {
   type = string
 }
+
+variable "api_helm_chart_pull_type" {
+  type = string
+}

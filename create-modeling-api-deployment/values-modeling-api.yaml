@@ -65,3 +65,4 @@ nodeSelector:
   "kubernetes.io/os": "linux"
 ingress_type: "${INGRESS_TYPE}"
 ngrok_host: "${NGROK_HOST}"
+helm_chart_pull_type: "${HELM_CHART_PULL_TYPE}"

@@ -15,6 +15,7 @@ locals {
     "HELM_RELEASE_NAME"             = var.helm_release_name
     "INGRESS_TYPE"                  = var.ingress_type
     "NGROK_HOST"                    = var.ngrok_host
+    "HELM_CHART_PULL_TYPE"          = var.helm_chart_pull_type
   }
 }
 

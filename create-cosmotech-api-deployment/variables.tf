@@ -223,3 +223,7 @@ variable "ingress_type" {
 variable "ngrok_host" {
   type = string
 }
+
+variable "helm_chart_pull_type" {
+  type = string
+}

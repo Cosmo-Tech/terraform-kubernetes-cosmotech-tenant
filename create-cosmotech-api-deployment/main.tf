@@ -51,13 +51,12 @@ locals {
     "DOCKER_SECRET"                 = var.docker_secret
     "INGRESS_TYPE"                  = var.ingress_type
     "NGROK_HOST"                    = var.ngrok_host
+    "HELM_CHART_PULL_TYPE"          = var.helm_chart_pull_type
   }
   instance_name   = "${var.helm_release_name}-${var.namespace}"
   tls_secret_name = "${var.tls_secret_name}-${var.namespace}"
   identifier_uri  = var.identifier_uri != "" ? var.identifier_uri : "https://${var.api_dns_name}"
 }
-
-
 
 resource "helm_release" "cosmotech-api-deployment" {
   name       = local.instance_name
