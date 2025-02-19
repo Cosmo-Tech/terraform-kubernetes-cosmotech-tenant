@@ -128,7 +128,6 @@
 | <a name="input_minio_existing_pvc_name"></a> [minio\_existing\_pvc\_name](#input\_minio\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_chart"></a> [minio\_helm\_chart](#input\_minio\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
-| <a name="input_minio_storage_class_name"></a> [minio\_storage\_class\_name](#input\_minio\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
