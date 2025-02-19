@@ -159,7 +159,7 @@ module "create-minio" {
   helm_repo_url = var.minio_helm_repo_url
   minio_version = var.minio_version
   minio_existing_pvc_name     = var.minio_existing_pvc_name
-  minio_storage_class_name    = var.minio_storage_class_name
+  minio_storage_class_name    = var.pvc_minio_storage_class_name
 }
 
 module "create-postgresql-db" {
