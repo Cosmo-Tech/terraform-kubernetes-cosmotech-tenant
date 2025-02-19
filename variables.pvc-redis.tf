@@ -7,3 +7,6 @@ variable "pvc_redis_replicas" {
 variable "pvc_redis_storage_class_name" {
   type = string
 }
+variable "pvc_redis_deploy" {
+  type = bool
+}

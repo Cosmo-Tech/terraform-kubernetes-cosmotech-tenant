@@ -381,7 +381,10 @@ module "config_platform" {
 
 
 module "deploy-pvc-redis" {
-  source                       = "./persistence-claim-redis"
+  source = "./persistence-claim-redis"
+
+  count = var.pvc_redis_deploy ? 1 : 0
+
   kubernetes_tenant_namespace  = var.kubernetes_tenant_namespace
   pvc_redis_replicas           = var.pvc_redis_replicas
   pvc_redis_storage_gbi        = var.pvc_redis_storage_gbi
@@ -389,7 +392,10 @@ module "deploy-pvc-redis" {
 }
 
 module "deploy-pvc-postgres" {
-  source                          = "./persistence-claim-postgres"
+  source = "./persistence-claim-postgres"
+
+  count = var.pvc_postgres_deploy ? 1 : 0
+
   kubernetes_tenant_namespace     = var.kubernetes_tenant_namespace
   pvc_postgres_storage_gbi        = var.pvc_postgres_storage_gbi
   pvc_postgres_storage_class_name = var.pvc_postgres_storage_class_name
@@ -397,7 +403,7 @@ module "deploy-pvc-postgres" {
 
 module "deploy-pvc-seaweedfs" {
   source                           = "./persistence-claim-seaweedfs"
-  count                            = var.minio_deploy ? 0 : 1
+  count                            = var.pvc_seaweedfs_deploy ? 0 : 1
   kubernetes_tenant_namespace      = var.kubernetes_tenant_namespace
   pvc_seaweedfs_storage_gbi        = var.pvc_seaweedfs_storage_gbi
   pvc_seaweedfs_storage_class_name = var.pvc_seaweedfs_storage_class_name
@@ -405,6 +411,7 @@ module "deploy-pvc-seaweedfs" {
 
 module "deploy-pvc-minio" {
   source                       = "./persistence-claim-minio"
+  count                        = var.pvc_minio_deploy ? 1 : 0
   kubernetes_tenant_namespace  = var.kubernetes_tenant_namespace
   pvc_minio_storage_gbi        = var.pvc_minio_storage_gbi
   pvc_minio_storage_class_name = var.pvc_minio_storage_class_name
