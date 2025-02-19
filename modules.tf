@@ -402,16 +402,20 @@ module "deploy-pvc-postgres" {
 }
 
 module "deploy-pvc-seaweedfs" {
-  source                           = "./persistence-claim-seaweedfs"
-  count                            = var.pvc_seaweedfs_deploy ? 0 : 1
+  source = "./persistence-claim-seaweedfs"
+
+  count = var.pvc_seaweedfs_deploy ? 1 : 0
+
   kubernetes_tenant_namespace      = var.kubernetes_tenant_namespace
   pvc_seaweedfs_storage_gbi        = var.pvc_seaweedfs_storage_gbi
   pvc_seaweedfs_storage_class_name = var.pvc_seaweedfs_storage_class_name
 }
 
 module "deploy-pvc-minio" {
-  source                       = "./persistence-claim-minio"
-  count                        = var.pvc_minio_deploy ? 1 : 0
+  source = "./persistence-claim-minio"
+
+  count = var.pvc_minio_deploy ? 1 : 0
+
   kubernetes_tenant_namespace  = var.kubernetes_tenant_namespace
   pvc_minio_storage_gbi        = var.pvc_minio_storage_gbi
   pvc_minio_storage_class_name = var.pvc_minio_storage_class_name
