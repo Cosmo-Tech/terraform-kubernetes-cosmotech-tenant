@@ -50,3 +50,7 @@ output "out_postgres_seawweedfs_password_secret" {
   value     = local.seaweedfs_password_secret
   sensitive = true
 }
+
+output "out_argo_postgresql_user" {
+  value = var.argo_postgresql_user
+}

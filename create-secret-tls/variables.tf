@@ -6,10 +6,10 @@ variable "tls_secret_name" {
   type    = string
 }
 
-variable "certificate_cert_content" {
+variable "tls_certificate_custom_certificate" {
   type = string
 }
 
-variable "certificate_key_content" {
+variable "tls_certificate_custom_key" {
   type    = string
 }
