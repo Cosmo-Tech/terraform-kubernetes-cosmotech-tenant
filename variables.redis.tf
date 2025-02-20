@@ -32,3 +32,27 @@ variable "redis_persistence_size" {
 variable "redis_deploy" {
   type = bool
 }
+
+variable "redis_port" {
+  type = number
+}
+
+variable "version_redis_cosmotech" {
+  type = string
+}
+
+variable "redis_master_existing_pvc_name" {
+  type = string
+}
+
+variable "redis_replica_existing_pvc_name" {
+  type = string
+}
+
+variable "redis_pvc_storage_class_name" {
+  type = string
+}
+
+variable "first_tenant_in_cluster" {
+  type = bool
+}

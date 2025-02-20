@@ -6,7 +6,7 @@ variable "minio_argo_secret_key" {
   type = string
 }
 
-variable "argo_minio_requests_memory" {
+variable "minio_requests_memory" {
   type = string
 }
 

@@ -18,7 +18,7 @@ variable "s3_endpoint" {
   type = string
 }
 
-variable "argo_s3_bucket_name" {
+variable "s3_bucket_name" {
   type = string
 }
 
@@ -63,5 +63,5 @@ variable "argo_deploy" {
 }
 
 variable "argo_install_crds" {
-  type        = bool
+  type = bool
 }
