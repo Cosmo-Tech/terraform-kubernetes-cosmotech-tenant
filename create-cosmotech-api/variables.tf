@@ -226,3 +226,7 @@ variable "list_authorized_mime_types" {
 variable "api_graph_enabled" {
   type = bool
 }
+
+variable "kubernetes_tenant_namespace" {
+  type = string
+}

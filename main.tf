@@ -77,7 +77,7 @@ data "template_file" "summary" {
     swagger_sp_name       = data.terraform_remote_state.tenant_infra.outputs.out_swagger_sp_name
     swagger_sp_client_id  = data.terraform_remote_state.tenant_infra.outputs.out_swagger_sp_client_id
     # swagger_sp_client_id  = module.create-keycloak.0.out_keycloak_client_id
+  }
 
   depends_on = [module.create-keycloak]
-  }
 }

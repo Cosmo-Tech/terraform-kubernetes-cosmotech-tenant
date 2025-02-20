@@ -1,4 +1,4 @@
-variable "tenant_client_id" {
+variable "tenant_sp_client_id" {
   type        = string
   description = "The client_id of the platform's service principal"
 }

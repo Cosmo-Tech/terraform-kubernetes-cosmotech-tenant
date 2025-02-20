@@ -7,23 +7,20 @@ module "create-argo" {
   monitoring_namespace        = var.monitoring_namespace
   postgres_argo_user          = module.create-postgresql-db.0.out_argo_postgresql_user
   postgres_release_name       = module.create-postgresql-db.0.out_postgres_release_name
-  s3_endpoint                 = var.use_minio_storage ? local.minio_endpoint : module.create-seaweedfs.0.out_s3_endpoint
-  s3_credentials_secret       = var.use_minio_storage ? module.create-minio.0.out_minio_release_name : module.create-seaweedfs.0.out_s3_credentials_secret
-  s3_username_key             = var.use_minio_storage ? "root-user" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_username
-  s3_password_key             = var.use_minio_storage ? "root-password" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_password
+  s3_bucket_name              = var.argo_s3_bucket_name
+  s3_endpoint                 = local.use_minio_storage ? local.minio_endpoint : module.create-seaweedfs.0.out_s3_endpoint
+  s3_credentials_secret       = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : module.create-seaweedfs.0.out_s3_credentials_secret
+  s3_username_key             = local.use_minio_storage ? "root-user" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_username
+  s3_password_key             = local.use_minio_storage ? "root-password" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_password
   archive_ttl                 = var.argo_archive_ttl
   minio_release_name          = local.use_minio_storage ? module.create-minio.0.out_minio_release_name : ""
-  use_minio_storage           = local.use_minio_storage
   argo_bucket_name            = var.argo_bucket_name
   argo_database               = var.argo_database
   argo_postgresql_secret_name = var.argo_postgresql_secret_name
   argo_service_account        = var.argo_service_account
-  argo_version                = var.argo_version
   helm_chart                  = var.argo_helm_chart
   helm_repo_url               = var.argo_helm_repo_url
   requeue_time                = var.argo_requeue_time
-  s3_bucket_name              = var.argo_s3_bucket_name
-  argo_bucket_name            = var.argo_bucket_name
   helm_chart_version          = var.argo_helm_chart_version
   install_argo_crds           = var.argo_install_crds
 
@@ -40,10 +37,9 @@ module "cert-manager" {
 
   count = var.tls_certificate_type == "let_s_encrypt" ? 1 : 0
 
-  tls_secret_name     = local.tls_secret_name
   namespace           = var.kubernetes_tenant_namespace
-  cluster_issuer_name = var.cert_cluster_issuer_name
   tls_secret_name     = local.tls_secret_name
+  cluster_issuer_name = var.cert_cluster_issuer_name
   api_dns_name        = var.api_dns_name
 }
 
@@ -82,6 +78,7 @@ module "create-cosmotech-api" {
 
   client_id                     = var.tenant_sp_client_id
   client_secret                 = var.tenant_sp_client_secret
+  tls_secret_name               = local.tls_secret_name
   tenant_id                     = var.tenant_id
   tenant_sp_client_id           = var.tenant_sp_client_id
   tenant_sp_client_secret       = var.tenant_sp_client_secret
@@ -103,9 +100,6 @@ module "create-cosmotech-api" {
   chart_package_version         = var.api_chart_package_version
   cosmotech_api_version         = var.api_version
   cosmotech_api_version_path    = var.api_version_path
-  helm_chart                    = var.cosmotech_api_helm_chart
-  helm_repository               = var.cosmotech_api_helm_repository
-  helm_release_name             = var.cosmotech_api_helm_release_name
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
   redis_port                    = var.redis_port
   tenant_resource_group         = var.tenant_resource_group
@@ -145,7 +139,7 @@ module "create-cosmotech-api" {
     module.create-postgresql-db,
     module.create-rabbitmq,
     module.create-redis-stack,
-    module.create-keycloak
+    module.create-keycloak,
     module.create-redis-stack
   ]
 }
@@ -163,9 +157,9 @@ module "create-minio" {
   argo_minio_requests_memory  = var.minio_argo_requests_memory
   argo_bucket_name            = var.minio_argo_bucket_name
 
-  helm_chart                  = var.minio_helm_chart
-  helm_repo_url               = var.minio_helm_repo_url
-  minio_version               = var.minio_version
+  helm_chart    = var.minio_helm_chart
+  helm_repo_url = var.minio_helm_repo_url
+  minio_version = var.minio_version
 }
 
 module "create-postgresql-db" {
@@ -173,20 +167,19 @@ module "create-postgresql-db" {
 
   count = var.postgresql_deploy ? 1 : 0
 
-  namespace                     = var.kubernetes_tenant_namespace
-  monitoring_namespace          = var.monitoring_namespace
-  persistence_size              = var.postgresql_persistence_size
-  argo_database                 = var.postgresql_argo_database
-  argo_postgresql_user          = var.postgresql_argo_user
-  cosmotech_api_admin_username  = var.postgresql_cosmotech_api_admin_username
-  cosmotech_api_reader_username = var.postgresql_cosmotech_api_reader_username
-  cosmotech_api_writer_username = var.postgresql_cosmotech_api_reader_username
-  helm_chart                    = var.postgresql_helm_chart
-  helm_repo_url                 = var.postgresql_helm_repo_url
-  postgresql_initdb_secret_name = var.postgresql_initdb_secret_name
-  postgresql_secret_name        = var.postgresql_secret_name
-  postgresql_version            = var.postgresql_version
-  create_secrets_config         = var.create_secrets_config
+  namespace                        = var.kubernetes_tenant_namespace
+  monitoring_namespace             = var.monitoring_namespace
+  persistence_size                 = var.postgresql_persistence_size
+  argo_database                    = var.postgresql_argo_database
+  argo_postgresql_user             = var.postgresql_argo_user
+  cosmotech_api_admin_username     = var.postgresql_cosmotech_api_admin_username
+  cosmotech_api_reader_username    = var.postgresql_cosmotech_api_reader_username
+  cosmotech_api_writer_username    = var.postgresql_cosmotech_api_reader_username
+  helm_chart                       = var.postgresql_helm_chart
+  helm_repo_url                    = var.postgresql_helm_repo_url
+  postgresql_initdb_secret_name    = var.postgresql_initdb_secret_name
+  postgresql_secret_name           = var.postgresql_secret_name
+  postgresql_version               = var.postgresql_version
   postgresql_secrets_config_create = var.postgresql_secrets_config_create
 }
 
@@ -224,8 +217,9 @@ module "create-rabbitmq" {
 }
 
 module "create-seaweedfs" {
-  count  = var.use_minio_storage ? 0 : 1
   source = "./create-seaweedfs"
+
+  count = var.use_minio_storage ? 0 : 1
 
   namespace                  = var.kubernetes_tenant_namespace
   chart_version              = var.seaweedfs_chart_version
@@ -251,9 +245,7 @@ module "config_vault" {
   vault_address        = var.vault_address
   vault_namespace      = var.vault_namespace
   vault_sops_namespace = var.vault_sops_namespace
-  organization         = var.organization
-  persistence_size           = var.rabbitmq_persistence_size
-  create_rabbitmq_secret     = var.create_rabbitmq_secret
+  organization         = var.vault_organization
 }
 
 module "config_platform" {
@@ -272,8 +264,8 @@ module "config_platform" {
   azure_appid_uri                          = var.identifier_uri
   azure_storage_account_key                = var.storage_account_key
   azure_storage_account_name               = var.storage_account_name
-  azure_credentials_platform_client_id     = var.tenant_sp_client_id
-  azure_credentials_platform_client_secret = var.tenant_sp_client_secret
+  azure_platform_credentials_client_id     = var.tenant_sp_client_id
+  azure_platform_credentials_client_secret = var.tenant_sp_client_secret
   azure_credentials_network_client_id      = var.network_sp_client_id
   azure_credentials_network_client_secret  = var.network_sp_client_secret
   adx_base_uri                             = var.adx_uri
@@ -283,9 +275,7 @@ module "config_platform" {
   identity_token_url                       = var.identity_token_url
   vault_address                            = var.vault_address
   vault_namespace                          = var.vault_namespace
-  vault_engine_secret                      = var.vault_engine_secret
   cluster_name                             = var.cluster_name
-  kubernetes_tenant_namespace              = var.kubernetes_tenant_namespace
   host_redis_password                      = var.redis_admin_password
   rds_hub_listener                         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
   rds_hub_sender                           = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
@@ -300,6 +290,7 @@ module "config_platform" {
   argo_release_name                        = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
   host_argo_workflow                       = var.argo_deploy ? module.create-argo.0.out_argo_workflows_svc_name : ""
   host_redis                               = var.redis_deploy ? module.create-redis-stack.0.out_host_svc_redis : ""
+  namespace                                = var.kubernetes_tenant_namespace
 
   depends_on = [
     module.create-postgresql-db,

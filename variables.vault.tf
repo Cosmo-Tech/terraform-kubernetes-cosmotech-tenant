@@ -21,3 +21,7 @@ variable "vault_sops_namespace" {
 variable "vault_engine_secret" {
   type = string
 }
+
+variable "vault_organization" {
+  type = string
+}
