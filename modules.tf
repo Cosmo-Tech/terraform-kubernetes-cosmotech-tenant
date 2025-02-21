@@ -260,8 +260,8 @@ module "create-modeling-api-deployment" {
   persistence_storage_class   = var.modeling_api_persistence_storage_class
   argo_release_name           = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
   argo_service_account        = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
-  docker_secret               = var.docker_secret
-  wehbook_secret              = var.wehbook_secret
+  docker_secret               = var.modeling_api_docker_secret
+  wehbook_secret              = var.modeling_api_webhook_secret
   ingress_type                = var.ingress_type
   ngrok_host                  = var.ngrok_host
   helm_chart_pull_type        = var.modeling_api_helm_chart_pull_type
@@ -327,8 +327,8 @@ module "create-api-deployment" {
   postgresql_writer_password    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_password : ""
   postgresql_admin_username     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_username : ""
   postgresql_admin_password     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_password : ""
-  docker_secret                 = var.docker_secret
-  wehbook_secret                = var.wehbook_secret
+  docker_secret                 = var.api_docker_secret
+  wehbook_secret                = var.api_webhook_secret
   ngrok_host                    = var.api_ngrok_host
   ingress_type                  = var.api_ingress_type
   helm_chart_pull_type          = var.api_helm_chart_pull_type
