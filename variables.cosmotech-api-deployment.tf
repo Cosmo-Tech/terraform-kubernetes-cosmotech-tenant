@@ -17,3 +17,23 @@ variable "api_deployment_helm_release_name" {
 variable "api_deployment_chart_package_version" {
   type = string
 }
+
+variable "api_docker_secret" {
+  type = string
+}
+
+variable "api_webhook_secret" {
+  type = string
+}
+
+variable "api_ingress_type" {
+  type = string
+}
+
+variable "api_ngrok_host" {
+  type = string
+}
+
+variable "api_helm_chart_pull_type" {
+  type = string
+}

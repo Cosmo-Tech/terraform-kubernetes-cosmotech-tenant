@@ -62,6 +62,9 @@ locals {
     "MAX_REQUEST_SIZE"              = var.max_request_size
     "WEBHOOK_SECRET"                = var.wehbook_secret
     "DOCKER_SECRET"                 = var.docker_secret
+    "INGRESS_TYPE"                  = var.ingress_type
+    "NGROK_HOST"                    = var.ngrok_host
+    "HELM_CHART_PULL_TYPE"          = var.helm_chart_pull_type
   }
 }
 
@@ -78,7 +81,6 @@ data "kubernetes_secret" "platform_client_password" {
     namespace = var.kubernetes_tenant_namespace
   }
 }
-
 
 data "kubernetes_secret" "adx_ingestion_uri_secret" {
   metadata {

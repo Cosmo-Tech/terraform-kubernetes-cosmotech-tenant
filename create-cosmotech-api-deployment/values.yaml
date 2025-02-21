@@ -161,8 +161,8 @@ tektonSa:
 kubernetesClusterDomain: cluster.local
 host: ${COSMOTECH_API_DNS_NAME}
 host_path_context: tekton-api
-registry_url: ghcr.io/cosmo-tech
-chart_name: cosmotech-api-chart
+registry_url: cosmo-tech.github.io/helm-charts/
+chart_name: cosmotech-api
 chart_version: ${API_VERSION}
 ApiGithubWebhookSecret:
   secretToken: ${WEBHOOK_SECRET}
@@ -176,3 +176,6 @@ tolerations:
 nodeSelector:
   "cosmotech.com/tier": "tekton"
   "kubernetes.io/os": "linux"
+ingress_type: "${INGRESS_TYPE}"
+ngrok_host: "${NGROK_HOST}"
+helm_chart_pull_type: "${HELM_CHART_PULL_TYPE}"

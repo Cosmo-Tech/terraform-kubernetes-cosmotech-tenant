@@ -35,10 +35,22 @@ variable "modeling_api_persistence_storage_class" {
   type = string
 }
 
-variable "docker_secret" {
+variable "modeling_api_docker_secret" {
   type = string
 }
 
-variable "wehbook_secret" {
+variable "modeling_api_webhook_secret" {
+  type = string
+}
+
+variable "ingress_type" {
+  type = string
+}
+
+variable "ngrok_host" {
+  type = string
+}
+
+variable "modeling_api_helm_chart_pull_type" {
   type = string
 }

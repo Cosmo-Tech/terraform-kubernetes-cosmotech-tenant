@@ -1,18 +1,20 @@
 locals {
-  local_instance_name            = "${var.helm_release_name}-${var.kubernetes_tenant_namespace}"
-  
+  local_instance_name = "${var.helm_release_name}-${var.kubernetes_tenant_namespace}"
 
   values_modeling_api = {
-    "MONITORING_ENABLED"            = var.monitoring_enabled
-    "MONITORING_NAMESPACE"          = var.monitoring_namespace
-    "NAMESPACE"                     = var.kubernetes_tenant_namespace
-    "COSMOTECH_API_DNS_NAME"        = var.api_dns_name
-    "PERSISTENCE_STORAGE_CLASS"     = var.persistence_storage_class
-    "WEBHOOK_SECRET"                = var.wehbook_secret
-    "DOCKER_SECRET"                 = var.docker_secret
-    "ARGO_SERVICE_ACCOUNT"          = var.argo_service_account
-    "ARGO_RELEASE_NAME"             = var.argo_release_name
-    "HELM_RELEASE_NAME"             = var.helm_release_name
+    "MONITORING_ENABLED"        = var.monitoring_enabled
+    "MONITORING_NAMESPACE"      = var.monitoring_namespace
+    "NAMESPACE"                 = var.kubernetes_tenant_namespace
+    "COSMOTECH_API_DNS_NAME"    = var.api_dns_name
+    "PERSISTENCE_STORAGE_CLASS" = var.persistence_storage_class
+    "WEBHOOK_SECRET"            = var.wehbook_secret
+    "DOCKER_SECRET"             = var.docker_secret
+    "ARGO_SERVICE_ACCOUNT"      = var.argo_service_account
+    "ARGO_RELEASE_NAME"         = var.argo_release_name
+    "HELM_RELEASE_NAME"         = var.helm_release_name
+    "INGRESS_TYPE"              = var.ingress_type
+    "NGROK_HOST"                = var.ngrok_host
+    "HELM_CHART_PULL_TYPE"      = var.helm_chart_pull_type
   }
 }
 
