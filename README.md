@@ -52,7 +52,12 @@
 | <a name="input_api_deployment_helm_release_name"></a> [api\_deployment\_helm\_release\_name](#input\_api\_deployment\_helm\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_api_deployment_helm_repository"></a> [api\_deployment\_helm\_repository](#input\_api\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_docker_secret"></a> [api\_docker\_secret](#input\_api\_docker\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_api_helm_chart_pull_type"></a> [api\_helm\_chart\_pull\_type](#input\_api\_helm\_chart\_pull\_type) | n/a | `string` | n/a | yes |
+| <a name="input_api_ingress_type"></a> [api\_ingress\_type](#input\_api\_ingress\_type) | n/a | `string` | n/a | yes |
+| <a name="input_api_ngrok_host"></a> [api\_ngrok\_host](#input\_api\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_api_webhook_secret"></a> [api\_webhook\_secret](#input\_api\_webhook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_archive_ttl"></a> [archive\_ttl](#input\_archive\_ttl) | n/a | `string` | n/a | yes |
 | <a name="input_argo_bucket_name"></a> [argo\_bucket\_name](#input\_argo\_bucket\_name) | n/a | `string` | n/a | yes |
 | <a name="input_argo_database"></a> [argo\_database](#input\_argo\_database) | n/a | `string` | n/a | yes |
@@ -95,12 +100,12 @@
 | <a name="input_deployment_helm_chart"></a> [deployment\_helm\_chart](#input\_deployment\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_deployment_helm_release_name"></a> [deployment\_helm\_release\_name](#input\_deployment\_helm\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_deployment_helm_repository"></a> [deployment\_helm\_repository](#input\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
-| <a name="input_docker_secret"></a> [docker\_secret](#input\_docker\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_event_listener_dns_name"></a> [event\_listener\_dns\_name](#input\_event\_listener\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_eventbus_uri"></a> [eventbus\_uri](#input\_eventbus\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identifier_uri"></a> [identifier\_uri](#input\_identifier\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_identity_authorization_url"></a> [identity\_authorization\_url](#input\_identity\_authorization\_url) | n/a | `string` | n/a | yes |
 | <a name="input_identity_token_url"></a> [identity\_token\_url](#input\_identity\_token\_url) | n/a | `string` | n/a | yes |
+| <a name="input_ingress_type"></a> [ingress\_type](#input\_ingress\_type) | n/a | `string` | n/a | yes |
 | <a name="input_is_multitenant"></a> [is\_multitenant](#input\_is\_multitenant) | n/a | `bool` | n/a | yes |
 | <a name="input_kubernetes_resource_group"></a> [kubernetes\_resource\_group](#input\_kubernetes\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | n/a | `string` | n/a | yes |
@@ -112,13 +117,17 @@
 | <a name="input_minio_helm_chart"></a> [minio\_helm\_chart](#input\_minio\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_docker_secret"></a> [modeling\_api\_docker\_secret](#input\_modeling\_api\_docker\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_helm_chart_pull_type"></a> [modeling\_api\_helm\_chart\_pull\_type](#input\_modeling\_api\_helm\_chart\_pull\_type) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_monitoring_enabled"></a> [modeling\_api\_monitoring\_enabled](#input\_modeling\_api\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_modeling_api_monitoring_namespace"></a> [modeling\_api\_monitoring\_namespace](#input\_modeling\_api\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_persistence_storage_class"></a> [modeling\_api\_persistence\_storage\_class](#input\_modeling\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_webhook_secret"></a> [modeling\_api\_webhook\_secret](#input\_modeling\_api\_webhook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_network_sp_client_id"></a> [network\_sp\_client\_id](#input\_network\_sp\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_network_sp_client_secret"></a> [network\_sp\_client\_secret](#input\_network\_sp\_client\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_ngrok_host"></a> [ngrok\_host](#input\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_deploy"></a> [postgresql\_deploy](#input\_postgresql\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_postgresql_helm_chart"></a> [postgresql\_helm\_chart](#input\_postgresql\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_helm_repo_url"></a> [postgresql\_helm\_repo\_url](#input\_postgresql\_helm\_repo\_url) | n/a | `string` | n/a | yes |
@@ -159,7 +168,6 @@
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_sops_namespace"></a> [vault\_sops\_namespace](#input\_vault\_sops\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_version_redis_cosmotech"></a> [version\_redis\_cosmotech](#input\_version\_redis\_cosmotech) | Redis version | `string` | n/a | yes |
-| <a name="input_wehbook_secret"></a> [wehbook\_secret](#input\_wehbook\_secret) | n/a | `string` | n/a | yes |
 
 ## Outputs
 
