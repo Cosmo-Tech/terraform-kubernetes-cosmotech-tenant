@@ -185,7 +185,9 @@
 | <a name="input_s3_password_key"></a> [s3\_password\_key](#input\_s3\_password\_key) | n/a | `string` | n/a | yes |
 | <a name="input_s3_username_key"></a> [s3\_username\_key](#input\_s3\_username\_key) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_chart_version"></a> [seaweedfs\_chart\_version](#input\_seaweedfs\_chart\_version) | SeaweedFS chart version | `string` | n/a | yes |
+| <a name="input_seaweedfs_database"></a> [seaweedfs\_database](#input\_seaweedfs\_database) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_postgresql_port"></a> [seaweedfs\_postgresql\_port](#input\_seaweedfs\_postgresql\_port) | n/a | `string` | n/a | yes |
+| <a name="input_seaweedfs_username"></a> [seaweedfs\_username](#input\_seaweedfs\_username) | n/a | `string` | n/a | yes |
 | <a name="input_secret_tls_secret_name"></a> [secret\_tls\_secret\_name](#input\_secret\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | The subscription id | `string` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |
