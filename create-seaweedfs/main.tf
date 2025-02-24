@@ -19,16 +19,16 @@ locals {
 
 data "kubernetes_secret" "seaweedfs_postgres_config" {
   metadata {
-    name = "seaweedfs-eng-modapi-ci-s3-auth"
+    name = "seaweedfs-${var.namespace}-s3-auth"
     namespace = var.namespace
   }
 }
 
 resource "helm_release" "seaweedfs" {
   name       = local.release_name
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "seaweedfs"
-  version    = var.chart_version
+  repository = var.helm_chart_repository
+  chart      = var.helm_chart_name
+  version    = var.helm_chart_version
   namespace  = var.namespace
 
   reset_values = true
