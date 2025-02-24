@@ -6,3 +6,11 @@ variable "seaweedfs_chart_version" {
 variable "seaweedfs_postgresql_port" {
   type = string
 }
+
+variable "seaweedfs_database" {
+  type = string
+}
+
+variable "seaweedfs_username" {
+  type = string
+}

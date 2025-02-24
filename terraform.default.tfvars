@@ -174,8 +174,8 @@ first_tenant_in_cluster         = false
 # seaweedfs
 seaweedfs_chart_version   = "3.0.4"
 seaweedfs_postgresql_port = 5432
-
-
+seaweedfs_database        = "seaweedfs"
+seaweedfs_username        = "seaweedfs"
 
 # Vault
 vault_namespace      = "vault"
