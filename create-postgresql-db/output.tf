@@ -32,7 +32,7 @@ output "out_postgres_admin_username" {
 }
 
 output "out_postgres_admin_password" {
-  value     = data.kubernetes_secret.postgres_config.data.cosmotech-api-admin-password
+  value     = data.kubernetes_secret.postgres_config.data.cosmotech-api-writer-password
   sensitive = true
 }
 
