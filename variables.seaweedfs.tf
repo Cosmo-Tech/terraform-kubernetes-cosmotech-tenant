@@ -21,3 +21,7 @@ variable "seaweedfs_helm_chart_version" {
 variable "seaweedfs_helm_chart_repository" {
   type = string
 }
+
+variable "pvc_seaweedfs_accessmode" {
+  type = string
+}

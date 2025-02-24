@@ -190,7 +190,7 @@ redis_resources = {
 
 # seaweedfs
 seaweedfs_helm_chart_repository = "https://charts.bitnami.com/bitnami"
-seaweedfs_helm_chart_version    = "3.0.4"
+seaweedfs_helm_chart_version    = "4.8.0"
 seaweedfs_helm_chart_name       = "seaweedfs"
 seaweedfs_postgresql_port       = 5432
 seaweedfs_database              = "seaweedfs"
