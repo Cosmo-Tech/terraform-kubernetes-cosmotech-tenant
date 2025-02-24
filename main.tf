@@ -33,22 +33,23 @@ data "template_file" "summary" {
     azure_location       = data.terraform_remote_state.tenant_infra.outputs.out_azure_resource_location
 
     acr_login_server = data.terraform_remote_state.tenant_infra.outputs.out_acr_login_server
-    rds_deploy       = var.rabbitmq_deploy
+    rabbitmq_deploy  = var.rabbitmq_deploy
     adx_cluster_name = data.terraform_remote_state.tenant_infra.outputs.out_adx_cluster_name
     adx_cluster_uri  = data.terraform_remote_state.tenant_infra.outputs.out_adx_cluster_uri
     storage_name     = data.terraform_remote_state.tenant_infra.outputs.out_azure_storage_account_name
 
-    argo_workflows_deploy  = var.argo_deploy
-    argo_workflows_version = var.argo_helm_chart_version
-    minio_deploy           = var.minio_deploy
-    minio_version          = var.minio_version
-    postgresql_deploy      = var.postgresql_deploy
-    postgresql_version     = var.postgresql_version
-    api_deploy             = var.api_deploy
-    api_version            = var.api_version
-    api_url                = data.terraform_remote_state.tenant_infra.outputs.out_api_cosmo_url
-    redis_deploy           = var.redis_deploy
-    redis_version          = var.redis_cosmotech_version
+    argo_workflows_deploy   = var.argo_deploy
+    argo_workflows_version  = var.argo_helm_chart_version
+    minio_deploy            = var.minio_deploy
+    minio_version           = var.minio_version
+    postgresql_deploy       = var.postgresql_deploy
+    postgresql_version      = var.postgresql_version
+    api_deploy              = var.api_deploy
+    api_version             = var.api_version
+    api_url                 = data.terraform_remote_state.tenant_infra.outputs.out_api_cosmo_url
+    redis_deploy            = var.redis_deploy
+    redis_version           = var.version_redis_cosmotech
+    seaweedfs_chart_version = var.seaweedfs_helm_chart_version
 
     babylon_sp_name      = data.terraform_remote_state.tenant_infra.outputs.out_babylon_sp_name
     babylon_sp_client_id = data.terraform_remote_state.tenant_infra.outputs.out_babylon_sp_client_id

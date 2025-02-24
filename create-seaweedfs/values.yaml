@@ -1,6 +1,17 @@
 master:
+  persistence:
+    existingClaim: "${SEAWEEDFS_MASTER_PVC_EXISTING_NAME}"
+    size: "${SEAWEEDFS_MASTER_PVC_SIZE}"
+    accessModes:
+    - ${SEAWEEDFS_PVC_ACCESSMODE}
+    storageClass: "${SEAWEEDFS_STORAGECLASS_NAME}"
   nodeSelector:
     cosmotech.com/tier: "services"
+  tolerations:
+    - key: "vendor"
+      operator: "Equal"
+      value: "cosmotech"
+      effect: "NoSchedule"
 mariadb:
   enabled: false
 externalDatabase:
@@ -12,16 +23,40 @@ externalDatabase:
   user: "${POSTGRESQL_USERNAME}"
   existingSecret: "${POSTGRESQL_SECRET}"
 volume:
+  dataVolumes:
+  - name: data-0
+    mountPath: /data-0
+    persistence:
+      existingClaim: "${SEAWEEDFS_VOLUME_PVC_EXISTING_NAME}"
+      size: "${SEAWEEDFS_VOLUME_PVC_SIZE}"
+      accessModes:
+      - ${SEAWEEDFS_PVC_ACCESSMODE}
+      storageClass: "${SEAWEEDFS_STORAGECLASS_NAME}"
   nodeSelector:
     cosmotech.com/tier: "db"
+  tolerations:
+    - key: "vendor"
+      operator: "Equal"
+      value: "cosmotech"
+      effect: "NoSchedule"
 filer:
   nodeSelector:
     cosmotech.com/tier: "services"
   resourcesPreset: medium
+  tolerations:
+    - key: "vendor"
+      operator: "Equal"
+      value: "cosmotech"
+      effect: "NoSchedule"
 s3:
   enabled: true
   nodeSelector:
     cosmotech.com/tier: "services"
+  tolerations:
+    - key: "vendor"
+      operator: "Equal"
+      value: "cosmotech"
+      effect: "NoSchedule"
   containerPorts:
     http: 9000
   auth:
@@ -55,6 +90,11 @@ extraDeploy:
           {{- end }}
           nodeSelector:
             cosmotech.com/tier: services
+          tolerations:
+          - key: "vendor"
+            operator: "Equal"
+            value: "cosmotech"
+            effect: "NoSchedule"
           containers:
             - name: init-buckets
               image: alpine

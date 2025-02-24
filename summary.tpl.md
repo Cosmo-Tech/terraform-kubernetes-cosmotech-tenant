@@ -18,14 +18,14 @@ Container Registry Name | ${acr_login_server}
 
 Name  | Deployed | Value
 ------- | -------- | --------
-ADX Cluster Name | ${rds_deploy == "false" ? "✅" : "❌"} | ${adx_cluster_name}
-ADX Cluster URI | ${rds_deploy == "false" ? "✅" : "❌"} | ${adx_cluster_uri}
+ADX Cluster Name | ${rabbitmq_deploy == "false" ? "✅" : "❌"} | ${adx_cluster_name}
+ADX Cluster URI | ${rabbitmq_deploy == "false" ? "✅" : "❌"} | ${adx_cluster_uri}
 
 ## Result Data Service
 
 Name  | Deployed
 ------- | --------
-Result Data Service | ${rds_deploy == "true" ? "✅" : "❌"}
+Result Data Service | ${rabbitmq_deploy == "true" ? "✅" : "❌"}
 
 ## Azure Storage Account
 

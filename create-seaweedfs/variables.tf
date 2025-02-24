@@ -33,3 +33,19 @@ variable "helm_chart_repository" {
 variable "helm_chart_name" {
   type = string
 }
+
+variable "seaweedfs_master_pvc_size" {
+  type = number
+}
+
+variable "seaweedfs_volume_pvc_size" {
+  type = number
+}
+
+variable "seaweedfs_pvc_accessmode" {
+  type = string
+}
+
+variable "seaweedfs_pvc_storageclass_name" {
+  type = string
+}

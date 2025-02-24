@@ -8,16 +8,9 @@ locals {
     "POSTGRESQL_EXISTING_PVC_NAME"  = "${var.postgresql_existing_pvc_name}-${var.namespace}"
     "POSTGRESQL_STORAGE_CLASS_NAME" = var.postgresql_pvc_storage_class_name
   }
-  seaweedfs_username        = data.kubernetes_secret.seaweedfs_postgres_config.data.postgresql-username
-  seaweedfs_password_secret = data.kubernetes_secret.seaweedfs_postgres_config.data.postgresql-password
+  seaweedfs_username        = var.seaweedfs_username
+  seaweedfs_password_secret = "${var.postgresql_secret_name}-seaweedfs"
   seaweedfs_database        = var.seaweedfs_database
-}
-
-data "kubernetes_secret" "seaweedfs_postgres_config" {
-  metadata {
-    name = "postgres-config-seaweedfs"
-    namespace = var.namespace
-  }
 }
 
 data "kubernetes_secret" "postgres_config" {
