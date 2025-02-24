@@ -10,11 +10,18 @@ locals {
     "S3_INIT_BUCKETS"     = ["argo-workflows"]
   }
   s3_config_values = {
-    "ARGO_WORKFLOWS_USERNAME" = local.argo_workflows_username
-    "ARGO_WORKFLOWS_PASSWORD" = random_password.argo_workflows_password.result
+    "ARGO_WORKFLOWS_USERNAME" = data.kubernetes_secret.seaweedfs_postgres_config.data.argo-workflows-username
+    "ARGO_WORKFLOWS_PASSWORD" = data.kubernetes_secret.seaweedfs_postgres_config.data.argo-workflows-password
   }
   release_name            = "seaweedfs-${var.namespace}"
   argo_workflows_username = "argo_workflows"
+}
+
+data "kubernetes_secret" "seaweedfs_postgres_config" {
+  metadata {
+    name = "seaweedfs-eng-modapi-ci-s3-auth"
+    namespace = var.namespace
+  }
 }
 
 resource "helm_release" "seaweedfs" {
@@ -29,40 +36,4 @@ resource "helm_release" "seaweedfs" {
   values = [
     templatefile("${path.module}/values.yaml", local.chart_values)
   ]
-}
-
-resource "random_password" "argo_workflows_password" {
-  length  = 30
-  special = false
-}
-
-resource "kubernetes_secret" "s3_credentials" {
-  metadata {
-    name      = "${local.release_name}-s3-auth"
-    namespace = var.namespace
-    labels = {
-      "app" = "seaweedfs"
-    }
-  }
-
-  type = "Opaque"
-  data = {
-    "argo-workflows-username" = local.argo_workflows_username
-    "argo-workflows-password" = random_password.argo_workflows_password.result
-  }
-}
-
-resource "kubernetes_secret" "s3_auth_config" {
-  metadata {
-    name      = "${local.release_name}-s3-config"
-    namespace = var.namespace
-    labels = {
-      "app" = "seaweedfs"
-    }
-  }
-
-  type = "Opaque"
-  data = {
-    "config.json" = templatefile("${path.module}/s3_config.json", local.s3_config_values)
-  }
 }
