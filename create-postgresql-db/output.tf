@@ -12,7 +12,7 @@ output "out_postgres_reader_username" {
 }
 
 output "out_postgres_reader_password" {
-  value     = var.postgresql_secrets_config_create ? random_password.postgresql_reader_password.result : ""
+  value     = data.kubernetes_secret.postgres_config.data.cosmotech-api-reader-password
   sensitive = true
 }
 
@@ -22,7 +22,7 @@ output "out_postgres_writer_username" {
 }
 
 output "out_postgres_writer_password" {
-  value     = var.postgresql_secrets_config_create ? random_password.postgresql_writer_password.result : ""
+  value     = data.kubernetes_secret.postgres_config.data.cosmotech-api-writer-password
   sensitive = true
 }
 
@@ -32,7 +32,7 @@ output "out_postgres_admin_username" {
 }
 
 output "out_postgres_admin_password" {
-  value     = var.postgresql_secrets_config_create ? random_password.postgresql_admin_password.result : ""
+  value     = data.kubernetes_secret.postgres_config.data.cosmotech-api-admin-password
   sensitive = true
 }
 

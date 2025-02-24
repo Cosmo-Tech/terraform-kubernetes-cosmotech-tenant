@@ -61,3 +61,11 @@ variable "postgresql_existing_pvc_name" {
 variable "postgresql_pvc_storage_class_name" {
   type = string
 }
+
+variable "seaweedfs_database" {
+  type = string
+}
+
+variable "seaweedfs_username" {
+  type = string
+}
