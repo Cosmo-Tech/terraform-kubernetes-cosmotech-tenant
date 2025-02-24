@@ -154,6 +154,7 @@
 | <a name="input_pvc_redis_replicas"></a> [pvc\_redis\_replicas](#input\_pvc\_redis\_replicas) | n/a | `number` | n/a | yes |
 | <a name="input_pvc_redis_storage_class_name"></a> [pvc\_redis\_storage\_class\_name](#input\_pvc\_redis\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_redis_storage_gbi"></a> [pvc\_redis\_storage\_gbi](#input\_pvc\_redis\_storage\_gbi) | n/a | `number` | n/a | yes |
+| <a name="input_pvc_seaweedfs_accessmode"></a> [pvc\_seaweedfs\_accessmode](#input\_pvc\_seaweedfs\_accessmode) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_deploy"></a> [pvc\_seaweedfs\_deploy](#input\_pvc\_seaweedfs\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_pvc_seaweedfs_storage_class_name"></a> [pvc\_seaweedfs\_storage\_class\_name](#input\_pvc\_seaweedfs\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_storage_gbi"></a> [pvc\_seaweedfs\_storage\_gbi](#input\_pvc\_seaweedfs\_storage\_gbi) | n/a | `number` | n/a | yes |
