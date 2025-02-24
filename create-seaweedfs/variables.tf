@@ -2,7 +2,7 @@ variable "namespace" {
   type = string
 }
 
-variable "chart_version" {
+variable "helm_chart_version" {
   type = string
 }
 
@@ -23,5 +23,13 @@ variable "postgresql_username" {
 }
 
 variable "postgresql_password_secret" {
+  type = string
+}
+
+variable "helm_chart_repository" {
+  type = string
+}
+
+variable "helm_chart_name" {
   type = string
 }

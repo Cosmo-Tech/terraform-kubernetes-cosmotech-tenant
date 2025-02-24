@@ -172,10 +172,12 @@ redis_replica_existing_pvc_name = "pvc-disk-redis-replica-tenant"
 first_tenant_in_cluster         = false
 
 # seaweedfs
-seaweedfs_chart_version   = "3.0.4"
-seaweedfs_postgresql_port = 5432
-seaweedfs_database        = "seaweedfs"
-seaweedfs_username        = "seaweedfs"
+seaweedfs_helm_chart_repository = "https://charts.bitnami.com/bitnami"
+seaweedfs_helm_chart_version    = "3.0.4"
+seaweedfs_helm_release_name     = "seaweedfs"
+seaweedfs_postgresql_port       = 5432
+seaweedfs_database              = "seaweedfs"
+seaweedfs_username              = "seaweedfs"
 
 # Vault
 vault_namespace      = "vault"

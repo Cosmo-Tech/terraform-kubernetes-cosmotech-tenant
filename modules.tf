@@ -236,7 +236,9 @@ module "create-seaweedfs" {
   count = var.use_minio_storage ? 0 : 1
 
   namespace                  = var.kubernetes_tenant_namespace
-  chart_version              = var.seaweedfs_chart_version
+  helm_chart_repository      = var.seaweedfs_helm_chart_repository
+  helm_chart_name            = var.seaweedfs_helm_chart_name
+  helm_chart_version         = var.seaweedfs_helm_chart_version
   postgresql_port            = var.seaweedfs_postgresql_port
   postgresql_host            = module.create-postgresql-db.0.out_postgres_release_name
   postgresql_database        = module.create-postgresql-db.0.out_postgres_seawweedfs_database
