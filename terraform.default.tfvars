@@ -189,22 +189,22 @@ kubernetes_cluster_admin_activate = false
 # pvc redis
 pvc_redis_deploy             = false
 pvc_redis_replicas           = 1
-pvc_redis_storage_gbi        = 128
+pvc_redis_storage_gbi        = "128Gi"
 pvc_redis_storage_class_name = ""
 
 # pvc postgres
 pvc_postgres_deploy             = false
 pvc_postgres_replicas           = 1
-pvc_postgres_storage_gbi        = 128
+pvc_postgres_storage_gbi        = "128Gi"
 pvc_postgres_storage_class_name = ""
 
 # pvc seaweedfs
 pvc_seaweedfs_deploy             = false
 pvc_seaweedfs_accessmode         = "ReadWriteOnce"
-pvc_seaweedfs_storage_gbi        = 128
+pvc_seaweedfs_storage_gbi        = "128Gi"
 pvc_seaweedfs_storage_class_name = ""
 
 # pvc minio
 pvc_minio_deploy             = false
 pvc_minio_storage_class_name = ""
-pvc_minio_storage_gbi        = 128
+pvc_minio_storage_gbi        = "128Gi"

@@ -10,8 +10,8 @@ locals {
     "S3_INIT_BUCKETS"                    = ["argo-workflows"]
     "SEAWEEDFS_MASTER_PVC_EXISTING_NAME" = "pvc-disk-seaweedfs-tenant-${var.namespace}-master"
     "SEAWEEDFS_VOLUME_PVC_EXISTING_NAME" = "pvc-disk-seaweedfs-tenant-${var.namespace}-volume"
-    "SEAWEEDFS_MASTER_PVC_SIZE"          = "${var.seaweedfs_master_pvc_size}Gi"
-    "SEAWEEDFS_VOLUME_PVC_SIZE"          = "${var.seaweedfs_volume_pvc_size}Gi"
+    "SEAWEEDFS_MASTER_PVC_SIZE"          = var.seaweedfs_master_pvc_size
+    "SEAWEEDFS_VOLUME_PVC_SIZE"          = var.seaweedfs_volume_pvc_size
     "SEAWEEDFS_PVC_ACCESSMODE"           = var.seaweedfs_pvc_accessmode
     "SEAWEEDFS_STORAGECLASS_NAME"        = var.seaweedfs_pvc_storageclass_name
   }

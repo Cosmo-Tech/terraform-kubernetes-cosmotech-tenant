@@ -35,11 +35,11 @@ variable "helm_chart_name" {
 }
 
 variable "seaweedfs_master_pvc_size" {
-  type = number
+  type = string
 }
 
 variable "seaweedfs_volume_pvc_size" {
-  type = number
+  type = string
 }
 
 variable "seaweedfs_pvc_accessmode" {
