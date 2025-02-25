@@ -1,4 +1,4 @@
-variable "tls_namespace" {
+variable "custom_tls_namespace" {
   type = string
 }
 

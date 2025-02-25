@@ -45,10 +45,6 @@ variable "postgresql_deploy" {
   type = bool
 }
 
-variable "argo_postgresql_user" {
-  type = string
-}
-
 variable "postgresql_secrets_config_create" {
   type = bool
 }

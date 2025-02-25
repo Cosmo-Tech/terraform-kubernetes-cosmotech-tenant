@@ -8,7 +8,7 @@ resource "kubernetes_persistent_volume_claim" "postgres_master" {
     namespace = var.kubernetes_tenant_namespace
   }
   spec {
-    access_modes = ["ReadWriteOnce"]
+    access_modes = [var.pvc_postgres_storage_accessmode]
     storage_class_name = var.pvc_postgres_storage_class_name
     resources {
       requests = {

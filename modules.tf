@@ -7,7 +7,7 @@ module "create-argo" {
   monitoring_namespace        = var.monitoring_namespace
   postgres_argo_user          = module.create-postgresql-db.0.out_argo_postgresql_user
   postgres_release_name       = module.create-postgresql-db.0.out_postgres_release_name
-  s3_bucket_name              = var.s3_bucket_name
+  s3_bucket_name              = var.argo_s3_bucket_name
   s3_endpoint                 = var.minio_deploy ? local.minio_endpoint : module.create-seaweedfs.0.out_s3_endpoint
   s3_credentials_secret       = var.minio_deploy ? module.create-minio.0.out_minio_release_name : module.create-seaweedfs.0.out_s3_credentials_secret
   s3_username_key             = var.minio_deploy ? "root-user" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_username
@@ -233,7 +233,7 @@ module "create-rabbitmq" {
 module "create-seaweedfs" {
   source = "./create-seaweedfs"
 
-  count = var.use_minio_storage ? 0 : 1
+  count = var.minio_deploy ? 0 : 1
 
   namespace                       = var.kubernetes_tenant_namespace
   helm_chart_repository           = var.seaweedfs_helm_chart_repository
@@ -246,7 +246,7 @@ module "create-seaweedfs" {
   postgresql_password_secret      = module.create-postgresql-db.0.out_postgres_seawweedfs_password_secret
   seaweedfs_master_pvc_size       = var.pvc_seaweedfs_storage_gbi
   seaweedfs_volume_pvc_size       = var.pvc_seaweedfs_storage_gbi
-  seaweedfs_pvc_accessmode        = var.pvc_seaweedfs_accessmode
+  seaweedfs_pvc_accessmode        = var.pvc_seaweedfs_storage_accessmode
   seaweedfs_pvc_storageclass_name = var.pvc_seaweedfs_storage_class_name
 
   depends_on = [
@@ -263,6 +263,7 @@ module "deploy-pvc-redis" {
   pvc_redis_replicas           = var.pvc_redis_replicas
   pvc_redis_storage_gbi        = var.pvc_redis_storage_gbi
   pvc_redis_storage_class_name = var.pvc_redis_storage_class_name
+  pvc_redis_storage_accessmode = var.pvc_redis_storage_accessmode
 }
 
 module "deploy-pvc-postgres" {
@@ -273,6 +274,7 @@ module "deploy-pvc-postgres" {
   kubernetes_tenant_namespace     = var.kubernetes_tenant_namespace
   pvc_postgres_storage_gbi        = var.pvc_postgres_storage_gbi
   pvc_postgres_storage_class_name = var.pvc_postgres_storage_class_name
+  pvc_postgres_storage_accessmode = var.pvc_postgres_storage_accessmode
 }
 
 module "deploy-pvc-seaweedfs" {
@@ -283,6 +285,7 @@ module "deploy-pvc-seaweedfs" {
   kubernetes_tenant_namespace      = var.kubernetes_tenant_namespace
   pvc_seaweedfs_storage_gbi        = var.pvc_seaweedfs_storage_gbi
   pvc_seaweedfs_storage_class_name = var.pvc_seaweedfs_storage_class_name
+  pvc_seaweedfs_storage_accessmode = var.pvc_seaweedfs_storage_accessmode
 }
 
 module "deploy-pvc-minio" {
@@ -293,4 +296,5 @@ module "deploy-pvc-minio" {
   kubernetes_tenant_namespace  = var.kubernetes_tenant_namespace
   pvc_minio_storage_gbi        = var.pvc_minio_storage_gbi
   pvc_minio_storage_class_name = var.pvc_minio_storage_class_name
+  pvc_minio_storage_accessmode = var.pvc_minio_storage_accessmode
 }

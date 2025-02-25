@@ -1,5 +1,5 @@
 locals {
-  disk_name  = "disk-minio-tenant-${var.kubernetes_tenant_namespace}"
+  disk_name = "disk-minio-tenant-${var.kubernetes_tenant_namespace}"
 }
 
 resource "kubernetes_persistent_volume_claim" "minio_master" {
@@ -8,7 +8,7 @@ resource "kubernetes_persistent_volume_claim" "minio_master" {
     namespace = var.kubernetes_tenant_namespace
   }
   spec {
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = [var.pvc_minio_storage_accessmode]
     storage_class_name = var.pvc_minio_storage_class_name
     resources {
       requests = {
