@@ -13,7 +13,7 @@ resource "kubernetes_persistent_volume_claim" "redis_master" {
     storage_class_name = var.pvc_redis_storage_class_name
     resources {
       requests = {
-        storage = "${var.pvc_redis_storage_gbi}Gi"
+        storage = var.pvc_redis_storage_gbi
       }
     }
     volume_name = "pv-${local.disk_master_name}"
@@ -31,7 +31,7 @@ resource "kubernetes_persistent_volume_claim" "redis_replicas" {
     storage_class_name = var.pvc_redis_storage_class_name
     resources {
       requests = {
-        storage = "${var.pvc_redis_storage_gbi}Gi"
+        storage = var.pvc_redis_storage_gbi
       }
     }
     volume_name = "pv-${local.disk_replica_name}-${count.index}"

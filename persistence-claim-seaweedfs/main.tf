@@ -13,7 +13,7 @@ resource "kubernetes_persistent_volume_claim" "seaweedfs_master" {
     storage_class_name = var.pvc_seaweedfs_storage_class_name
     resources {
       requests = {
-        storage = "${var.pvc_seaweedfs_storage_gbi}Gi"
+        storage = var.pvc_seaweedfs_storage_gbi
       }
     }
     volume_name = "pv-${local.disk_master_name}"
@@ -30,7 +30,7 @@ resource "kubernetes_persistent_volume_claim" "seaweedfs_volume" {
     storage_class_name = var.pvc_seaweedfs_storage_class_name
     resources {
       requests = {
-        storage = "${var.pvc_seaweedfs_storage_gbi}Gi"
+        storage = var.pvc_seaweedfs_storage_gbi
       }
     }
     volume_name = "pv-${local.disk_volume_name}"
