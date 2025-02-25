@@ -14,27 +14,27 @@ variable "argo_service_account" {
   type = string
 }
 
-variable "s3_endpoint" {
+variable "argo_s3_endpoint" {
   type = string
 }
 
-variable "s3_bucket_name" {
+variable "argo_s3_bucket_name" {
   type = string
 }
 
-variable "s3_credentials_secret" {
+variable "argo_s3_credentials_secret" {
   type = string
 }
 
-variable "s3_username_key" {
+variable "argo_s3_username_key" {
   type = string
 }
 
-variable "s3_password_key" {
+variable "argo_s3_password_key" {
   type = string
 }
 
-variable "postgres_release_name" {
+variable "argo_postgres_release_name" {
   type = string
 }
 

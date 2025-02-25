@@ -1,6 +1,6 @@
 locals {
-  disk_master_name  = "disk-seaweedfs-tenant-${var.kubernetes_tenant_namespace}-master"
-  disk_volume_name  = "disk-seaweedfs-tenant-${var.kubernetes_tenant_namespace}-volume"
+  disk_master_name = "disk-seaweedfs-tenant-${var.kubernetes_tenant_namespace}-master"
+  disk_volume_name = "disk-seaweedfs-tenant-${var.kubernetes_tenant_namespace}-volume"
 }
 
 resource "kubernetes_persistent_volume_claim" "seaweedfs_master" {
@@ -9,7 +9,7 @@ resource "kubernetes_persistent_volume_claim" "seaweedfs_master" {
     namespace = var.kubernetes_tenant_namespace
   }
   spec {
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = [var.pvc_seaweedfs_storage_accessmode]
     storage_class_name = var.pvc_seaweedfs_storage_class_name
     resources {
       requests = {
@@ -26,7 +26,7 @@ resource "kubernetes_persistent_volume_claim" "seaweedfs_volume" {
     namespace = var.kubernetes_tenant_namespace
   }
   spec {
-    access_modes = ["ReadWriteOnce"]
+    access_modes       = [var.pvc_seaweedfs_storage_accessmode]
     storage_class_name = var.pvc_seaweedfs_storage_class_name
     resources {
       requests = {

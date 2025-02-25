@@ -7,3 +7,6 @@ variable "pvc_minio_storage_class_name" {
 variable "pvc_minio_deploy" {
   type = bool
 }
+variable "pvc_minio_storage_accessmode" {
+  type = string
+}

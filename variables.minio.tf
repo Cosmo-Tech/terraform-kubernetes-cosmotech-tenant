@@ -34,10 +34,6 @@ variable "minio_argo_requests_memory" {
   type = string
 }
 
-variable "use_minio_storage" {
-  type = bool
-}
-
 variable "minio_deploy" {
   type = bool
 }

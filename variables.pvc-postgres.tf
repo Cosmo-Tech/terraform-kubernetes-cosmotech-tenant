@@ -7,3 +7,6 @@ variable "pvc_postgres_storage_class_name" {
 variable "pvc_postgres_deploy" {
   type = bool
 }
+variable "pvc_postgres_storage_accessmode" {
+  type = string
+}

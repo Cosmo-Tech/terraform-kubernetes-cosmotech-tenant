@@ -11,15 +11,11 @@ adx_ingestion_uri        = ""
 eventbus_uri             = ""
 
 # tenant
-tenant_client_id     = ""
-tenant_client_secret = ""
+tenant_client_id        = ""
+tenant_client_secret    = ""
+tenant_sp_client_secret = ""
 
-# Platform config
-identity_authorization_url = ""
-identity_token_url         = ""
-tenant_sp_client_secret    = ""
-
-# Cert-manager
+# cert-manager
 cluster_issuer_name      = "letsencrypt-prod"
 tls_secret_name          = "letsencrypt-prod"
 tls_certificate_type     = "let_s_encrypt"
@@ -44,6 +40,9 @@ api_max_request_size          = "10MB"
 api_graph_enabled             = true
 api_adx_uri                   = ""
 api_acr_login_server_url      = ""
+api_acr_login_password        = ""
+api_acr_login_server          = ""
+api_acr_login_username        = ""
 api_list_apikey_allowed = [{
   name           = ""
   apiKey         = ""
@@ -73,11 +72,11 @@ argo_minio_access_key       = ""
 
 # cert-manager
 cert_cluster_issuer_name = "letsencrypt-prod"
-cert_tls_namespace       = ""
+cert_tls_namespace       = "cert-manager"
 cert_tls_secret_name     = "letsencrypt-prod"
 
 # custom tls
-tls_namespace                      = ""
+custom_tls_namespace               = "cert-manager"
 custom_tls_secret_name             = "custom-tls-secret"
 custom_tls_certificate_certificate = ""
 custom_tls_certificate_key         = ""
@@ -98,25 +97,21 @@ argo_helm_repo_url          = "https://charts.bitnami.com/bitnami"
 argo_helm_chart             = "argo-workflows"
 argo_helm_chart_version     = "9.1.6"
 argo_service_account        = ""
-s3_endpoint                 = ""
-s3_bucket_name              = "argo-workflows"
-s3_credentials_secret       = ""
-s3_username_key             = ""
-s3_password_key             = ""
+argo_s3_endpoint            = ""
+argo_s3_bucket_name         = "argo-workflows"
+argo_s3_credentials_secret  = ""
+argo_s3_username_key        = ""
+argo_s3_password_key        = ""
 argo_database               = "argo_workflows"
 argo_postgresql_secret_name = "postgres-config"
 argo_requeue_time           = "1s"
 argo_archive_ttl            = "3d"
-acr_login_password          = ""
-acr_login_server            = ""
-acr_login_username          = ""
 argo_bucket_name            = "argo-workflows"
-postgres_release_name       = ""
+argo_postgres_release_name  = ""
 argo_install_crds           = true
 
 # minio
 minio_deploy                = true
-use_minio_storage           = false
 minio_helm_repo_url         = "https://charts.bitnami.com/bitnami"
 minio_helm_chart            = "minio"
 minio_version               = "12.1.3"
@@ -126,24 +121,21 @@ minio_argo_bucket_name      = "argo-workflows"
 minio_argo_persistence_size = "16Gi"
 minio_argo_requests_memory  = "2Gi"
 minio_existing_pvc_name     = "pvc-disk-minio-tenant"
-minio_storage_class_name    = ""
 
 # postgres
-postgresql_deploy                 = true
-postgresql_persistence_size       = "8Gi"
-postgresql_version                = "11.6.12"
-postgresql_helm_repo_url          = "https://charts.bitnami.com/bitnami"
-postgresql_helm_chart             = "postgresql"
-cosmotech_api_reader_username     = "cosmotech_api_reader"
-cosmotech_api_writer_username     = "cosmotech_api_writer"
-cosmotech_api_admin_username      = "cosmotech_api_admin"
-postgresql_initdb_secret_name     = "postgres-initdb"
-postgresql_argo_user              = "argo"
-postgresql_secret_name            = "postgres-config"
-postgresql_argo_database          = "argo_workflows"
-argo_postgresql_user              = "argo"
-postgresql_existing_pvc_name      = "pv-disk-postgres-tenant"
-postgresql_pvc_storage_class_name = "default"
+postgresql_deploy                        = true
+postgresql_persistence_size              = "8Gi"
+postgresql_version                       = "11.6.12"
+postgresql_helm_repo_url                 = "https://charts.bitnami.com/bitnami"
+postgresql_helm_chart                    = "postgresql"
+postgresql_cosmotech_api_reader_username = "cosmotech_api_reader"
+postgresql_cosmotech_api_writer_username = "cosmotech_api_writer"
+postgresql_cosmotech_api_admin_username  = "cosmotech_api_admin"
+postgresql_initdb_secret_name            = "postgres-initdb"
+postgresql_argo_user                     = "argo"
+postgresql_secret_name                   = "postgres-config"
+postgresql_argo_database                 = "argo_workflows"
+postgresql_existing_pvc_name             = "pv-disk-postgres-tenant"
 
 # rabbitmq
 rabbitmq_deploy             = true
@@ -191,20 +183,23 @@ pvc_redis_deploy             = false
 pvc_redis_replicas           = 1
 pvc_redis_storage_gbi        = "128Gi"
 pvc_redis_storage_class_name = ""
+pvc_redis_storage_accessmode = "ReadWriteOnce"
 
 # pvc postgres
 pvc_postgres_deploy             = false
 pvc_postgres_replicas           = 1
 pvc_postgres_storage_gbi        = "128Gi"
 pvc_postgres_storage_class_name = ""
+pvc_postgres_storage_accessmode = "value"
 
 # pvc seaweedfs
 pvc_seaweedfs_deploy             = false
-pvc_seaweedfs_accessmode         = "ReadWriteOnce"
 pvc_seaweedfs_storage_gbi        = "128Gi"
 pvc_seaweedfs_storage_class_name = ""
+pvc_seaweedfs_storage_accessmode = "ReadWriteOnce"
 
 # pvc minio
 pvc_minio_deploy             = false
 pvc_minio_storage_class_name = ""
 pvc_minio_storage_gbi        = "128Gi"
+pvc_minio_storage_accessmode = "ReadWriteOnce"
