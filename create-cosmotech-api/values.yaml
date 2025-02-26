@@ -44,13 +44,13 @@ config:
         password: ${ACR_LOGIN_PASSWORD}
         username: ${ACR_LOGIN_USERNAME}
       identityProvider:
-        code: keycloak
-        authorizationUrl: "https://${COSMOTECH_API_DNS_NAME}/keycloak/realms/${NAMESPACE}/protocol/openid-connect/auth"
-        tokenUrl: "https://${COSMOTECH_API_DNS_NAME}/keycloak/realms/${NAMESPACE}/protocol/openid-connect/token"
-        defaultScopes:
-          openid: "OpenId Scope"
-        serverBaseUrl: "https://${COSMOTECH_API_DNS_NAME}/keycloak"
-        audience: "account"
+        code: "${IDENTITY_PROVIDER}"
+        authorizationUrl: "${AUTHORIZATION_URL}"
+        tokenUrl: "${TOKEN_URL}"
+        defaultScopes: "${DEFAULT_SCOPES}"
+        containerScopes: "${CONTAINER_SCOPES}"
+        serverBaseUrl: "${SERVER_BASE_URL}"
+        audience: "${AUDIENCE}"
         identity:
           clientId: ${KEYCLOAK_CLIENT_ID}
           clientSecret: ${KEYCLOAK_CLIENT_SECRET}

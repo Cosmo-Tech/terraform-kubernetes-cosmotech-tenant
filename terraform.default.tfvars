@@ -25,6 +25,8 @@ secret_tls_secret_name   = "custom-tls-secret"
 
 # Cosmotech API
 api_deploy                    = true
+api_version                   = ""
+api_version_path              = ""
 api_helm_chart                = "cosmotech-api-chart"
 api_helm_repository           = "oci://ghcr.io/cosmo-tech"
 api_helm_release_name         = "cosmotech-api"
@@ -43,6 +45,21 @@ api_acr_login_server_url      = ""
 api_acr_login_password        = ""
 api_acr_login_server          = ""
 api_acr_login_username        = ""
+api_adx_ingestion_uri         = ""
+api_audience                  = ""
+api_authorization_url         = ""
+api_eventbus_uri              = ""
+api_identity_provider         = ""
+api_server_base_url           = ""
+api_storage_account_key       = ""
+api_storage_account_name      = ""
+api_token_url                 = ""
+api_default_scopes = {
+  "/platform" : "tenant scope"
+}
+api_container_scopes = {
+  "/.default" : "tenant scope"
+}
 api_list_apikey_allowed = [{
   name           = ""
   apiKey         = ""
