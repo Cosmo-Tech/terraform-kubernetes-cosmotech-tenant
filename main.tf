@@ -48,7 +48,7 @@ data "template_file" "summary" {
     api_version             = var.api_version
     api_url                 = data.terraform_remote_state.tenant_infra.outputs.out_api_cosmo_url
     redis_deploy            = var.redis_deploy
-    redis_version           = var.version_redis_cosmotech
+    redis_version           = var.redis_chart_version
     seaweedfs_chart_version = var.seaweedfs_helm_chart_version
 
     babylon_sp_name      = data.terraform_remote_state.tenant_infra.outputs.out_babylon_sp_name

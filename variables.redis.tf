@@ -18,10 +18,6 @@ variable "redis_chart_version" {
   type = string
 }
 
-variable "redis_pv_capacity" {
-  type = string
-}
-
 variable "redis_cosmotech_version" {
   type = string
 }
@@ -29,16 +25,13 @@ variable "redis_cosmotech_version" {
 variable "redis_persistence_size" {
   type = string
 }
+
 variable "redis_deploy" {
   type = bool
 }
 
 variable "redis_port" {
   type = number
-}
-
-variable "version_redis_cosmotech" {
-  type = string
 }
 
 variable "redis_master_existing_pvc_name" {
@@ -55,4 +48,17 @@ variable "redis_pvc_storage_class_name" {
 
 variable "first_tenant_in_cluster" {
   type = bool
+}
+
+variable "redis_resources" {
+  type = object({
+    limits = object({
+      cpu    = string
+      memory = string
+    })
+    requests = object({
+      cpu    = string
+      memory = string
+    })
+  })
 }

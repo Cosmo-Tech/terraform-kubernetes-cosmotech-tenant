@@ -18,17 +18,18 @@ variable "helm_chart_name" {
   type = string
 }
 
-variable "chart_redis_version" {
+variable "redis_chart_version" {
   type = string
 }
 
-variable "redis_pv_capacity" {
+variable "redis_persistence_size" {
   type = string
 }
 
-variable "version_redis_cosmotech" {
+variable "redis_cosmotech_version" {
   type = string
 }
+
 variable "redis_master_existing_pvc_name" {
   type = string
 }
@@ -44,3 +45,5 @@ variable "redis_pvc_storage_class_name" {
 variable "first_tenant_in_cluster" {
   type = bool
 }
+
+variable "redis_resources" {}

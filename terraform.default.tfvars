@@ -162,6 +162,16 @@ version_redis_cosmotech         = "1.0.12"
 redis_master_existing_pvc_name  = "pvc-disk-redis-master-tenant"
 redis_replica_existing_pvc_name = "pvc-disk-redis-replica-tenant"
 first_tenant_in_cluster         = false
+redis_resources = {
+  limits = {
+    cpu    = "2000m"
+    memory = "16Gi"
+  }
+  requests = {
+    cpu    = "1000m"
+    memory = "8Gi"
+  }
+}
 
 # seaweedfs
 seaweedfs_helm_chart_repository = "https://charts.bitnami.com/bitnami"
