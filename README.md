@@ -185,9 +185,9 @@
 | <a name="input_redis_master_existing_pvc_name"></a> [redis\_master\_existing\_pvc\_name](#input\_redis\_master\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_persistence_size"></a> [redis\_persistence\_size](#input\_redis\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_redis_port"></a> [redis\_port](#input\_redis\_port) | n/a | `number` | n/a | yes |
-| <a name="input_redis_pv_capacity"></a> [redis\_pv\_capacity](#input\_redis\_pv\_capacity) | n/a | `string` | n/a | yes |
 | <a name="input_redis_pvc_storage_class_name"></a> [redis\_pvc\_storage\_class\_name](#input\_redis\_pvc\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_redis_replica_existing_pvc_name"></a> [redis\_replica\_existing\_pvc\_name](#input\_redis\_replica\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
+| <a name="input_redis_resources"></a> [redis\_resources](#input\_redis\_resources) | n/a | <pre>object({<br>    limits = object({<br>      cpu    = string<br>      memory = string<br>    })<br>    requests = object({<br>      cpu    = string<br>      memory = string<br>    })<br>  })</pre> | n/a | yes |
 | <a name="input_seaweedfs_database"></a> [seaweedfs\_database](#input\_seaweedfs\_database) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_helm_chart_name"></a> [seaweedfs\_helm\_chart\_name](#input\_seaweedfs\_helm\_chart\_name) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_helm_chart_repository"></a> [seaweedfs\_helm\_chart\_repository](#input\_seaweedfs\_helm\_chart\_repository) | n/a | `string` | n/a | yes |
@@ -211,7 +211,6 @@
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_organization"></a> [vault\_organization](#input\_vault\_organization) | n/a | `string` | n/a | yes |
 | <a name="input_vault_sops_namespace"></a> [vault\_sops\_namespace](#input\_vault\_sops\_namespace) | n/a | `string` | n/a | yes |
-| <a name="input_version_redis_cosmotech"></a> [version\_redis\_cosmotech](#input\_version\_redis\_cosmotech) | n/a | `string` | n/a | yes |
 | <a name="input_api_list_apikey_allowed"></a> [api\_list\_apikey\_allowed](#input\_api\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | <pre>[<br>  {<br>    "apiKey": "",<br>    "associatedRole": "",<br>    "name": "",<br>    "securedUris": []<br>  }<br>]</pre> | no |
 
 ## Outputs
