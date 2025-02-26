@@ -230,3 +230,27 @@ variable "api_graph_enabled" {
 variable "kubernetes_tenant_namespace" {
   type = string
 }
+
+variable "api_identity_provider" {
+  type = string
+}
+
+variable "api_authorization_url" {
+  type = string
+}
+
+variable "api_token_url" {
+  type = string
+}
+
+variable "api_server_base_url" {
+  type = string
+}
+
+variable "api_audience" {
+  type = string
+}
+
+variable "api_default_scopes" {}
+
+variable "api_container_scopes" {}
