@@ -196,9 +196,9 @@ module "create-redis-stack" {
 
   namespace                       = var.kubernetes_tenant_namespace
   redis_admin_password            = var.redis_admin_password
-  redis_pv_capacity               = var.redis_persistence_size
-  chart_redis_version             = var.redis_chart_version
-  version_redis_cosmotech         = var.redis_cosmotech_version
+  redis_persistence_size          = var.redis_persistence_size
+  redis_chart_version             = var.redis_chart_version
+  redis_cosmotech_version         = var.redis_cosmotech_version
   helm_chart_name                 = var.redis_helm_chart_name
   helm_release_name               = var.redis_helm_release_name
   helm_repo_url                   = var.redis_helm_repo_url
@@ -206,6 +206,7 @@ module "create-redis-stack" {
   redis_pvc_storage_class_name    = var.pvc_redis_storage_class_name
   redis_replica_existing_pvc_name = var.redis_replica_existing_pvc_name
   first_tenant_in_cluster         = var.first_tenant_in_cluster
+  redis_resources                 = var.redis_resources
 
   depends_on = [
     module.create-postgresql-db,

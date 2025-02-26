@@ -48,13 +48,7 @@ master:
     effect: "NoSchedule"
   nodeSelector:
     cosmotech.com/tier: "db"
-  resources:
-    requests:
-      cpu: 500m
-      memory: 4Gi
-    limits:
-      cpu: 1000m
-      memory: 4Gi
+  resources: ${REDIS_RESOURCES}
 replica:
   podSecurityContext:
     enabled: true
@@ -85,13 +79,7 @@ replica:
     effect: "NoSchedule"
   nodeSelector:
     "cosmotech.com/tier": "db"
-  resources:
-    requests:
-      cpu: 500m
-      memory: 4Gi
-    limits:
-      cpu: 1000m
-      memory: 4Gi
+  resources: ${REDIS_RESOURCES}
 commonConfiguration: |-
   loadmodule /opt/bitnami/redis/modules/redisgraph.so
   loadmodule /opt/bitnami/redis/modules/redistimeseries.so DUPLICATE_POLICY LAST
