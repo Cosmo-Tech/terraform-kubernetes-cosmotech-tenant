@@ -56,7 +56,11 @@
 | <a name="input_api_acr_login_username"></a> [api\_acr\_login\_username](#input\_api\_acr\_login\_username) | n/a | `string` | n/a | yes |
 | <a name="input_api_adx_ingestion_uri"></a> [api\_adx\_ingestion\_uri](#input\_api\_adx\_ingestion\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_adx_uri"></a> [api\_adx\_uri](#input\_api\_adx\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_api_audience"></a> [api\_audience](#input\_api\_audience) | n/a | `string` | n/a | yes |
+| <a name="input_api_authorization_url"></a> [api\_authorization\_url](#input\_api\_authorization\_url) | n/a | `string` | n/a | yes |
 | <a name="input_api_chart_package_version"></a> [api\_chart\_package\_version](#input\_api\_chart\_package\_version) | n/a | `string` | n/a | yes |
+| <a name="input_api_container_scopes"></a> [api\_container\_scopes](#input\_api\_container\_scopes) | n/a | `any` | n/a | yes |
+| <a name="input_api_default_scopes"></a> [api\_default\_scopes](#input\_api\_default\_scopes) | n/a | `any` | n/a | yes |
 | <a name="input_api_deploy"></a> [api\_deploy](#input\_api\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_api_eventbus_uri"></a> [api\_eventbus\_uri](#input\_api\_eventbus\_uri) | n/a | `string` | n/a | yes |
@@ -65,6 +69,7 @@
 | <a name="input_api_helm_release_name"></a> [api\_helm\_release\_name](#input\_api\_helm\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_api_helm_repository"></a> [api\_helm\_repository](#input\_api\_helm\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_api_identifier_uri"></a> [api\_identifier\_uri](#input\_api\_identifier\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_api_identity_provider"></a> [api\_identity\_provider](#input\_api\_identity\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_api_ingress_enabled"></a> [api\_ingress\_enabled](#input\_api\_ingress\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_api_is_multitenant"></a> [api\_is\_multitenant](#input\_api\_is\_multitenant) | n/a | `bool` | n/a | yes |
 | <a name="input_api_list_authorized_mime_types"></a> [api\_list\_authorized\_mime\_types](#input\_api\_list\_authorized\_mime\_types) | n/a | `list(string)` | n/a | yes |
@@ -73,8 +78,10 @@
 | <a name="input_api_persistence_size"></a> [api\_persistence\_size](#input\_api\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_api_persistence_storage_class"></a> [api\_persistence\_storage\_class](#input\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_api_server_base_url"></a> [api\_server\_base\_url](#input\_api\_server\_base\_url) | n/a | `string` | n/a | yes |
 | <a name="input_api_storage_account_key"></a> [api\_storage\_account\_key](#input\_api\_storage\_account\_key) | n/a | `string` | n/a | yes |
 | <a name="input_api_storage_account_name"></a> [api\_storage\_account\_name](#input\_api\_storage\_account\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_token_url"></a> [api\_token\_url](#input\_api\_token\_url) | n/a | `string` | n/a | yes |
 | <a name="input_api_version"></a> [api\_version](#input\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | n/a | `string` | n/a | yes |
 | <a name="input_argo_archive_ttl"></a> [argo\_archive\_ttl](#input\_argo\_archive\_ttl) | n/a | `string` | n/a | yes |
