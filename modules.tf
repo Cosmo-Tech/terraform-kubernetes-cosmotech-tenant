@@ -117,8 +117,8 @@ module "create-cosmotech-api" {
   identifier_uri                = var.api_identifier_uri
   persistence_size              = var.api_persistence_size
   persistence_storage_class     = var.api_persistence_storage_class
-  keycloak_client_id            = module.create-keycloak.0.out_keycloak_api_client_id
-  keycloak_client_secret        = module.create-keycloak.0.out_keycloak_api_client_secret
+  keycloak_client_id            = var.keycloak_deploy ? module.create-keycloak.0.out_keycloak_api_client_id : ""
+  keycloak_client_secret        = var.keycloak_deploy ? module.create-keycloak.0.out_keycloak_api_client_secret : ""
   helm_chart                    = var.api_helm_chart
   helm_release_name             = var.api_helm_release_name
   helm_repository               = var.api_helm_repository
