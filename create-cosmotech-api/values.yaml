@@ -43,20 +43,7 @@ config:
         host: ${ACR_LOGIN_SERVER}
         password: ${ACR_LOGIN_PASSWORD}
         username: ${ACR_LOGIN_USERNAME}
-      identityProvider:
-        code: "${IDENTITY_PROVIDER}"
-        authorizationUrl: "${AUTHORIZATION_URL}"
-        tokenUrl: "${TOKEN_URL}"
-        defaultScopes: "${DEFAULT_SCOPES}"
-        containerScopes: "${CONTAINER_SCOPES}"
-        serverBaseUrl: "${SERVER_BASE_URL}"
-        audience: "${AUDIENCE}"
-        identity:
-          clientId: ${KEYCLOAK_CLIENT_ID}
-          clientSecret: ${KEYCLOAK_CLIENT_SECRET}
-          tenantId: ${NAMESPACE}
-        tls:
-          enabled: false
+      identityProvider: ${IDENTITY_PROVIDER}
       namespace: ${NAMESPACE}
       loki:
         baseUrl: http://loki.${MONITORING_NAMESPACE}.svc.cluster.local:3100
