@@ -63,13 +63,7 @@ locals {
     "KEYCLOAK_CLIENT_SECRET"        = var.keycloak_client_secret
     "MAX_FILE_SIZE"                 = var.max_file_size
     "MAX_REQUEST_SIZE"              = var.max_request_size
-    "IDENTITY_PROVIDER"             = var.api_identity_provider
-    "AUTHORIZATION_URL"             = var.api_authorization_url
-    "TOKEN_URL"                     = var.api_token_url
-    "SERVER_BASE_URL"               = var.api_server_base_url
-    "AUDIENCE"                      = var.api_audience
-    "DEFAULT_SCOPES"                = jsonencode(var.api_default_scopes)
-    "CONTAINER_SCOPES"              = jsonencode(var.api_container_scopes)
+    "IDENTITY_PROVIDER"             = jsonencode(var.api_identity_provider)
   }
 }
 

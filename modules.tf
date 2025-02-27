@@ -22,8 +22,8 @@ module "create-argo" {
   helm_repo_url               = var.argo_helm_repo_url
   requeue_time                = var.argo_requeue_time
   helm_chart_version          = var.argo_helm_chart_version
-  install_argo_crds           = var.install_argo_crds
-  values_cloud_provider       = var.values_cloud_provider
+  argo_install_crds           = var.argo_install_crds
+  argo_cloud_provider         = var.argo_cloud_provider
 
   depends_on = [
     module.create-postgresql-db,
@@ -108,18 +108,18 @@ module "create-cosmotech-api" {
   max_file_size                 = var.api_max_file_size
   max_request_size              = var.api_max_request_size
   use_internal_result_services  = var.rabbitmq_deploy
-  redis_admin_password          = var.redis_deploy ? module.create-redis-stack.0.out_redis_admin_password : ""
-  rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
-  rabbitmq_listener_username    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_username : ""
+  redis_admin_password          = var.redis_deploy ? module.create-redis-stack.0.out_redis_admin_password : var.redis_admin_password
+  rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : var.rabbitmq_helm_release_name
+  rabbitmq_listener_username    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_username : var.rabbitmq_listener_username
   rabbitmq_listener_password    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
-  rabbitmq_sender_username      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_username : ""
+  rabbitmq_sender_username      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_username : var.rabbitmq_sender_username
   rabbitmq_sender_password      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
   list_apikey_allowed           = var.api_list_apikey_allowed
   identifier_uri                = var.api_identifier_uri
   persistence_size              = var.api_persistence_size
   persistence_storage_class     = var.api_persistence_storage_class
-  keycloak_client_id            = var.keycloak_deploy ? module.create-keycloak.0.out_keycloak_api_client_id : ""
-  keycloak_client_secret        = var.keycloak_deploy ? module.create-keycloak.0.out_keycloak_api_client_secret : ""
+  keycloak_client_id            = var.keycloak_deploy ? module.create-keycloak.0.out_keycloak_api_client_id : var.keycloak_client_id
+  keycloak_client_secret        = var.keycloak_deploy ? module.create-keycloak.0.out_keycloak_api_client_secret : var.keycloak_client_secret
   helm_chart                    = var.api_helm_chart
   helm_release_name             = var.api_helm_release_name
   helm_repository               = var.api_helm_repository
@@ -134,13 +134,7 @@ module "create-cosmotech-api" {
   postgresql_admin_username     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_username : ""
   postgresql_admin_password     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_password : ""
   api_graph_enabled             = var.api_graph_enabled
-  api_audience                  = var.api_audience
-  api_authorization_url         = var.api_authorization_url
   api_identity_provider         = var.api_identity_provider
-  api_server_base_url           = var.api_server_base_url
-  api_token_url                 = var.api_token_url
-  api_default_scopes            = var.api_default_scopes
-  api_container_scopes          = var.api_container_scopes
 
   depends_on = [
     module.create-argo,

@@ -33,26 +33,12 @@ provider "keycloak" {
 }
 
 provider "kubernetes" {
-  host                   = local.host
-  client_certificate     = local.client_certificate
-  client_key             = local.client_key
-  cluster_ca_certificate = local.cluster_ca_certificate
+  config_path    = var.kube_config
+  config_context = var.kube_context
 }
 
 provider "helm" {
   kubernetes {
-    host                   = local.host
-    client_certificate     = local.client_certificate
-    client_key             = local.client_key
-    cluster_ca_certificate = local.cluster_ca_certificate
+    config_path = var.kube_config
   }
-}
-
-provider "kubectl" {
-  host                   = local.host
-  client_certificate     = local.client_certificate
-  client_key             = local.client_key
-  cluster_ca_certificate = local.cluster_ca_certificate
-
-  load_config_file = false
 }

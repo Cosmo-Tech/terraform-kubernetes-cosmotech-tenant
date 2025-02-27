@@ -1,3 +1,7 @@
+# kube
+kube_config  = ""
+kube_context = ""
+
 # global
 api_dns_name         = ""
 monitoring_namespace = "cosmotech-monitoring"
@@ -46,20 +50,10 @@ api_acr_login_password        = ""
 api_acr_login_server          = ""
 api_acr_login_username        = ""
 api_adx_ingestion_uri         = ""
-api_audience                  = ""
-api_authorization_url         = ""
 api_eventbus_uri              = ""
-api_identity_provider         = ""
-api_server_base_url           = ""
 api_storage_account_key       = ""
 api_storage_account_name      = ""
-api_token_url                 = ""
-api_default_scopes = {
-  "/platform" : "tenant scope"
-}
-api_container_scopes = {
-  "/.default" : "tenant scope"
-}
+api_identity_provider         = {}
 api_list_apikey_allowed = [{
   name           = ""
   apiKey         = ""
@@ -126,6 +120,7 @@ argo_archive_ttl            = "3d"
 argo_bucket_name            = "argo-workflows"
 argo_postgres_release_name  = ""
 argo_install_crds           = true
+argo_cloud_provider         = "azure"
 
 # minio
 minio_deploy                = true

@@ -15,7 +15,7 @@ locals {
     "ARGO_POSTGRESQL_SECRET_NAME" = var.argo_postgresql_secret_name
     "REQUEUE_TIME"                = var.requeue_time
     "ARCHIVE_TTL"                 = var.archive_ttl
-    "INSTALL_CRDS"                = var.install_argo_crds
+    "INSTALL_CRDS"                = var.argo_install_crds
   }
   argo_service_account = "argo-workflows-${var.namespace}-service-account"
 }
@@ -30,6 +30,6 @@ resource "helm_release" "argo" {
   skip_crds    = true
 
   values = [
-    templatefile("${path.module}/values.${values_cloud_provider}.yaml", local.values_argo)
+    templatefile("${path.module}/values.${var.argo_cloud_provider}.yaml", local.values_argo)
   ]
 }
