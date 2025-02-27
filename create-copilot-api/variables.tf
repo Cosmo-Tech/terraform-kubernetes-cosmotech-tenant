@@ -19,15 +19,15 @@ variable "cosmotech_api_multi_tenant" {
 }
 
 variable "helm_chart" {
-  type    = string
+  type = string
 }
 
 variable "helm_repository" {
-  type    = string
+  type = string
 }
 
 variable "helm_release_name" {
-  type    = string
+  type = string
 }
 
 variable "chart_package_version" {
