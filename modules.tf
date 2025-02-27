@@ -22,7 +22,8 @@ module "create-argo" {
   helm_repo_url               = var.argo_helm_repo_url
   requeue_time                = var.argo_requeue_time
   helm_chart_version          = var.argo_helm_chart_version
-  install_argo_crds           = var.argo_install_crds
+  install_argo_crds           = var.install_argo_crds
+  values_cloud_provider       = var.values_cloud_provider
 
   depends_on = [
     module.create-postgresql-db,
