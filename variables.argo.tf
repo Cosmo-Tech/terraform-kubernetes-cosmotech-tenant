@@ -62,7 +62,7 @@ variable "argo_deploy" {
   type = bool
 }
 
-variable "install_argo_crds" {
+variable "argo_install_crds" {
   type = bool
 }
 
