@@ -32,13 +32,37 @@ provider "keycloak" {
   tls_insecure_skip_verify = true
 }
 
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+  resource_provider_registrations = "none"
+  subscription_id                 = var.subscription_id
+  client_id                       = var.client_id
+  client_secret                   = var.client_secret
+  tenant_id                       = var.tenant_id
+}
+
 provider "kubernetes" {
-  config_path    = var.kube_config
-  config_context = var.kube_context
+  host                   = local.host
+  client_certificate     = local.client_certificate
+  client_key             = local.client_key
+  cluster_ca_certificate = local.cluster_ca_certificate
 }
 
 provider "helm" {
   kubernetes {
-    config_path = var.kube_config
+    host                   = local.host
+    client_certificate     = local.client_certificate
+    client_key             = local.client_key
+    cluster_ca_certificate = local.cluster_ca_certificate
   }
+}
+
+provider "kubectl" {
+  host                   = local.host
+  client_certificate     = local.client_certificate
+  client_key             = local.client_key
+  cluster_ca_certificate = local.cluster_ca_certificate
+
+  load_config_file = false
 }
