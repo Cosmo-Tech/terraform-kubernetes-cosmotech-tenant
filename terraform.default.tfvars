@@ -110,3 +110,46 @@ vault_address        = "http://vault.vault.svc.cluster.local"
 vault_sops_namespace = "vault-secrets-operator"
 
 kubernetes_cluster_admin_activate = false
+
+# Copilot API
+copilot_api_helm_chart                  = ""
+copilot_api_helm_repository             = ""
+copilot_api_helm_release_name           = ""
+copilot_api_chart_package_version       = ""
+copilot_api_mode                        = "supply-chain"
+copilot_api_port                        = 8082
+copilot_api_ai_provider                 = "azure"
+copilot_api_aad_tenant_id               = ""
+copilot_api_kusto_cluster_url           = ""
+copilot_api_kusto_database              = ""
+copilot_api_adx_aad_app_id              = ""
+copilot_api_adx_aad_secret              = ""
+copilot_api_context_file_path           = "app/assets/vector_store/asset_and_cosmotch_context.txt"
+copilot_api_is_vector_store_local       = false
+copilot_api_search_endpoint_url         = ""
+copilot_api_search_api_key              = ""
+copilot_api_index_name                  = ""
+copilot_api_retrieved_document_nb       = 5
+copilot_api_chunk_size                  = 500
+copilot_api_chunk_overlap               = 0
+copilot_api_azure_open_ai_endpoint      = ""
+copilot_api_azure_open_ai_api_key       = ""
+copilot_api_azure_open_ai_api_type      = "azure"
+copilot_api_azure_open_ai_api_version   = "2023-10-01-preview"
+copilot_api_llm_deployment_name         = "GPT-4-0613"
+copilot_api_embeddings_deployment_name  = "text-embedding-ada-002"
+copilot_api_temperature                 = 0.2
+copilot_api_max_token                   = 4096
+copilot_api_streaming                   = false
+copilot_api_adx_retrieved_row_nb        = 10
+copilot_api_cosmotech_api_host          = ""
+copilot_api_cosmotech_api_scope         = ""
+copilot_api_cosmotech_api_tenant_id     = ""
+copilot_api_cosmotech_api_client_id     = ""
+copilot_api_cosmotech_api_client_secret = ""
+copilot_api_organization                = ""
+copilot_api_workspace                   = ""
+copilot_api_azure_bot_app_id            = ""
+copilot_api_azure_bot_password          = ""
+copilot_api_azure_bot_directline_secret = ""
+

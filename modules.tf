@@ -245,4 +245,67 @@ module "config_platform" {
   ]
 }
 
+module "create-copilot-api" {
+  source = "./create-copilot-api"
+
+  count = var.create_copilot_api ? 1 : 0
+
+  cosmotech_api_version      = var.cosmotech_api_version_path
+  cosmotech_api_multi_tenant = var.is_multitenant
+  api_dns_name               = var.api_dns_name
+  tls_secret_name            = local.tls_secret_name
+
+  kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
+  helm_chart                  = var.copilot_api_helm_chart
+  helm_release_name           = var.copilot_api_helm_release_name
+  chart_package_version       = var.copilot_api_chart_package_version
+  helm_repository             = var.copilot_api_helm_repository
+
+  mode          = var.copilot_api_mode
+  port          = var.copilot_api_port
+  ai_provider   = var.copilot_api_ai_provider
+  aad_tenant_id = var.copilot_api_aad_tenant_id
+
+  kusto_cluster_url = var.copilot_api_kusto_cluster_url
+  kusto_database    = var.copilot_api_kusto_database
+  adx_aad_app_id    = var.copilot_api_adx_aad_app_id
+  adx_aad_secret    = var.copilot_api_adx_aad_secret
+
+  context_file_path     = var.copilot_api_context_file_path
+  is_vector_store_local = var.copilot_api_is_vector_store_local
+  search_endpoint_url   = var.copilot_api_search_endpoint_url
+  search_api_key        = var.copilot_api_search_api_key
+  index_name            = var.copilot_api_index_name
+  retrieved_document_nb = var.copilot_api_retrieved_document_nb
+  chunk_size            = var.copilot_api_chunk_size
+  chunk_overlap         = var.copilot_api_chunk_overlap
+
+  azure_open_ai_endpoint    = var.copilot_api_azure_open_ai_endpoint
+  azure_open_ai_api_key     = var.copilot_api_azure_open_ai_api_key
+  azure_open_ai_api_type    = var.copilot_api_azure_open_ai_api_type
+  azure_open_ai_api_version = var.copilot_api_azure_open_ai_api_version
+
+  llm_deployment_name        = var.copilot_api_llm_deployment_name
+  embeddings_deployment_name = var.copilot_api_embeddings_deployment_name
+  temperature                = var.copilot_api_temperature
+  max_token                  = var.copilot_api_max_token
+  streaming                  = var.copilot_api_streaming
+  adx_retrieved_row_nb       = var.copilot_api_adx_retrieved_row_nb
+
+  cosmotech_api_host          = var.copilot_api_cosmotech_api_host
+  cosmotech_api_scope         = var.copilot_api_cosmotech_api_scope
+  cosmotech_api_tenant_id     = var.copilot_api_cosmotech_api_tenant_id
+  cosmotech_api_client_id     = var.copilot_api_cosmotech_api_client_id
+  cosmotech_api_client_secret = var.copilot_api_cosmotech_api_client_secret
+
+  organization = var.copilot_api_organization
+  workspace    = var.copilot_api_workspace
+
+  azure_bot_app_id            = var.copilot_api_azure_bot_app_id
+  azure_bot_password          = var.copilot_api_azure_bot_password
+  azure_bot_directline_secret = var.copilot_api_azure_bot_directline_secret
+
+  depends_on = [module.create-cosmotech-api]
+}
+
 

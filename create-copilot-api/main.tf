@@ -2,6 +2,10 @@ locals {
   local_instance_name            = "${var.helm_release_name}-${var.kubernetes_tenant_namespace}"
 
   values_cosmotech_copilot_api = {
+    "COSMOTECH_API_DNS_NAME"     = var.api_dns_name
+    "TLS_SECRET_NAME"            = var.tls_secret_name
+    "COSMOTECH_API_VERSION"      = var.cosmotech_api_version
+    "COSMOTECH_API_MULTI_TENANT" = var.cosmotech_api_multi_tenant
     "MODE"                       = var.mode
     "PORT"                       = var.port
     "AI_PROVIDER"                = var.ai_provider
@@ -41,7 +45,7 @@ locals {
   }
 }
 
-resource "helm_release" "cosmotech-api" {
+resource "helm_release" "cosmotech-copilot-api" {
   name       = local.local_instance_name
   repository = var.helm_repository
   chart      = var.helm_chart
