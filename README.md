@@ -14,7 +14,6 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | n/a |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 | <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
@@ -22,6 +21,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_aks_kube_config"></a> [aks\_kube\_config](#module\_aks\_kube\_config) | ./aks-kube-config | n/a |
 | <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./create-cert-manager | n/a |
 | <a name="module_create-argo"></a> [create-argo](#module\_create-argo) | ./create-argo | n/a |
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
@@ -41,7 +41,6 @@
 
 | Name | Type |
 |------|------|
-| [azurerm_kubernetes_cluster.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/kubernetes_cluster) | data source |
 | [template_file.summary](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [terraform_remote_state.tenant_infra](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
@@ -103,6 +102,7 @@
 | <a name="input_certificate_key_content"></a> [certificate\_key\_content](#input\_certificate\_key\_content) | n/a | `string` | n/a | yes |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id of the app registration used to build this | `string` | n/a | yes |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret of the app registration used to build this | `string` | n/a | yes |
+| <a name="input_cloud_provider"></a> [cloud\_provider](#input\_cloud\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | n/a | yes |
 | <a name="input_create_rabbitmq_secret"></a> [create\_rabbitmq\_secret](#input\_create\_rabbitmq\_secret) | n/a | `bool` | n/a | yes |
 | <a name="input_custom_tls_certificate_certificate"></a> [custom\_tls\_certificate\_certificate](#input\_custom\_tls\_certificate\_certificate) | n/a | `string` | n/a | yes |
