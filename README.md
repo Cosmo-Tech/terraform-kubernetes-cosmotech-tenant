@@ -48,7 +48,6 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_allowed_namespace"></a> [allowed\_namespace](#input\_allowed\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_password"></a> [api\_acr\_login\_password](#input\_api\_acr\_login\_password) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_server"></a> [api\_acr\_login\_server](#input\_api\_acr\_login\_server) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_server_url"></a> [api\_acr\_login\_server\_url](#input\_api\_acr\_login\_server\_url) | n/a | `string` | n/a | yes |
@@ -109,7 +108,6 @@
 | <a name="input_custom_tls_certificate_key"></a> [custom\_tls\_certificate\_key](#input\_custom\_tls\_certificate\_key) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_namespace"></a> [custom\_tls\_namespace](#input\_custom\_tls\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
-| <a name="input_enable_vault"></a> [enable\_vault](#input\_enable\_vault) | n/a | `bool` | n/a | yes |
 | <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_keycloak_client_id"></a> [keycloak\_client\_id](#input\_keycloak\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
@@ -211,6 +209,8 @@
 | <a name="input_tf_storage_account_name"></a> [tf\_storage\_account\_name](#input\_tf\_storage\_account\_name) | n/a | `string` | n/a | yes |
 | <a name="input_tls_certificate_type"></a> [tls\_certificate\_type](#input\_tls\_certificate\_type) | n/a | `string` | n/a | yes |
 | <a name="input_vault_address"></a> [vault\_address](#input\_vault\_address) | n/a | `string` | n/a | yes |
+| <a name="input_vault_allowed_namespace"></a> [vault\_allowed\_namespace](#input\_vault\_allowed\_namespace) | n/a | `string` | n/a | yes |
+| <a name="input_vault_deploy"></a> [vault\_deploy](#input\_vault\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_vault_engine_secret"></a> [vault\_engine\_secret](#input\_vault\_engine\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_organization"></a> [vault\_organization](#input\_vault\_organization) | n/a | `string` | n/a | yes |
