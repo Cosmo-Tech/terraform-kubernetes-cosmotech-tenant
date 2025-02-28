@@ -21,7 +21,6 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_aks_kube_config"></a> [aks\_kube\_config](#module\_aks\_kube\_config) | ./aks-kube-config | n/a |
 | <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./create-cert-manager | n/a |
 | <a name="module_create-argo"></a> [create-argo](#module\_create-argo) | ./create-argo | n/a |
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
