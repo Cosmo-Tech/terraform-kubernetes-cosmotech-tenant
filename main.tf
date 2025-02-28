@@ -1,16 +1,6 @@
 locals {
-  tls_secret_name        = var.tls_certificate_type != "none" ? var.custom_tls_secret_name : var.cert_tls_secret_name
-  minio_endpoint         = var.minio_deploy ? "${module.create-minio.0.out_minio_release_name}.${var.kubernetes_tenant_namespace}.svc.cluster.local:9000" : ""
-  kube_config            = var.kubernetes_cluster_admin_activate ? data.azurerm_kubernetes_cluster.current.kube_admin_config : data.azurerm_kubernetes_cluster.current.kube_config
-  host                   = local.kube_config.0.host
-  client_certificate     = base64decode(local.kube_config.0.client_certificate)
-  client_key             = base64decode(local.kube_config.0.client_key)
-  cluster_ca_certificate = base64decode(local.kube_config.0.cluster_ca_certificate)
-}
-
-data "azurerm_kubernetes_cluster" "current" {
-  name                = var.cluster_name
-  resource_group_name = var.kubernetes_resource_group
+  tls_secret_name = var.tls_certificate_type != "none" ? var.custom_tls_secret_name : var.cert_tls_secret_name
+  minio_endpoint  = var.minio_deploy ? "${module.create-minio.0.out_minio_release_name}.${var.kubernetes_tenant_namespace}.svc.cluster.local:9000" : ""
 }
 
 data "terraform_remote_state" "tenant_infra" {
