@@ -2,11 +2,11 @@ variable "vault_namespace" {
   type = string
 }
 
-variable "enable_vault" {
+variable "vault_deploy" {
   type = bool
 }
 
-variable "allowed_namespace" {
+variable "vault_allowed_namespace" {
   type = string
 }
 

@@ -32,9 +32,15 @@ provider "keycloak" {
   tls_insecure_skip_verify = true
 }
 
+provider "kubernetes" {
+  host                   = module.aks_kube_config.0.kubernetes_config_admin.0.host
+  client_certificate     = module.aks_kube_config.0.kubernetes_config_client_certificate
+  client_key             = module.aks_kube_config.0.kubernetes_config_client_key
+  cluster_ca_certificate = module.aks_kube_config.0.kubernetes_config_cluster_ca_certificate
+}
+
+
 provider "kubectl" {
-  config_path            = var.kube_config
-  config_context         = var.kube_context
   host                   = module.aks_kube_config.0.kubernetes_config_admin.0.host
   client_certificate     = module.aks_kube_config.0.kubernetes_config_client_certificate
   client_key             = module.aks_kube_config.0.kubernetes_config_client_key
@@ -43,8 +49,6 @@ provider "kubectl" {
 
 provider "helm" {
   kubernetes {
-    config_path            = var.kube_config
-    config_context         = var.kube_context
     host                   = module.aks_kube_config.0.kubernetes_config_admin.0.host
     client_certificate     = module.aks_kube_config.0.kubernetes_config_client_certificate
     client_key             = module.aks_kube_config.0.kubernetes_config_client_key
