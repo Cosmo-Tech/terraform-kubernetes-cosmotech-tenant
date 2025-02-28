@@ -22,4 +22,3 @@ variable "kubernetes_tenant_namespace" {
 variable "cloud_provider" {
   type = string
 }
-
