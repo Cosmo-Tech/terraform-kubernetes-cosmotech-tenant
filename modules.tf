@@ -304,7 +304,6 @@ module "deploy-pvc-minio" {
 
 }
 
-
 module "aks_kube_config" {
   source = "./aks-kube-config"
 

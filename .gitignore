@@ -6,5 +6,7 @@ terraform.*
 tfplan*
 *.sh
 config*
+out_*
 !terraform.default.tfvars
+!terraform.auto.tfvars
 !terraform.base.tfvars
