@@ -63,7 +63,15 @@ locals {
     "KEYCLOAK_CLIENT_SECRET"        = var.keycloak_client_secret
     "MAX_FILE_SIZE"                 = var.max_file_size
     "MAX_REQUEST_SIZE"              = var.max_request_size
-    "IDENTITY_PROVIDER"             = jsonencode(var.api_identity_provider)
+    "IDENTITY_PROVIDER"             = jsonencode(local.api_identity_provider)
+  }
+  api_identity_provider = merge(var.api_identity_provider, local.api_keycloak_identity)
+  api_keycloak_identity = {
+    identity = {
+      client_id     = var.keycloak_client_id
+      client_secret = var.keycloak_client_secret
+      tenant_id     = var.kubernetes_tenant_namespace
+    }
   }
 }
 
