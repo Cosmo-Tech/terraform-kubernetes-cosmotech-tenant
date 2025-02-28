@@ -32,37 +32,30 @@ provider "keycloak" {
   tls_insecure_skip_verify = true
 }
 
-# Configure the Microsoft Azure Provider
-provider "azurerm" {
-  features {}
-  resource_provider_registrations = "none"
-  subscription_id                 = var.subscription_id
-  client_id                       = var.client_id
-  client_secret                   = var.client_secret
-  tenant_id                       = var.tenant_id
-}
-
-provider "kubernetes" {
-  host                   = local.host
-  client_certificate     = local.client_certificate
-  client_key             = local.client_key
-  cluster_ca_certificate = local.cluster_ca_certificate
+provider "kubectl" {
+  config_path            = var.kube_config
+  config_context         = var.kube_context
+  host                   = module.aks_kube_config.0.kubernetes_config_admin.0.host
+  client_certificate     = module.aks_kube_config.0.kubernetes_config_client_certificate
+  client_key             = module.aks_kube_config.0.kubernetes_config_client_key
+  cluster_ca_certificate = module.aks_kube_config.0.kubernetes_config_cluster_ca_certificate
 }
 
 provider "helm" {
   kubernetes {
-    host                   = local.host
-    client_certificate     = local.client_certificate
-    client_key             = local.client_key
-    cluster_ca_certificate = local.cluster_ca_certificate
+    config_path            = var.kube_config
+    config_context         = var.kube_context
+    host                   = module.aks_kube_config.0.kubernetes_config_admin.0.host
+    client_certificate     = module.aks_kube_config.0.kubernetes_config_client_certificate
+    client_key             = module.aks_kube_config.0.kubernetes_config_client_key
+    cluster_ca_certificate = module.aks_kube_config.0.kubernetes_config_cluster_ca_certificate
   }
 }
 
-provider "kubectl" {
-  host                   = local.host
-  client_certificate     = local.client_certificate
-  client_key             = local.client_key
-  cluster_ca_certificate = local.cluster_ca_certificate
-
-  load_config_file = false
+provider "azurerm" {
+  features {}
+  subscription_id = var.subscription_id
+  client_id       = var.client_id
+  client_secret   = var.client_secret
+  tenant_id       = var.tenant_id
 }
