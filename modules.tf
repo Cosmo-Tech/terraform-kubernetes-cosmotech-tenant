@@ -303,15 +303,3 @@ module "deploy-pvc-minio" {
   pvc_minio_storage_accessmode = var.pvc_minio_storage_accessmode
 
 }
-
-module "aks_kube_config" {
-  source = "./aks-kube-config"
-
-  count = var.cloud_provider == "azure" ? 1 : 0
-
-  cluster_name                      = var.cluster_name
-  kube_config                       = var.kube_config
-  kube_context                      = var.kube_context
-  kubernetes_resource_group         = var.kubernetes_resource_group
-  kubernetes_cluster_admin_activate = var.kubernetes_cluster_admin_activate
-}
