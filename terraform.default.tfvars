@@ -106,7 +106,7 @@ redis_cosmotech_version = "1.0.12"
 redis_persistence_size  = "64Gi"
 
 # seaweedfs
-seaweedfs_chart_version = "3.0.4"
+seaweedfs_chart_version = "4.8.0"
 
 # tenant
 tenant_client_id     = ""
