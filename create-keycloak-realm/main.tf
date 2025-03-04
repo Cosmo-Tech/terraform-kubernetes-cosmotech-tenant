@@ -25,16 +25,15 @@ resource "keycloak_openid_client" "cosmotech-web-client" {
   standard_flow_enabled = true
   access_type           = "CONFIDENTIAL"
   valid_redirect_uris = [
-    "https://${var.api_dns_name}/cosmotech-api/${var.kubernetes_tenant_namespace}/v4/swagger-ui/oauth2-redirect.html",
-    "/cosmotech-api/*",
-    "/cosmotech-api*"
+    "https://${var.api_dns_name}/${var.kubernetes_tenant_namespace}/${var.api_version_path}/swagger-ui/oauth2-redirect.html",
+    "/*"
   ]
 
   login_theme = "keycloak"
 
   # Added parameters
   root_url           = "https://${var.api_dns_name}"
-  base_url           = "/cosmotech-api/${var.kubernetes_tenant_namespace}/v4/"
+  base_url           = "/${var.kubernetes_tenant_namespace}/${var.api_version_path}/"
   web_origins        = ["+"]
   full_scope_allowed = true
 }
@@ -199,8 +198,59 @@ resource "keycloak_generic_protocol_mapper" "api_realm_roles_mapper" {
 }
 
 resource "keycloak_openid_client_service_account_realm_role" "client_service_account_role" {
+  count                   = var.keycloak_add_identity_provider_azure ? 1 : 0
   realm_id                = keycloak_realm.realm.id
   service_account_user_id = keycloak_openid_client.cosmotech-api-client.service_account_user_id
   role                    = keycloak_role.platform_admin_role.name
   depends_on              = [keycloak_openid_client.cosmotech-api-client]
+}
+
+
+data "kubernetes_secret" "keycloak_app_secret" {
+  count = var.keycloak_add_identity_provider_azure ? 1 : 0
+  metadata {
+    name      = "keycloak-client-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
+resource "keycloak_oidc_identity_provider" "realm_identity_provider" {
+  count             = var.keycloak_add_identity_provider_azure ? 1 : 0
+  realm             = keycloak_realm.realm.id
+  alias             = "azure-oidc"
+  display_name      = "Cosmo Tech Entra ID"
+  authorization_url = "https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize"
+  token_url         = "https://login.microsoftonline.com/organizations/oauth2/v2.0/token"
+  logout_url        = "https://login.microsoftonline.com/organizations/oauth2/v2.0/logout"
+  user_info_url     = "https://graph.microsoft.com/oidc/userinfo"
+  issuer            = "https://login.microsoftonline.com/${var.tenant_id}/v2.0"
+  jwks_url          = "https://login.microsoftonline.com/organizations/discovery/v2.0/keys"
+  client_id         = data.kubernetes_secret.keycloak_app_secret.0.data.client_id
+  client_secret     = data.kubernetes_secret.keycloak_app_secret.0.data.password
+  sync_mode         = "FORCE"
+  default_scopes    = "openid profile email"
+
+  trust_email        = true
+  validate_signature = true
+
+  extra_config = {
+    "clientAuthMethod" = "client_secret_post"
+  }
+}
+
+resource "keycloak_attribute_to_role_identity_provider_mapper" "oidc" {
+  for_each                = toset(var.keycloak_user_app_role)
+  realm                   = keycloak_realm.realm.id
+  name                    = each.key
+  identity_provider_alias = keycloak_oidc_identity_provider.realm_identity_provider.0.alias
+  role                    = each.key
+  claim_name              = "roles"
+  claim_value             = each.key
+
+  # extra_config with syncMode is required in Keycloak 10+
+  extra_config = {
+    syncMode = "FORCE"
+  }
+
+  depends_on = [keycloak_oidc_identity_provider.realm_identity_provider]
 }

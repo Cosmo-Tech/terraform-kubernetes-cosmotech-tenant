@@ -232,3 +232,7 @@ variable "kubernetes_tenant_namespace" {
 }
 
 variable "api_identity_provider" {}
+
+variable "api_auth_provider" {
+  type = string
+}

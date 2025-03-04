@@ -82,15 +82,23 @@ api_list_authorized_mime_types = [
   "text/x-yaml",
   "application/json",
 ]
+api_auth_provider = "azure"
 
 # keycloak
-keycloak_deploy                     = false
-keycloak_client_id                  = "admin-cli"
-keycloak_url                        = "https://kubernetes.cosmotech.com/keycloak"
-keycloak_username                   = "admin-cosmo"
-keycloak_client_secret              = ""
-keycloak_realm_jwt_claim_web_client = "customRoles"
-keycloak_realm_jwt_claim_api_client = "customRoles"
+keycloak_deploy                      = false
+keycloak_client_id                   = "admin-cli"
+keycloak_url                         = "https://kubernetes.cosmotech.com/keycloak"
+keycloak_username                    = "admin-cosmo"
+keycloak_client_secret               = ""
+keycloak_realm_jwt_claim_web_client  = "customRoles"
+keycloak_realm_jwt_claim_api_client  = "customRoles"
+keycloak_add_identity_provider_azure = false
+keycloak_user_app_role = [
+  "Organization User",
+  "Platform.Admin"
+]
+
+
 
 # keycloak
 
@@ -221,3 +229,4 @@ pvc_minio_deploy             = false
 pvc_minio_storage_class_name = ""
 pvc_minio_storage_gbi        = "128Gi"
 pvc_minio_storage_accessmode = "ReadWriteOnce"
+

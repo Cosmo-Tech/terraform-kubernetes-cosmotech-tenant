@@ -64,10 +64,14 @@ module "create-keycloak" {
 
   count = var.keycloak_deploy ? 1 : 0
 
-  kubernetes_tenant_namespace         = var.kubernetes_tenant_namespace
-  api_dns_name                        = var.api_dns_name
-  keycloak_realm_jwt_claim_api_client = var.keycloak_realm_jwt_claim_api_client
-  keycloak_realm_jwt_claim_web_client = var.keycloak_realm_jwt_claim_web_client
+  kubernetes_tenant_namespace          = var.kubernetes_tenant_namespace
+  api_dns_name                         = var.api_dns_name
+  keycloak_realm_jwt_claim_api_client  = var.keycloak_realm_jwt_claim_api_client
+  keycloak_realm_jwt_claim_web_client  = var.keycloak_realm_jwt_claim_web_client
+  keycloak_add_identity_provider_azure = var.keycloak_add_identity_provider_azure
+  keycloak_user_app_role               = var.keycloak_user_app_role
+  tenant_id                            = var.tenant_id
+  api_version_path                     = var.api_version_path
 
   depends_on = [module.create-argo]
 }
@@ -135,6 +139,7 @@ module "create-cosmotech-api" {
   postgresql_admin_password     = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_password : ""
   api_graph_enabled             = var.api_graph_enabled
   api_identity_provider         = var.api_identity_provider
+  api_auth_provider             = var.api_auth_provider
 
   depends_on = [
     module.create-argo,

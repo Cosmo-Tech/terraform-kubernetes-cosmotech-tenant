@@ -25,7 +25,7 @@ data "template_file" "summary" {
     acr_login_server = data.terraform_remote_state.tenant_infra.outputs.out_acr_login_server
     rabbitmq_deploy  = var.rabbitmq_deploy
     adx_cluster_name = data.terraform_remote_state.tenant_infra.outputs.out_adx_cluster_name
-    adx_cluster_uri  = data.terraform_remote_state.tenant_infra.outputs.out_adx_cluster_uri
+    adx_cluster_uri  = data.terraform_remote_state.tenant_infra.outputs.out_api_adx_uri
     storage_name     = data.terraform_remote_state.tenant_infra.outputs.out_azure_storage_account_name
 
     argo_workflows_deploy   = var.argo_deploy
