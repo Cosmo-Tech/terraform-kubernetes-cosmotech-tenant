@@ -18,7 +18,7 @@ variable "argo_s3_endpoint" {
   type = string
 }
 
-variable "s3_bucket_name" {
+variable "argo_s3_bucket_name" {
   type = string
 }
 
