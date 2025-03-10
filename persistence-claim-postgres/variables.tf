@@ -13,3 +13,6 @@ variable "pvc_postgres_storage_class_name" {
 variable "pvc_postgres_storage_accessmode" {
   type = string
 }
+variable "pvc_postgres_disk_name" {
+  type = string
+}

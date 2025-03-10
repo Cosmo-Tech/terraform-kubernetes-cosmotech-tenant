@@ -8,4 +8,6 @@ module "deploy-pvc-redis" {
   pvc_redis_storage_gbi        = var.pvc_redis_storage_gbi
   pvc_redis_storage_class_name = var.pvc_redis_storage_class_name
   pvc_redis_storage_accessmode = var.pvc_redis_storage_accessmode
+  pvc_redis_disk_master_name   = var.pvc_redis_disk_master_name
+  pvc_redis_disk_replica_name  = var.pvc_redis_disk_replica_name
 }

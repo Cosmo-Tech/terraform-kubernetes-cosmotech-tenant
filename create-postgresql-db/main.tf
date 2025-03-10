@@ -5,7 +5,7 @@ locals {
     "POSTGRESQL_SECRET_NAME"        = var.postgresql_secret_name
     "POSTGRESQL_PASSWORD"           = data.kubernetes_secret.postgres_config.data.postgres-password
     "PERSISTENCE_SIZE"              = var.persistence_size
-    "POSTGRESQL_EXISTING_PVC_NAME"  = "${var.postgresql_existing_pvc_name}-${var.namespace}"
+    "POSTGRESQL_EXISTING_PVC_NAME"  = var.postgresql_existing_pvc_name
     "POSTGRESQL_STORAGE_CLASS_NAME" = var.postgresql_pvc_storage_class_name
   }
   seaweedfs_username        = var.seaweedfs_username
@@ -15,7 +15,7 @@ locals {
 
 data "kubernetes_secret" "postgres_config" {
   metadata {
-    name = "postgres-config"
+    name      = "postgres-config"
     namespace = var.namespace
   }
 }

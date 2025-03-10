@@ -16,6 +16,8 @@ module "create-seaweedfs" {
   seaweedfs_volume_pvc_size       = var.pvc_seaweedfs_storage_gbi
   seaweedfs_pvc_accessmode        = var.pvc_seaweedfs_storage_accessmode
   seaweedfs_pvc_storageclass_name = var.pvc_seaweedfs_storage_class_name
+  seaweedfs_master_pvc_name       = var.pvc_seaweedfs_disk_master_name
+  seaweedfs_volume_pvc_name       = var.pvc_seaweedfs_disk_volume_name
 
   depends_on = [
     module.create-postgresql-db

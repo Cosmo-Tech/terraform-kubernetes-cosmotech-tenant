@@ -7,5 +7,5 @@ module "deploy-pvc-minio" {
   pvc_minio_storage_gbi        = var.pvc_minio_storage_gbi
   pvc_minio_storage_class_name = var.pvc_minio_storage_class_name
   pvc_minio_storage_accessmode = var.pvc_minio_storage_accessmode
-
+  pvc_minio_disk_name          = var.pvc_minio_disk_name
 }

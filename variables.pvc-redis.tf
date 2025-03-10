@@ -13,3 +13,9 @@ variable "pvc_redis_deploy" {
 variable "pvc_redis_storage_accessmode" {
   type = string
 }
+variable "pvc_redis_disk_master_name" {
+  type = string
+}
+variable "pvc_redis_disk_replica_name" {
+  type = string
+}

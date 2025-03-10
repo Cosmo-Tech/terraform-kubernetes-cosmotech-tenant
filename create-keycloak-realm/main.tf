@@ -225,8 +225,8 @@ resource "keycloak_oidc_identity_provider" "realm_identity_provider" {
   user_info_url     = "https://graph.microsoft.com/oidc/userinfo"
   issuer            = "https://login.microsoftonline.com/${var.tenant_id}/v2.0"
   jwks_url          = "https://login.microsoftonline.com/organizations/discovery/v2.0/keys"
-  client_id         = data.kubernetes_secret.keycloak_app_secret.0.data.client_id
-  client_secret     = data.kubernetes_secret.keycloak_app_secret.0.data.password
+  client_id         = var.keycloak_add_identity_provider_azure ? data.kubernetes_secret.keycloak_app_secret.0.data.client_id : ""
+  client_secret     = var.keycloak_add_identity_provider_azure ? data.kubernetes_secret.keycloak_app_secret.0.data.password : ""
   sync_mode         = "FORCE"
   default_scopes    = "openid profile email"
 
@@ -236,13 +236,15 @@ resource "keycloak_oidc_identity_provider" "realm_identity_provider" {
   extra_config = {
     "clientAuthMethod" = "client_secret_post"
   }
+
+  depends_on = [data.kubernetes_secret.keycloak_app_secret]
 }
 
 resource "keycloak_attribute_to_role_identity_provider_mapper" "oidc" {
   for_each                = toset(var.keycloak_user_app_role)
   realm                   = keycloak_realm.realm.id
   name                    = each.key
-  identity_provider_alias = keycloak_oidc_identity_provider.realm_identity_provider.0.alias
+  identity_provider_alias = var.keycloak_add_identity_provider_azure ? keycloak_oidc_identity_provider.realm_identity_provider.0.alias : ""
   role                    = each.key
   claim_name              = "roles"
   claim_value             = each.key
