@@ -1,10 +1,6 @@
-locals {
-  disk_name  = "disk-postgres-tenant-${var.kubernetes_tenant_namespace}"
-}
-
 resource "kubernetes_persistent_volume_claim" "postgres_master" {
   metadata {
-    name      = "pvc-${local.disk_name}"
+    name      = "pvc-${var.pvc_postgres_disk_name}"
     namespace = var.kubernetes_tenant_namespace
   }
   spec {
@@ -15,6 +11,6 @@ resource "kubernetes_persistent_volume_claim" "postgres_master" {
         storage = var.pvc_postgres_storage_gbi
       }
     }
-    volume_name = "pv-${local.disk_name}"
+    volume_name = "pv-${var.pvc_postgres_disk_name}"
   }
 }

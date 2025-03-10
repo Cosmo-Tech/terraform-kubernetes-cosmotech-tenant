@@ -7,4 +7,5 @@ module "deploy-pvc-postgres" {
   pvc_postgres_storage_gbi        = var.pvc_postgres_storage_gbi
   pvc_postgres_storage_class_name = var.pvc_postgres_storage_class_name
   pvc_postgres_storage_accessmode = var.pvc_postgres_storage_accessmode
+  pvc_postgres_disk_name          = var.pvc_postgres_disk_name
 }

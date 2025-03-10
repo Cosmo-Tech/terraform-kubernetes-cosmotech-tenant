@@ -10,3 +10,6 @@ variable "pvc_postgres_deploy" {
 variable "pvc_postgres_storage_accessmode" {
   type = string
 }
+variable "pvc_postgres_disk_name" {
+  type = string
+}

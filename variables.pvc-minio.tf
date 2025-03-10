@@ -10,3 +10,6 @@ variable "pvc_minio_deploy" {
 variable "pvc_minio_storage_accessmode" {
   type = string
 }
+variable "pvc_minio_disk_name" {
+  type = string
+}

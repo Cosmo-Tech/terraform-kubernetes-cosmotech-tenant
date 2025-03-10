@@ -8,8 +8,8 @@ locals {
     "FILER_ENDPOINT"                     = "http://${local.release_name}-filer.${var.namespace}.svc.cluster.local:8888"
     "S3_AUTH_SECRET"                     = "${local.release_name}-s3-config"
     "S3_INIT_BUCKETS"                    = ["argo-workflows"]
-    "SEAWEEDFS_MASTER_PVC_EXISTING_NAME" = "pvc-disk-seaweedfs-tenant-${var.namespace}-master"
-    "SEAWEEDFS_VOLUME_PVC_EXISTING_NAME" = "pvc-disk-seaweedfs-tenant-${var.namespace}-volume"
+    "SEAWEEDFS_MASTER_PVC_EXISTING_NAME" = var.seaweedfs_master_pvc_name
+    "SEAWEEDFS_VOLUME_PVC_EXISTING_NAME" = var.seaweedfs_volume_pvc_name
     "SEAWEEDFS_MASTER_PVC_SIZE"          = var.seaweedfs_master_pvc_size
     "SEAWEEDFS_VOLUME_PVC_SIZE"          = var.seaweedfs_volume_pvc_size
     "SEAWEEDFS_PVC_ACCESSMODE"           = var.seaweedfs_pvc_accessmode

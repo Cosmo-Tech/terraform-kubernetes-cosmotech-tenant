@@ -99,9 +99,6 @@ keycloak_user_app_role = [
 ]
 
 
-
-# keycloak
-
 # argo workflows
 argo_deploy                 = true
 argo_helm_repo_url          = "https://charts.bitnami.com/bitnami"
@@ -196,7 +193,7 @@ seaweedfs_postgresql_port       = 5432
 seaweedfs_database              = "seaweedfs"
 seaweedfs_username              = "seaweedfs"
 
-# Vault
+# vault
 vault_deploy            = false
 vault_namespace         = "vault"
 vault_address           = "http://vault.vault.svc.cluster.local"
@@ -211,21 +208,27 @@ pvc_redis_replicas           = 1
 pvc_redis_storage_gbi        = "128Gi"
 pvc_redis_storage_class_name = ""
 pvc_redis_storage_accessmode = "ReadWriteOnce"
+pvc_redis_disk_master_name   = ""
+pvc_redis_disk_replica_name  = ""
 
 # pvc postgres
 pvc_postgres_deploy             = false
 pvc_postgres_storage_gbi        = "128Gi"
 pvc_postgres_storage_class_name = ""
 pvc_postgres_storage_accessmode = "ReadWriteOnce"
+pvc_postgres_disk_name          = ""
 
 # pvc seaweedfs
 pvc_seaweedfs_deploy             = false
 pvc_seaweedfs_storage_gbi        = "128Gi"
 pvc_seaweedfs_storage_class_name = ""
 pvc_seaweedfs_storage_accessmode = "ReadWriteOnce"
+pvc_seaweedfs_disk_master_name   = ""
+pvc_seaweedfs_disk_volume_name   = ""
 
 # pvc minio
 pvc_minio_deploy             = false
 pvc_minio_storage_class_name = ""
 pvc_minio_storage_gbi        = "128Gi"
 pvc_minio_storage_accessmode = "ReadWriteOnce"
+pvc_minio_disk_name          = ""

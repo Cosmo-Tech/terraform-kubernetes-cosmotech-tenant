@@ -1,10 +1,6 @@
-locals {
-  disk_name = "disk-minio-tenant-${var.kubernetes_tenant_namespace}"
-}
-
 resource "kubernetes_persistent_volume_claim" "minio_master" {
   metadata {
-    name      = "pvc-${local.disk_name}"
+    name      = "pvc-${var.pvc_minio_disk_name}"
     namespace = var.kubernetes_tenant_namespace
   }
   spec {
@@ -15,6 +11,6 @@ resource "kubernetes_persistent_volume_claim" "minio_master" {
         storage = var.pvc_minio_storage_gbi
       }
     }
-    volume_name = "pv-${local.disk_name}"
+    volume_name = "pv-${var.pvc_minio_disk_name}"
   }
 }
