@@ -129,7 +129,7 @@ minio_argo_secret_key       = ""
 minio_argo_bucket_name      = "argo-workflows"
 minio_argo_persistence_size = "16Gi"
 minio_argo_requests_memory  = "2Gi"
-minio_existing_pvc_name     = "pvc-disk-minio-tenant"
+minio_existing_pvc_name     = ""
 minio_requests_memory       = ""
 
 # postgres
@@ -145,7 +145,7 @@ postgresql_initdb_secret_name            = "postgres-initdb"
 postgresql_argo_user                     = "argo"
 postgresql_secret_name                   = "postgres-config"
 postgresql_argo_database                 = "argo_workflows"
-postgresql_existing_pvc_name             = "pv-disk-postgres-tenant"
+postgresql_existing_pvc_name             = ""
 postgresql_secrets_config_create         = false
 
 # rabbitmq
@@ -169,9 +169,9 @@ redis_helm_release_name         = "cosmotechredis"
 redis_chart_version             = "17.8.0"
 redis_helm_chart_name           = "redis"
 redis_cosmotech_version         = "1.0.12"
-redis_persistence_size          = "64Gi"
-redis_master_existing_pvc_name  = "pvc-disk-redis-master-tenant"
-redis_replica_existing_pvc_name = "pvc-disk-redis-replica-tenant"
+redis_persistence_size          = "32Gi"
+redis_master_existing_pvc_name  = ""
+redis_replica_existing_pvc_name = ""
 first_tenant_in_cluster         = false
 redis_pvc_storage_class_name    = ""
 redis_resources = {
@@ -205,7 +205,7 @@ vault_organization      = "cosmotech"
 # pvc redis
 pvc_redis_deploy             = false
 pvc_redis_replicas           = 1
-pvc_redis_storage_gbi        = "128Gi"
+pvc_redis_storage_gbi        = "32Gi"
 pvc_redis_storage_class_name = ""
 pvc_redis_storage_accessmode = "ReadWriteOnce"
 pvc_redis_disk_master_name   = ""
@@ -213,14 +213,14 @@ pvc_redis_disk_replica_name  = ""
 
 # pvc postgres
 pvc_postgres_deploy             = false
-pvc_postgres_storage_gbi        = "128Gi"
+pvc_postgres_storage_gbi        = "32Gi"
 pvc_postgres_storage_class_name = ""
 pvc_postgres_storage_accessmode = "ReadWriteOnce"
 pvc_postgres_disk_name          = ""
 
 # pvc seaweedfs
 pvc_seaweedfs_deploy             = false
-pvc_seaweedfs_storage_gbi        = "128Gi"
+pvc_seaweedfs_storage_gbi        = "32Gi"
 pvc_seaweedfs_storage_class_name = ""
 pvc_seaweedfs_storage_accessmode = "ReadWriteOnce"
 pvc_seaweedfs_disk_master_name   = ""
@@ -229,6 +229,6 @@ pvc_seaweedfs_disk_volume_name   = ""
 # pvc minio
 pvc_minio_deploy             = false
 pvc_minio_storage_class_name = ""
-pvc_minio_storage_gbi        = "128Gi"
+pvc_minio_storage_gbi        = "32Gi"
 pvc_minio_storage_accessmode = "ReadWriteOnce"
 pvc_minio_disk_name          = ""
