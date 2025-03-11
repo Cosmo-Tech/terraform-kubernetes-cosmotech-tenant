@@ -108,7 +108,7 @@ config:
         password: ${REDIS_PASSWORD}
         tls:
           enabled: false
-        useGraphModule: "${GRAPH_ENABLED}"
+        useGraphModule: ${GRAPH_ENABLED}
       upload:
         authorized-mime-types:
           workspace: ${AUTHORIZED_MIME_TYPES}
