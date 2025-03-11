@@ -69,9 +69,9 @@ locals {
   api_identity_provider = merge(var.api_identity_provider, local.api_keycloak_identity)
   api_keycloak_identity = {
     identity = {
-      client_id     = var.keycloak_client_id
-      client_secret = var.keycloak_client_secret
-      tenant_id     = var.kubernetes_tenant_namespace
+      clientId     = var.keycloak_client_id
+      clientSecret = var.keycloak_client_secret
+      tenantId     = var.kubernetes_tenant_namespace
     }
   }
 }
