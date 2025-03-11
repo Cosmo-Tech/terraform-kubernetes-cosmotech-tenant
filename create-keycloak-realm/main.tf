@@ -241,18 +241,16 @@ resource "keycloak_oidc_identity_provider" "realm_identity_provider" {
 }
 
 resource "keycloak_attribute_to_role_identity_provider_mapper" "oidc" {
-  for_each                = toset(var.keycloak_user_app_role)
+  count                   = var.keycloak_add_identity_provider_azure ? 1 : 0
   realm                   = keycloak_realm.realm.id
-  name                    = each.key
-  identity_provider_alias = var.keycloak_add_identity_provider_azure ? keycloak_oidc_identity_provider.realm_identity_provider.0.alias : ""
-  role                    = each.key
+  name                    = "Platform Admin"
+  identity_provider_alias = keycloak_oidc_identity_provider.realm_identity_provider.0.alias
+  role                    = "Platform Admin"
   claim_name              = "roles"
-  claim_value             = each.key
-
+  claim_value             = "Platform.Admin"
   # extra_config with syncMode is required in Keycloak 10+
   extra_config = {
     syncMode = "FORCE"
   }
-
   depends_on = [keycloak_oidc_identity_provider.realm_identity_provider]
 }
