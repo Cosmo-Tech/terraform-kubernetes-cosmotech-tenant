@@ -5,7 +5,7 @@ locals {
     "COSMOTECH_API_DNS_NAME"      = var.api_dns_name
     "TLS_SECRET_NAME"             = var.tls_secret_name
     "COSMOTECH_API_VERSION"       = var.cosmotech_api_version
-    "COSMOTECH_API_MULTI_TENANT"  = var.cosmotech_api_multi_tenant
+    "APP_PATH"                    = var.app_path
     "MODE"                        = var.mode
     "PORT"                        = var.port
     "AI_PROVIDER"                 = var.ai_provider

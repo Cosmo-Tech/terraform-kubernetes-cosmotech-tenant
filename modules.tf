@@ -250,10 +250,10 @@ module "create-copilot-api" {
 
   count = var.create_copilot_api ? 1 : 0
 
-  cosmotech_api_version      = var.cosmotech_api_version_path
-  cosmotech_api_multi_tenant = var.is_multitenant
-  api_dns_name               = var.api_dns_name
-  tls_secret_name            = local.tls_secret_name
+  cosmotech_api_version = var.cosmotech_api_version_path
+  app_path              = var.app_path
+  api_dns_name          = var.api_dns_name
+  tls_secret_name       = local.tls_secret_name
 
   kubernetes_tenant_namespace = var.kubernetes_tenant_namespace
   helm_chart                  = var.copilot_api_helm_chart

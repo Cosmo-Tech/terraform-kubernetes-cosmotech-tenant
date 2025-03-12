@@ -6,16 +6,16 @@ variable "api_dns_name" {
   type = string
 }
 
+variable "app_path" {
+  type = string
+}
+
 variable "tls_secret_name" {
   type = string
 }
 
 variable "cosmotech_api_version" {
   type = string
-}
-
-variable "cosmotech_api_multi_tenant" {
-  type = bool
 }
 
 variable "helm_chart" {

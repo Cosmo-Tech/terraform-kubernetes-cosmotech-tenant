@@ -197,3 +197,8 @@ variable "copilot_api_azure_bot_directline_secret" {
   type        = string
   description = "DirectLine secret for the Azure Bot."
 }
+
+variable "app_path" {
+  type = string
+  description = "Copilot API app path"
+}
