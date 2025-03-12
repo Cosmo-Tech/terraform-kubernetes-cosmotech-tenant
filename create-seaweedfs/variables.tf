@@ -49,9 +49,9 @@ variable "seaweedfs_pvc_accessmode" {
 variable "seaweedfs_pvc_storageclass_name" {
   type = string
 }
-variable "seaweedfs_master_pvc_name" {
+variable "seaweedfs_master_existing_pvc_name" {
   type = string
 }
-variable "seaweedfs_volume_pvc_name" {
+variable "seaweedfs_volume_existing_pvc_name" {
   type = string
 }

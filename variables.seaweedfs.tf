@@ -16,3 +16,9 @@ variable "seaweedfs_helm_chart_version" {
 variable "seaweedfs_helm_chart_repository" {
   type = string
 }
+variable "seaweedfs_master_existing_pvc_name" {
+  type = string
+}
+variable "seaweedfs_volume_existing_pvc_name" {
+  type = string
+}
