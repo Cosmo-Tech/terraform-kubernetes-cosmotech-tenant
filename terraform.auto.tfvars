@@ -186,12 +186,14 @@ redis_resources = {
 }
 
 # seaweedfs
-seaweedfs_helm_chart_repository = "oci://registry-1.docker.io/bitnamicharts"
-seaweedfs_helm_chart_version    = "4.8.1"
-seaweedfs_helm_chart_name       = "seaweedfs"
-seaweedfs_postgresql_port       = 5432
-seaweedfs_database              = "seaweedfs"
-seaweedfs_username              = "seaweedfs"
+seaweedfs_helm_chart_repository    = "oci://registry-1.docker.io/bitnamicharts"
+seaweedfs_helm_chart_version       = "4.8.1"
+seaweedfs_helm_chart_name          = "seaweedfs"
+seaweedfs_postgresql_port          = 5432
+seaweedfs_database                 = "seaweedfs"
+seaweedfs_username                 = "seaweedfs"
+seaweedfs_master_existing_pvc_name = ""
+seaweedfs_volume_existing_pvc_name = ""
 
 # vault
 vault_deploy            = false
