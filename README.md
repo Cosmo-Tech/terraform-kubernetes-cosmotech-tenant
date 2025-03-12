@@ -75,7 +75,6 @@
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret of the app registration used to build this | `string` | n/a | yes |
 | <a name="input_cluster_issuer_name"></a> [cluster\_issuer\_name](#input\_cluster\_issuer\_name) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | n/a | yes |
-| <a name="input_copilot_api_aad_tenant_id"></a> [copilot\_api\_aad\_tenant\_id](#input\_copilot\_api\_aad\_tenant\_id) | Azure Active Directory tenant ID. | `string` | n/a | yes |
 | <a name="input_copilot_api_adx_aad_app_id"></a> [copilot\_api\_adx\_aad\_app\_id](#input\_copilot\_api\_adx\_aad\_app\_id) | Azure AD Application ID for ADX ingestion. | `string` | n/a | yes |
 | <a name="input_copilot_api_adx_aad_secret"></a> [copilot\_api\_adx\_aad\_secret](#input\_copilot\_api\_adx\_aad\_secret) | Azure AD Application secret for ADX ingestion. | `string` | n/a | yes |
 | <a name="input_copilot_api_adx_retrieved_row_nb"></a> [copilot\_api\_adx\_retrieved\_row\_nb](#input\_copilot\_api\_adx\_retrieved\_row\_nb) | Number of rows to retrieve from ADX. | `number` | n/a | yes |
@@ -92,10 +91,6 @@
 | <a name="input_copilot_api_chunk_size"></a> [copilot\_api\_chunk\_size](#input\_copilot\_api\_chunk\_size) | Size of each chunk (in tokens) when splitting documents. | `number` | n/a | yes |
 | <a name="input_copilot_api_context_file_path"></a> [copilot\_api\_context\_file\_path](#input\_copilot\_api\_context\_file\_path) | Path to the file for the local vector store if IS\_VECTOR\_STORE\_LOCAL is true. | `string` | n/a | yes |
 | <a name="input_copilot_api_cosmotech_api_client_id"></a> [copilot\_api\_cosmotech\_api\_client\_id](#input\_copilot\_api\_cosmotech\_api\_client\_id) | Client ID for the Cosmo Tech API. | `string` | n/a | yes |
-| <a name="input_copilot_api_cosmotech_api_client_secret"></a> [copilot\_api\_cosmotech\_api\_client\_secret](#input\_copilot\_api\_cosmotech\_api\_client\_secret) | Client secret for the Cosmo Tech API. | `string` | n/a | yes |
-| <a name="input_copilot_api_cosmotech_api_host"></a> [copilot\_api\_cosmotech\_api\_host](#input\_copilot\_api\_cosmotech\_api\_host) | Host URL for the Cosmo Tech API. | `string` | n/a | yes |
-| <a name="input_copilot_api_cosmotech_api_scope"></a> [copilot\_api\_cosmotech\_api\_scope](#input\_copilot\_api\_cosmotech\_api\_scope) | Scope for the Cosmo Tech API. | `string` | n/a | yes |
-| <a name="input_copilot_api_cosmotech_api_tenant_id"></a> [copilot\_api\_cosmotech\_api\_tenant\_id](#input\_copilot\_api\_cosmotech\_api\_tenant\_id) | Tenant ID for the Cosmo Tech API. | `string` | n/a | yes |
 | <a name="input_copilot_api_embeddings_deployment_name"></a> [copilot\_api\_embeddings\_deployment\_name](#input\_copilot\_api\_embeddings\_deployment\_name) | Name of the deployment for the embeddings model. | `string` | n/a | yes |
 | <a name="input_copilot_api_helm_chart"></a> [copilot\_api\_helm\_chart](#input\_copilot\_api\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_copilot_api_helm_release_name"></a> [copilot\_api\_helm\_release\_name](#input\_copilot\_api\_helm\_release\_name) | n/a | `string` | n/a | yes |
