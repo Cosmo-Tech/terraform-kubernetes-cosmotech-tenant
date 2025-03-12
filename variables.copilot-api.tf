@@ -3,15 +3,15 @@ variable "create_copilot_api" {
 }
 
 variable "copilot_api_helm_chart" {
-  type    = string
+  type = string
 }
 
 variable "copilot_api_helm_repository" {
-  type    = string
+  type = string
 }
 
 variable "copilot_api_helm_release_name" {
-  type    = string
+  type = string
 }
 
 variable "copilot_api_chart_package_version" {
@@ -199,6 +199,6 @@ variable "copilot_api_azure_bot_directline_secret" {
 }
 
 variable "app_path" {
-  type = string
+  type        = string
   description = "Copilot API app path"
 }

@@ -1,6 +1,6 @@
 replicaCount: 1
 
-nameOverride: "" 
+nameOverride: ""
 fullnameOverride: ""
 
 cosmotech-api:
