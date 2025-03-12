@@ -240,14 +240,29 @@ resource "keycloak_oidc_identity_provider" "realm_identity_provider" {
   depends_on = [data.kubernetes_secret.keycloak_app_secret]
 }
 
-resource "keycloak_attribute_to_role_identity_provider_mapper" "oidc" {
+resource "keycloak_attribute_to_role_identity_provider_mapper" "oidc_platform_admin" {
   count                   = var.keycloak_add_identity_provider_azure ? 1 : 0
   realm                   = keycloak_realm.realm.id
   name                    = "Platform Admin"
   identity_provider_alias = keycloak_oidc_identity_provider.realm_identity_provider.0.alias
-  role                    = "Platform Admin"
+  role                    = "Platform.Admin"
   claim_name              = "roles"
   claim_value             = "Platform.Admin"
+  # extra_config with syncMode is required in Keycloak 10+
+  extra_config = {
+    syncMode = "FORCE"
+  }
+  depends_on = [keycloak_oidc_identity_provider.realm_identity_provider]
+}
+
+resource "keycloak_attribute_to_role_identity_provider_mapper" "oidc_organization_user" {
+  count                   = var.keycloak_add_identity_provider_azure ? 1 : 0
+  realm                   = keycloak_realm.realm.id
+  name                    = "Organization User"
+  identity_provider_alias = keycloak_oidc_identity_provider.realm_identity_provider.0.alias
+  role                    = "Organization.User"
+  claim_name              = "roles"
+  claim_value             = "Organization.User"
   # extra_config with syncMode is required in Keycloak 10+
   extra_config = {
     syncMode = "FORCE"
