@@ -16,9 +16,8 @@ resource "kubernetes_persistent_volume_claim" "redis_master" {
 }
 
 resource "kubernetes_persistent_volume_claim" "redis_replicas" {
-  count = var.pvc_redis_replicas
   metadata {
-    name      = "pvc-${var.pvc_redis_disk_replica_name}-${count.index}"
+    name      = "pvc-${var.pvc_redis_disk_replica_name}"
     namespace = var.kubernetes_tenant_namespace
   }
   spec {
@@ -29,6 +28,6 @@ resource "kubernetes_persistent_volume_claim" "redis_replicas" {
         storage = var.pvc_redis_storage_gbi
       }
     }
-    volume_name = "pv-${var.pvc_redis_disk_replica_name}-${count.index}"
+    volume_name = "pv-${var.pvc_redis_disk_replica_name}"
   }
 }
