@@ -204,7 +204,6 @@ vault_organization      = "cosmotech"
 
 # pvc redis
 pvc_redis_deploy             = false
-pvc_redis_replicas           = 1
 pvc_redis_storage_gbi        = "32Gi"
 pvc_redis_storage_class_name = ""
 pvc_redis_storage_accessmode = "ReadWriteOnce"
