@@ -264,7 +264,7 @@ module "create-copilot-api" {
   mode          = var.copilot_api_mode
   port          = var.copilot_api_port
   ai_provider   = var.copilot_api_ai_provider
-  aad_tenant_id = var.copilot_api_aad_tenant_id
+  aad_tenant_id = var.tenant_id
 
   kusto_cluster_url = var.copilot_api_kusto_cluster_url
   kusto_database    = var.copilot_api_kusto_database
@@ -292,11 +292,9 @@ module "create-copilot-api" {
   streaming                  = var.copilot_api_streaming
   adx_retrieved_row_nb       = var.copilot_api_adx_retrieved_row_nb
 
-  cosmotech_api_host          = var.copilot_api_cosmotech_api_host
-  cosmotech_api_scope         = var.copilot_api_cosmotech_api_scope
-  cosmotech_api_tenant_id     = var.copilot_api_cosmotech_api_tenant_id
+  cosmotech_api_tenant_id     = var.tenant_id
   cosmotech_api_client_id     = var.copilot_api_cosmotech_api_client_id
-  cosmotech_api_client_secret = var.copilot_api_cosmotech_api_client_secret
+  cosmotech_api_client_secret = module.create-cosmotech-api.out_cosmotech_api_client_secret
 
   organization = var.copilot_api_organization
   workspace    = var.copilot_api_workspace

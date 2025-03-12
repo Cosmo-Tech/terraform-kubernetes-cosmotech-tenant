@@ -138,14 +138,6 @@ variable "adx_retrieved_row_nb" {
   type = number
 }
 
-variable "cosmotech_api_host" {
-  type = string
-}
-
-variable "cosmotech_api_scope" {
-  type = string
-}
-
 variable "cosmotech_api_tenant_id" {
   type = string
 }

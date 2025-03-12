@@ -1,5 +1,7 @@
 locals {
   local_instance_name = "${var.helm_release_name}-${var.kubernetes_tenant_namespace}"
+  local_cosmotech_api_host = "https://${var.api_dns_name}/${var.kubernetes_tenant_namespace}/${var.cosmotech_api_version}"
+  local_cosmotech_api_scope = "https://${var.api_dns_name}/.default"
 
   values_cosmotech_copilot_api = {
     "COSMOTECH_API_DNS_NAME"      = var.api_dns_name
@@ -32,8 +34,8 @@ locals {
     "MAX_TOKEN"                   = var.max_token
     "STREAMING"                   = var.streaming
     "ADX_RETRIEVED_ROW_NB"        = var.adx_retrieved_row_nb
-    "COMOSTECH_API_HOST"          = var.cosmotech_api_host
-    "COSMOTECH_API_SCOPE"         = var.cosmotech_api_scope
+    "COMOSTECH_API_HOST"          = locals.local_cosmotech_api_host
+    "COSMOTECH_API_SCOPE"         = locals.local_cosmotech_api_scope
     "COMOSTECH_API_TENANT_ID"     = var.cosmotech_api_tenant_id
     "COSMOTECH_API_CLIENT_ID"     = var.cosmotech_api_client_id
     "COSMOTECH_API_CLIENT_SECRET" = var.cosmotech_api_client_secret

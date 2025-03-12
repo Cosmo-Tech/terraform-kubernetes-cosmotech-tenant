@@ -33,11 +33,6 @@ variable "copilot_api_ai_provider" {
   description = "Cloud provider for the AI service."
 }
 
-variable "copilot_api_aad_tenant_id" {
-  type        = string
-  description = "Azure Active Directory tenant ID."
-}
-
 variable "copilot_api_kusto_cluster_url" {
   type        = string
   description = "URL of the Azure Data Explorer (Kusto) cluster."
@@ -148,29 +143,9 @@ variable "copilot_api_adx_retrieved_row_nb" {
   description = "Number of rows to retrieve from ADX."
 }
 
-variable "copilot_api_cosmotech_api_host" {
-  type        = string
-  description = "Host URL for the Cosmo Tech API."
-}
-
-variable "copilot_api_cosmotech_api_scope" {
-  type        = string
-  description = "Scope for the Cosmo Tech API."
-}
-
-variable "copilot_api_cosmotech_api_tenant_id" {
-  type        = string
-  description = "Tenant ID for the Cosmo Tech API."
-}
-
 variable "copilot_api_cosmotech_api_client_id" {
   type        = string
   description = "Client ID for the Cosmo Tech API."
-}
-
-variable "copilot_api_cosmotech_api_client_secret" {
-  type        = string
-  description = "Client secret for the Cosmo Tech API."
 }
 
 variable "copilot_api_organization" {
