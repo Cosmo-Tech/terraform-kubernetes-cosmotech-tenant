@@ -20,11 +20,11 @@ certificate_key_content  = ""
 secret_tls_secret_name   = "custom-tls-secret"
 
 # Cosmotech API
-api_deploy            = true
-api_helm_chart        = "cosmotech-api-chart"
-api_helm_repository   = "oci://ghcr.io/cosmo-tech"
-api_helm_release_name = "cosmotech-api"
-api_is_multitenant    = true
+api_deploy                              = true
+api_helm_chart                          = "cosmotech-api-chart"
+api_helm_repository                     = "oci://ghcr.io/cosmo-tech"
+api_helm_release_name                   = "cosmotech-api"
+api_is_multitenant                      = true
 cosmotech_api_helm_chart                = "cosmotech-api-chart"
 cosmotech_api_helm_repository           = "oci://ghcr.io/cosmo-tech"
 cosmotech_api_helm_release_name         = "cosmotech-api"
@@ -51,7 +51,6 @@ argo_deploy                 = true
 argo_helm_repo_url          = "https://charts.bitnami.com/bitnami"
 argo_helm_chart             = "argo-workflows"
 argo_version                = "9.1.6"
-argo_service_account        = ""
 s3_endpoint                 = ""
 argo_s3_bucket_name         = "argo-workflows"
 s3_credentials_secret       = ""
@@ -62,6 +61,16 @@ argo_database               = "argo_workflows"
 argo_postgresql_secret_name = "postgres-config"
 argo_requeue_time           = "1s"
 argo_archive_ttl            = "3d"
+
+# Argo
+argo_bucket_name            = "argo-workflows"
+requeue_time                = "1s"
+archive_ttl                 = "3d"
+argo_install_crds           = true
+argo_minio_persistence_size = "16Gi"
+argo_minio_requests_memory  = "2Gi"
+argo_minio_secret_key       = ""
+argo_minio_access_key       = ""
 
 # cert-manager
 cert_cluster_issuer_name = "letsencrypt-prod"
@@ -75,10 +84,7 @@ custom_tls_certificate_certificate = ""
 custom_tls_certificate_key         = ""
 
 # global
-monitoring_namespace = "cosmotech-monitoring"
-api_dns_name         = ""
-monitoring_enabled   = true
-tls_certificate_type = ""
+api_dns_name = ""
 
 # keycloak
 keycloak_deploy                     = true
@@ -101,9 +107,7 @@ minio_argo_bucket_name      = "argo-workflows"
 minio_argo_persistence_size = "16Gi"
 minio_argo_requests_memory  = "2Gi"
 
-# postgres
-postgresql_deploy             = true
-list_authorized_mime_types = [
+api_list_authorized_mime_types = [
   "application/zip",
   "application/xml",
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -117,26 +121,6 @@ max_file_size     = "1MB"
 max_request_size  = "10MB"
 api_graph_enabled = true
 
-# Argo
-argo_helm_repo_url          = "https://argoproj.github.io/argo-helm"
-argo_helm_chart             = "argo-workflows"
-argo_helm_chart_version     = "0.16.6"
-argo_service_account        = ""
-argo_bucket_name            = "argo-workflows"
-argo_database               = "argo_workflows"
-argo_postgresql_secret_name = "postgres-config"
-requeue_time                = "1s"
-archive_ttl                 = "3d"
-argo_install_crds           = true
-
-# MinIO
-argo_minio_persistence_size = "16Gi"
-argo_minio_requests_memory  = "2Gi"
-minio_helm_repo_url         = "https://charts.bitnami.com/bitnami"
-minio_helm_chart            = "minio"
-minio_version               = "12.1.3"
-argo_minio_secret_key       = ""
-argo_minio_access_key       = ""
 
 # Postgres
 postgresql_deploy             = true
@@ -151,10 +135,6 @@ postgresql_initdb_secret_name = "postgres-initdb"
 postgresql_argo_user          = "argo"
 postgresql_secret_name        = "postgres-config"
 postgresql_argo_database      = "argo_workflows"
-postgresql_helm_repo_url      = "https://charts.bitnami.com/bitnami"
-postgresql_helm_chart         = "postgresql"
-postgresql_version            = "11.6.12"
-postgresql_persistence_size   = "8Gi"
 
 # rabbitmq
 rabbitmq_deploy             = true

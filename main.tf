@@ -60,22 +60,22 @@ data "template_file" "summary" {
     minio_version          = var.minio_version
     postgresql_deploy      = var.postgresql_deploy
     postgresql_version     = var.postgresql_version
-    api_deploy             = var.deploy_api
-    api_version            = var.cosmotech_api_version
+    api_deploy             = var.api_deploy
+    api_version            = var.api_version
     api_url                = data.terraform_remote_state.tenant_infra.outputs.out_api_cosmo_url
     redis_deploy           = var.redis_deploy
-    redis_version          = var.version_redis_cosmotech
+    redis_version          = var.redis_cosmotech_version
 
-    babylon_sp_name       = data.terraform_remote_state.tenant_infra.outputs.out_babylon_sp_name
-    babylon_sp_client_id  = data.terraform_remote_state.tenant_infra.outputs.out_babylon_sp_client_id
+    babylon_sp_name      = data.terraform_remote_state.tenant_infra.outputs.out_babylon_sp_name
+    babylon_sp_client_id = data.terraform_remote_state.tenant_infra.outputs.out_babylon_sp_client_id
     # platform_sp_name      = "cosmotech api client"
     platform_sp_name      = data.terraform_remote_state.tenant_infra.outputs.out_platform_sp_name
     platform_sp_client_id = data.terraform_remote_state.tenant_infra.outputs.out_tenant_sp_client_id
     # platform_sp_client_id = module.create-keycloak.0.out_keycloak_api_client_id
     platform_sp_object_id = data.terraform_remote_state.tenant_infra.outputs.out_tenant_sp_object_id
     # swagger_sp_name       = "cosmotech web client"
-    swagger_sp_name       = data.terraform_remote_state.tenant_infra.outputs.out_swagger_sp_name
-    swagger_sp_client_id  = data.terraform_remote_state.tenant_infra.outputs.out_swagger_sp_client_id
+    swagger_sp_name      = data.terraform_remote_state.tenant_infra.outputs.out_swagger_sp_name
+    swagger_sp_client_id = data.terraform_remote_state.tenant_infra.outputs.out_swagger_sp_client_id
     # swagger_sp_client_id  = module.create-keycloak.0.out_keycloak_client_id
   }
 

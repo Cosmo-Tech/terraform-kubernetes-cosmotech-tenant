@@ -7,3 +7,4 @@ variable "tenant_sp_client_secret" {
   type        = string
   description = "The client_secret of the platform's service principal"
 }
+

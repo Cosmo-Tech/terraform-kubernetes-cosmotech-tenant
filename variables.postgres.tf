@@ -44,3 +44,7 @@ variable "postgresql_persistence_size" {
 variable "postgresql_deploy" {
   type = bool
 }
+
+variable "postgresql_secrets_config_create" {
+  type = bool
+}

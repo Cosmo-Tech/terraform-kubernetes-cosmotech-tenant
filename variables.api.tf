@@ -2,18 +2,6 @@ variable "api_replicas" {
   type = number
 }
 
-variable "client_id" {
-  type = string
-}
-
-variable "client_secret" {
-  type = string
-}
-
-variable "tenant_id" {
-  type = string
-}
-
 variable "acr_login_password" {
   type = string
 }
@@ -160,4 +148,20 @@ variable "api_persistence_storage_class" {
 }
 variable "api_deploy" {
   type = bool
+}
+
+variable "api_list_authorized_mime_types" {
+  type = list(string)
+}
+
+variable "api_max_file_size" {
+  type = string
+}
+
+variable "api_max_request_size" {
+  type = string
+}
+
+variable "api_graph_enabled" {
+  type = string
 }
