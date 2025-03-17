@@ -10,6 +10,7 @@ locals {
   local_network_sp_client_secret = var.network_sp_client_secret == "" ? data.kubernetes_secret.network_client_password.data.password : var.network_sp_client_secret
   local_tenant_sp_client_secret  = var.tenant_sp_client_secret == "" ? data.kubernetes_secret.platform_client_password.data.password : var.tenant_sp_client_secret
   local_adx_ingestion_uri        = var.adx_ingestion_uri == "" ? data.kubernetes_secret.adx_ingestion_uri_secret.data.uri : var.adx_ingestion_uri
+  local_tenant_id                = var.api_auth_provider == "azure" ? var.tenant_id : var.kubernetes_tenant_namespace
 
   values_cosmotech_api = {
     "API_REPLICAS"                  = var.api_replicas
@@ -32,7 +33,7 @@ locals {
     "ACR_LOGIN_USERNAME"            = local.local_acr_login_username
     "CLIENT_ID"                     = var.tenant_sp_client_id
     "CLIENT_SECRET"                 = local.local_tenant_sp_client_secret
-    "TENANT_ID"                     = var.tenant_id
+    "TENANT_ID"                     = local.local_tenant_id
     "ADX_URI"                       = var.adx_uri
     "ADX_INGESTION_URI"             = local.local_adx_ingestion_uri
     "EVENTBUS_URI"                  = var.eventbus_uri
@@ -63,6 +64,15 @@ locals {
     "KEYCLOAK_CLIENT_SECRET"        = var.keycloak_client_secret
     "MAX_FILE_SIZE"                 = var.max_file_size
     "MAX_REQUEST_SIZE"              = var.max_request_size
+    "IDENTITY_PROVIDER"             = jsonencode(local.api_identity_provider)
+  }
+  api_identity_provider = merge(var.api_identity_provider, local.api_keycloak_identity)
+  api_keycloak_identity = {
+    identity = {
+      clientId     = var.keycloak_client_id
+      clientSecret = var.keycloak_client_secret
+      tenantId     = var.kubernetes_tenant_namespace
+    }
   }
 }
 

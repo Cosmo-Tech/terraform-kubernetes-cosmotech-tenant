@@ -2,7 +2,7 @@ variable "namespace" {
   type = string
 }
 
-variable "chart_version" {
+variable "helm_chart_version" {
   type = string
 }
 
@@ -23,5 +23,35 @@ variable "postgresql_username" {
 }
 
 variable "postgresql_password_secret" {
+  type = string
+}
+
+variable "helm_chart_repository" {
+  type = string
+}
+
+variable "helm_chart_name" {
+  type = string
+}
+
+variable "seaweedfs_master_pvc_size" {
+  type = string
+}
+
+variable "seaweedfs_volume_pvc_size" {
+  type = string
+}
+
+variable "seaweedfs_pvc_accessmode" {
+  type = string
+}
+
+variable "seaweedfs_pvc_storageclass_name" {
+  type = string
+}
+variable "seaweedfs_master_existing_pvc_name" {
+  type = string
+}
+variable "seaweedfs_volume_existing_pvc_name" {
   type = string
 }

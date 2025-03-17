@@ -37,6 +37,8 @@ master:
   persistence:
     enabled: true
     size: ${REDIS_DISK_SIZE}
+    storageClass: ${REDIS_MASTER_STORAGE_CLASS_NAME}
+    existingClaim: ${REDIS_MASTER_EXISTING_PVC_NAME}
   podLabels:
     networking/traffic-allowed: "yes"
   tolerations:
@@ -46,13 +48,7 @@ master:
     effect: "NoSchedule"
   nodeSelector:
     cosmotech.com/tier: "db"
-  resources:
-    requests:
-      cpu: 500m
-      memory: 4Gi
-    limits:
-      cpu: 1000m
-      memory: 4Gi
+  resources: ${REDIS_RESOURCES}
 replica:
   podSecurityContext:
     enabled: true
@@ -74,6 +70,8 @@ replica:
   persistence:
     enabled: true
     size: ${REDIS_DISK_SIZE}
+    storageClass: ${REDIS_REPLICA_STORAGE_CLASS_NAME}
+    existingClaim: ${REDIS_REPLICA_EXISTING_PVC_NAME}
   tolerations:
   - key: "vendor"
     operator: "Equal"
@@ -81,13 +79,7 @@ replica:
     effect: "NoSchedule"
   nodeSelector:
     "cosmotech.com/tier": "db"
-  resources:
-    requests:
-      cpu: 500m
-      memory: 4Gi
-    limits:
-      cpu: 1000m
-      memory: 4Gi
+  resources: ${REDIS_RESOURCES}
 commonConfiguration: |-
   loadmodule /opt/bitnami/redis/modules/redisgraph.so
   loadmodule /opt/bitnami/redis/modules/redistimeseries.so DUPLICATE_POLICY LAST

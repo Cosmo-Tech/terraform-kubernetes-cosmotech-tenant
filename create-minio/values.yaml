@@ -3,6 +3,8 @@ defaultBuckets: "${BUCKET_NAMES}"
 persistence:
   enabled: true
   size: ${ARGO_MINIO_PERSISTENCE_SIZE}
+  existingClaim: ${MINIO_EXISTING_PVC_NAME}
+  storageClass: ${MINIO_STORAGE_CLASS_NAME}
 resources:
   requests:
     memory: ${ARGO_MINIO_REQUESTS_MEMORY}

@@ -53,18 +53,6 @@ server:
     seccompProfile:
       type: "RuntimeDefault"
     readOnlyRootFilesystem: true
-crds:
-  install: ${INSTALL_CRDS}
-  # Keep CRDS on chart uninstall/destroy
-  keep: true
-images:
-  pullPolicy: IfNotPresent
-workflow:
-  serviceAccount:
-    create: true
-    name: ${ARGO_SERVICE_ACCOUNT}
-    automountServiceAccountToken: true
-    annotations: {}
   rbac:
     create: true
   extraArgs: ""
@@ -80,6 +68,11 @@ workflow:
   baseHref: /
   containerPorts:
     web: 2746
+  serviceAccount:
+    create: true
+    name: ""
+    automountServiceAccountToken: true
+    annotations: {}
   nodeSelector:
     "cosmotech.com/tier": "services"
   tolerations:
@@ -333,5 +326,3 @@ externalDatabase:
   password: ""
   database: ${ARGO_DATABASE}
   existingSecret: ${ARGO_POSTGRESQL_SECRET_NAME}
-mainContainer:
-  imagePullPolicy: IfNotPresent

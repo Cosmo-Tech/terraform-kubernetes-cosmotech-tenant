@@ -74,6 +74,10 @@ variable "archive_ttl" {
   type = string
 }
 
-variable "install_argo_crds" {
+variable "argo_install_crds" {
   type = bool
+}
+
+variable "argo_cloud_provider" {
+  type = string
 }
