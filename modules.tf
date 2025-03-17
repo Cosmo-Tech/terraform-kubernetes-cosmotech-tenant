@@ -48,10 +48,10 @@ module "create-tls" {
 
   count = var.tls_certificate_type == "custom" ? 1 : 0
 
-  namespace                          = var.kubernetes_tenant_namespace
-  tls_secret_name                    = var.custom_tls_secret_name
-  tls_certificate_custom_certificate = var.custom_tls_certificate_certificate
-  tls_certificate_custom_key         = var.custom_tls_certificate_key
+  namespace                = var.kubernetes_tenant_namespace
+  tls_secret_name          = var.custom_tls_secret_name
+  certificate_cert_content = var.certificate_cert_content
+  certificate_key_content  = var.certificate_key_content
 
   depends_on = [
     module.create-argo
@@ -103,9 +103,9 @@ module "create-cosmotech-api" {
   cosmotech_api_ingress_enabled = var.cosmotech_api_ingress_enabled
   redis_port                    = var.redis_port
   tenant_resource_group         = var.tenant_resource_group
-  list_authorized_mime_types    = var.list_authorized_mime_types
-  max_file_size                 = var.max_file_size
-  max_request_size              = var.max_request_size
+  list_authorized_mime_types    = var.api_list_authorized_mime_types
+  max_file_size                 = var.api_max_file_size
+  max_request_size              = var.api_max_request_size
   use_internal_result_services  = var.rabbitmq_deploy
   redis_admin_password          = var.redis_deploy ? module.create-redis-stack.0.out_redis_admin_password : ""
   rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : ""
@@ -214,6 +214,7 @@ module "create-rabbitmq" {
   helm_repo_url              = var.rabbitmq_helm_repo_url
   rabbitmq_listener_username = var.rabbitmq_listener_username
   rabbitmq_sender_username   = var.rabbitmq_sender_username
+  create_rabbitmq_secret     = var.create_rabbitmq_secret
 }
 
 module "create-seaweedfs" {
@@ -231,71 +232,5 @@ module "create-seaweedfs" {
 
   depends_on = [
     module.create-postgresql-db
-  ]
-}
-
-module "config_vault" {
-  source = "./config-vault"
-
-  count = var.create_platform_config ? 1 : 0
-
-  allowed_namespace    = var.allowed_namespace
-  cluster_name         = var.cluster_name
-  tenant_id            = var.tenant_id
-  vault_address        = var.vault_address
-  vault_namespace      = var.vault_namespace
-  vault_sops_namespace = var.vault_sops_namespace
-  organization         = var.vault_organization
-}
-
-module "config_platform" {
-  source = "./config-platform"
-
-  count = var.create_platform_config ? 1 : 0
-
-  api_version                              = var.cosmotech_api_version
-  acr_server                               = var.acr_login_server
-  acr_username                             = var.acr_login_username
-  acr_password                             = var.acr_login_password
-  acr_registry_url                         = var.acr_login_server_url
-  host_cosmotech_api                       = var.api_dns_name
-  monitoring_namespace                     = var.monitoring_namespace
-  azure_tenant_id                          = var.tenant_id
-  azure_appid_uri                          = var.identifier_uri
-  azure_storage_account_key                = var.storage_account_key
-  azure_storage_account_name               = var.storage_account_name
-  azure_platform_credentials_client_id     = var.tenant_sp_client_id
-  azure_platform_credentials_client_secret = var.tenant_sp_client_secret
-  azure_credentials_network_client_id      = var.network_sp_client_id
-  azure_credentials_network_client_secret  = var.network_sp_client_secret
-  adx_base_uri                             = var.adx_uri
-  adx_ingest_uri                           = var.adx_ingestion_uri
-  eventbus_base_uri                        = var.eventbus_uri
-  identity_authorization_url               = var.identity_authorization_url
-  identity_token_url                       = var.identity_token_url
-  vault_address                            = var.vault_address
-  vault_namespace                          = var.vault_namespace
-  cluster_name                             = var.cluster_name
-  host_redis_password                      = var.redis_admin_password
-  rds_hub_listener                         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
-  rds_hub_sender                           = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
-  host_rds                                 = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_svc_name : ""
-  rds_storage_admin                        = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_admin_password : ""
-  rds_storage_reader                       = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_reader_password : ""
-  rds_storage_writer                       = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_password : ""
-  host_rds_postgres                        = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_svc_name : ""
-  postgres_release_name                    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_release_name : ""
-  host_postgres                            = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_svc_name : ""
-  argo_service_account_name                = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
-  argo_release_name                        = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
-  host_argo_workflow                       = var.argo_deploy ? module.create-argo.0.out_argo_workflows_svc_name : ""
-  host_redis                               = var.redis_deploy ? module.create-redis-stack.0.out_host_svc_redis : ""
-  namespace                                = var.kubernetes_tenant_namespace
-
-  depends_on = [
-    module.create-postgresql-db,
-    module.create-argo,
-    module.create-rabbitmq,
-    module.create-redis-stack
   ]
 }
