@@ -47,13 +47,13 @@ tektonSa:
     annotations: {}
 kubernetesClusterDomain: cluster.local
 host: ${COSMOTECH_API_DNS_NAME}
-host_path_context: eng-test-dev/modeling-api
-registry_url: ghcr.io/cosmo-tech
-chart_name: cosmotech-modeling-api-chart
-chart_version: 0.0-main
-ApiGithubWebhookSecret:
+hostPathContext: eng-test-dev/modeling-api
+registryUrl: ghcr.io/cosmo-tech
+chartName: cosmotech-modeling-api-chart
+chartVersion: 0.0-main
+apiGithubWebhookSecret:
   secretToken: ${WEBHOOK_SECRET}
-ApiDockerSecret:
+apiDockerSecret:
   dockerconfigjson: ${DOCKER_SECRET}
 tolerations:
   - key: "vendor"
@@ -63,6 +63,6 @@ tolerations:
 nodeSelector:
   "cosmotech.com/tier": "services"
   "kubernetes.io/os": "linux"
-ingress_type: "${INGRESS_TYPE}"
-ngrok_host: "${NGROK_HOST}"
-helm_chart_pull_type: "${HELM_CHART_PULL_TYPE}"
+ingressType: "${INGRESS_TYPE}"
+ngrokHost: "${NGROK_HOST}"
+helmChartPullType: "${HELM_CHART_PULL_TYPE}"
