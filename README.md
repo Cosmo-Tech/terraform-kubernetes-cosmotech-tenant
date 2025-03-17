@@ -53,6 +53,7 @@
 | <a name="input_api_acr_login_username"></a> [api\_acr\_login\_username](#input\_api\_acr\_login\_username) | n/a | `string` | n/a | yes |
 | <a name="input_api_adx_ingestion_uri"></a> [api\_adx\_ingestion\_uri](#input\_api\_adx\_ingestion\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_adx_uri"></a> [api\_adx\_uri](#input\_api\_adx\_uri) | n/a | `string` | n/a | yes |
+| <a name="input_api_auth_provider"></a> [api\_auth\_provider](#input\_api\_auth\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_api_chart_package_version"></a> [api\_chart\_package\_version](#input\_api\_chart\_package\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_deploy"></a> [api\_deploy](#input\_api\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
@@ -65,6 +66,7 @@
 | <a name="input_api_identity_provider"></a> [api\_identity\_provider](#input\_api\_identity\_provider) | n/a | `any` | n/a | yes |
 | <a name="input_api_ingress_enabled"></a> [api\_ingress\_enabled](#input\_api\_ingress\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_api_is_multitenant"></a> [api\_is\_multitenant](#input\_api\_is\_multitenant) | n/a | `bool` | n/a | yes |
+| <a name="input_api_list_apikey_allowed"></a> [api\_list\_apikey\_allowed](#input\_api\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | n/a | yes |
 | <a name="input_api_list_authorized_mime_types"></a> [api\_list\_authorized\_mime\_types](#input\_api\_list\_authorized\_mime\_types) | n/a | `list(string)` | n/a | yes |
 | <a name="input_api_max_file_size"></a> [api\_max\_file\_size](#input\_api\_max\_file\_size) | n/a | `string` | n/a | yes |
 | <a name="input_api_max_request_size"></a> [api\_max\_request\_size](#input\_api\_max\_request\_size) | n/a | `string` | n/a | yes |
@@ -98,8 +100,8 @@
 | <a name="input_cert_tls_secret_name"></a> [cert\_tls\_secret\_name](#input\_cert\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_certificate_cert_content"></a> [certificate\_cert\_content](#input\_certificate\_cert\_content) | n/a | `string` | n/a | yes |
 | <a name="input_certificate_key_content"></a> [certificate\_key\_content](#input\_certificate\_key\_content) | n/a | `string` | n/a | yes |
-| <a name="input_client_id"></a> [client\_id](#input\_client\_id) | The client id of the app registration used to build this | `string` | n/a | yes |
-| <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | The client secret of the app registration used to build this | `string` | n/a | yes |
+| <a name="input_client_id"></a> [client\_id](#input\_client\_id) | n/a | `string` | n/a | yes |
+| <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_cloud_provider"></a> [cloud\_provider](#input\_cloud\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | n/a | yes |
 | <a name="input_create_rabbitmq_secret"></a> [create\_rabbitmq\_secret](#input\_create\_rabbitmq\_secret) | n/a | `bool` | n/a | yes |
@@ -108,6 +110,7 @@
 | <a name="input_custom_tls_namespace"></a> [custom\_tls\_namespace](#input\_custom\_tls\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
+| <a name="input_keycloak_add_identity_provider_azure"></a> [keycloak\_add\_identity\_provider\_azure](#input\_keycloak\_add\_identity\_provider\_azure) | n/a | `bool` | n/a | yes |
 | <a name="input_keycloak_client_id"></a> [keycloak\_client\_id](#input\_keycloak\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_deploy"></a> [keycloak\_deploy](#input\_keycloak\_deploy) | Wether to create Keycloak resources fot this tenant :<br>- realm<br>- OpenID client & scopes<br>- roles<br>- Authentication flow<br>- Default user<br>After this deployment, you will need to manually set the authentication flow<br> as the default to the broker identification. To do so go to the Authentication menu.<br> On the new line with the "auto link user" flow, click the 3 dot at the end of the line<br>  and then "Bind flow". Then select **First broker login flow**.<br> You should have the newly created flow "auto link user" with the column Used by set to<br>  First broker login flow. | `bool` | n/a | yes |
@@ -115,12 +118,13 @@
 | <a name="input_keycloak_realm_jwt_claim_api_client"></a> [keycloak\_realm\_jwt\_claim\_api\_client](#input\_keycloak\_realm\_jwt\_claim\_api\_client) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_realm_jwt_claim_web_client"></a> [keycloak\_realm\_jwt\_claim\_web\_client](#input\_keycloak\_realm\_jwt\_claim\_web\_client) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_url"></a> [keycloak\_url](#input\_keycloak\_url) | n/a | `string` | n/a | yes |
+| <a name="input_keycloak_user_app_role"></a> [keycloak\_user\_app\_role](#input\_keycloak\_user\_app\_role) | n/a | `list(string)` | n/a | yes |
 | <a name="input_keycloak_username"></a> [keycloak\_username](#input\_keycloak\_username) | n/a | `string` | n/a | yes |
 | <a name="input_kube_config"></a> [kube\_config](#input\_kube\_config) | n/a | `string` | n/a | yes |
 | <a name="input_kube_context"></a> [kube\_context](#input\_kube\_context) | n/a | `string` | n/a | yes |
 | <a name="input_kubernetes_cluster_admin_activate"></a> [kubernetes\_cluster\_admin\_activate](#input\_kubernetes\_cluster\_admin\_activate) | n/a | `bool` | n/a | yes |
 | <a name="input_kubernetes_resource_group"></a> [kubernetes\_resource\_group](#input\_kubernetes\_resource\_group) | n/a | `string` | n/a | yes |
-| <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | The namespace of the tenant | `string` | n/a | yes |
+| <a name="input_kubernetes_tenant_namespace"></a> [kubernetes\_tenant\_namespace](#input\_kubernetes\_tenant\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_minio_argo_access_key"></a> [minio\_argo\_access\_key](#input\_minio\_argo\_access\_key) | n/a | `string` | n/a | yes |
 | <a name="input_minio_argo_bucket_name"></a> [minio\_argo\_bucket\_name](#input\_minio\_argo\_bucket\_name) | n/a | `string` | n/a | yes |
 | <a name="input_minio_argo_persistence_size"></a> [minio\_argo\_persistence\_size](#input\_minio\_argo\_persistence\_size) | n/a | `string` | n/a | yes |
@@ -151,19 +155,24 @@
 | <a name="input_postgresql_secrets_config_create"></a> [postgresql\_secrets\_config\_create](#input\_postgresql\_secrets\_config\_create) | n/a | `bool` | n/a | yes |
 | <a name="input_postgresql_version"></a> [postgresql\_version](#input\_postgresql\_version) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_minio_deploy"></a> [pvc\_minio\_deploy](#input\_pvc\_minio\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_pvc_minio_disk_name"></a> [pvc\_minio\_disk\_name](#input\_pvc\_minio\_disk\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_minio_storage_accessmode"></a> [pvc\_minio\_storage\_accessmode](#input\_pvc\_minio\_storage\_accessmode) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_minio_storage_class_name"></a> [pvc\_minio\_storage\_class\_name](#input\_pvc\_minio\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_minio_storage_gbi"></a> [pvc\_minio\_storage\_gbi](#input\_pvc\_minio\_storage\_gbi) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_postgres_deploy"></a> [pvc\_postgres\_deploy](#input\_pvc\_postgres\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_pvc_postgres_disk_name"></a> [pvc\_postgres\_disk\_name](#input\_pvc\_postgres\_disk\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_postgres_storage_accessmode"></a> [pvc\_postgres\_storage\_accessmode](#input\_pvc\_postgres\_storage\_accessmode) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_postgres_storage_class_name"></a> [pvc\_postgres\_storage\_class\_name](#input\_pvc\_postgres\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_postgres_storage_gbi"></a> [pvc\_postgres\_storage\_gbi](#input\_pvc\_postgres\_storage\_gbi) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_redis_deploy"></a> [pvc\_redis\_deploy](#input\_pvc\_redis\_deploy) | n/a | `bool` | n/a | yes |
-| <a name="input_pvc_redis_replicas"></a> [pvc\_redis\_replicas](#input\_pvc\_redis\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_pvc_redis_disk_master_name"></a> [pvc\_redis\_disk\_master\_name](#input\_pvc\_redis\_disk\_master\_name) | n/a | `string` | n/a | yes |
+| <a name="input_pvc_redis_disk_replica_name"></a> [pvc\_redis\_disk\_replica\_name](#input\_pvc\_redis\_disk\_replica\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_redis_storage_accessmode"></a> [pvc\_redis\_storage\_accessmode](#input\_pvc\_redis\_storage\_accessmode) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_redis_storage_class_name"></a> [pvc\_redis\_storage\_class\_name](#input\_pvc\_redis\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_redis_storage_gbi"></a> [pvc\_redis\_storage\_gbi](#input\_pvc\_redis\_storage\_gbi) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_deploy"></a> [pvc\_seaweedfs\_deploy](#input\_pvc\_seaweedfs\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_pvc_seaweedfs_disk_master_name"></a> [pvc\_seaweedfs\_disk\_master\_name](#input\_pvc\_seaweedfs\_disk\_master\_name) | n/a | `string` | n/a | yes |
+| <a name="input_pvc_seaweedfs_disk_volume_name"></a> [pvc\_seaweedfs\_disk\_volume\_name](#input\_pvc\_seaweedfs\_disk\_volume\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_storage_accessmode"></a> [pvc\_seaweedfs\_storage\_accessmode](#input\_pvc\_seaweedfs\_storage\_accessmode) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_storage_class_name"></a> [pvc\_seaweedfs\_storage\_class\_name](#input\_pvc\_seaweedfs\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_storage_gbi"></a> [pvc\_seaweedfs\_storage\_gbi](#input\_pvc\_seaweedfs\_storage\_gbi) | n/a | `string` | n/a | yes |
@@ -193,10 +202,12 @@
 | <a name="input_seaweedfs_helm_chart_name"></a> [seaweedfs\_helm\_chart\_name](#input\_seaweedfs\_helm\_chart\_name) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_helm_chart_repository"></a> [seaweedfs\_helm\_chart\_repository](#input\_seaweedfs\_helm\_chart\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_helm_chart_version"></a> [seaweedfs\_helm\_chart\_version](#input\_seaweedfs\_helm\_chart\_version) | n/a | `string` | n/a | yes |
+| <a name="input_seaweedfs_master_existing_pvc_name"></a> [seaweedfs\_master\_existing\_pvc\_name](#input\_seaweedfs\_master\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_postgresql_port"></a> [seaweedfs\_postgresql\_port](#input\_seaweedfs\_postgresql\_port) | n/a | `string` | n/a | yes |
 | <a name="input_seaweedfs_username"></a> [seaweedfs\_username](#input\_seaweedfs\_username) | n/a | `string` | n/a | yes |
+| <a name="input_seaweedfs_volume_existing_pvc_name"></a> [seaweedfs\_volume\_existing\_pvc\_name](#input\_seaweedfs\_volume\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_secret_tls_secret_name"></a> [secret\_tls\_secret\_name](#input\_secret\_tls\_secret\_name) | n/a | `string` | n/a | yes |
-| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | The subscription id | `string` | n/a | yes |
+| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_resource_group"></a> [tenant\_resource\_group](#input\_tenant\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_sp_client_id"></a> [tenant\_sp\_client\_id](#input\_tenant\_sp\_client\_id) | n/a | `string` | n/a | yes |
@@ -214,7 +225,6 @@
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_organization"></a> [vault\_organization](#input\_vault\_organization) | n/a | `string` | n/a | yes |
 | <a name="input_vault_sops_namespace"></a> [vault\_sops\_namespace](#input\_vault\_sops\_namespace) | n/a | `string` | n/a | yes |
-| <a name="input_api_list_apikey_allowed"></a> [api\_list\_apikey\_allowed](#input\_api\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | <pre>[<br>  {<br>    "apiKey": "",<br>    "associatedRole": "",<br>    "name": "",<br>    "securedUris": []<br>  }<br>]</pre> | no |
 
 ## Outputs
 
