@@ -94,7 +94,7 @@ keycloak_realm_jwt_claim_web_client  = "customRoles"
 keycloak_realm_jwt_claim_api_client  = "customRoles"
 keycloak_add_identity_provider_azure = false
 keycloak_user_app_role = [
-  "Organization User",
+  "Organization.User",
   "Platform.Admin"
 ]
 
