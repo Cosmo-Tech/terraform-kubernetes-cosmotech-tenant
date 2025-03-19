@@ -34,6 +34,6 @@ variable "api_ngrok_host" {
   type = string
 }
 
-variable "api_helm_chart_pull_type" {
+variable "api_use_oci_registry" {
   type = string
 }

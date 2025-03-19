@@ -51,6 +51,6 @@ variable "ngrok_host" {
   type = string
 }
 
-variable "modeling_api_helm_chart_pull_type" {
+variable "modeling_api_use_oci_registry" {
   type = string
 }

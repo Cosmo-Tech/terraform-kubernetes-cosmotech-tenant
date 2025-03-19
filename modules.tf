@@ -240,7 +240,7 @@ module "create-modeling-api-deployment" {
   wehbook_secret                = var.modeling_api_webhook_secret
   ingress_type                  = var.ingress_type
   ngrok_host                    = var.ngrok_host
-  helm_chart_pull_type          = var.modeling_api_helm_chart_pull_type
+  use_oci_registry              = var.modeling_api_use_oci_registry
 }
 
 module "create-api-deployment" {
@@ -303,7 +303,7 @@ module "create-api-deployment" {
   wehbook_secret                = var.api_webhook_secret
   ngrok_host                    = var.api_ngrok_host
   ingress_type                  = var.api_ingress_type
-  helm_chart_pull_type          = var.api_helm_chart_pull_type
+  use_oci_registry              = var.api_use_oci_registry
 
   depends_on = [
     module.create-argo,

@@ -51,7 +51,7 @@ locals {
     "DOCKER_SECRET"                 = var.docker_secret
     "INGRESS_TYPE"                  = var.ingress_type
     "NGROK_HOST"                    = var.ngrok_host
-    "HELM_CHART_PULL_TYPE"          = var.helm_chart_pull_type
+    "USE_OCI_REGISTRY"              = var.use_oci_registry
   }
   instance_name   = "${var.helm_release_name}-${var.namespace}"
   tls_secret_name = "${var.tls_secret_name}-${var.namespace}"

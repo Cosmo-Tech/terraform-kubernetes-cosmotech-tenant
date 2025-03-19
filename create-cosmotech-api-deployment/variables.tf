@@ -224,6 +224,6 @@ variable "ngrok_host" {
   type = string
 }
 
-variable "helm_chart_pull_type" {
+variable "use_oci_registry" {
   type = string
 }

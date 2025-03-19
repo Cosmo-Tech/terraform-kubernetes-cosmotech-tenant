@@ -178,6 +178,7 @@ host: ${COSMOTECH_API_DNS_NAME}
 hostPathContext: eng-test-dev/cosmotech-api
 registryUrl: cosmo-tech.github.io/helm-charts/
 chartName: cosmotech-api
+releaseName: cosmotech-api
 chartVersion: ${API_VERSION}
 apiGithubWebhookSecret:
   secretToken: ${WEBHOOK_SECRET}
@@ -193,4 +194,4 @@ nodeSelector:
   "kubernetes.io/os": "linux"
 ingressType: "${INGRESS_TYPE}"
 ngrokHost: "${NGROK_HOST}"
-helmChartPullType: "${HELM_CHART_PULL_TYPE}"
+useOciRegistry: '"${USE_OCI_REGISTRY}"'
