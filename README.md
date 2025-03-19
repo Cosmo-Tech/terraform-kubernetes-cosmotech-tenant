@@ -65,7 +65,6 @@
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
 | <a name="input_api_docker_secret"></a> [api\_docker\_secret](#input\_api\_docker\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_api_helm_chart"></a> [api\_helm\_chart](#input\_api\_helm\_chart) | n/a | `string` | n/a | yes |
-| <a name="input_api_helm_chart_pull_type"></a> [api\_helm\_chart\_pull\_type](#input\_api\_helm\_chart\_pull\_type) | n/a | `string` | n/a | yes |
 | <a name="input_api_helm_release_name"></a> [api\_helm\_release\_name](#input\_api\_helm\_release\_name) | n/a | `string` | n/a | yes |
 | <a name="input_api_helm_repository"></a> [api\_helm\_repository](#input\_api\_helm\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_api_identifier_uri"></a> [api\_identifier\_uri](#input\_api\_identifier\_uri) | n/a | `string` | n/a | yes |
@@ -76,6 +75,7 @@
 | <a name="input_api_persistence_size"></a> [api\_persistence\_size](#input\_api\_persistence\_size) | n/a | `string` | n/a | yes |
 | <a name="input_api_persistence_storage_class"></a> [api\_persistence\_storage\_class](#input\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_api_use_oci_registry"></a> [api\_use\_oci\_registry](#input\_api\_use\_oci\_registry) | n/a | `string` | n/a | yes |
 | <a name="input_api_version"></a> [api\_version](#input\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | n/a | `string` | n/a | yes |
 | <a name="input_api_webhook_secret"></a> [api\_webhook\_secret](#input\_api\_webhook\_secret) | n/a | `string` | n/a | yes |
@@ -125,10 +125,10 @@
 | <a name="input_minio_helm_repo_url"></a> [minio\_helm\_repo\_url](#input\_minio\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_minio_version"></a> [minio\_version](#input\_minio\_version) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_docker_secret"></a> [modeling\_api\_docker\_secret](#input\_modeling\_api\_docker\_secret) | n/a | `string` | n/a | yes |
-| <a name="input_modeling_api_helm_chart_pull_type"></a> [modeling\_api\_helm\_chart\_pull\_type](#input\_modeling\_api\_helm\_chart\_pull\_type) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_monitoring_enabled"></a> [modeling\_api\_monitoring\_enabled](#input\_modeling\_api\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_modeling_api_monitoring_namespace"></a> [modeling\_api\_monitoring\_namespace](#input\_modeling\_api\_monitoring\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_persistence_storage_class"></a> [modeling\_api\_persistence\_storage\_class](#input\_modeling\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
+| <a name="input_modeling_api_use_oci_registry"></a> [modeling\_api\_use\_oci\_registry](#input\_modeling\_api\_use\_oci\_registry) | n/a | `string` | n/a | yes |
 | <a name="input_modeling_api_webhook_secret"></a> [modeling\_api\_webhook\_secret](#input\_modeling\_api\_webhook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_monitoring_enabled"></a> [monitoring\_enabled](#input\_monitoring\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_monitoring_namespace"></a> [monitoring\_namespace](#input\_monitoring\_namespace) | n/a | `string` | n/a | yes |
