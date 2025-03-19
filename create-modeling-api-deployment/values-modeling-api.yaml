@@ -50,6 +50,7 @@ host: ${COSMOTECH_API_DNS_NAME}
 hostPathContext: eng-test-dev/modeling-api
 registryUrl: ghcr.io/cosmo-tech
 chartName: cosmotech-modeling-api-chart
+releaseName: cosmotech-modeling-api
 chartVersion: 0.0-main
 apiGithubWebhookSecret:
   secretToken: ${WEBHOOK_SECRET}
