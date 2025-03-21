@@ -27,7 +27,6 @@ resource "helm_release" "argo" {
   version      = var.helm_chart_version
   namespace    = var.namespace
   reset_values = true
-  skip_crds    = true
 
   values = [
     templatefile("${path.module}/values.${var.argo_cloud_provider}.yaml", local.values_argo)
