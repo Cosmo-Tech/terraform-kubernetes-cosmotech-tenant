@@ -1,6 +1,5 @@
 # kube
 kube_config                       = ""
-kube_context                      = ""
 cloud_provider                    = "azure"
 kubernetes_cluster_admin_activate = false
 kubernetes_tenant_namespace       = ""
