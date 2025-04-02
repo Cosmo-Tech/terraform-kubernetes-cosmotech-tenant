@@ -70,8 +70,6 @@
 | <a name="input_api_list_authorized_mime_types"></a> [api\_list\_authorized\_mime\_types](#input\_api\_list\_authorized\_mime\_types) | n/a | `list(string)` | n/a | yes |
 | <a name="input_api_max_file_size"></a> [api\_max\_file\_size](#input\_api\_max\_file\_size) | n/a | `string` | n/a | yes |
 | <a name="input_api_max_request_size"></a> [api\_max\_request\_size](#input\_api\_max\_request\_size) | n/a | `string` | n/a | yes |
-| <a name="input_api_persistence_size"></a> [api\_persistence\_size](#input\_api\_persistence\_size) | n/a | `string` | n/a | yes |
-| <a name="input_api_persistence_storage_class"></a> [api\_persistence\_storage\_class](#input\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
 | <a name="input_api_storage_account_key"></a> [api\_storage\_account\_key](#input\_api\_storage\_account\_key) | n/a | `string` | n/a | yes |
 | <a name="input_api_storage_account_name"></a> [api\_storage\_account\_name](#input\_api\_storage\_account\_name) | n/a | `string` | n/a | yes |

@@ -10,8 +10,8 @@ module "create-argo" {
   s3_bucket_name              = var.argo_s3_bucket_name
   s3_endpoint                 = var.minio_deploy ? local.minio_endpoint : module.create-seaweedfs.0.out_s3_endpoint
   s3_credentials_secret       = var.minio_deploy ? module.create-minio.0.out_minio_release_name : module.create-seaweedfs.0.out_s3_credentials_secret
-  s3_username_key             = var.minio_deploy ? "root-user" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_username
-  s3_password_key             = var.minio_deploy ? "root-password" : module.create-seaweedfs.0.out_s3_credentials_keys.argo_workflows_password
+  s3_username_key             = var.minio_deploy ? "root-user" : "argo-workflows-username"
+  s3_password_key             = var.minio_deploy ? "root-password" : "argo-workflows-password"
   archive_ttl                 = var.argo_archive_ttl
   minio_release_name          = var.minio_deploy ? module.create-minio.0.out_minio_release_name : ""
   argo_bucket_name            = var.argo_bucket_name

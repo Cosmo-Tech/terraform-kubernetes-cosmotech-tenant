@@ -174,6 +174,14 @@ variable "rabbitmq_sender_password" {
   type = string
 }
 
+variable "s3_endpoint_url" {
+  type = string
+}
+
+variable "s3_bucket_name" {
+  type = string
+}
+
 variable "list_apikey_allowed" {
   type = list(object({
     name           = string
@@ -184,14 +192,6 @@ variable "list_apikey_allowed" {
 }
 
 variable "identifier_uri" {
-  type = string
-}
-
-variable "persistence_size" {
-  type = string
-}
-
-variable "persistence_storage_class" {
   type = string
 }
 

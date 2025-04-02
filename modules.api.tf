@@ -40,10 +40,10 @@ module "create-cosmotech-api" {
   rabbitmq_listener_password    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
   rabbitmq_sender_username      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_username : var.rabbitmq_sender_username
   rabbitmq_sender_password      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
+  s3_endpoint_url               = !var.minio_deploy ? module.create-seaweedfs.0.out_s3_endpoint : ""
+  s3_bucket_name                = !var.minio_deploy ? "cosmotech-api" : ""
   list_apikey_allowed           = var.api_list_apikey_allowed
   identifier_uri                = var.api_identifier_uri
-  persistence_size              = var.api_persistence_size
-  persistence_storage_class     = var.api_persistence_storage_class
   keycloak_client_id            = var.keycloak_deploy ? module.create-keycloak.0.out_keycloak_api_client_id : var.keycloak_client_id
   keycloak_client_secret        = var.keycloak_deploy ? module.create-keycloak.0.out_keycloak_api_client_secret : var.keycloak_client_secret
   helm_chart                    = var.api_helm_chart

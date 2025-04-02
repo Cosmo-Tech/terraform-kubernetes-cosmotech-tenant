@@ -58,13 +58,15 @@ locals {
     "RABBITMQ_SENDER_PASSWORD"      = var.rabbitmq_sender_password
     "ALLOWED_API_KEY_CONSUMERS"     = jsonencode(var.list_apikey_allowed)
     "AUTHORIZED_MIME_TYPES"         = jsonencode(var.list_authorized_mime_types)
-    "PERSISTENCE_SIZE"              = var.persistence_size
-    "PERSISTENCE_STORAGE_CLASS"     = var.persistence_storage_class
     "KEYCLOAK_CLIENT_ID"            = var.keycloak_client_id
     "KEYCLOAK_CLIENT_SECRET"        = var.keycloak_client_secret
     "MAX_FILE_SIZE"                 = var.max_file_size
     "MAX_REQUEST_SIZE"              = var.max_request_size
     "IDENTITY_PROVIDER"             = jsonencode(local.api_identity_provider)
+    "S3_ENDPOINT_URL"               = var.s3_endpoint_url
+    "S3_BUCKET_NAME"                = var.s3_bucket_name
+    "S3_ACCESS_KEY_ID"              = data.kubernetes_secret.s3_auth_secret.data.cosmotech-api-username
+    "S3_SECRET_ACCESS_KEY"          = data.kubernetes_secret.s3_auth_secret.data.cosmotech-api-password
   }
   api_identity_provider = merge(var.api_identity_provider, local.api_keycloak_identity)
   api_keycloak_identity = {
@@ -108,6 +110,13 @@ data "kubernetes_secret" "storage_account_password" {
 data "kubernetes_secret" "acr_login_password" {
   metadata {
     name      = "acr-admin-secret"
+    namespace = var.kubernetes_tenant_namespace
+  }
+}
+
+data "kubernetes_secret" "s3_auth_secret" {
+  metadata {
+    name      = "seaweedfs-${var.kubernetes_tenant_namespace}-s3-auth"
     namespace = var.kubernetes_tenant_namespace
   }
 }

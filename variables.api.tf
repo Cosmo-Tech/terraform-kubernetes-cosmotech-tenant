@@ -51,12 +51,6 @@ variable "api_max_request_size" {
 variable "api_graph_enabled" {
   type = bool
 }
-variable "api_persistence_size" {
-  type = string
-}
-variable "api_persistence_storage_class" {
-  type = string
-}
 variable "api_acr_login_password" {
   type = string
 }
