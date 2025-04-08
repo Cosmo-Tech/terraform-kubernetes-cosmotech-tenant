@@ -26,6 +26,7 @@ volume:
   dataVolumes:
   - name: data-0
     mountPath: /data-0
+    maxVolumes: 0
     persistence:
       existingClaim: "${SEAWEEDFS_VOLUME_PVC_EXISTING_NAME}"
       size: "${SEAWEEDFS_VOLUME_PVC_SIZE}"
