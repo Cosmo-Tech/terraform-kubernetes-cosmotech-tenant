@@ -29,6 +29,6 @@ terraform {
 }
 
 provider "grafana" {
-  url  = "${var.api_dns_name}/monitoring"
-  auth = "${var.grafana_admin_user}:${var.grafana_admin_password}"
+  url  = "https://${var.api_dns_name}/monitoring"
+  auth = var.grafana_auth # This variable should pass a value like: "user:password"
 }
