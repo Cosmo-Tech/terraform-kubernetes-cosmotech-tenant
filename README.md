@@ -109,9 +109,9 @@
 | <a name="input_custom_tls_certificate_key"></a> [custom\_tls\_certificate\_key](#input\_custom\_tls\_certificate\_key) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_namespace"></a> [custom\_tls\_namespace](#input\_custom\_tls\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
+| <a name="input_dashboard_deploy"></a> [dashboard\_deploy](#input\_dashboard\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
-| <a name="input_grafana_admin_password"></a> [grafana\_admin\_password](#input\_grafana\_admin\_password) | n/a | `string` | n/a | yes |
-| <a name="input_grafana_admin_user"></a> [grafana\_admin\_user](#input\_grafana\_admin\_user) | n/a | `string` | n/a | yes |
+| <a name="input_grafana_auth"></a> [grafana\_auth](#input\_grafana\_auth) | Authentication credentials for Grafana provider in the format 'username:password' | `string` | n/a | yes |
 | <a name="input_keycloak_add_identity_provider_azure"></a> [keycloak\_add\_identity\_provider\_azure](#input\_keycloak\_add\_identity\_provider\_azure) | n/a | `bool` | n/a | yes |
 | <a name="input_keycloak_client_id"></a> [keycloak\_client\_id](#input\_keycloak\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
