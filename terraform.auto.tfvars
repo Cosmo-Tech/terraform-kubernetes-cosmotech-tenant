@@ -101,7 +101,6 @@ argo_deploy                 = true
 argo_helm_repo_url          = "https://charts.bitnami.com/bitnami"
 argo_helm_chart             = "argo-workflows"
 argo_helm_chart_version     = "9.1.6"
-argo_service_account        = ""
 argo_s3_endpoint            = ""
 argo_s3_bucket_name         = "argo-workflows"
 argo_s3_credentials_secret  = ""
@@ -109,12 +108,7 @@ argo_s3_username_key        = ""
 argo_s3_password_key        = ""
 argo_database               = "argo_workflows"
 argo_postgresql_secret_name = "postgres-config"
-argo_requeue_time           = "1s"
-argo_archive_ttl            = "3d"
-argo_bucket_name            = "argo-workflows"
 argo_postgres_release_name  = ""
-argo_install_crds           = true
-argo_cloud_provider         = "azure"
 
 # minio
 minio_deploy                = true

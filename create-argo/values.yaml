@@ -1,78 +1,8 @@
-rbac:
-  singleNamespace: true
-createAggregateRoles: false
-
 server:
-  image:
-    registry: docker.io
-    repository: bitnami/argo-workflow-cli
-    tag: 3.5.8-debian-12-r2
-    digest: ""
-    pullPolicy: IfNotPresent
-    pullSecrets: []
-  enabled: true
-  replicaCount: 1
-  livenessProbe:
-    enabled: true
-    initialDelaySeconds: 10
-    periodSeconds: 20
-    timeoutSeconds: 1
-    failureThreshold: 3
-    successThreshold: 1
-  readinessProbe:
-    enabled: true
-    initialDelaySeconds: 10
-    periodSeconds: 20
-    timeoutSeconds: 1
-    failureThreshold: 3
-    successThreshold: 1
-  startupProbe:
-    enabled: false
-    path: /
-    initialDelaySeconds: 300
-    periodSeconds: 10
-    timeoutSeconds: 5
-    failureThreshold: 6
-    successThreshold: 1
-  podSecurityContext:
-    enabled: true
-    fsGroupChangePolicy: Always
-    sysctls: []
-    supplementalGroups: []
-    fsGroup: 1001
-  containerSecurityContext:
-    enabled: true
-    seLinuxOptions: {}
-    runAsUser: 1001
-    runAsGroup: 1001
-    runAsNonRoot: true
-    privileged: false
-    allowPrivilegeEscalation: false
-    capabilities:
-      drop: ["ALL"]
-    seccompProfile:
-      type: "RuntimeDefault"
-    readOnlyRootFilesystem: true
-  rbac:
-    create: true
-  extraArgs: ""
-  auth:
-    enabled: true
-    mode: server
-    sso:
-      enabled: false
   clusterWorkflowTemplates:
     enabled: false
-    enableEditing: true
-  secure: false
-  baseHref: /
-  containerPorts:
-    web: 2746
   serviceAccount:
-    create: true
-    name: ""
     automountServiceAccountToken: true
-    annotations: {}
   nodeSelector:
     "cosmotech.com/tier": "services"
   tolerations:
@@ -81,42 +11,10 @@ server:
       value: "cosmotech"
       effect: "NoSchedule"
   service:
-    type: ClusterIP
     ports:
       http: 2746
-  networkPolicy:
-    enabled: true
-    allowExternal: true
-    allowExternalEgress: true
-    kubeAPIServerPorts: [443, 6443, 8443]
 
 controller:
-  podSecurityContext:
-    enabled: true
-    fsGroupChangePolicy: Always
-    sysctls: []
-    supplementalGroups: []
-    fsGroup: 1001
-  containerSecurityContext:
-    enabled: true
-    seLinuxOptions: {}
-    runAsUser: 1001
-    runAsGroup: 1001
-    runAsNonRoot: true
-    privileged: false
-    allowPrivilegeEscalation: false
-    capabilities:
-      drop: ["ALL"]
-    seccompProfile:
-      type: "RuntimeDefault"
-    readOnlyRootFilesystem: true
-  containerPorts:
-    metrics: 9090
-    telemetry: 8081
-  rbac:
-    create: true
-  existingConfigMap: ""
-  extraArgs: ""
   persistence:
     archive:
       enabled: true
@@ -157,9 +55,7 @@ controller:
           name: "${S3_CREDENTIALS_SECRET}"
           key: "${S3_PASSWORD_KEY}"
     {{- if .Values.controller.metrics.enabled }}
-    metricsConfig:
-      enabled: true
-      path: {{ .Values.controller.metrics.path }}
+    metricsConfig: {{- include "common.tplvalues.render" (dict "value" .Values.controller.metrics "context" $) | nindent 2 }}
     {{- end }}
     {{- if .Values.controller.telemetry.enabled }}
     telemetryConfig: {{- include "common.tplvalues.render" (dict "value" .Values.controller.telemetry "context" $) | nindent 2 }}
@@ -193,23 +89,12 @@ controller:
     {{- if and .Values.server.auth.enabled .Values.server.auth.sso.enabled }}
     sso: {{- include "common.tplvalues.render" (dict "value" .Values.server.auth.sso.config "context" $) | nindent 2 }}
     {{- end }}
-  instanceID:
-    enabled: false
-    useReleaseName: false
-    explicitID: ""
   clusterWorkflowTemplates:
     enabled: false
   metrics:
     enabled: true
-    path: /metrics
     serviceMonitor:
       enabled: true
-  telemetry:
-    enabled: false
-    path: /telemetry
-  workflowWorkers: 32
-  workflowNamespaces:
-    - default
   workflowDefaults:
     spec:
       securityContext:
@@ -242,14 +127,8 @@ controller:
         # attached PVCs.
         # One of "OnWorkflowCompletion", "OnWorkflowSuccess"
         strategy: OnWorkflowCompletion
-  logging:
-    level: info
-    globalLevel: "0"
   serviceAccount:
-    create: true
-    name: ""
     automountServiceAccountToken: true
-    annotations: {}
   nodeSelector:
     "cosmotech.com/tier": "services"
   tolerations:
@@ -257,25 +136,8 @@ controller:
       operator: "Equal"
       value: "cosmotech"
       effect: "NoSchedule"
-  service:
-    type: ClusterIP
-    ports:
-      metrics: 8080
-      telemetry: 8081
-  networkPolicy:
-    enabled: true
-    allowExternal: true
-    allowExternalEgress: true
-    kubeAPIServerPorts: [443, 6443, 8443]
+
 executor:
-  image:
-    registry: docker.io
-    repository: bitnami/argo-workflow-exec
-    tag: 3.5.8-debian-12-r3
-    digest: ""
-    pullPolicy: IfNotPresent
-    pullSecrets: []
-  resourcesPreset: "nano"
   resources:
     requests:
       cpu: 2
@@ -288,31 +150,14 @@ executor:
       value: 1s
     - name: WAIT_CONTAINER_STATUS_CHECK_INTERVAL
       value: 1s
-  containerSecurityContext:
-    enabled: true
-    seLinuxOptions: {}
-    runAsUser: 1001
-    runAsGroup: 1001
-    runAsNonRoot: true
-    privileged: false
-    allowPrivilegeEscalation: false
-    capabilities:
-      drop:
-        - ALL
-    seccompProfile:
-      type: "RuntimeDefault"
-    readOnlyRootFilesystem: true
 
 ingress:
   enabled: false
 
 workflows:
   serviceAccount:
-    create: true
     name: ${ARGO_SERVICE_ACCOUNT}
     automountServiceAccountToken: true
-  rbac:
-    create: true
 
 postgresql:
   enabled: false
