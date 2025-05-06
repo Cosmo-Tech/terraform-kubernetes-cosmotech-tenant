@@ -1,5 +1,5 @@
 variable "dashboard_redis_auth_user" {
-  type = string
+  type    = string
   default = "default"
 }
 
