@@ -59,7 +59,7 @@ config:
         secretAccessKey: ${S3_SECRET_ACCESS_KEY}
       authorization:
         allowedApiKeyConsumers: ${ALLOWED_API_KEY_CONSUMERS}
-        allowed-tenants: ${TENANT_ID}
+        allowed-tenants: ${NAMESPACE}
       azure:
         appIdUri: ${APP_ID_URI}
         containerRegistries:
