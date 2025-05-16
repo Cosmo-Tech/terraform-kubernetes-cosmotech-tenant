@@ -104,6 +104,7 @@
 | <a name="input_custom_tls_namespace"></a> [custom\_tls\_namespace](#input\_custom\_tls\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_dashboard_deploy"></a> [dashboard\_deploy](#input\_dashboard\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_dashboard_redis_auth_user"></a> [dashboard\_redis\_auth\_user](#input\_dashboard\_redis\_auth\_user) | n/a | `string` | n/a | yes |
 | <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_grafana_auth"></a> [grafana\_auth](#input\_grafana\_auth) | Authentication credentials for Grafana provider in the format 'username:password' | `string` | n/a | yes |
 | <a name="input_keycloak_add_identity_provider_azure"></a> [keycloak\_add\_identity\_provider\_azure](#input\_keycloak\_add\_identity\_provider\_azure) | n/a | `bool` | n/a | yes |
@@ -137,15 +138,19 @@
 | <a name="input_network_sp_client_secret"></a> [network\_sp\_client\_secret](#input\_network\_sp\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_argo_database"></a> [postgresql\_argo\_database](#input\_postgresql\_argo\_database) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_argo_user"></a> [postgresql\_argo\_user](#input\_postgresql\_argo\_user) | n/a | `string` | n/a | yes |
+| <a name="input_postgresql_auth_password"></a> [postgresql\_auth\_password](#input\_postgresql\_auth\_password) | n/a | `string` | n/a | yes |
+| <a name="input_postgresql_auth_user"></a> [postgresql\_auth\_user](#input\_postgresql\_auth\_user) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_admin_username"></a> [postgresql\_cosmotech\_api\_admin\_username](#input\_postgresql\_cosmotech\_api\_admin\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_reader_username"></a> [postgresql\_cosmotech\_api\_reader\_username](#input\_postgresql\_cosmotech\_api\_reader\_username) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_cosmotech_api_writer_username"></a> [postgresql\_cosmotech\_api\_writer\_username](#input\_postgresql\_cosmotech\_api\_writer\_username) | n/a | `string` | n/a | yes |
+| <a name="input_postgresql_db"></a> [postgresql\_db](#input\_postgresql\_db) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_deploy"></a> [postgresql\_deploy](#input\_postgresql\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_postgresql_existing_pvc_name"></a> [postgresql\_existing\_pvc\_name](#input\_postgresql\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_helm_chart"></a> [postgresql\_helm\_chart](#input\_postgresql\_helm\_chart) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_helm_repo_url"></a> [postgresql\_helm\_repo\_url](#input\_postgresql\_helm\_repo\_url) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_initdb_secret_name"></a> [postgresql\_initdb\_secret\_name](#input\_postgresql\_initdb\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_persistence_size"></a> [postgresql\_persistence\_size](#input\_postgresql\_persistence\_size) | n/a | `string` | n/a | yes |
+| <a name="input_postgresql_port"></a> [postgresql\_port](#input\_postgresql\_port) | n/a | `number` | n/a | yes |
 | <a name="input_postgresql_secret_name"></a> [postgresql\_secret\_name](#input\_postgresql\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_postgresql_secrets_config_create"></a> [postgresql\_secrets\_config\_create](#input\_postgresql\_secrets\_config\_create) | n/a | `bool` | n/a | yes |
 | <a name="input_postgresql_version"></a> [postgresql\_version](#input\_postgresql\_version) | n/a | `string` | n/a | yes |
@@ -220,7 +225,6 @@
 | <a name="input_vault_namespace"></a> [vault\_namespace](#input\_vault\_namespace) | n/a | `string` | n/a | yes |
 | <a name="input_vault_organization"></a> [vault\_organization](#input\_vault\_organization) | n/a | `string` | n/a | yes |
 | <a name="input_vault_sops_namespace"></a> [vault\_sops\_namespace](#input\_vault\_sops\_namespace) | n/a | `string` | n/a | yes |
-| <a name="input_dashboard_redis_auth_user"></a> [dashboard\_redis\_auth\_user](#input\_dashboard\_redis\_auth\_user) | n/a | `string` | `"default"` | no |
 
 ## Outputs
 
