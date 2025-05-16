@@ -8,11 +8,11 @@ terraform {
 }
 
 locals {
-  redis_datasource_name = "redis_datasource_${var.namespace}"
+  redis_datasource_name = "redis-datasource-${var.namespace}"
   redis_url = "redis://cosmotechredis-${var.namespace}-master.${var.namespace}.svc.cluster.local:${var.redis_port}"
 
-  postgresql_datasource_name = "postgresql_datasource_${var.postgresql_host_namespace}"
-  postgresql_url = "jdbc:postgresql://postgresql-${var.postgresql_host_namespace}.${var.postgresql_host_namespace}.svc.cluster.local:${var.postgresql_port}"
+  postgresql_datasource_name = "postgresql-datasource-${var.namespace}"
+  postgresql_url = "postgresql-${var.namespace}.${var.namespace}.svc.cluster.local:${var.postgresql_port}"
 }
 
 resource "grafana_data_source" "redis-datasource" {
@@ -30,12 +30,14 @@ resource "grafana_data_source" "redis-datasource" {
 
 resource "grafana_data_source" "postgresql-datasource" {
   name = local.postgresql_datasource_name
-  type = "postgresql-datasource"
+  type = "postgres"
 
   url  = local.postgresql_url
   basic_auth_enabled = true
-  basic_auth_username = var.postgresql_auth_user
-
+  username     = var.postgresql_auth_user
+  json_data_encoded = jsonencode({   
+    sslmode  = "disable"
+  })
   secure_json_data_encoded = jsonencode({
     password = var.postgresql_auth_password
   })
