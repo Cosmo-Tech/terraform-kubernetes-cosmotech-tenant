@@ -138,6 +138,7 @@ postgresql_secret_name                   = "postgres-config"
 postgresql_argo_database                 = "argo_workflows"
 postgresql_existing_pvc_name             = ""
 postgresql_secrets_config_create         = false
+postgresql_port                          = 5432
 
 # rabbitmq
 rabbitmq_deploy             = true
@@ -185,6 +186,10 @@ seaweedfs_database                 = "seaweedfs"
 seaweedfs_username                 = "seaweedfs"
 seaweedfs_master_existing_pvc_name = ""
 seaweedfs_volume_existing_pvc_name = ""
+
+# grafana dashboard 
+dashboard_redis_auth_user = "default"
+postgresql_db             = "argo_workflows"
 
 # vault
 vault_deploy            = false

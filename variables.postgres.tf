@@ -40,3 +40,6 @@ variable "postgresql_secrets_config_create" {
 variable "postgresql_existing_pvc_name" {
   type = string
 }
+variable "postgresql_port" {
+  type = number
+}
