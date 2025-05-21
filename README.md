@@ -25,6 +25,7 @@
 | <a name="module_cert-manager"></a> [cert-manager](#module\_cert-manager) | ./create-cert-manager | n/a |
 | <a name="module_create-argo"></a> [create-argo](#module\_create-argo) | ./create-argo | n/a |
 | <a name="module_create-cosmotech-api"></a> [create-cosmotech-api](#module\_create-cosmotech-api) | ./create-cosmotech-api | n/a |
+| <a name="module_create-cosmotech-api-deployment"></a> [create-cosmotech-api-deployment](#module\_create-cosmotech-api-deployment) | ./create-tekton-cosmotech-api | n/a |
 | <a name="module_create-grafana-dashboard"></a> [create-grafana-dashboard](#module\_create-grafana-dashboard) | ./create-grafana-dashboard | n/a |
 | <a name="module_create-keycloak"></a> [create-keycloak](#module\_create-keycloak) | ./create-keycloak-realm | n/a |
 | <a name="module_create-minio"></a> [create-minio](#module\_create-minio) | ./create-minio | n/a |
@@ -58,7 +59,12 @@
 | <a name="input_api_auth_provider"></a> [api\_auth\_provider](#input\_api\_auth\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_api_chart_package_version"></a> [api\_chart\_package\_version](#input\_api\_chart\_package\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_deploy"></a> [api\_deploy](#input\_api\_deploy) | n/a | `bool` | n/a | yes |
+| <a name="input_api_deployment_chart_package_version"></a> [api\_deployment\_chart\_package\_version](#input\_api\_deployment\_chart\_package\_version) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_chart"></a> [api\_deployment\_helm\_chart](#input\_api\_deployment\_helm\_chart) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_release_name"></a> [api\_deployment\_helm\_release\_name](#input\_api\_deployment\_helm\_release\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_deployment_helm_repository"></a> [api\_deployment\_helm\_repository](#input\_api\_deployment\_helm\_repository) | n/a | `string` | n/a | yes |
 | <a name="input_api_dns_name"></a> [api\_dns\_name](#input\_api\_dns\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_docker_secret"></a> [api\_docker\_secret](#input\_api\_docker\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_api_eventbus_uri"></a> [api\_eventbus\_uri](#input\_api\_eventbus\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_graph_enabled"></a> [api\_graph\_enabled](#input\_api\_graph\_enabled) | n/a | `bool` | n/a | yes |
 | <a name="input_api_helm_chart"></a> [api\_helm\_chart](#input\_api\_helm\_chart) | n/a | `string` | n/a | yes |
@@ -67,16 +73,21 @@
 | <a name="input_api_identifier_uri"></a> [api\_identifier\_uri](#input\_api\_identifier\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_identity_provider"></a> [api\_identity\_provider](#input\_api\_identity\_provider) | n/a | `any` | n/a | yes |
 | <a name="input_api_ingress_enabled"></a> [api\_ingress\_enabled](#input\_api\_ingress\_enabled) | n/a | `bool` | n/a | yes |
+| <a name="input_api_ingress_type"></a> [api\_ingress\_type](#input\_api\_ingress\_type) | n/a | `string` | n/a | yes |
 | <a name="input_api_is_multitenant"></a> [api\_is\_multitenant](#input\_api\_is\_multitenant) | n/a | `bool` | n/a | yes |
 | <a name="input_api_list_apikey_allowed"></a> [api\_list\_apikey\_allowed](#input\_api\_list\_apikey\_allowed) | n/a | <pre>list(object({<br>    name           = string<br>    apiKey         = string<br>    associatedRole = string<br>    securedUris    = list(string)<br>  }))</pre> | n/a | yes |
 | <a name="input_api_list_authorized_mime_types"></a> [api\_list\_authorized\_mime\_types](#input\_api\_list\_authorized\_mime\_types) | n/a | `list(string)` | n/a | yes |
 | <a name="input_api_max_file_size"></a> [api\_max\_file\_size](#input\_api\_max\_file\_size) | n/a | `string` | n/a | yes |
 | <a name="input_api_max_request_size"></a> [api\_max\_request\_size](#input\_api\_max\_request\_size) | n/a | `string` | n/a | yes |
+| <a name="input_api_ngrok_host"></a> [api\_ngrok\_host](#input\_api\_ngrok\_host) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
+| <a name="input_api_run_cypress_tests"></a> [api\_run\_cypress\_tests](#input\_api\_run\_cypress\_tests) | n/a | `string` | n/a | yes |
 | <a name="input_api_storage_account_key"></a> [api\_storage\_account\_key](#input\_api\_storage\_account\_key) | n/a | `string` | n/a | yes |
 | <a name="input_api_storage_account_name"></a> [api\_storage\_account\_name](#input\_api\_storage\_account\_name) | n/a | `string` | n/a | yes |
+| <a name="input_api_use_oci_registry"></a> [api\_use\_oci\_registry](#input\_api\_use\_oci\_registry) | n/a | `string` | n/a | yes |
 | <a name="input_api_version"></a> [api\_version](#input\_api\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_version_path"></a> [api\_version\_path](#input\_api\_version\_path) | n/a | `string` | n/a | yes |
+| <a name="input_api_webhook_secret"></a> [api\_webhook\_secret](#input\_api\_webhook\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_argo_database"></a> [argo\_database](#input\_argo\_database) | n/a | `string` | n/a | yes |
 | <a name="input_argo_deploy"></a> [argo\_deploy](#input\_argo\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_argo_helm_chart"></a> [argo\_helm\_chart](#input\_argo\_helm\_chart) | n/a | `string` | n/a | yes |
@@ -105,6 +116,7 @@
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_dashboard_deploy"></a> [dashboard\_deploy](#input\_dashboard\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_dashboard_redis_auth_user"></a> [dashboard\_redis\_auth\_user](#input\_dashboard\_redis\_auth\_user) | n/a | `string` | n/a | yes |
+| <a name="input_deploy_cosmotech_api_tekton_pipline"></a> [deploy\_cosmotech\_api\_tekton\_pipline](#input\_deploy\_cosmotech\_api\_tekton\_pipline) | n/a | `bool` | n/a | yes |
 | <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_grafana_auth"></a> [grafana\_auth](#input\_grafana\_auth) | Authentication credentials for Grafana provider in the format 'username:password' | `string` | n/a | yes |
 | <a name="input_keycloak_add_identity_provider_azure"></a> [keycloak\_add\_identity\_provider\_azure](#input\_keycloak\_add\_identity\_provider\_azure) | n/a | `bool` | n/a | yes |
@@ -208,6 +220,7 @@
 | <a name="input_seaweedfs_volume_existing_pvc_name"></a> [seaweedfs\_volume\_existing\_pvc\_name](#input\_seaweedfs\_volume\_existing\_pvc\_name) | n/a | `string` | n/a | yes |
 | <a name="input_secret_tls_secret_name"></a> [secret\_tls\_secret\_name](#input\_secret\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | n/a | `string` | n/a | yes |
+| <a name="input_tekton_node_selector"></a> [tekton\_node\_selector](#input\_tekton\_node\_selector) | This variable is used to select the appropriate node for deploying Tekton pipline, either in KOB or in Azure. In KOB, the node is named 'service', while in Azure, it is named 'tekton' | `string` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_resource_group"></a> [tenant\_resource\_group](#input\_tenant\_resource\_group) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_sp_client_id"></a> [tenant\_sp\_client\_id](#input\_tenant\_sp\_client\_id) | n/a | `string` | n/a | yes |
