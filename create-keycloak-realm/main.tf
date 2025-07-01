@@ -181,7 +181,7 @@ resource "keycloak_openid_client" "automation-client" {
 
 resource "keycloak_generic_protocol_mapper" "automation_realm_roles_mapper" {
   realm_id        = keycloak_realm.realm.id
-  client_id       = keycloak_openid_client.cosmotech-api-client.id
+  client_id       = keycloak_openid_client.automation-client.id
   name            = "realm roles"
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-realm-role-mapper"
