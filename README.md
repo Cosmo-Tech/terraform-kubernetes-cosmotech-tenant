@@ -105,13 +105,13 @@
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_dashboard_deploy"></a> [dashboard\_deploy](#input\_dashboard\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_dashboard_redis_auth_user"></a> [dashboard\_redis\_auth\_user](#input\_dashboard\_redis\_auth\_user) | n/a | `string` | n/a | yes |
-| <a name="input_deploy_automation_client"></a> [deploy\_automation\_client](#input\_deploy\_automation\_client) | Deploy the automation client in Keycloak. | `bool` | n/a | yes |
 | <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_grafana_auth"></a> [grafana\_auth](#input\_grafana\_auth) | Authentication credentials for Grafana provider in the format 'username:password' | `string` | n/a | yes |
 | <a name="input_keycloak_add_identity_provider_azure"></a> [keycloak\_add\_identity\_provider\_azure](#input\_keycloak\_add\_identity\_provider\_azure) | n/a | `bool` | n/a | yes |
 | <a name="input_keycloak_client_id"></a> [keycloak\_client\_id](#input\_keycloak\_client\_id) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_client_secret"></a> [keycloak\_client\_secret](#input\_keycloak\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_deploy"></a> [keycloak\_deploy](#input\_keycloak\_deploy) | Wether to create Keycloak resources fot this tenant :<br>- realm<br>- OpenID client & scopes<br>- roles<br>- Authentication flow<br>- Default user<br>After this deployment, you will need to manually set the authentication flow<br> as the default to the broker identification. To do so go to the Authentication menu.<br> On the new line with the "auto link user" flow, click the 3 dot at the end of the line<br>  and then "Bind flow". Then select **First broker login flow**.<br> You should have the newly created flow "auto link user" with the column Used by set to<br>  First broker login flow. | `bool` | n/a | yes |
+| <a name="input_keycloak_deploy_automation_client"></a> [keycloak\_deploy\_automation\_client](#input\_keycloak\_deploy\_automation\_client) | Deploy the automation client in Keycloak. | `bool` | n/a | yes |
 | <a name="input_keycloak_password"></a> [keycloak\_password](#input\_keycloak\_password) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_realm_jwt_claim_api_client"></a> [keycloak\_realm\_jwt\_claim\_api\_client](#input\_keycloak\_realm\_jwt\_claim\_api\_client) | n/a | `string` | n/a | yes |
 | <a name="input_keycloak_realm_jwt_claim_web_client"></a> [keycloak\_realm\_jwt\_claim\_web\_client](#input\_keycloak\_realm\_jwt\_claim\_web\_client) | n/a | `string` | n/a | yes |
