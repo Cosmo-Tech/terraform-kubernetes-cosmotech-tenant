@@ -105,6 +105,7 @@
 | <a name="input_custom_tls_secret_name"></a> [custom\_tls\_secret\_name](#input\_custom\_tls\_secret\_name) | n/a | `string` | n/a | yes |
 | <a name="input_dashboard_deploy"></a> [dashboard\_deploy](#input\_dashboard\_deploy) | n/a | `bool` | n/a | yes |
 | <a name="input_dashboard_redis_auth_user"></a> [dashboard\_redis\_auth\_user](#input\_dashboard\_redis\_auth\_user) | n/a | `string` | n/a | yes |
+| <a name="input_deploy_automation_client"></a> [deploy\_automation\_client](#input\_deploy\_automation\_client) | Deploy the automation client in Keycloak. | `bool` | n/a | yes |
 | <a name="input_first_tenant_in_cluster"></a> [first\_tenant\_in\_cluster](#input\_first\_tenant\_in\_cluster) | n/a | `bool` | n/a | yes |
 | <a name="input_grafana_auth"></a> [grafana\_auth](#input\_grafana\_auth) | Authentication credentials for Grafana provider in the format 'username:password' | `string` | n/a | yes |
 | <a name="input_keycloak_add_identity_provider_azure"></a> [keycloak\_add\_identity\_provider\_azure](#input\_keycloak\_add\_identity\_provider\_azure) | n/a | `bool` | n/a | yes |
