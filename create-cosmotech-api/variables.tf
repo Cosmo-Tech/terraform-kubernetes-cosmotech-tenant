@@ -236,3 +236,7 @@ variable "api_identity_provider" {}
 variable "api_auth_provider" {
   type = string
 }
+
+variable "persistence_storage_class" {
+  type = string
+}

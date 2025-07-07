@@ -62,6 +62,7 @@ module "create-cosmotech-api" {
   api_graph_enabled             = var.api_graph_enabled
   api_identity_provider         = var.api_identity_provider
   api_auth_provider             = var.api_auth_provider
+  persistence_storage_class     = var.api_persistence_storage_class
 
   depends_on = [
     module.create-argo,

@@ -67,6 +67,7 @@ locals {
     "S3_BUCKET_NAME"                = var.s3_bucket_name
     "S3_ACCESS_KEY_ID"              = data.kubernetes_secret.s3_auth_secret.data.cosmotech-api-username
     "S3_SECRET_ACCESS_KEY"          = data.kubernetes_secret.s3_auth_secret.data.cosmotech-api-password
+    "PERSISTENCE_STORAGE_CLASS"     = var.persistence_storage_class
   }
   api_identity_provider = merge(var.api_identity_provider, local.api_keycloak_identity)
   api_keycloak_identity = {
