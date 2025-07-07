@@ -11,7 +11,7 @@ module "create-keycloak" {
   keycloak_user_app_role               = var.keycloak_user_app_role
   tenant_id                            = var.tenant_id
   api_version_path                     = var.api_version_path
-  deploy_automation_client             = var.deploy_automation_client
+  deploy_automation_client             = var.keycloak_deploy_automation_client
 
   depends_on = [module.create-argo]
 }

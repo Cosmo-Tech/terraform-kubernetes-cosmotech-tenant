@@ -43,7 +43,7 @@ variable "keycloak_add_identity_provider_azure" {
   type = bool
 }
 
-variable "deploy_automation_client" {
+variable "keycloak_deploy_automation_client" {
   type        = bool
   description = "Deploy the automation client in Keycloak."
 }
