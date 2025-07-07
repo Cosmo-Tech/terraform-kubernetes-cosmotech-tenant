@@ -94,6 +94,7 @@ keycloak_user_app_role = [
   "Organization.User",
   "Platform.Admin"
 ]
+deploy_automation_client = false
 
 
 # argo workflows

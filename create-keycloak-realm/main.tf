@@ -167,6 +167,8 @@ resource "keycloak_user" "user_with_initial_password" {
 }
 # automation client
 resource "keycloak_openid_client" "automation-client" {
+  count                    = var.deploy_automation_client ? 1 : 0
+
   realm_id                 = keycloak_realm.realm.id
   client_id                = "automation-client"
   name                     = "automation-client"
@@ -180,8 +182,10 @@ resource "keycloak_openid_client" "automation-client" {
 }
 
 resource "keycloak_generic_protocol_mapper" "automation_realm_roles_mapper" {
+  count           = var.deploy_automation_client ? 1 : 0
+
   realm_id        = keycloak_realm.realm.id
-  client_id       = keycloak_openid_client.automation-client.id
+  client_id       = keycloak_openid_client.automation-client[count.index].id
   name            = "realm roles"
   protocol        = "openid-connect"
   protocol_mapper = "oidc-usermodel-realm-role-mapper"
@@ -197,11 +201,11 @@ resource "keycloak_generic_protocol_mapper" "automation_realm_roles_mapper" {
 }
 
 resource "keycloak_openid_client_service_account_realm_role" "automation_client_service_account_role" {
-  count                   = var.keycloak_add_identity_provider_azure ? 1 : 0
+  count                   = var.deploy_automation_client ? 1 : 0
+
   realm_id                = keycloak_realm.realm.id
-  service_account_user_id = keycloak_openid_client.automation-client.service_account_user_id
+  service_account_user_id = keycloak_openid_client.automation-client[count.index].service_account_user_id
   role                    = keycloak_role.platform_admin_role.name
-  depends_on              = [keycloak_openid_client.automation-client]
 }
 
 # cosmotech api client
