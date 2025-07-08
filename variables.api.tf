@@ -63,7 +63,7 @@ variable "api_acr_login_server_url" {
 variable "api_acr_login_username" {
   type = string
 }
-variable "api_adx_uri" {
+variable "adx_cluster_uri" {
   type = string
 }
 variable "api_adx_ingestion_uri" {
