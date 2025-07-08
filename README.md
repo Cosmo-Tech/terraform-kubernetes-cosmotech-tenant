@@ -49,12 +49,12 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_adx_cluster_uri"></a> [adx\_cluster\_uri](#input\_adx\_cluster\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_password"></a> [api\_acr\_login\_password](#input\_api\_acr\_login\_password) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_server"></a> [api\_acr\_login\_server](#input\_api\_acr\_login\_server) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_server_url"></a> [api\_acr\_login\_server\_url](#input\_api\_acr\_login\_server\_url) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_username"></a> [api\_acr\_login\_username](#input\_api\_acr\_login\_username) | n/a | `string` | n/a | yes |
 | <a name="input_api_adx_ingestion_uri"></a> [api\_adx\_ingestion\_uri](#input\_api\_adx\_ingestion\_uri) | n/a | `string` | n/a | yes |
-| <a name="input_api_adx_uri"></a> [api\_adx\_uri](#input\_api\_adx\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_auth_provider"></a> [api\_auth\_provider](#input\_api\_auth\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_api_chart_package_version"></a> [api\_chart\_package\_version](#input\_api\_chart\_package\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_deploy"></a> [api\_deploy](#input\_api\_deploy) | n/a | `bool` | n/a | yes |
@@ -72,7 +72,6 @@
 | <a name="input_api_list_authorized_mime_types"></a> [api\_list\_authorized\_mime\_types](#input\_api\_list\_authorized\_mime\_types) | n/a | `list(string)` | n/a | yes |
 | <a name="input_api_max_file_size"></a> [api\_max\_file\_size](#input\_api\_max\_file\_size) | n/a | `string` | n/a | yes |
 | <a name="input_api_max_request_size"></a> [api\_max\_request\_size](#input\_api\_max\_request\_size) | n/a | `string` | n/a | yes |
-| <a name="input_api_persistence_storage_class"></a> [api\_persistence\_storage\_class](#input\_api\_persistence\_storage\_class) | n/a | `string` | n/a | yes |
 | <a name="input_api_replicas"></a> [api\_replicas](#input\_api\_replicas) | n/a | `number` | n/a | yes |
 | <a name="input_api_storage_account_key"></a> [api\_storage\_account\_key](#input\_api\_storage\_account\_key) | n/a | `string` | n/a | yes |
 | <a name="input_api_storage_account_name"></a> [api\_storage\_account\_name](#input\_api\_storage\_account\_name) | n/a | `string` | n/a | yes |
