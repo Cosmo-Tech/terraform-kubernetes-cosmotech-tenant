@@ -1,6 +1,9 @@
 name: 'Integration Tests'
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - DSE/automation_client_PROD-14493
 jobs:
   keycloak-automation-client-test:
     runs-on: ubuntu-latest
