@@ -5,6 +5,9 @@ api:
   servletContextPath: /
   tlsTruststore:
     enabled: false
+persistence:
+  # -- Enable the data storage persistence
+  enabled: false    
 
 image:
   repository: ghcr.io/cosmo-tech/cosmotech-api
