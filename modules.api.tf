@@ -19,7 +19,7 @@ module "create-cosmotech-api" {
   acr_login_password            = var.api_acr_login_password
   acr_login_server              = var.api_acr_login_server
   acr_login_username            = var.api_acr_login_username
-  adx_uri                       = var.api_adx_uri
+  adx_uri                       = var.adx_cluster_uri
   adx_ingestion_uri             = var.api_adx_ingestion_uri
   eventbus_uri                  = var.api_eventbus_uri
   storage_account_key           = var.api_storage_account_key

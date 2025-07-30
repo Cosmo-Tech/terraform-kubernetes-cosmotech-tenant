@@ -49,12 +49,12 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_adx_cluster_uri"></a> [adx\_cluster\_uri](#input\_adx\_cluster\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_password"></a> [api\_acr\_login\_password](#input\_api\_acr\_login\_password) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_server"></a> [api\_acr\_login\_server](#input\_api\_acr\_login\_server) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_server_url"></a> [api\_acr\_login\_server\_url](#input\_api\_acr\_login\_server\_url) | n/a | `string` | n/a | yes |
 | <a name="input_api_acr_login_username"></a> [api\_acr\_login\_username](#input\_api\_acr\_login\_username) | n/a | `string` | n/a | yes |
 | <a name="input_api_adx_ingestion_uri"></a> [api\_adx\_ingestion\_uri](#input\_api\_adx\_ingestion\_uri) | n/a | `string` | n/a | yes |
-| <a name="input_api_adx_uri"></a> [api\_adx\_uri](#input\_api\_adx\_uri) | n/a | `string` | n/a | yes |
 | <a name="input_api_auth_provider"></a> [api\_auth\_provider](#input\_api\_auth\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_api_chart_package_version"></a> [api\_chart\_package\_version](#input\_api\_chart\_package\_version) | n/a | `string` | n/a | yes |
 | <a name="input_api_deploy"></a> [api\_deploy](#input\_api\_deploy) | n/a | `bool` | n/a | yes |
