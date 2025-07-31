@@ -192,7 +192,7 @@ resource "keycloak_generic_protocol_mapper" "automation_realm_roles_mapper" {
   config = {
     "id.token.claim" : "true",
     "access.token.claim" : "true",
-    "claim.name" : var.keycloak_realm_jwt_claim_api_client,
+    "claim.name" : var.keycloak_realm_jwt_claim_web_client,
     "jsonType.label" : "String",
     "multivalued" : "true",
     "userinfo.token.claim" : "true",
