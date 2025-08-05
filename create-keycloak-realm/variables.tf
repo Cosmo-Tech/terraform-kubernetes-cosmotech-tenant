@@ -29,3 +29,9 @@ variable "tenant_id" {
 variable "api_version_path" {
   type = string
 }
+
+variable "deploy_automation_client" {
+  type        = bool
+  default     = false
+  description = "Deploy the automation keycloak client"
+}

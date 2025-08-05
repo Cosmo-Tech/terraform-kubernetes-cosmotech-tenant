@@ -14,4 +14,5 @@ output "out_keycloak_api_client_id" {
 }
 output "out_keycloak_api_client_secret" {
   value = keycloak_openid_client.cosmotech-api-client.client_secret
+  sensitive = true
 }

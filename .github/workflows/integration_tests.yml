@@ -1,0 +1,30 @@
+name: 'Integration Tests'
+on:
+  workflow_dispatch:
+jobs:
+  keycloak-automation-client-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Compose
+      run: sudo apt-get update && sudo apt-get install -y docker-compose
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Start Keycloak with Docker Compose
+      run: |
+        cd ./create-keycloak-realm/tests
+        docker-compose up -d
+        sleep 60
+        cd ..
+        terraform init
+        terraform test
+
+    - name: Stop Docker Compose
+      if: always()
+      working-directory: ./create-keycloak-realm/tests
+      run: docker-compose down
