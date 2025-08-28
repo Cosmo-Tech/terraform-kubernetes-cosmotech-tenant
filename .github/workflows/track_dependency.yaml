@@ -19,12 +19,17 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '23'
-      - name: Run Trivy in GitHub SBOM mode and submit results to Dependency Graph
+      - name: Run Trivy in GitHub SBOM mode
         uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: 'fs'
           format: 'github'
           output: 'sbom.json'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: 'sbom.json'
+          path: 'sbom.json'
+          overwrite: true
       - name: Upload cyclonedx bom to dependency
         uses: DependencyTrack/gh-upload-sbom@v3
         with:
