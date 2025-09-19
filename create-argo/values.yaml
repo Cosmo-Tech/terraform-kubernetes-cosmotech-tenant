@@ -140,13 +140,8 @@ controller:
       effect: "NoSchedule"
 
 executor:
-  resources:
-    requests:
-      cpu: 2
-      memory: 512Mi
-    limits:
-      cpu: 3
-      memory: 1024Mi
+  resources: {}
+  resourcesPreset: nano
   extraEnvVars:
     - name: RESOURCE_STATE_CHECK_INTERVAL
       value: 1s

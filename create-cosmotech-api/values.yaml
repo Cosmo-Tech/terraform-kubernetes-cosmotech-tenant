@@ -11,6 +11,9 @@ argo:
     password: ${ACR_LOGIN_PASSWORD}
     registry: ${ACR_LOGIN_SERVER}
     username: ${ACR_LOGIN_USERNAME}
+  storage:
+    class:
+      install: false
 config:
   spring:
     servlet:
@@ -50,8 +53,8 @@ config:
         workflows:
           namespace: ${NAMESPACE}
           service-account-name: ${ARGO_SERVICE_ACCOUNT}
-          requests:
-            storage: 20Gi
+          access-modes:
+            - ReadWriteOnce
       authorization:
         allowedApiKeyConsumers: ${ALLOWED_API_KEY_CONSUMERS}
         allowed-tenants: ${TENANT_ID}
