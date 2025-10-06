@@ -118,10 +118,6 @@ variable "is_multitenant" {
   type = bool
 }
 
-variable "use_internal_result_services" {
-  type = bool
-}
-
 variable "tenant_resource_group" {
   type = string
 }
@@ -154,23 +150,7 @@ variable "postgresql_admin_password" {
   type = string
 }
 
-variable "rabbitmq_release_name" {
-  type = string
-}
-
-variable "rabbitmq_listener_username" {
-  type = string
-}
-
-variable "rabbitmq_listener_password" {
-  type = string
-}
-
-variable "rabbitmq_sender_username" {
-  type = string
-}
-
-variable "rabbitmq_sender_password" {
+variable "postgresql_database" {
   type = string
 }
 

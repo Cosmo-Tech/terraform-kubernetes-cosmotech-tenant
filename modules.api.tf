@@ -33,14 +33,8 @@ module "create-cosmotech-api" {
   list_authorized_mime_types    = var.api_list_authorized_mime_types
   max_file_size                 = var.api_max_file_size
   max_request_size              = var.api_max_request_size
-  use_internal_result_services  = var.rabbitmq_deploy
   redis_admin_password          = var.redis_deploy ? module.create-redis-stack.0.out_redis_admin_password : var.redis_admin_password
-  rabbitmq_release_name         = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_release_name : var.rabbitmq_helm_release_name
-  rabbitmq_listener_username    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_username : var.rabbitmq_listener_username
-  rabbitmq_listener_password    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
-  rabbitmq_sender_username      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_username : var.rabbitmq_sender_username
-  rabbitmq_sender_password      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
-  s3_endpoint_url               = !var.minio_deploy ? "http://${module.create-seaweedfs.0.out_s3_endpoint}" : ""
+  s3_endpoint_url               = !var.minio_deploy ? module.create-seaweedfs.0.out_s3_endpoint : ""
   s3_bucket_name                = !var.minio_deploy ? "cosmotech-api" : ""
   list_apikey_allowed           = var.api_list_apikey_allowed
   identifier_uri                = var.api_identifier_uri
@@ -53,6 +47,7 @@ module "create-cosmotech-api" {
   argo_release_name             = var.argo_deploy ? module.create-argo.0.out_argo_workflows_release_name : ""
   argo_service_account          = var.argo_deploy ? module.create-argo.0.out_argo_workflows_service_account : ""
   postgresql_release_name       = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_release_name : ""
+  postgresql_database           = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgresql_database : ""
   postgresql_reader_username    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_reader_username : ""
   postgresql_reader_password    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_reader_password : ""
   postgresql_writer_username    = var.postgresql_deploy ? module.create-postgresql-db.0.out_postgres_writer_username : ""
@@ -66,7 +61,6 @@ module "create-cosmotech-api" {
   depends_on = [
     module.create-argo,
     module.create-postgresql-db,
-    module.create-rabbitmq,
     module.create-redis-stack,
     module.create-keycloak,
   ]
