@@ -29,7 +29,6 @@
 | <a name="module_create-keycloak"></a> [create-keycloak](#module\_create-keycloak) | ./create-keycloak-realm | n/a |
 | <a name="module_create-minio"></a> [create-minio](#module\_create-minio) | ./create-minio | n/a |
 | <a name="module_create-postgresql-db"></a> [create-postgresql-db](#module\_create-postgresql-db) | ./create-postgresql-db | n/a |
-| <a name="module_create-rabbitmq"></a> [create-rabbitmq](#module\_create-rabbitmq) | ./create-rabbitmq | n/a |
 | <a name="module_create-redis-stack"></a> [create-redis-stack](#module\_create-redis-stack) | ./create-redis-stack | n/a |
 | <a name="module_create-seaweedfs"></a> [create-seaweedfs](#module\_create-seaweedfs) | ./create-seaweedfs | n/a |
 | <a name="module_create-tls"></a> [create-tls](#module\_create-tls) | ./create-secret-tls | n/a |
@@ -98,7 +97,6 @@
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_cloud_provider"></a> [cloud\_provider](#input\_cloud\_provider) | n/a | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | n/a | yes |
-| <a name="input_create_rabbitmq_secret"></a> [create\_rabbitmq\_secret](#input\_create\_rabbitmq\_secret) | n/a | `bool` | n/a | yes |
 | <a name="input_custom_tls_certificate_certificate"></a> [custom\_tls\_certificate\_certificate](#input\_custom\_tls\_certificate\_certificate) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_certificate_key"></a> [custom\_tls\_certificate\_key](#input\_custom\_tls\_certificate\_key) | n/a | `string` | n/a | yes |
 | <a name="input_custom_tls_namespace"></a> [custom\_tls\_namespace](#input\_custom\_tls\_namespace) | n/a | `string` | n/a | yes |
@@ -177,15 +175,6 @@
 | <a name="input_pvc_seaweedfs_storage_accessmode"></a> [pvc\_seaweedfs\_storage\_accessmode](#input\_pvc\_seaweedfs\_storage\_accessmode) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_storage_class_name"></a> [pvc\_seaweedfs\_storage\_class\_name](#input\_pvc\_seaweedfs\_storage\_class\_name) | n/a | `string` | n/a | yes |
 | <a name="input_pvc_seaweedfs_storage_gbi"></a> [pvc\_seaweedfs\_storage\_gbi](#input\_pvc\_seaweedfs\_storage\_gbi) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_deploy"></a> [rabbitmq\_deploy](#input\_rabbitmq\_deploy) | n/a | `bool` | n/a | yes |
-| <a name="input_rabbitmq_helm_chart"></a> [rabbitmq\_helm\_chart](#input\_rabbitmq\_helm\_chart) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_helm_chart_version"></a> [rabbitmq\_helm\_chart\_version](#input\_rabbitmq\_helm\_chart\_version) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_helm_release_name"></a> [rabbitmq\_helm\_release\_name](#input\_rabbitmq\_helm\_release\_name) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_helm_repo_url"></a> [rabbitmq\_helm\_repo\_url](#input\_rabbitmq\_helm\_repo\_url) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_listener_username"></a> [rabbitmq\_listener\_username](#input\_rabbitmq\_listener\_username) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_namespace"></a> [rabbitmq\_namespace](#input\_rabbitmq\_namespace) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_persistence_size"></a> [rabbitmq\_persistence\_size](#input\_rabbitmq\_persistence\_size) | n/a | `string` | n/a | yes |
-| <a name="input_rabbitmq_sender_username"></a> [rabbitmq\_sender\_username](#input\_rabbitmq\_sender\_username) | n/a | `string` | n/a | yes |
 | <a name="input_redis_admin_password"></a> [redis\_admin\_password](#input\_redis\_admin\_password) | n/a | `string` | n/a | yes |
 | <a name="input_redis_chart_version"></a> [redis\_chart\_version](#input\_redis\_chart\_version) | n/a | `string` | n/a | yes |
 | <a name="input_redis_cosmotech_version"></a> [redis\_cosmotech\_version](#input\_redis\_cosmotech\_version) | n/a | `string` | n/a | yes |
