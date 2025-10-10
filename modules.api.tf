@@ -40,7 +40,7 @@ module "create-cosmotech-api" {
   rabbitmq_listener_password    = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_listener_password : ""
   rabbitmq_sender_username      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_username : var.rabbitmq_sender_username
   rabbitmq_sender_password      = var.rabbitmq_deploy ? module.create-rabbitmq.0.out_rabbitmq_sender_password : ""
-  s3_endpoint_url               = !var.minio_deploy ? module.create-seaweedfs.0.out_s3_endpoint : ""
+  s3_endpoint_url               = !var.minio_deploy ? "http://${module.create-seaweedfs.0.out_s3_endpoint}" : ""
   s3_bucket_name                = !var.minio_deploy ? "cosmotech-api" : ""
   list_apikey_allowed           = var.api_list_apikey_allowed
   identifier_uri                = var.api_identifier_uri
