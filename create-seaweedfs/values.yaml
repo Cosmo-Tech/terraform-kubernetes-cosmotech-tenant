@@ -22,7 +22,6 @@ externalDatabase:
   database: "${POSTGRESQL_DATABASE}"
   user: "${POSTGRESQL_USERNAME}"
   existingSecret: "${POSTGRESQL_SECRET}"
-  waitForDatabaseEnabled: false
 volume:
   dataVolumes:
   - name: data-0
