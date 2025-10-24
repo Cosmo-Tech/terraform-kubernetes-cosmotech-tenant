@@ -173,7 +173,7 @@ resource "keycloak_openid_client" "automation-client" {
   client_id                = "automation-client"
   name                     = "automation-client"
   enabled                  = true
-  standard_flow_enabled    = false
+  standard_flow_enabled    = true
   access_type              = "CONFIDENTIAL"
   service_accounts_enabled = true
   login_theme              = "keycloak"
@@ -214,7 +214,7 @@ resource "keycloak_openid_client" "cosmotech-api-client" {
   client_id                = "cosmotech-api-client"
   name                     = "cosmotech-api-client"
   enabled                  = true
-  standard_flow_enabled    = false
+  standard_flow_enabled    = true
   access_type              = "CONFIDENTIAL"
   service_accounts_enabled = true
   login_theme              = "keycloak"
