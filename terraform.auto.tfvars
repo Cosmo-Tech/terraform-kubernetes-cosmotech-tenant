@@ -141,18 +141,6 @@ postgresql_existing_pvc_name             = ""
 postgresql_secrets_config_create         = false
 postgresql_port                          = 5432
 
-# rabbitmq
-rabbitmq_deploy             = true
-rabbitmq_helm_repo_url      = "https://charts.bitnami.com/bitnami"
-rabbitmq_helm_chart         = "rabbitmq"
-rabbitmq_helm_chart_version = "13.0.3"
-rabbitmq_helm_release_name  = "rabbitmq"
-rabbitmq_listener_username  = "cosmotech_api_listener"
-rabbitmq_sender_username    = "cosmotech_run_sender"
-rabbitmq_persistence_size   = "8Gi"
-rabbitmq_namespace          = ""
-create_rabbitmq_secret      = false
-
 # redis
 redis_deploy                    = true
 redis_admin_password            = ""

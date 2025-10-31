@@ -81,11 +81,23 @@ config:
         storage:
           account-key: ${STORAGE_ACCOUNT_KEY}
           account-name: ${STORAGE_ACCOUNT_NAME}
-      internalResultServices:
-        enabled: ${USE_INTERNAL_RESULT_SERVICES}
-        storage:
+      databases:
+        resources:
+          host: "cosmotechredis-${NAMESPACE}-master.${NAMESPACE}.svc.cluster.local"
+          port: ${REDIS_PORT}
+          username: "default"
+          password: ${REDIS_PASSWORD}
+          tls:
+            enabled: false
+            bundle: ""
+          run:
+            defaultPageSize: 200
+          runner:
+            defaultPageSize: 200
+        data:
           host: "${POSTGRESQL_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local"
           port: 5432
+          database: ${POSTGRESQL_DATABASE}
           reader:
             username: ${POSTGRESQL_READER_USERNAME}
             password: ${POSTGRESQL_READER_PASSWORD}
@@ -95,25 +107,6 @@ config:
           admin:
             username: ${POSTGRESQL_ADMIN_USERNAME}
             password: ${POSTGRESQL_ADMIN_PASSWORD}
-        eventBus:
-          host: "${RABBITMQ_RELEASE_NAME}.${NAMESPACE}.svc.cluster.local"
-          port: 5672
-          listener:
-            username: ${RABBITMQ_LISTENER_USERNAME}
-            password: ${RABBITMQ_LISTENER_PASSWORD}
-          sender:
-            username: ${RABBITMQ_SENDER_USERNAME}
-            password: ${RABBITMQ_SENDER_PASSWORD}
-          tls:
-            enabled: false
-      twincache:
-        host: "cosmotechredis-${NAMESPACE}-master.${NAMESPACE}.svc.cluster.local"
-        port: ${REDIS_PORT}
-        username: "default"
-        password: ${REDIS_PASSWORD}
-        tls:
-          enabled: false
-        useGraphModule: ${GRAPH_ENABLED}
       upload:
         authorized-mime-types:
           workspace: ${AUTHORIZED_MIME_TYPES}
