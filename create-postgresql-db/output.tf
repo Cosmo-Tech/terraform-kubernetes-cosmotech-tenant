@@ -54,3 +54,9 @@ output "out_postgres_seawweedfs_password_secret" {
 output "out_argo_postgresql_user" {
   value = var.argo_postgresql_user
 }
+
+output "out_postgresql_database" {
+  value     = data.kubernetes_secret.postgres_config.data.database-name
+  sensitive = true
+}
+
