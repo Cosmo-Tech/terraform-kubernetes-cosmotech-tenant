@@ -34,7 +34,7 @@ module "create-cosmotech-api" {
   max_file_size                 = var.api_max_file_size
   max_request_size              = var.api_max_request_size
   redis_admin_password          = var.redis_deploy ? module.create-redis-stack.0.out_redis_admin_password : var.redis_admin_password
-  s3_endpoint_url               = !var.minio_deploy ? module.create-seaweedfs.0.out_s3_endpoint : ""
+  s3_endpoint_url               = !var.minio_deploy ? "http://${module.create-seaweedfs.0.out_s3_endpoint}" : ""
   s3_bucket_name                = !var.minio_deploy ? "cosmotech-api" : ""
   list_apikey_allowed           = var.api_list_apikey_allowed
   identifier_uri                = var.api_identifier_uri
