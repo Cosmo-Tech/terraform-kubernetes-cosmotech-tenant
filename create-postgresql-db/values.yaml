@@ -1,5 +1,6 @@
 image:
   debug: true
+  repository: bitnamilegacy/postgresql
 auth:
   enablePostgresUser: true
   database: postgres
@@ -46,6 +47,8 @@ primary:
       memory: "256Mi"
       cpu: "1"
 metrics:
+  image: 
+    repository: bitnamilegacy/postgres-exporter
   enabled: true
   containerSecurityContext:
     enabled: true

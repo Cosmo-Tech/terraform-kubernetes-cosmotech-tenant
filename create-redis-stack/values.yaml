@@ -10,13 +10,13 @@ volumePermissions:
   enabled: false
   image:
     registry: docker.io
-    repository: bitnami/os-shell
+    repository: bitnamilegacy/os-shell 
     tag: latest
     pullPolicy: IfNotPresent
 sysctl:
   image:
     registry: docker.io
-    repository: bitnami/os-shell
+    repository: bitnamilegacy/os-shell
     tag: latest
     pullPolicy: IfNotPresent
 master:

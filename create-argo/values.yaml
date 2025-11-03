@@ -2,6 +2,8 @@ rbac:
   singleNamespace: true
 createAggregateRoles: false
 server:
+  image:
+    repository: bitnamilegacy/argo-workflow-cli
   auth:
     mode: server
   clusterWorkflowTemplates:
@@ -20,6 +22,8 @@ server:
       http: 2746
 
 controller:
+  image:
+    repository: bitnamilegacy/argo-workflow-controller
   persistence:
     archive:
       enabled: true
@@ -140,6 +144,8 @@ controller:
       effect: "NoSchedule"
 
 executor:
+  image:
+    repository: bitnamilegacy/argo-workflow-exec
   resources: {}
   resourcesPreset: nano
   extraEnvVars:
