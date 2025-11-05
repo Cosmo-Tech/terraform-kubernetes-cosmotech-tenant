@@ -81,6 +81,18 @@ api_list_authorized_mime_types = [
 ]
 api_auth_provider = "azure"
 
+# Tekton Cosmotech API Pipline
+api_deployment_helm_chart            = "api-deployment"
+api_deployment_helm_repository       = "https://cosmo-tech.github.io/tekton/"
+api_deployment_helm_release_name     = "cosmotech-api-deployment"
+api_deployment_chart_package_version = "0.1.36"
+api_ngrok_host                       = ""
+api_ingress_type                     = ""
+api_use_oci_registry                 = "false"
+api_run_cypress_tests                = "false"
+tekton_node_selector                 = "tekton"
+
+
 # keycloak
 keycloak_deploy                      = false
 keycloak_client_id                   = "admin-cli"
